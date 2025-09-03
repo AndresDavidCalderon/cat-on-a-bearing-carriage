@@ -34,6 +34,7 @@ func _process(delta: float) -> void:
 	
 	if impulse<=0:
 		get_parent().lost(get_parent().lossReason.IMPULSE_RAN_OUT)
+		impulse=0
 	
 	var circumstancial_steering_speed=steering_speed*delta
 	if current_state==State.DRIFTING:

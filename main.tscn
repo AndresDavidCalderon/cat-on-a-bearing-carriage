@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dnnka5th1gldj"]
+[gd_scene load_steps=13 format=3 uid="uid://dnnka5th1gldj"]
 
 [ext_resource type="Script" uid="uid://o74np0f72gru" path="res://world.gd" id="1_h2yge"]
 [ext_resource type="Texture2D" uid="uid://dl6f057tkjd1a" path="res://icon.svg" id="2_1bvp3"]
@@ -9,9 +9,13 @@
 [ext_resource type="Script" uid="uid://dybwj42npbcym" path="res://UI/start.gd" id="4_272bh"]
 [ext_resource type="Texture2D" uid="uid://d08hjcvwwwo47" path="res://UI/compass_nail.png" id="4_lquwl"]
 [ext_resource type="Script" uid="uid://bmg1xfdix0srf" path="res://UI/lost.gd" id="8_kek77"]
+[ext_resource type="Script" uid="uid://785phvd8jycq" path="res://booster.gd" id="10_4c57u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_myinc"]
 size = Vector2(16, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kek77"]
+size = Vector2(32, 32)
 
 [node name="World" type="Node"]
 script = ExtResource("1_h2yge")
@@ -183,7 +187,26 @@ position = Vector2(-600, 16)
 [node name="DeliveryTarget3" parent="." instance=ExtResource("4_1bvp3")]
 position = Vector2(-88, 248)
 
+[node name="Booster" type="Node2D" parent="."]
+position = Vector2(184, -56)
+script = ExtResource("10_4c57u")
+
+[node name="Icon" type="Sprite2D" parent="Booster"]
+modulate = Color(0.35, 1, 0.4475, 1)
+position = Vector2(-0.249996, -4.76837e-07)
+scale = Vector2(0.253906, 0.25)
+texture = ExtResource("2_1bvp3")
+
+[node name="Area2D" type="Area2D" parent="Booster"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Booster/Area2D"]
+shape = SubResource("RectangleShape2D_kek77")
+
+[node name="Timer" type="Timer" parent="Booster"]
+
 [connection signal="loss" from="." to="UI/Lost" method="_on_world_loss"]
 [connection signal="packet_delivered" from="." to="UI/Stats" method="_on_world_packet_delivered"]
 [connection signal="pressed" from="UI/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="UI/Lost/Panel/Repeat" to="UI/Lost" method="_on_repeat_pressed"]
+[connection signal="body_entered" from="Booster/Area2D" to="Booster" method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Booster/Timer" to="Booster" method="_on_timer_timeout"]
