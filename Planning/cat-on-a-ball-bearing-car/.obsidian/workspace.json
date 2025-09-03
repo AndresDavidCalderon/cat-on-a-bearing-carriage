@@ -34,9 +34,21 @@
               "icon": "lucide-file",
               "title": "Base idea 1"
             }
+          },
+          {
+            "id": "7a438f7c5d2fd291",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "Drift.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "Drift"
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -181,12 +193,15 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "bases:Create new base": false
+      "bases:Create new base": false,
+      "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "6496811978f02370",
+  "active": "7a438f7c5d2fd291",
   "lastOpenFiles": [
-    "Welcome.md",
-    "Base idea 1.md"
+    "Untitled.md",
+    "Drift.md",
+    "Base idea 1.md",
+    "Welcome.md"
   ]
 }
