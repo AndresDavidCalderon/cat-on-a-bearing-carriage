@@ -1,0 +1,2 @@
+I tried something that actually looked like a compass, but it somehow is too little intrusive?
+Another option is for it to be positioned on the center of the screen, next to the car. It should be semi transparent to compensate.

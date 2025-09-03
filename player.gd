@@ -12,10 +12,11 @@ enum Rotation{
 
 var current_state:State=State.SLIDING
 @export var drift_point_offset:Vector2
-@export var drift_movement:Vector2=Vector2(50,0)
+@export var drift_movement:Vector2=Vector2(1,0)
+@export var speed_to_drift:float=0.7
 
 # Spent when moving. Should be measured in pixels of distance.
-var impulse:float=100
+var impulse:float=600
 # Spends impulse.
 var speed:float=impulse
 @export var steering_speed:float=1
@@ -49,7 +50,8 @@ func _process(delta: float) -> void:
 	
 	if current_state==State.DRIFTING:
 		position=pinpoint-drift_point_offset.rotated(rotation)
-		pinpoint+=drift_movement.rotated(rotation)*delta*(-1 if drift_direction==Rotation.Positive else 1)
+		pinpoint+=(drift_movement.rotated(rotation)*speed*speed_to_drift*delta*
+		(-1 if drift_direction==Rotation.Positive else 1))
 
 func set_state(new_state:State):
 	current_state=new_state

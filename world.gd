@@ -1,8 +1,11 @@
 extends Node
 
+signal packet_delivered
+
 var delivery_targets=[]
 
 var current_target:Node=null
+var packet_score:int=0
 
 func _ready() -> void:
 	randomize()
@@ -12,4 +15,15 @@ func register_target(target:Node):
 
 
 func _on_start_pressed() -> void:
-	current_target=delivery_targets.pick_random()
+	set_current_target(delivery_targets.pick_random())
+
+func target_reached():
+	set_current_target(delivery_targets.pick_random())
+	packet_score+=1
+	packet_delivered.emit()
+
+func set_current_target(target:Node2D):
+	if current_target!=null:
+		current_target.hide()
+	target.show()
+	current_target=target

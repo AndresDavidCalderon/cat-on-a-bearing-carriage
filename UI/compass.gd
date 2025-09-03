@@ -6,4 +6,6 @@ extends Control
 func _process(delta: float) -> void:
 	if target_provider.current_target!=null:
 		var target=target_provider.current_target.position as Vector2
-		$Nail.rotation= target.angle_to_point(player.position)-player.rotation
+		rotation= target.angle_to_point(player.position)-player.rotation
+		
+		
