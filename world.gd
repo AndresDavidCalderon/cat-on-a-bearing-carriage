@@ -1,6 +1,11 @@
 extends Node
 
+enum lossReason{
+	IMPULSE_RAN_OUT
+}
+
 signal packet_delivered
+signal loss(reason:lossReason)
 
 var delivery_targets=[]
 
@@ -25,5 +30,10 @@ func target_reached():
 func set_current_target(target:Node2D):
 	if current_target!=null:
 		current_target.hide()
-	target.show()
+	if target!=null:
+		target.show()
 	current_target=target
+
+func lost(loss_reason):
+	set_current_target(null)
+	loss.emit(loss_reason)

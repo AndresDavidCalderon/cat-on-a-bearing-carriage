@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dnnka5th1gldj"]
+[gd_scene load_steps=11 format=3 uid="uid://dnnka5th1gldj"]
 
 [ext_resource type="Script" uid="uid://o74np0f72gru" path="res://world.gd" id="1_h2yge"]
 [ext_resource type="Texture2D" uid="uid://dl6f057tkjd1a" path="res://icon.svg" id="2_1bvp3"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://hsdce8feoo5v" path="res://UI/compass.gd" id="4_7mycd"]
 [ext_resource type="Script" uid="uid://dybwj42npbcym" path="res://UI/start.gd" id="4_272bh"]
 [ext_resource type="Texture2D" uid="uid://d08hjcvwwwo47" path="res://UI/compass_nail.png" id="4_lquwl"]
+[ext_resource type="Script" uid="uid://bmg1xfdix0srf" path="res://UI/lost.gd" id="8_kek77"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_myinc"]
 size = Vector2(16, 32)
@@ -108,6 +109,71 @@ grow_vertical = 2
 pivot_offset = Vector2(32, 32)
 texture = ExtResource("4_lquwl")
 
+[node name="Lost" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 8
+script = ExtResource("8_kek77")
+
+[node name="Panel" type="Panel" parent="UI/Lost"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -104.0
+offset_right = 199.0
+offset_bottom = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="UI/Lost/Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 33.0
+grow_horizontal = 2
+text = "Woops! you lost!"
+horizontal_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="UI/Lost/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.5
+offset_top = -60.0
+offset_right = 149.5
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You ran out of impulse! try to catch a booster more often."
+horizontal_alignment = 1
+
+[node name="Repeat" type="Button" parent="UI/Lost/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -110.5
+offset_top = -49.0
+offset_right = 114.5
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Play again"
+
 [node name="DeliveryTarget" parent="." instance=ExtResource("4_1bvp3")]
 position = Vector2(424, -224)
 
@@ -117,5 +183,7 @@ position = Vector2(-600, 16)
 [node name="DeliveryTarget3" parent="." instance=ExtResource("4_1bvp3")]
 position = Vector2(-88, 248)
 
+[connection signal="loss" from="." to="UI/Lost" method="_on_world_loss"]
 [connection signal="packet_delivered" from="." to="UI/Stats" method="_on_world_packet_delivered"]
 [connection signal="pressed" from="UI/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="UI/Lost/Panel/Repeat" to="UI/Lost" method="_on_repeat_pressed"]

@@ -14,6 +14,7 @@ var current_state:State=State.SLIDING
 @export var drift_point_offset:Vector2
 @export var drift_movement:Vector2=Vector2(1,0)
 @export var speed_to_drift:float=0.7
+@export var impulse_loss=10
 
 # Spent when moving. Should be measured in pixels of distance.
 var impulse:float=600
@@ -27,6 +28,12 @@ var drift_direction:Rotation
 func _process(delta: float) -> void:
 	velocity=Vector2(0,-speed).rotated(rotation)
 	move_and_slide()
+	
+	impulse-=impulse_loss*delta
+	speed=impulse
+	
+	if impulse<=0:
+		get_parent().lost(get_parent().lossReason.IMPULSE_RAN_OUT)
 	
 	var circumstancial_steering_speed=steering_speed*delta
 	if current_state==State.DRIFTING:
