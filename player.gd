@@ -39,15 +39,16 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("drift"):
 		set_state(State.DRIFTING)
 		pinpoint=position+drift_point_offset.rotated(rotation)
-	if Input.is_action_just_released("drift"):
-		set_state(State.SLIDING)
 		if Input.is_action_pressed("SteerLeft"):
 			drift_direction=Rotation.Negative
 		if Input.is_action_pressed("SteerRight"):
 			drift_direction=Rotation.Positive
 	
+	if Input.is_action_just_released("drift"):
+		set_state(State.SLIDING)
+	
 	if current_state==State.DRIFTING:
 		position=pinpoint-drift_point_offset.rotated(rotation)
-		pinpoint+=drift_movement.rotated(rotation)*delta*(1 if drift_direction==Rotation.Positive else -1)
+		pinpoint+=drift_movement.rotated(rotation)*delta*(-1 if drift_direction==Rotation.Positive else 1)
 func set_state(new_state:State):
 	current_state=new_state
