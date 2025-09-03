@@ -29,12 +29,12 @@ func _process(delta: float) -> void:
 	
 	var circumstancial_steering_speed=steering_speed*delta
 	if current_state==State.DRIFTING:
-		circumstancial_steering_speed*=5
+		circumstancial_steering_speed*=3
 	
 	if Input.is_action_pressed("SteerLeft"):
-		rotation-=steering_speed*delta
+		rotation-=circumstancial_steering_speed
 	if Input.is_action_pressed("SteerRight"):
-		rotation+=steering_speed*delta
+		rotation+=circumstancial_steering_speed
 	
 	if Input.is_action_just_pressed("drift"):
 		set_state(State.DRIFTING)
@@ -50,5 +50,6 @@ func _process(delta: float) -> void:
 	if current_state==State.DRIFTING:
 		position=pinpoint-drift_point_offset.rotated(rotation)
 		pinpoint+=drift_movement.rotated(rotation)*delta*(-1 if drift_direction==Rotation.Positive else 1)
+
 func set_state(new_state:State):
 	current_state=new_state
