@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dnnka5th1gldj"]
+[gd_scene load_steps=8 format=3 uid="uid://dnnka5th1gldj"]
 
 [ext_resource type="Script" uid="uid://o74np0f72gru" path="res://world.gd" id="1_h2yge"]
 [ext_resource type="Texture2D" uid="uid://dl6f057tkjd1a" path="res://icon.svg" id="2_1bvp3"]
 [ext_resource type="Script" uid="uid://dg6hodfjfupjm" path="res://player.gd" id="3_lquwl"]
 [ext_resource type="PackedScene" uid="uid://dfca212ra225f" path="res://delivery_target.tscn" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://hsdce8feoo5v" path="res://UI/compass.gd" id="4_7mycd"]
+[ext_resource type="Texture2D" uid="uid://d08hjcvwwwo47" path="res://UI/compass_nail.png" id="4_lquwl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_myinc"]
 size = Vector2(16, 32)
@@ -65,6 +67,37 @@ offset_bottom = -48.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Start delivery!"
+
+[node name="Compass" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -136.0
+offset_top = -128.0
+offset_right = -40.0
+offset_bottom = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("4_7mycd")
+
+[node name="Nail" type="TextureRect" parent="UI/Compass"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(32, 32)
+texture = ExtResource("4_lquwl")
 
 [node name="DeliveryTarget" parent="." instance=ExtResource("4_1bvp3")]
 position = Vector2(424, -224)
