@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dnnka5th1gldj"]
+[gd_scene load_steps=14 format=3 uid="uid://dnnka5th1gldj"]
 
 [ext_resource type="Script" uid="uid://o74np0f72gru" path="res://world.gd" id="1_h2yge"]
 [ext_resource type="Texture2D" uid="uid://dl6f057tkjd1a" path="res://icon.svg" id="2_1bvp3"]
@@ -16,6 +16,9 @@ size = Vector2(16, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kek77"]
 size = Vector2(32, 32)
+
+[sub_resource type="TileSet" id="TileSet_4c57u"]
+tile_size = Vector2i(32, 32)
 
 [node name="World" type="Node"]
 script = ExtResource("1_h2yge")
@@ -203,6 +206,9 @@ texture = ExtResource("2_1bvp3")
 shape = SubResource("RectangleShape2D_kek77")
 
 [node name="Timer" type="Timer" parent="Booster"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_4c57u")
 
 [connection signal="loss" from="." to="UI/Lost" method="_on_world_loss"]
 [connection signal="packet_delivered" from="." to="UI/Stats" method="_on_world_packet_delivered"]
