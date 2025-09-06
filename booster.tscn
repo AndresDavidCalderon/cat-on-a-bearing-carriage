@@ -4,15 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://dl6f057tkjd1a" path="res://icon.svg" id="2_825m2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kek77"]
-size = Vector2(32, 32)
+size = Vector2(80, 80)
 
 [node name="Booster" type="Node2D"]
 script = ExtResource("1_1jv0s")
 
 [node name="Icon" type="Sprite2D" parent="."]
 modulate = Color(0.35, 1, 0.4475, 1)
-position = Vector2(-0.249996, -4.76837e-07)
-scale = Vector2(0.253906, 0.25)
+position = Vector2(-3.57628e-07, -3.57628e-06)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_825m2")
 
 [node name="Area2D" type="Area2D" parent="."]
