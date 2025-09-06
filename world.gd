@@ -31,7 +31,7 @@ func register_target(target:Node):
 
 
 func _on_start_pressed() -> void:
-	set_current_target(delivery_targets.pick_random())
+	set_random_target()
 	set_running(true)
 
 func set_running(new_state:bool):
@@ -39,9 +39,15 @@ func set_running(new_state:bool):
 	match_state_changed.emit(new_state)
 
 func target_reached():
-	set_current_target(delivery_targets.pick_random())
+	set_random_target()
 	packet_score+=1
 	packet_delivered.emit()
+
+func set_random_target():
+	var new_target
+	while new_target==current_target or new_target==null:
+		new_target=delivery_targets.pick_random()
+	set_current_target(new_target)
 
 func set_current_target(target:Node2D):
 	if current_target!=null:

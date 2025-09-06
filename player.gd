@@ -13,7 +13,9 @@ enum Rotation{
 var current_state:State=State.SLIDING
 @export var drift_point_offset:Vector2=Vector2(0,-12)
 @export var drift_movement:Vector2=Vector2(1,0)
-@export var speed_to_drift:float=0.7
+@export var speed_to_drift:float=0.4 # Multiplies how much the car slides, relative to its original speed before
+# drift.
+
 @export var impulse_loss=10
 @export var drift_raycast_length_multiplier:float=0.01
 @export var drift_position_speed:float=0.1
@@ -23,6 +25,7 @@ var impulse:float=600
 # Spends impulse.
 var speed:float=impulse
 @export var steering_speed:float=1.5
+@export var drifting_steering_speed=3
 
 var pinpoint:Vector2 #Should be set when starting a drift.
 var drift_direction:Rotation
@@ -40,13 +43,13 @@ func _process(delta: float) -> void:
 			impulse=0
 		
 		var circumstancial_steering_speed=steering_speed*delta
-		if current_state==State.DRIFTING:
-			circumstancial_steering_speed*=3
 		
-		if Input.is_action_pressed("SteerLeft"): 
-			rotation-=circumstancial_steering_speed
-		if Input.is_action_pressed("SteerRight"):
-			rotation+=circumstancial_steering_speed
+		# Simple sliding rotation logic, rotating on drift requires more collission checks
+		if current_state==State.SLIDING:
+			if Input.is_action_pressed("SteerLeft"): 
+				rotation-=circumstancial_steering_speed
+			if Input.is_action_pressed("SteerRight"):
+				rotation+=circumstancial_steering_speed
 		
 		if Input.is_action_just_pressed("drift"):
 			set_state(State.DRIFTING)
@@ -62,7 +65,24 @@ func _process(delta: float) -> void:
 		if current_state==State.DRIFTING:
 			var circumstantial_drift_slide=drift_movement.rotated(rotation)*speed*speed_to_drift
 			position=pinpoint-drift_point_offset.rotated(rotation)
-			pinpoint+=circumstantial_drift_slide*delta*(-1 if drift_direction==Rotation.Positive else 1)
+			var relevant_area:Area2D
+			if drift_direction==Rotation.Negative:
+				relevant_area=$Right
+			else:
+				relevant_area=$Left
+			if not has_relevant_bodies(relevant_area):
+				pinpoint+=circumstantial_drift_slide*delta*(-1 if drift_direction==Rotation.Positive else 1)
+				if Input.is_action_pressed("SteerLeft"): 
+					rotation-=drifting_steering_speed*delta
+				if Input.is_action_pressed("SteerRight"):
+					rotation+=drifting_steering_speed*delta
 
 func set_state(new_state:State):
 	current_state=new_state
+
+func has_relevant_bodies(area:Area2D):
+	
+	for i in area.get_overlapping_bodies():
+		if i!=self:
+			return true
+	return false

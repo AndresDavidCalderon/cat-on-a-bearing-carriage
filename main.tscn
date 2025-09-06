@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://dnnka5th1gldj"]
+[gd_scene load_steps=17 format=4 uid="uid://dnnka5th1gldj"]
 
 [ext_resource type="Script" uid="uid://o74np0f72gru" path="res://world.gd" id="1_h2yge"]
 [ext_resource type="Texture2D" uid="uid://dl6f057tkjd1a" path="res://icon.svg" id="2_1bvp3"]
@@ -15,6 +15,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_myinc"]
 size = Vector2(16, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dg77c"]
+size = Vector2(9, 29)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dg77c"]
 texture = ExtResource("11_efxa6")
@@ -37,6 +40,7 @@ scale = Vector2(11.6875, 6.25)
 texture = ExtResource("2_1bvp3")
 
 [node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(0, 1)
 script = ExtResource("3_lquwl")
 
 [node name="Icon" type="Sprite2D" parent="Player"]
@@ -49,6 +53,20 @@ shape = SubResource("RectangleShape2D_myinc")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 ignore_rotation = false
+
+[node name="Left" type="Area2D" parent="Player"]
+position = Vector2(-11, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Left"]
+position = Vector2(-2.5, 0)
+shape = SubResource("RectangleShape2D_dg77c")
+
+[node name="Right" type="Area2D" parent="Player"]
+position = Vector2(13, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Right"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_dg77c")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
