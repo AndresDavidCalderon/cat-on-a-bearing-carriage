@@ -15,7 +15,7 @@ var delivery_targets=[]
 
 var current_target:Node=null
 var packet_score:int=0
-var base_milk_by_minute=8
+var base_milk_by_minute=5
 var milk_by_minute_multiplier:float=1.3
 var packet_target:int=10
 var target_time=0
@@ -48,9 +48,9 @@ func set_running(new_state:bool):
 	match_state_changed.emit(new_state)
 
 func target_reached():
+	packet_score+=1
 	if packet_score<packet_target:
 		set_random_target()
-		packet_score+=1
 		packet_delivered.emit()
 	else:
 		set_running(false)
@@ -75,8 +75,8 @@ func lost(loss_reason):
 
 func update_day_stats():
 	target_time = randi_range(45,120)
-	var minutes=(target_time/60)
-	packet_target = minutes*base_milk_by_minute*pow(milk_by_minute_multiplier,GlobalScore.current_day-1)
+	var minutes:float=(target_time/60.0)
+	packet_target = round(minutes*base_milk_by_minute*pow(milk_by_minute_multiplier,GlobalScore.current_day-1))
 	day_stats_set.emit()
 	remaining_time=target_time
 

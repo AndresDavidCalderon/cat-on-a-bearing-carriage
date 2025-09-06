@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://c3q1to6agc5ho" path="res://world-and-tiles/default.png" id="11_efxa6"]
 [ext_resource type="Script" uid="uid://d7wqpm15grcy" path="res://UI/time.gd" id="11_w48qg"]
 [ext_resource type="Script" uid="uid://dol6vlmwwr3ga" path="res://UI/car_stats_debug.gd" id="12_vivmo"]
-[ext_resource type="Script" uid="uid://dba4y85gilasm" path="res://UI/win_panel.gd" id="13_2cqfq"]
+[ext_resource type="Script" path="res://UI/win_panel.gd" id="13_2cqfq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_myinc"]
 size = Vector2(16, 32)
