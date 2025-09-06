@@ -8,6 +8,7 @@ enum lossReason{
 signal packet_delivered
 signal loss(reason:lossReason)
 signal match_state_changed(new_state:bool)
+signal day_stats_set
 
 var delivery_targets=[]
 
@@ -15,11 +16,15 @@ var current_target:Node=null
 var packet_score:int=0
 var current_day=1
 var base_milk_by_minute=8
+var milk_by_minute_multiplier:float=1.3
+var packet_target:int=10
+var target_time=0
 
 var running:bool=false
 
 func _ready() -> void:
 	randomize()
+	update_day_stats()
 
 func register_target(target:Node):
 	delivery_targets.append(target)
@@ -49,5 +54,8 @@ func lost(loss_reason):
 	set_current_target(null)
 	loss.emit(loss_reason)
 
-func get_day_stats():
-	pass
+func update_day_stats():
+	target_time = randi_range(45,120)
+	var minutes=(target_time/60)
+	packet_target = minutes*base_milk_by_minute*pow(milk_by_minute_multiplier,current_day-1)
+	day_stats_set.emit()
