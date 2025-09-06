@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://dnnka5th1gldj"]
+[gd_scene load_steps=21 format=4 uid="uid://dnnka5th1gldj"]
 
 [ext_resource type="Script" uid="uid://o74np0f72gru" path="res://world.gd" id="1_h2yge"]
 [ext_resource type="Texture2D" uid="uid://dl6f057tkjd1a" path="res://icon.svg" id="2_1bvp3"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://c3q1to6agc5ho" path="res://world-and-tiles/default.png" id="11_efxa6"]
 [ext_resource type="Script" uid="uid://d7wqpm15grcy" path="res://UI/time.gd" id="11_w48qg"]
 [ext_resource type="Script" uid="uid://dol6vlmwwr3ga" path="res://UI/car_stats_debug.gd" id="12_vivmo"]
+[ext_resource type="Script" uid="uid://dba4y85gilasm" path="res://UI/win_panel.gd" id="13_2cqfq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_myinc"]
 size = Vector2(16, 32)
@@ -195,6 +196,7 @@ grow_vertical = 0
 text = "Play again"
 
 [node name="StartPanel" type="Panel" parent="UI"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -273,6 +275,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CarStatsDebug" type="Control" parent="UI"]
+visible = false
 layout_mode = 3
 anchors_preset = 3
 anchor_left = 1.0
@@ -308,6 +311,64 @@ offset_top = -33.0
 offset_right = -106.0
 offset_bottom = -10.0
 text = "Speed multiplier:"
+
+[node name="WinPanel" type="Panel" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = -96.0
+offset_right = 135.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("13_2cqfq")
+
+[node name="Title" type="Label" parent="UI/WinPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Congrats!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Report" type="RichTextLabel" parent="UI/WinPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.5
+offset_top = -59.0
+offset_right = 106.5
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Now everyone has their milk."
+horizontal_alignment = 1
+
+[node name="NextDay" type="Button" parent="UI/WinPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -61.5
+offset_top = -52.0
+offset_right = 72.5
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "See you tomorrow"
 
 [node name="DeliveryTarget" parent="." instance=ExtResource("4_1bvp3")]
 position = Vector2(912, 16)
@@ -361,8 +422,11 @@ tile_set = SubResource("TileSet_4c57u")
 
 [connection signal="day_stats_set" from="." to="UI/StartPanel" method="_on_world_day_stats_set"]
 [connection signal="loss" from="." to="UI/Lost" method="_on_world_loss"]
+[connection signal="match_state_changed" from="." to="UI/Stats" method="_on_world_match_state_changed"]
 [connection signal="match_state_changed" from="." to="UI/Time" method="_on_world_match_state_changed"]
 [connection signal="packet_delivered" from="." to="UI/Stats" method="_on_world_packet_delivered"]
+[connection signal="win" from="." to="UI/WinPanel" method="_on_world_win"]
 [connection signal="pressed" from="UI/Lost/Panel/Repeat" to="UI/Lost" method="_on_repeat_pressed"]
 [connection signal="pressed" from="UI/StartPanel/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="UI/StartPanel/Start" to="UI/StartPanel" method="_on_start_pressed"]
+[connection signal="pressed" from="UI/WinPanel/NextDay" to="." method="_on_next_day_pressed"]

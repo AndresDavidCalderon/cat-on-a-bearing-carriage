@@ -4,8 +4,9 @@ extends Control
 
 func _on_world_loss(reason) -> void:
 	show()
-	if reason==try_provider.lossReason.IMPULSE_RAN_OUT:
-		$Panel/Description.text="""You ran out of impulse! try to catch a booster more often."""
+	if reason==try_provider.lossReason.TIME_OUT:
+		$Panel/Description.text="""You ran out of time! Drifting can help a great deal when making sharp turns,
+		and that helps with not having to turn around later."""
 
 
 func _on_repeat_pressed() -> void:

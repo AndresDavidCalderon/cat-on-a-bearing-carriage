@@ -9,12 +9,12 @@ signal packet_delivered
 signal loss(reason:lossReason)
 signal match_state_changed(new_state:bool)
 signal day_stats_set
+signal win
 
 var delivery_targets=[]
 
 var current_target:Node=null
 var packet_score:int=0
-var current_day=1
 var base_milk_by_minute=8
 var milk_by_minute_multiplier:float=1.3
 var packet_target:int=10
@@ -32,6 +32,8 @@ func _process(delta: float) -> void:
 		remaining_time-=delta
 		if remaining_time<0:
 			remaining_time=0
+			running=false
+			loss.emit(lossReason.TIME_OUT)
 
 func register_target(target:Node):
 	delivery_targets.append(target)
@@ -46,9 +48,13 @@ func set_running(new_state:bool):
 	match_state_changed.emit(new_state)
 
 func target_reached():
-	set_random_target()
-	packet_score+=1
-	packet_delivered.emit()
+	if packet_score<packet_target:
+		set_random_target()
+		packet_score+=1
+		packet_delivered.emit()
+	else:
+		set_running(false)
+		win.emit()
 
 func set_random_target():
 	var new_target
@@ -70,6 +76,11 @@ func lost(loss_reason):
 func update_day_stats():
 	target_time = randi_range(45,120)
 	var minutes=(target_time/60)
-	packet_target = minutes*base_milk_by_minute*pow(milk_by_minute_multiplier,current_day-1)
+	packet_target = minutes*base_milk_by_minute*pow(milk_by_minute_multiplier,GlobalScore.current_day-1)
 	day_stats_set.emit()
 	remaining_time=target_time
+
+
+func _on_next_day_pressed() -> void:
+	GlobalScore.current_day+=1
+	get_tree().reload_current_scene()
