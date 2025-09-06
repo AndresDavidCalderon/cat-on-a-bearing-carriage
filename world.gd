@@ -4,6 +4,7 @@ enum lossReason{
 	IMPULSE_RAN_OUT
 }
 
+
 signal packet_delivered
 signal loss(reason:lossReason)
 signal match_state_changed(new_state:bool)
@@ -12,6 +13,8 @@ var delivery_targets=[]
 
 var current_target:Node=null
 var packet_score:int=0
+var current_day=1
+var base_milk_by_minute=8
 
 var running:bool=false
 
@@ -45,3 +48,6 @@ func set_current_target(target:Node2D):
 func lost(loss_reason):
 	set_current_target(null)
 	loss.emit(loss_reason)
+
+func get_day_stats():
+	pass

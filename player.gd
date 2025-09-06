@@ -11,7 +11,7 @@ enum Rotation{
 }
 
 var current_state:State=State.SLIDING
-@export var drift_point_offset:Vector2
+@export var drift_point_offset:Vector2=Vector2(0,-12)
 @export var drift_movement:Vector2=Vector2(1,0)
 @export var speed_to_drift:float=0.7
 @export var impulse_loss=10

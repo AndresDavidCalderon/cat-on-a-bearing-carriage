@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://dnnka5th1gldj"]
+[gd_scene load_steps=16 format=4 uid="uid://dnnka5th1gldj"]
 
 [ext_resource type="Script" uid="uid://o74np0f72gru" path="res://world.gd" id="1_h2yge"]
 [ext_resource type="Texture2D" uid="uid://dl6f057tkjd1a" path="res://icon.svg" id="2_1bvp3"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://hsdce8feoo5v" path="res://UI/compass.gd" id="4_7mycd"]
 [ext_resource type="Script" uid="uid://dybwj42npbcym" path="res://UI/start.gd" id="4_272bh"]
 [ext_resource type="Texture2D" uid="uid://d08hjcvwwwo47" path="res://UI/compass_nail.png" id="4_lquwl"]
+[ext_resource type="Script" uid="uid://cqn2vje3bld8f" path="res://UI/start_panel.gd" id="8_dg77c"]
 [ext_resource type="Script" uid="uid://bmg1xfdix0srf" path="res://UI/lost.gd" id="8_kek77"]
 [ext_resource type="PackedScene" uid="uid://c7o64wwu8uy0t" path="res://booster.tscn" id="10_efxa6"]
 [ext_resource type="Texture2D" uid="uid://c3q1to6agc5ho" path="res://world-and-tiles/default.png" id="11_efxa6"]
@@ -55,7 +56,7 @@ ignore_rotation = false
 offset_left = 48.0
 offset_top = 24.0
 offset_right = 216.0
-offset_bottom = 72.0
+offset_bottom = 95.0
 script = ExtResource("4_5vw27")
 
 [node name="Items" type="Label" parent="UI/Stats"]
@@ -64,22 +65,7 @@ offset_left = 16.0
 offset_top = 8.0
 offset_right = 149.0
 offset_bottom = 31.0
-text = "0 Items delivered"
-
-[node name="Start" type="Button" parent="UI"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -72.0
-offset_top = -96.0
-offset_right = 76.0
-offset_bottom = -48.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "Start delivery!"
-script = ExtResource("4_272bh")
+text = "0 bottles delivered"
 
 [node name="Compass" type="Control" parent="UI"]
 modulate = Color(1, 1, 1, 0.447059)
@@ -178,6 +164,59 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Play again"
 
+[node name="StartPanel" type="Panel" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -149.0
+offset_right = 217.0
+offset_bottom = 139.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_dg77c")
+
+[node name="Start" type="Button" parent="UI/StartPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -82.5
+offset_top = -76.0
+offset_right = 65.5
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Start delivery!"
+script = ExtResource("4_272bh")
+
+[node name="DayDescription" type="RichTextLabel" parent="UI/StartPanel"]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 87.0
+offset_right = 336.0
+offset_bottom = 191.0
+text = "10 bottles in
+2 minutes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DayTitle" type="Label" parent="UI/StartPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -19.5
+offset_top = 14.0
+offset_right = 23.5
+offset_bottom = 37.0
+grow_horizontal = 2
+text = "Day 1"
+
 [node name="DeliveryTarget" parent="." instance=ExtResource("4_1bvp3")]
 position = Vector2(912, 16)
 
@@ -230,5 +269,6 @@ tile_set = SubResource("TileSet_4c57u")
 
 [connection signal="loss" from="." to="UI/Lost" method="_on_world_loss"]
 [connection signal="packet_delivered" from="." to="UI/Stats" method="_on_world_packet_delivered"]
-[connection signal="pressed" from="UI/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="UI/Lost/Panel/Repeat" to="UI/Lost" method="_on_repeat_pressed"]
+[connection signal="pressed" from="UI/StartPanel/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="UI/StartPanel/Start" to="UI/StartPanel" method="_on_start_pressed"]

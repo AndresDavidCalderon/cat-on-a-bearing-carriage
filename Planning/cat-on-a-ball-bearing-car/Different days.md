@@ -1,0 +1,1 @@
+Each day should be different, some shorter, some longer ( In a length between 45 seconds and 2 minutes), but the essential thing is that milk/minute should rise about 5 each day. The actual time can be random.

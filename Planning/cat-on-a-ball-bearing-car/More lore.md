@@ -1,0 +1,1 @@
+You are a cat that delivers milk to the village each day, the issue is that you can't go around ringing, when someone wakes up, they call for their milk to be delivered, so you must go in random orders.

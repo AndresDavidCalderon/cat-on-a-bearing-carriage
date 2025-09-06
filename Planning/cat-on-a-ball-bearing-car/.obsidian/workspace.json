@@ -102,9 +102,37 @@
               "icon": "lucide-file",
               "title": "Drifting and colissions"
             }
+          },
+          {
+            "id": "658c90e12f33a1e9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Drifting and colissions.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Drifting and colissions"
+            }
+          },
+          {
+            "id": "209eeaef94943339",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Different days.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Different days"
+            }
           }
         ],
-        "currentTab": 6
+        "currentTab": 8
       }
     ],
     "direction": "vertical"
@@ -253,14 +281,16 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "cdfd878da336b8fe",
+  "active": "209eeaef94943339",
   "lastOpenFiles": [
-    "More about the map.md",
-    "Drifting and colissions.md",
-    "The compass.md",
-    "About drift limits.md",
     "Base idea 1.md",
+    "Different days.md",
     "Drift.md",
+    "Drifting and colissions.md",
+    "More about the map.md",
+    "About drift limits.md",
+    "More lore.md",
+    "The compass.md",
     "Welcome.md"
   ]
 }
