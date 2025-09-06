@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://dnnka5th1gldj"]
+[gd_scene load_steps=20 format=4 uid="uid://dnnka5th1gldj"]
 
 [ext_resource type="Script" uid="uid://o74np0f72gru" path="res://world.gd" id="1_h2yge"]
 [ext_resource type="Texture2D" uid="uid://dl6f057tkjd1a" path="res://icon.svg" id="2_1bvp3"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://c7o64wwu8uy0t" path="res://booster.tscn" id="10_efxa6"]
 [ext_resource type="Texture2D" uid="uid://c3q1to6agc5ho" path="res://world-and-tiles/default.png" id="11_efxa6"]
 [ext_resource type="Script" uid="uid://d7wqpm15grcy" path="res://UI/time.gd" id="11_w48qg"]
+[ext_resource type="Script" uid="uid://dol6vlmwwr3ga" path="res://UI/car_stats_debug.gd" id="12_vivmo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_myinc"]
 size = Vector2(16, 32)
@@ -82,21 +83,18 @@ offset_bottom = 120.0
 theme = ExtResource("4_ycdy4")
 script = ExtResource("4_5vw27")
 
-[node name="Num" type="Label" parent="UI/Stats"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Stats"]
 layout_mode = 0
-offset_left = -25.0
-offset_top = -8.0
-offset_right = 4.0
-offset_bottom = 67.0
-theme_override_font_sizes/font_size = 64
-text = "1"
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Items" type="Label" parent="UI/Stats"]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 16.0
-offset_right = 319.0
-offset_bottom = 54.0
+[node name="Num" type="Label" parent="UI/Stats/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "0"
+
+[node name="Items" type="Label" parent="UI/Stats/HBoxContainer"]
+layout_mode = 2
 text = "bottles delivered"
 
 [node name="Compass" type="Control" parent="UI"]
@@ -273,6 +271,43 @@ theme_override_font_sizes/font_size = 64
 text = "120"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="CarStatsDebug" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("12_vivmo")
+
+[node name="Label" type="Label" parent="UI/CarStatsDebug"]
+layout_mode = 0
+offset_left = -157.0
+offset_top = -83.0
+offset_right = -117.0
+offset_bottom = -60.0
+text = "Impulse: "
+
+[node name="Speed" type="Label" parent="UI/CarStatsDebug"]
+layout_mode = 0
+offset_left = -157.0
+offset_top = -60.0
+offset_right = -105.0
+offset_bottom = -37.0
+text = "Speed:"
+
+[node name="SpeedMultiplier" type="Label" parent="UI/CarStatsDebug"]
+layout_mode = 0
+offset_left = -158.0
+offset_top = -33.0
+offset_right = -106.0
+offset_bottom = -10.0
+text = "Speed multiplier:"
 
 [node name="DeliveryTarget" parent="." instance=ExtResource("4_1bvp3")]
 position = Vector2(912, 16)

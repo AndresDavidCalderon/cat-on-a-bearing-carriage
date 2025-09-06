@@ -17,8 +17,11 @@ var current_state:State=State.SLIDING
 # drift.
 
 @export var impulse_loss=10
-var impulse_per_tap=100
+var impulse_per_tap=40
+var critic_treshhold=100
+var critic_impulse_per_tap=300
 var tap_speed_multiplier=1.1
+var critic_tap_speed_mutiplier=2
 var tap_speed_duration=1
 
 # Spent when moving. Should be measured in pixels of distance.
@@ -51,10 +54,18 @@ func _process(delta: float) -> void:
 			if Input.is_action_pressed("SteerRight"):
 				rotation+=circumstancial_steering_speed
 			if Input.is_action_just_pressed("impulse"):
-				impulse+=impulse_per_tap
-				speed_multiplier*=tap_speed_multiplier
+				var multiplier
+				if impulse>critic_treshhold:
+					impulse+=impulse_per_tap
+					multiplier=tap_speed_multiplier
+				else:
+					impulse+=critic_impulse_per_tap
+					multiplier=critic_tap_speed_mutiplier
+					print("critic tap")
+					
+				speed_multiplier*=multiplier
 				var timer =get_tree().create_timer(tap_speed_duration)
-				timer.timeout.connect(revert_speed)
+				timer.timeout.connect(revert_speed.bind(multiplier))
 		
 		if Input.is_action_just_pressed("drift"):
 			set_state(State.DRIFTING)
@@ -82,8 +93,8 @@ func _process(delta: float) -> void:
 				if Input.is_action_pressed("SteerRight"):
 					rotation+=drifting_steering_speed*delta
 
-func revert_speed():
-	speed_multiplier/=tap_speed_multiplier
+func revert_speed(mult):
+	speed_multiplier/=mult
 
 func set_state(new_state:State):
 	current_state=new_state
