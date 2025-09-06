@@ -9,7 +9,7 @@ enum Rotation{
 	Negative,
 	Positive
 }
-
+var speed_multiplier=1
 var current_state:State=State.SLIDING
 @export var drift_point_offset:Vector2=Vector2(0,-12)
 @export var drift_movement:Vector2=Vector2(1,0)
@@ -17,8 +17,9 @@ var current_state:State=State.SLIDING
 # drift.
 
 @export var impulse_loss=10
-@export var drift_raycast_length_multiplier:float=0.01
-@export var drift_position_speed:float=0.1
+var impulse_per_tap=100
+var tap_speed_multiplier=1.1
+var tap_speed_duration=1
 
 # Spent when moving. Should be measured in pixels of distance.
 var impulse:float=600
@@ -36,10 +37,9 @@ func _process(delta: float) -> void:
 		velocity=Vector2(0,-speed).rotated(rotation)
 		move_and_slide()
 		impulse-=impulse_loss*delta
-		speed=impulse
+		speed=impulse*speed_multiplier
 	
 		if impulse<=0:
-			get_parent().lost(get_parent().lossReason.IMPULSE_RAN_OUT)
 			impulse=0
 		
 		var circumstancial_steering_speed=steering_speed*delta
@@ -50,6 +50,11 @@ func _process(delta: float) -> void:
 				rotation-=circumstancial_steering_speed
 			if Input.is_action_pressed("SteerRight"):
 				rotation+=circumstancial_steering_speed
+			if Input.is_action_just_pressed("impulse"):
+				impulse+=impulse_per_tap
+				speed_multiplier*=tap_speed_multiplier
+				var timer =get_tree().create_timer(tap_speed_duration)
+				timer.timeout.connect(revert_speed)
 		
 		if Input.is_action_just_pressed("drift"):
 			set_state(State.DRIFTING)
@@ -76,6 +81,9 @@ func _process(delta: float) -> void:
 					rotation-=drifting_steering_speed*delta
 				if Input.is_action_pressed("SteerRight"):
 					rotation+=drifting_steering_speed*delta
+
+func revert_speed():
+	speed_multiplier/=tap_speed_multiplier
 
 func set_state(new_state:State):
 	current_state=new_state

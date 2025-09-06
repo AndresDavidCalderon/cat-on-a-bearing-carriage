@@ -1,7 +1,7 @@
 extends Node
 
 enum lossReason{
-	IMPULSE_RAN_OUT
+	TIME_OUT
 }
 
 
