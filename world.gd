@@ -19,12 +19,19 @@ var base_milk_by_minute=8
 var milk_by_minute_multiplier:float=1.3
 var packet_target:int=10
 var target_time=0
+var remaining_time:float
 
 var running:bool=false
 
 func _ready() -> void:
 	randomize()
 	update_day_stats()
+
+func _process(delta: float) -> void:
+	if running:
+		remaining_time-=delta
+		if remaining_time<0:
+			remaining_time=0
 
 func register_target(target:Node):
 	delivery_targets.append(target)
@@ -65,3 +72,4 @@ func update_day_stats():
 	var minutes=(target_time/60)
 	packet_target = minutes*base_milk_by_minute*pow(milk_by_minute_multiplier,current_day-1)
 	day_stats_set.emit()
+	remaining_time=target_time

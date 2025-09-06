@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://dnnka5th1gldj"]
+[gd_scene load_steps=19 format=4 uid="uid://dnnka5th1gldj"]
 
 [ext_resource type="Script" uid="uid://o74np0f72gru" path="res://world.gd" id="1_h2yge"]
 [ext_resource type="Texture2D" uid="uid://dl6f057tkjd1a" path="res://icon.svg" id="2_1bvp3"]
@@ -8,10 +8,12 @@
 [ext_resource type="Script" uid="uid://hsdce8feoo5v" path="res://UI/compass.gd" id="4_7mycd"]
 [ext_resource type="Script" uid="uid://dybwj42npbcym" path="res://UI/start.gd" id="4_272bh"]
 [ext_resource type="Texture2D" uid="uid://d08hjcvwwwo47" path="res://UI/compass_nail.png" id="4_lquwl"]
+[ext_resource type="Theme" uid="uid://ctgv0x2t6xkc6" path="res://UI/free_ui_theme.tres" id="4_ycdy4"]
 [ext_resource type="Script" uid="uid://cqn2vje3bld8f" path="res://UI/start_panel.gd" id="8_dg77c"]
 [ext_resource type="Script" uid="uid://bmg1xfdix0srf" path="res://UI/lost.gd" id="8_kek77"]
 [ext_resource type="PackedScene" uid="uid://c7o64wwu8uy0t" path="res://booster.tscn" id="10_efxa6"]
 [ext_resource type="Texture2D" uid="uid://c3q1to6agc5ho" path="res://world-and-tiles/default.png" id="11_efxa6"]
+[ext_resource type="Script" uid="uid://d7wqpm15grcy" path="res://UI/time.gd" id="11_w48qg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_myinc"]
 size = Vector2(16, 32)
@@ -70,20 +72,32 @@ shape = SubResource("RectangleShape2D_dg77c")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Stats" type="Panel" parent="UI"]
+[node name="Stats" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
 offset_left = 48.0
 offset_top = 24.0
-offset_right = 216.0
-offset_bottom = 95.0
+offset_right = 344.0
+offset_bottom = 120.0
+theme = ExtResource("4_ycdy4")
 script = ExtResource("4_5vw27")
+
+[node name="Num" type="Label" parent="UI/Stats"]
+layout_mode = 0
+offset_left = -25.0
+offset_top = -8.0
+offset_right = 4.0
+offset_bottom = 67.0
+theme_override_font_sizes/font_size = 64
+text = "1"
 
 [node name="Items" type="Label" parent="UI/Stats"]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 8.0
-offset_right = 149.0
-offset_bottom = 31.0
-text = "0 bottles delivered"
+offset_left = 20.0
+offset_top = 16.0
+offset_right = 319.0
+offset_bottom = 54.0
+text = "bottles delivered"
 
 [node name="Compass" type="Control" parent="UI"]
 modulate = Color(1, 1, 1, 0.447059)
@@ -235,6 +249,31 @@ offset_bottom = 37.0
 grow_horizontal = 2
 text = "Day 1"
 
+[node name="Time" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -98.0
+offset_top = 31.0
+offset_right = 91.0
+offset_bottom = 80.0
+grow_horizontal = 2
+theme = ExtResource("4_ycdy4")
+script = ExtResource("11_w48qg")
+
+[node name="Label" type="Label" parent="UI/Time"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "120"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="DeliveryTarget" parent="." instance=ExtResource("4_1bvp3")]
 position = Vector2(912, 16)
 
@@ -287,6 +326,7 @@ tile_set = SubResource("TileSet_4c57u")
 
 [connection signal="day_stats_set" from="." to="UI/StartPanel" method="_on_world_day_stats_set"]
 [connection signal="loss" from="." to="UI/Lost" method="_on_world_loss"]
+[connection signal="match_state_changed" from="." to="UI/Time" method="_on_world_match_state_changed"]
 [connection signal="packet_delivered" from="." to="UI/Stats" method="_on_world_packet_delivered"]
 [connection signal="pressed" from="UI/Lost/Panel/Repeat" to="UI/Lost" method="_on_repeat_pressed"]
 [connection signal="pressed" from="UI/StartPanel/Start" to="." method="_on_start_pressed"]
