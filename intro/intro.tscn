@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cb3e5ub814mvb"]
+[gd_scene load_steps=7 format=3 uid="uid://cb3e5ub814mvb"]
 
 [ext_resource type="Texture2D" uid="uid://d20pwkwkvpjac" path="res://intro/setup.png" id="1_fpmxm"]
 [ext_resource type="Theme" uid="uid://ctgv0x2t6xkc6" path="res://UI/free_ui_theme.tres" id="1_jkt4n"]
 [ext_resource type="Script" uid="uid://buc1hobb84yqe" path="res://intro/intro.gd" id="2_vjsr4"]
 [ext_resource type="Texture2D" uid="uid://bpedt8xjqiede" path="res://intro/delivery.png" id="4_pxqmo"]
+[ext_resource type="Texture2D" uid="uid://bh7v0hn7rwkw" path="res://intro/push.png" id="5_vyos2"]
+[ext_resource type="Texture2D" uid="uid://k8ly3psn6r1c" path="res://intro/drift.png" id="6_1q7h5"]
 
 [node name="Intro" type="Control"]
 layout_mode = 3
@@ -111,12 +113,88 @@ but don't worry, people will
 call you for your next delivery."
 
 [node name="3" type="Control" parent="Slides"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Push" type="Control" parent="Slides/3"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -576.0
+offset_right = 576.0
+offset_bottom = 321.0
+grow_horizontal = 2
+
+[node name="TextureRect" type="TextureRect" parent="Slides/3/Push"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -6.5
+offset_right = 127.0
+offset_bottom = 146.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_vyos2")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Slides/3/Push"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -256.5
+offset_top = 31.0
+offset_right = 537.5
+offset_bottom = 151.0
+grow_horizontal = 2
+text = "Press W repeteadly 
+to give pushes to your car 
+for a speed boost"
+
+[node name="Drive" type="Control" parent="Slides/3"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -576.0
+offset_top = 294.0
+offset_right = 576.0
+offset_bottom = 648.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Slides/3/Drive"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 93.0
+grow_horizontal = 2
+text = "Steer your car with A and D, use space to drift."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Slides/3/Drive"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 422.0
+offset_top = 77.0
+offset_right = -380.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_1q7h5")
+stretch_mode = 5
 
 [node name="Next" type="Button" parent="."]
 layout_mode = 1

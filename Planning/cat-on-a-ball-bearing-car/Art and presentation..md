@@ -10,3 +10,5 @@ The intro goes like this:
 (Jardin was used as a placeholder) The actual village is Monteluna, a village based on the real life houses of Guatapé, the roads of Jardín and the landscape of Concepción.
 
 First we will need to model the cat. Next we need a design for the car, both can be done in krita, actual assets should be made in aseprite.
+
+How would the cat drift the car? I imagine through some sort of lever in the cubicle.
