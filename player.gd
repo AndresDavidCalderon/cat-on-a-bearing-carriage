@@ -100,7 +100,7 @@ func _process(delta: float) -> void:
 				rotation+=drifting_steering_speed*delta
 				drift_direction=Rotation.Positive
 			$Cat.texture=cat_drift
-			
+			$Cat.flip_h=drift_direction==Rotation.Positive
 func revert_speed(mult):
 	speed_multiplier/=mult
 
