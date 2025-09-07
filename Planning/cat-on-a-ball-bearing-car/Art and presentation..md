@@ -12,3 +12,9 @@ The intro goes like this:
 First we will need to model the cat. Next we need a design for the car, both can be done in krita, actual assets should be made in aseprite.
 
 How would the cat drift the car? I imagine through some sort of lever in the cubicle.
+
+## Tilesets and other scales
+
+I think having big tiles makes for a more adjustable environment. In any case, lets set a base size of 64x64, 32 and 16 tiles can be used if so desired, we just need them to be multiples.
+
+64 should mean 2 meters, for reference the car should be 1.5 meters, so about 52 pixels long. And half as wide (25px)

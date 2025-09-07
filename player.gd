@@ -34,9 +34,14 @@ var speed:float=impulse
 var pinpoint:Vector2 #Should be set when starting a drift.
 var drift_direction:Rotation
 
+@export var cat_drift:Texture
+@export var cat_push:Texture
+@export var cat_default:Texture
+
 func _process(delta: float) -> void:
 	
 	if get_parent().running:
+		$Cat.texture=cat_default
 		velocity=Vector2(0,-speed).rotated(rotation)
 		move_and_slide()
 		impulse-=impulse_loss*delta
@@ -90,9 +95,12 @@ func _process(delta: float) -> void:
 				pinpoint+=circumstantial_drift_slide*delta*(-1 if drift_direction==Rotation.Positive else 1)
 			if Input.is_action_pressed("SteerLeft") and not has_relevant_bodies($Left):
 				rotation-=drifting_steering_speed*delta
+				drift_direction=Rotation.Negative
 			if Input.is_action_pressed("SteerRight") and not has_relevant_bodies($Right):
 				rotation+=drifting_steering_speed*delta
-
+				drift_direction=Rotation.Positive
+			$Cat.texture=cat_drift
+			
 func revert_speed(mult):
 	speed_multiplier/=mult
 
