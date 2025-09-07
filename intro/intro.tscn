@@ -1,0 +1,146 @@
+[gd_scene load_steps=5 format=3 uid="uid://cb3e5ub814mvb"]
+
+[ext_resource type="Texture2D" uid="uid://d20pwkwkvpjac" path="res://intro/setup.png" id="1_fpmxm"]
+[ext_resource type="Theme" uid="uid://ctgv0x2t6xkc6" path="res://UI/free_ui_theme.tres" id="1_jkt4n"]
+[ext_resource type="Script" uid="uid://buc1hobb84yqe" path="res://intro/intro.gd" id="2_vjsr4"]
+[ext_resource type="Texture2D" uid="uid://bpedt8xjqiede" path="res://intro/delivery.png" id="4_pxqmo"]
+
+[node name="Intro" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_jkt4n")
+script = ExtResource("2_vjsr4")
+
+[node name="Slides" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="1" type="Control" parent="Slides"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Slides/1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Slide" type="TextureRect" parent="Slides/1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_fpmxm")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Text1" type="Label" parent="Slides/1"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 31.0
+offset_right = 955.0
+offset_bottom = 274.0
+text = "Welcome to the village of Santa Belén!
+
+People on Santa Belén like their milk really fresh 
+(as in straight from the cow),
+and your job is to deliver it as fast as possible.
+"
+
+[node name="2" type="Control" parent="Slides"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Slides/2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Slide" type="TextureRect" parent="Slides/2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_pxqmo")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Slides/2"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -719.0
+offset_top = 48.0
+offset_right = -122.0
+offset_bottom = 86.0
+grow_horizontal = 0
+text = "Cat's aren't good with directions,
+but don't worry, people will
+call you for your next delivery."
+
+[node name="3" type="Control" parent="Slides"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Next" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Visible" type="Button" parent="Next"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -217.0
+offset_top = -109.0
+offset_right = -104.0
+offset_bottom = -56.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Next"
+
+[connection signal="pressed" from="Next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="Next/Visible" to="." method="_on_visible_pressed"]
