@@ -17,4 +17,14 @@ How would the cat drift the car? I imagine through some sort of lever in the cub
 
 I think having big tiles makes for a more adjustable environment. In any case, lets set a base size of 64x64, 32 and 16 tiles can be used if so desired, we just need them to be multiples.
 
-64 should mean 2 meters, for reference the car should be 1.5 meters, so about 52 pixels long. And half as wide (25px)
+64 should mean 2 meters (Quick correction. After using that for a bit, ive realized its too small of a scale. this is the official data now, but where useful use 64px/1.5m) , for reference the car should be 1.5 meters, so about 52 pixels long. And half as wide (25px)
+
+Houses are mostly gonna be seen from the roof, so we should have variety in that sense:
+- tin roofs
+- Open, walkable roofs. (Simple gray tileset with lighter borders)
+- roof tiles (Possibly most complex tileset)
+
+# TO DO:
+What the heck are the boosters? 
+Some ideas:
+- cookies
