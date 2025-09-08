@@ -1,19 +1,18 @@
 [gd_scene load_steps=4 format=3 uid="uid://c7o64wwu8uy0t"]
 
 [ext_resource type="Script" uid="uid://785phvd8jycq" path="res://booster.gd" id="1_1jv0s"]
-[ext_resource type="Texture2D" uid="uid://dl6f057tkjd1a" path="res://icon.svg" id="2_825m2"]
+[ext_resource type="Texture2D" uid="uid://cf3pv4rpqgja8" path="res://boost.png" id="2_1jv0s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kek77"]
-size = Vector2(80, 80)
+size = Vector2(32, 32)
 
 [node name="Booster" type="Node2D"]
 script = ExtResource("1_1jv0s")
 
 [node name="Icon" type="Sprite2D" parent="."]
-modulate = Color(0.35, 1, 0.4475, 1)
 position = Vector2(-3.57628e-07, -3.57628e-06)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_825m2")
+texture = ExtResource("2_1jv0s")
 
 [node name="Area2D" type="Area2D" parent="."]
 
