@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://dnnka5th1gldj"]
+[gd_scene load_steps=31 format=4 uid="uid://dnnka5th1gldj"]
 
 [ext_resource type="Script" uid="uid://o74np0f72gru" path="res://world.gd" id="1_h2yge"]
 [ext_resource type="Script" uid="uid://dg6hodfjfupjm" path="res://player.gd" id="3_lquwl"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://d7wqpm15grcy" path="res://UI/time.gd" id="11_w48qg"]
 [ext_resource type="Script" uid="uid://dol6vlmwwr3ga" path="res://UI/car_stats_debug.gd" id="12_vivmo"]
 [ext_resource type="Script" uid="uid://dba4y85gilasm" path="res://UI/win_panel.gd" id="13_2cqfq"]
+[ext_resource type="Texture2D" uid="uid://b7btsnvvggr5n" path="res://UI/win.png" id="19_getpj"]
 [ext_resource type="Texture2D" uid="uid://dhpb5hay7388f" path="res://world-and-tiles/guatape.png" id="21_getpj"]
 [ext_resource type="Texture2D" uid="uid://chaxne1hw1prg" path="res://world-and-tiles/roofs.png" id="21_ryguw"]
 
@@ -409,12 +410,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -144.0
-offset_top = -96.0
-offset_right = 135.0
-offset_bottom = 90.0
+offset_left = -377.0
+offset_top = -185.0
+offset_right = 368.0
+offset_bottom = 240.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("4_ycdy4")
 script = ExtResource("13_2cqfq")
 
 [node name="Title" type="Label" parent="UI/WinPanel"]
@@ -426,22 +428,19 @@ offset_left = -20.0
 offset_right = 20.0
 offset_bottom = 23.0
 grow_horizontal = 2
+theme_override_font_sizes/font_size = 45
 text = "Congrats!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Report" type="RichTextLabel" parent="UI/WinPanel"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 4
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -96.5
-offset_top = -59.0
-offset_right = 106.5
-offset_bottom = -13.0
-grow_horizontal = 2
+offset_top = -127.5
+offset_right = 410.0
+offset_bottom = -37.5
 grow_vertical = 2
 text = "Now everyone has their milk."
 horizontal_alignment = 1
@@ -460,6 +459,41 @@ offset_bottom = -28.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "See you tomorrow"
+
+[node name="DayBeaten" type="HBoxContainer" parent="UI/WinPanel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 31.0
+offset_top = -0.5
+offset_right = 370.0
+offset_bottom = 43.5
+grow_vertical = 2
+
+[node name="num" type="Label" parent="UI/WinPanel/DayBeaten"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 56
+text = "1"
+
+[node name="Label" type="Label" parent="UI/WinPanel/DayBeaten"]
+layout_mode = 2
+text = "Days beaten"
+
+[node name="TextureRect" type="TextureRect" parent="UI/WinPanel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -373.0
+offset_top = -50.5
+offset_right = -11.0
+offset_bottom = 56.5
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("19_getpj")
 
 [node name="DeliveryTarget" parent="." instance=ExtResource("4_1bvp3")]
 position = Vector2(912, 16)

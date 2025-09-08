@@ -5,3 +5,4 @@ func _ready() -> void:
 
 func _on_world_win() -> void:
 	show()
+	$DayBeaten/num.text=str(GlobalScore.current_day)

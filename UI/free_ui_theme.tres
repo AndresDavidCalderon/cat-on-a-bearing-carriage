@@ -1,6 +1,13 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ctgv0x2t6xkc6"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://ctgv0x2t6xkc6"]
 
 [ext_resource type="FontFile" uid="uid://cgl8vqbgkcsbu" path="res://UI/Titan_One/TitanOne-Regular.ttf" id="1_2inuv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2inuv"]
+bg_color = Color(0.382395, 0.64926, 0.694588, 0.713726)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [resource]
 default_font = ExtResource("1_2inuv")
@@ -8,3 +15,4 @@ default_font_size = 32
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/constants/outline_size = 3
+Panel/styles/panel = SubResource("StyleBoxFlat_2inuv")
