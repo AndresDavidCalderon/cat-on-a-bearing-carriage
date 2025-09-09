@@ -16,7 +16,7 @@ var current_state:State=State.SLIDING
 @export var speed_to_drift:float=0.4 # Multiplies how much the car slides, relative to its original speed before
 # drift.
 
-@export var impulse_loss=10
+@export var impulse_loss=30
 var impulse_per_tap=40
 var critic_treshhold=100
 var critic_impulse_per_tap=300

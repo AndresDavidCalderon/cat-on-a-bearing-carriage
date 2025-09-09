@@ -144,9 +144,21 @@
               "icon": "lucide-file",
               "title": "Art and presentation."
             }
+          },
+          {
+            "id": "4896594644adacd8",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "map setup.excalidraw.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "map setup.excalidraw"
+            }
           }
         ],
-        "currentTab": 9
+        "currentTab": 10
       }
     ],
     "direction": "vertical"
@@ -295,12 +307,14 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "2c9db128528e33c8",
+  "active": "4896594644adacd8",
   "lastOpenFiles": [
+    "Untitled.md",
+    "map setup.excalidraw.md",
+    "Art and presentation..md",
     "the cat.png.import",
     "the cat.png",
     "Base idea 1.md",
-    "Art and presentation..md",
     "The car.kra-autosave.kra",
     "the cat.kra-autosave.kra",
     "The car.kra~",
