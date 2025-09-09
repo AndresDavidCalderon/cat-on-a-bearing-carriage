@@ -15,7 +15,7 @@ var delivery_targets=[]
 
 var current_target:Node=null
 var packet_score:int=0
-var base_milk_by_minute=5
+var base_milk_by_minute=4
 var milk_by_minute_multiplier:float=1.3
 var packet_target:int=10
 var target_time=0
