@@ -6,6 +6,9 @@ var interior_opacity=0.1
 var default_opacity=0.9
 var current_tween:Tween
 
+func _ready() -> void:
+	show()
+
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body==player:
 		current_tween=create_tween()
