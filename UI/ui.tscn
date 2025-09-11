@@ -1,0 +1,385 @@
+[gd_scene load_steps=15 format=3 uid="uid://84qmbyy12hoi"]
+
+[ext_resource type="Theme" uid="uid://ctgv0x2t6xkc6" path="res://UI/free_ui_theme.tres" id="1_o2jkc"]
+[ext_resource type="Script" uid="uid://4317v2mqkbjk" path="res://UI/stats.gd" id="2_2qbci"]
+[ext_resource type="Script" uid="uid://hsdce8feoo5v" path="res://UI/compass.gd" id="3_ow1yt"]
+[ext_resource type="Texture2D" uid="uid://d08hjcvwwwo47" path="res://UI/compass_nail.png" id="4_o2t6a"]
+[ext_resource type="Script" uid="uid://bmg1xfdix0srf" path="res://UI/lost.gd" id="5_8gukh"]
+[ext_resource type="Script" uid="uid://cqn2vje3bld8f" path="res://UI/start_panel.gd" id="6_8gkfd"]
+[ext_resource type="Script" uid="uid://dybwj42npbcym" path="res://UI/start.gd" id="7_0tr35"]
+[ext_resource type="Script" uid="uid://d7wqpm15grcy" path="res://UI/time.gd" id="8_7j5ik"]
+[ext_resource type="Script" uid="uid://dol6vlmwwr3ga" path="res://UI/car_stats_debug.gd" id="9_i1yd8"]
+[ext_resource type="Script" uid="uid://dba4y85gilasm" path="res://UI/win_panel.gd" id="10_j5i65"]
+[ext_resource type="Texture2D" uid="uid://b7btsnvvggr5n" path="res://UI/win.png" id="11_awqy2"]
+[ext_resource type="Script" uid="uid://vcy7cw0cm6a1" path="res://UI/minimap.gd" id="12_8wcgx"]
+[ext_resource type="Script" uid="uid://chi3x5cviupvi" path="res://UI/map_camera.gd" id="13_duqhi"]
+
+[sub_resource type="Gradient" id="Gradient_82xsv"]
+colors = PackedColorArray(0.93, 0.1488, 0.16182, 1, 1, 1, 0.31, 1)
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="Stats" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 48.0
+offset_top = 24.0
+offset_right = 344.0
+offset_bottom = 120.0
+theme = ExtResource("1_o2jkc")
+script = ExtResource("2_2qbci")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Stats"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Num" type="Label" parent="Stats/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "0"
+
+[node name="Items" type="Label" parent="Stats/HBoxContainer"]
+layout_mode = 2
+text = "bottles delivered"
+
+[node name="Compass" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -58.0
+offset_right = 60.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(60, 60)
+script = ExtResource("3_ow1yt")
+color_transition = SubResource("Gradient_82xsv")
+
+[node name="Nail" type="TextureRect" parent="Compass"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -38.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(32, 32)
+texture = ExtResource("4_o2t6a")
+
+[node name="Lost" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 8
+script = ExtResource("5_8gukh")
+
+[node name="Panel" type="Panel" parent="Lost"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -104.0
+offset_right = 199.0
+offset_bottom = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Lost/Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 33.0
+grow_horizontal = 2
+text = "Woops! you lost!"
+horizontal_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="Lost/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.5
+offset_top = -60.0
+offset_right = 149.5
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You ran out of impulse! try to catch a booster more often."
+horizontal_alignment = 1
+
+[node name="Repeat" type="Button" parent="Lost/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -110.5
+offset_top = -49.0
+offset_right = 114.5
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Play again"
+
+[node name="StartPanel" type="Panel" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -149.0
+offset_right = 217.0
+offset_bottom = 139.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_8gkfd")
+
+[node name="Start" type="Button" parent="StartPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -82.5
+offset_top = -76.0
+offset_right = 65.5
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Start delivery!"
+script = ExtResource("7_0tr35")
+
+[node name="DayDescription" type="RichTextLabel" parent="StartPanel"]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 87.0
+offset_right = 336.0
+offset_bottom = 191.0
+text = "10 bottles in
+2 minutes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DayTitle" type="Label" parent="StartPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -19.5
+offset_top = 14.0
+offset_right = 23.5
+offset_bottom = 37.0
+grow_horizontal = 2
+text = "Day 1"
+
+[node name="Time" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -98.0
+offset_top = 31.0
+offset_right = 91.0
+offset_bottom = 80.0
+grow_horizontal = 2
+theme = ExtResource("1_o2jkc")
+script = ExtResource("8_7j5ik")
+
+[node name="Label" type="Label" parent="Time"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "120"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CarStatsDebug" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -478.0
+offset_top = -156.0
+offset_right = -219.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("9_i1yd8")
+
+[node name="Label" type="Label" parent="CarStatsDebug"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 8.0
+offset_right = 93.0
+offset_bottom = 31.0
+text = "Impulse: "
+
+[node name="Speed" type="Label" parent="CarStatsDebug"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 31.0
+offset_right = 74.0
+offset_bottom = 54.0
+text = "Speed:"
+
+[node name="SpeedMultiplier" type="Label" parent="CarStatsDebug"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 58.0
+offset_right = 153.0
+offset_bottom = 81.0
+text = "Speed multiplier:"
+
+[node name="mapTarget" type="Label" parent="CarStatsDebug"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 81.0
+offset_right = 139.0
+offset_bottom = 104.0
+text = "minimap target:"
+
+[node name="WinPanel" type="Panel" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -377.0
+offset_top = -185.0
+offset_right = 368.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_o2jkc")
+script = ExtResource("10_j5i65")
+
+[node name="Title" type="Label" parent="WinPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 45
+text = "Congrats!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Report" type="RichTextLabel" parent="WinPanel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -127.5
+offset_right = 410.0
+offset_bottom = -37.5
+grow_vertical = 2
+text = "Now everyone has their milk."
+horizontal_alignment = 1
+
+[node name="NextDay" type="Button" parent="WinPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -61.5
+offset_top = -52.0
+offset_right = 72.5
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "See you tomorrow"
+
+[node name="DayBeaten" type="HBoxContainer" parent="WinPanel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 31.0
+offset_top = -0.5
+offset_right = 370.0
+offset_bottom = 43.5
+grow_vertical = 2
+
+[node name="num" type="Label" parent="WinPanel/DayBeaten"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 56
+text = "1"
+
+[node name="Label" type="Label" parent="WinPanel/DayBeaten"]
+layout_mode = 2
+text = "Days beaten"
+
+[node name="TextureRect" type="TextureRect" parent="WinPanel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -373.0
+offset_top = -50.5
+offset_right = -11.0
+offset_bottom = 56.5
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("11_awqy2")
+
+[node name="Minimap" type="SubViewportContainer" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -163.0
+offset_top = -153.0
+offset_right = -35.0
+offset_bottom = -25.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("12_8wcgx")
+
+[node name="SubViewport" type="SubViewport" parent="Minimap"]
+handle_input_locally = false
+size = Vector2i(128, 128)
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="Minimap/SubViewport"]
+zoom = Vector2(0.1, 0.1)
+script = ExtResource("13_duqhi")
+
+[connection signal="pressed" from="Lost/Panel/Repeat" to="Lost" method="_on_repeat_pressed"]
+[connection signal="pressed" from="StartPanel/Start" to="StartPanel" method="_on_start_pressed"]

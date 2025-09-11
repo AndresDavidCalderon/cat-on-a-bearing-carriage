@@ -1,5 +1,7 @@
 extends Node
 
+@onready var minimap_viewport=$UI/Minimap/SubViewport
+
 enum lossReason{
 	TIME_OUT
 }

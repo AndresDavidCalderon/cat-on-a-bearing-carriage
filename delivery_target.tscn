@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfca212ra225f"]
+[gd_scene load_steps=6 format=3 uid="uid://dfca212ra225f"]
 
 [ext_resource type="Texture2D" uid="uid://dl6f057tkjd1a" path="res://icon.svg" id="1_232cv"]
 [ext_resource type="Script" uid="uid://bt2qb1snm43xt" path="res://delivery_target.gd" id="1_y2y3p"]
 [ext_resource type="Texture2D" uid="uid://rt247so2mlk6" path="res://UI/target_map_leyend.png" id="3_o8r2v"]
+[ext_resource type="Script" uid="uid://bfkxeq0ctt6tc" path="res://map_legend.gd" id="4_b0uhs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y2y3p"]
 size = Vector2(48, 48)
@@ -26,5 +27,6 @@ z_index = 10
 position = Vector2(7.62939e-06, 7.62939e-06)
 scale = Vector2(1.9359, 2.03846)
 texture = ExtResource("3_o8r2v")
+script = ExtResource("4_b0uhs")
 
 [connection signal="body_entered" from="Area" to="." method="_on_area_body_entered"]

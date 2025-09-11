@@ -6,6 +6,7 @@ func _ready() -> void:
 	show()
 
 func _on_start_pressed() -> void:
+	get_node("/root/World")._on_start_pressed()
 	hide()
 
 
