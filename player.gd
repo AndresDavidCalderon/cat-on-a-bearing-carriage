@@ -34,6 +34,8 @@ var speed:float=impulse
 var pinpoint:Vector2 #Should be set when starting a drift.
 var drift_direction:Rotation
 var was_separated=true
+var standard_speed_for_hit_soft_pitch=600
+var hard_to_soft=700
 
 @export var cat_drift:Texture
 @export var cat_push:Texture
@@ -46,7 +48,12 @@ func _process(delta: float) -> void:
 		var collided = move_and_slide()
 		if collided:
 			if was_separated:
-				$HitSoft.play()
+				if speed>hard_to_soft:
+					$HitHard.play()
+					$HitHard.pitch_scale=standard_speed_for_hit_soft_pitch/speed
+					$HitHard.volume_db=(standard_speed_for_hit_soft_pitch/speed)**2
+				else:
+					$HitSoft.play()
 			was_separated=false
 		else:
 			was_separated=true

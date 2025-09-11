@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://dnnka5th1gldj"]
+[gd_scene load_steps=46 format=4 uid="uid://dnnka5th1gldj"]
 
 [ext_resource type="Script" uid="uid://o74np0f72gru" path="res://world.gd" id="1_h2yge"]
 [ext_resource type="Texture2D" uid="uid://b7hor253hqvnx" path="res://world-and-tiles/normal_street.png" id="2_0odxb"]
@@ -22,7 +22,8 @@
 [ext_resource type="Script" uid="uid://d7wqpm15grcy" path="res://UI/time.gd" id="11_w48qg"]
 [ext_resource type="Script" uid="uid://dol6vlmwwr3ga" path="res://UI/car_stats_debug.gd" id="12_vivmo"]
 [ext_resource type="Script" uid="uid://dba4y85gilasm" path="res://UI/win_panel.gd" id="13_2cqfq"]
-[ext_resource type="AudioStream" uid="uid://djgf0v36ttelk" path="res://player/hit_soft.wav" id="13_qsp4k"]
+[ext_resource type="AudioStream" uid="uid://djgf0v36ttelk" path="res://player/hit_hard.wav" id="13_qsp4k"]
+[ext_resource type="AudioStream" uid="uid://3sosnfojmpg0" path="res://player/hit_soft.wav" id="14_kq58d"]
 [ext_resource type="Texture2D" uid="uid://b7btsnvvggr5n" path="res://UI/win.png" id="19_getpj"]
 [ext_resource type="Shader" uid="uid://38dg80hpc86a" path="res://world-and-tiles/shadows.gdshader" id="21_d13ii"]
 [ext_resource type="Texture2D" uid="uid://dhpb5hay7388f" path="res://world-and-tiles/guatape.png" id="21_getpj"]
@@ -393,9 +394,11 @@ texture = ExtResource("5_074og")
 
 [node name="HitHard" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource("13_qsp4k")
-volume_db = 5.0
+volume_db = -2.0
 
 [node name="HitSoft" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("14_kq58d")
+volume_db = -2.0
 
 [node name="UI" type="CanvasLayer" parent="."]
 
