@@ -22,7 +22,7 @@
 [ext_resource type="Script" uid="uid://d7wqpm15grcy" path="res://UI/time.gd" id="11_w48qg"]
 [ext_resource type="Script" uid="uid://dol6vlmwwr3ga" path="res://UI/car_stats_debug.gd" id="12_vivmo"]
 [ext_resource type="Script" uid="uid://dba4y85gilasm" path="res://UI/win_panel.gd" id="13_2cqfq"]
-[ext_resource type="AudioStream" uid="uid://dqbr8v52q7o4n" path="res://sound/test_cut.wav" id="13_qsp4k"]
+[ext_resource type="AudioStream" uid="uid://djgf0v36ttelk" path="res://player/hit_soft.wav" id="13_qsp4k"]
 [ext_resource type="Texture2D" uid="uid://b7btsnvvggr5n" path="res://UI/win.png" id="19_getpj"]
 [ext_resource type="Shader" uid="uid://38dg80hpc86a" path="res://world-and-tiles/shadows.gdshader" id="21_d13ii"]
 [ext_resource type="Texture2D" uid="uid://dhpb5hay7388f" path="res://world-and-tiles/guatape.png" id="21_getpj"]
@@ -391,8 +391,11 @@ shape = SubResource("RectangleShape2D_dg77c")
 position = Vector2(0, 28)
 texture = ExtResource("5_074og")
 
-[node name="Hit" type="AudioStreamPlayer2D" parent="Player"]
+[node name="HitHard" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource("13_qsp4k")
+volume_db = 5.0
+
+[node name="HitSoft" type="AudioStreamPlayer" parent="Player"]
 
 [node name="UI" type="CanvasLayer" parent="."]
 
