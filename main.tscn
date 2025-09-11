@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=4 uid="uid://dnnka5th1gldj"]
+[gd_scene load_steps=51 format=4 uid="uid://dnnka5th1gldj"]
 
 [ext_resource type="Script" uid="uid://o74np0f72gru" path="res://world.gd" id="1_h2yge"]
 [ext_resource type="Texture2D" uid="uid://b7hor253hqvnx" path="res://world-and-tiles/normal_street.png" id="2_0odxb"]
@@ -33,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://chaxne1hw1prg" path="res://world-and-tiles/roofs.png" id="21_ryguw"]
 [ext_resource type="Script" uid="uid://chi3x5cviupvi" path="res://UI/map_camera.gd" id="24_xuqvo"]
 [ext_resource type="Script" uid="uid://b0ago8eshs451" path="res://world-and-tiles/small_open_roof.gd" id="25_lswn8"]
+[ext_resource type="Script" uid="uid://vcy7cw0cm6a1" path="res://UI/minimap.gd" id="29_4k2k6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lswn8"]
 texture = ExtResource("2_0odxb")
@@ -750,7 +751,6 @@ grow_vertical = 2
 texture = ExtResource("19_getpj")
 
 [node name="Minimap" type="SubViewportContainer" parent="UI"]
-visible = false
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -762,11 +762,12 @@ offset_right = -35.0
 offset_bottom = -25.0
 grow_horizontal = 0
 grow_vertical = 0
+script = ExtResource("29_4k2k6")
 
 [node name="SubViewport" type="SubViewport" parent="UI/Minimap"]
 handle_input_locally = false
 size = Vector2i(128, 128)
-render_target_update_mode = 0
+render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="UI/Minimap/SubViewport"]
 zoom = Vector2(0.1, 0.1)
@@ -776,7 +777,7 @@ script = ExtResource("24_xuqvo")
 position = Vector2(912, 16)
 
 [node name="DeliveryTarget2" parent="." instance=ExtResource("4_1bvp3")]
-position = Vector2(664, 984)
+position = Vector2(664, 992)
 
 [node name="DeliveryTarget3" parent="." instance=ExtResource("4_1bvp3")]
 position = Vector2(2384, 1752)
