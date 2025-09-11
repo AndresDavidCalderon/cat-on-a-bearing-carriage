@@ -33,6 +33,7 @@ var speed:float=impulse
 
 var pinpoint:Vector2 #Should be set when starting a drift.
 var drift_direction:Rotation
+var was_separated=true
 
 @export var cat_drift:Texture
 @export var cat_push:Texture
@@ -43,7 +44,13 @@ func _process(delta: float) -> void:
 	if get_parent().running:
 		$Cat.texture=cat_default
 		velocity=Vector2(0,-speed).rotated(rotation)
-		move_and_slide()
+		var collided = move_and_slide()
+		if collided:
+			if was_separated:
+				$Hit.play()
+			was_separated=false
+		else:
+			was_separated=true
 		impulse-=impulse_loss*delta
 		speed=impulse*speed_multiplier
 	

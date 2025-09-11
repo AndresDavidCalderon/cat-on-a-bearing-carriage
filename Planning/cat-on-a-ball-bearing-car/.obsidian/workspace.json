@@ -157,8 +157,7 @@
               "title": "map setup.excalidraw"
             }
           }
-        ],
-        "currentTab": 10
+        ]
       }
     ],
     "direction": "vertical"
@@ -307,8 +306,9 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "042076bb7ff91d8b",
+  "active": "974b891406b9f3c3",
   "lastOpenFiles": [
+    "Welcome.md",
     "map setup.excalidraw.md",
     "Untitled.md",
     "Art and presentation..md",
@@ -327,7 +327,6 @@
     "More about the map.md",
     "About drift limits.md",
     "More lore.md",
-    "The compass.md",
-    "Welcome.md"
+    "The compass.md"
   ]
 }
