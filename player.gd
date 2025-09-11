@@ -34,7 +34,9 @@ var speed:float=impulse
 var pinpoint:Vector2 #Should be set when starting a drift.
 var drift_direction:Rotation
 var was_separated=true
+var was_straight=false
 var standard_speed_for_hit_soft_pitch=600
+var hit_sound_offset=-15
 var hard_to_soft=700
 
 @export var cat_drift:Texture
@@ -51,7 +53,7 @@ func _process(delta: float) -> void:
 				if speed>hard_to_soft:
 					$HitHard.play()
 					$HitHard.pitch_scale=standard_speed_for_hit_soft_pitch/speed
-					$HitHard.volume_db=(standard_speed_for_hit_soft_pitch/speed)**2
+					$HitHard.volume_db=(standard_speed_for_hit_soft_pitch/speed)**2+hit_sound_offset
 				else:
 					$HitSoft.play()
 			was_separated=false
@@ -68,10 +70,13 @@ func _process(delta: float) -> void:
 		
 		# Simple sliding rotation logic, rotating on drift requires more collission checks
 		if current_state==State.SLIDING:
+			var turning=false
 			if Input.is_action_pressed("SteerLeft"): 
 				rotation-=circumstancial_steering_speed
+				turning=true
 			if Input.is_action_pressed("SteerRight"):
 				rotation+=circumstancial_steering_speed
+				turning=true
 			if Input.is_action_just_pressed("impulse"):
 				var multiplier
 				if impulse>critic_treshhold:
@@ -80,14 +85,19 @@ func _process(delta: float) -> void:
 				else:
 					impulse+=critic_impulse_per_tap
 					multiplier=critic_tap_speed_mutiplier
-					print("critic tap")
-					
 				speed_multiplier*=multiplier
 				var timer =get_tree().create_timer(tap_speed_duration)
 				timer.timeout.connect(revert_speed.bind(multiplier))
+			if turning:
+				if was_straight:
+					$Turn.play()
+				was_straight=false
+			else:
+				was_straight=true
 		
 		if Input.is_action_just_pressed("drift"):
 			set_state(State.DRIFTING)
+			$Drift.play()
 			pinpoint=position+drift_point_offset.rotated(rotation)
 			if Input.is_action_pressed("SteerLeft"):
 				drift_direction=Rotation.Negative
@@ -107,12 +117,14 @@ func _process(delta: float) -> void:
 				relevant_area=$Left
 			if not has_relevant_bodies(relevant_area):
 				pinpoint+=circumstantial_drift_slide*delta*(-1 if drift_direction==Rotation.Positive else 1)
+			
 			if Input.is_action_pressed("SteerLeft") and not has_relevant_bodies($Left):
 				rotation-=drifting_steering_speed*delta
 				drift_direction=Rotation.Negative
 			if Input.is_action_pressed("SteerRight") and not has_relevant_bodies($Right):
 				rotation+=drifting_steering_speed*delta
 				drift_direction=Rotation.Positive
+			
 			$Cat.texture=cat_drift
 			$Cat.flip_h=drift_direction==Rotation.Positive
 func revert_speed(mult):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://dnnka5th1gldj"]
+[gd_scene load_steps=50 format=4 uid="uid://dnnka5th1gldj"]
 
 [ext_resource type="Script" uid="uid://o74np0f72gru" path="res://world.gd" id="1_h2yge"]
 [ext_resource type="Texture2D" uid="uid://b7hor253hqvnx" path="res://world-and-tiles/normal_street.png" id="2_0odxb"]
@@ -24,6 +24,9 @@
 [ext_resource type="Script" uid="uid://dba4y85gilasm" path="res://UI/win_panel.gd" id="13_2cqfq"]
 [ext_resource type="AudioStream" uid="uid://djgf0v36ttelk" path="res://player/hit_hard.wav" id="13_qsp4k"]
 [ext_resource type="AudioStream" uid="uid://3sosnfojmpg0" path="res://player/hit_soft.wav" id="14_kq58d"]
+[ext_resource type="AudioStream" uid="uid://1j0df3clhajs" path="res://player/turn_a.wav" id="15_jq2sk"]
+[ext_resource type="AudioStream" uid="uid://cur0xx2bxqi41" path="res://player/turn_b.wav" id="16_4k2k6"]
+[ext_resource type="AudioStream" uid="uid://dtcide14g7v3v" path="res://player/turn_c.wav" id="17_0rl1p"]
 [ext_resource type="Texture2D" uid="uid://b7btsnvvggr5n" path="res://UI/win.png" id="19_getpj"]
 [ext_resource type="Shader" uid="uid://38dg80hpc86a" path="res://world-and-tiles/shadows.gdshader" id="21_d13ii"]
 [ext_resource type="Texture2D" uid="uid://dhpb5hay7388f" path="res://world-and-tiles/guatape.png" id="21_getpj"]
@@ -215,6 +218,12 @@ size = Vector2(26, 52)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dg77c"]
 size = Vector2(9, 29)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jq2sk"]
+streams_count = 3
+stream_0/stream = ExtResource("15_jq2sk")
+stream_1/stream = ExtResource("16_4k2k6")
+stream_2/stream = ExtResource("17_0rl1p")
+
 [sub_resource type="Gradient" id="Gradient_82xsv"]
 colors = PackedColorArray(0.93, 0.1488, 0.16182, 1, 1, 1, 0.31, 1)
 
@@ -399,6 +408,13 @@ volume_db = -2.0
 [node name="HitSoft" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource("14_kq58d")
 volume_db = -2.0
+
+[node name="Turn" type="AudioStreamPlayer" parent="Player"]
+volume_db = -5.0
+
+[node name="Drift" type="AudioStreamPlayer" parent="Player"]
+stream = SubResource("AudioStreamRandomizer_jq2sk")
+volume_db = -10.0
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -734,6 +750,7 @@ grow_vertical = 2
 texture = ExtResource("19_getpj")
 
 [node name="Minimap" type="SubViewportContainer" parent="UI"]
+visible = false
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -749,7 +766,7 @@ grow_vertical = 0
 [node name="SubViewport" type="SubViewport" parent="UI/Minimap"]
 handle_input_locally = false
 size = Vector2i(128, 128)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="Camera2D" type="Camera2D" parent="UI/Minimap/SubViewport"]
 zoom = Vector2(0.1, 0.1)
