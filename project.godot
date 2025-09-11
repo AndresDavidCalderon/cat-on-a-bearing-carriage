@@ -15,6 +15,10 @@ run/main_scene="uid://cb3e5ub814mvb"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="uid://defj10u86gow4"
 
+[audio]
+
+driver/output_latency=5
+
 [autoload]
 
 GlobalScore="*res://global_score.gd"
