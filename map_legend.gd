@@ -16,5 +16,5 @@ func _process(delta: float) -> void:
 		position=Vector2.ZERO
 	else:
 		var direction=camera.get_target_position()-get_parent().global_position
-		global_position=view.get_support(direction)
+		global_position=camera.get_target_position()-direction.normalized()*500
 		

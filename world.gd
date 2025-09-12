@@ -32,9 +32,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if running:
 		remaining_time-=delta
+		if remaining_time<15:
+			$Riff.pitch_scale=1.3
 		if remaining_time<0:
 			remaining_time=0
-			running=false
+			set_running(false)
 			loss.emit(lossReason.TIME_OUT)
 
 func register_target(target:Node):
@@ -48,6 +50,15 @@ func _on_start_pressed() -> void:
 func set_running(new_state:bool):
 	running=new_state
 	match_state_changed.emit(new_state)
+	if new_state:
+		$Riff.playing=new_state
+	else:
+		var tween=create_tween()
+		tween.tween_property($Riff,"volume_db",-40,5)
+		tween.finished.connect(finish_song_fade)
+
+func finish_song_fade():
+	$Riff.playing=false
 
 func target_reached():
 	packet_score+=1
