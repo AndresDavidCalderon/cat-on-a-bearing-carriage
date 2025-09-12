@@ -16,5 +16,20 @@ func _process(delta: float) -> void:
 		position=Vector2.ZERO
 	else:
 		var direction=camera.get_target_position()-get_parent().global_position
-		global_position=camera.get_target_position()-direction.normalized()*500
-		
+		var sides=[
+			[view.position,view.position+Vector2(0,view.size.y)],
+			[view.position,view.position+Vector2(view.size.x,0)],
+			[view.position+Vector2(0,view.size.y),view.end],
+			[view.position+Vector2(view.size.x,0),view.end]
+		]
+		var closest_distance=0
+		var closest_point
+		var closest_idx
+		for i in range(sides.size()):
+			var point=Geometry2D.get_closest_point_to_segment(get_parent().global_position,sides[i][0],sides[i][1])
+			var distance=point.distance_to(get_parent().global_position)
+			if distance<closest_distance or closest_point==null:
+				closest_distance=distance
+				closest_point=point
+				closest_idx=i
+		global_position=closest_point
