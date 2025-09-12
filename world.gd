@@ -70,7 +70,7 @@ func target_reached():
 		win.emit()
 
 func set_random_target():
-	var new_target
+	var new_target=null
 	while new_target==current_target or new_target==null:
 		new_target=delivery_targets.pick_random()
 	set_current_target(new_target)

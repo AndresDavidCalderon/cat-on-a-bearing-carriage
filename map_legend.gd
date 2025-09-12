@@ -8,14 +8,13 @@ func _ready() -> void:
 func set_viewport():
 	viewport=get_node("/root/World").minimap_viewport
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var camera:Camera2D=viewport.get_node("Camera2D")
 	var size=viewport.get_visible_rect().size/camera.zoom
 	var view=Rect2(camera.get_target_position()-size/2,size)
 	if view.has_point(get_parent().global_position):
 		position=Vector2.ZERO
 	else:
-		var direction=camera.get_target_position()-get_parent().global_position
 		var sides=[
 			[view.position,view.position+Vector2(0,view.size.y)],
 			[view.position,view.position+Vector2(view.size.x,0)],
