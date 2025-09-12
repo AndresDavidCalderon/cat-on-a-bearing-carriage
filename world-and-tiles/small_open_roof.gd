@@ -3,7 +3,7 @@ extends TileMapLayer
 @onready var player = get_node("/root/World/Player")
 
 var interior_opacity=0.1
-var default_opacity=0.9
+var default_opacity=0.8
 var current_tween:Tween
 
 func _ready() -> void:
