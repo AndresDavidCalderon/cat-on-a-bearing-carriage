@@ -62,6 +62,7 @@ func finish_song_fade():
 
 func target_reached():
 	packet_score+=1
+	$Delivery.play()
 	if packet_score<packet_target:
 		set_random_target()
 		packet_delivered.emit()
