@@ -16,7 +16,7 @@ func match_change(state:bool):
 		setup_bottles(match_provider.packet_target)
 
 func on_delivery():
-	if items.is_empty():
+	if items.is_empty() or match_provider.packet_target-match_provider.packet_score>=10:
 		return
 	var item=items.pick_random()
 	avaliable_places.append(item.get_parent())
