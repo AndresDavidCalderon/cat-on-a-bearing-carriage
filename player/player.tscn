@@ -1,13 +1,16 @@
-[gd_scene load_steps=14 format=3 uid="uid://dhjjje2b1xoa0"]
+[gd_scene load_steps=17 format=3 uid="uid://dhjjje2b1xoa0"]
 
 [ext_resource type="Script" uid="uid://dg6hodfjfupjm" path="res://player.gd" id="1_8t03j"]
 [ext_resource type="Texture2D" uid="uid://bvqxs4m7uo268" path="res://player/cat_drift.png" id="2_2ieo8"]
 [ext_resource type="Texture2D" uid="uid://cgskcw252syn2" path="res://player/cat_push.png" id="3_ebec5"]
 [ext_resource type="Texture2D" uid="uid://4d1qt7imo57v" path="res://player/cat.png" id="4_yllr7"]
 [ext_resource type="Texture2D" uid="uid://bxwifrw0on3r8" path="res://player/car.png" id="5_kb6p2"]
+[ext_resource type="Script" uid="uid://gsd8sxolqch3" path="res://player/car.gd" id="6_2ieo8"]
 [ext_resource type="AudioStream" uid="uid://djgf0v36ttelk" path="res://player/hit_hard.wav" id="6_wodsf"]
 [ext_resource type="AudioStream" uid="uid://3sosnfojmpg0" path="res://player/hit_soft.wav" id="7_32hag"]
+[ext_resource type="Texture2D" uid="uid://dftsoys0fe47b" path="res://player/milk_bottle.png" id="7_ebec5"]
 [ext_resource type="AudioStream" uid="uid://1j0df3clhajs" path="res://player/turn_a.wav" id="8_tqiix"]
+[ext_resource type="Texture2D" uid="uid://cdejdv1dwvjmp" path="res://player/milk_gallon.png" id="8_yllr7"]
 [ext_resource type="AudioStream" uid="uid://cur0xx2bxqi41" path="res://player/turn_b.wav" id="9_e7oew"]
 [ext_resource type="AudioStream" uid="uid://dtcide14g7v3v" path="res://player/turn_c.wav" id="10_c35mf"]
 
@@ -29,10 +32,42 @@ cat_drift = ExtResource("2_2ieo8")
 cat_push = ExtResource("3_ebec5")
 cat_default = ExtResource("4_yllr7")
 
-[node name="Icon" type="Sprite2D" parent="."]
+[node name="Car" type="Sprite2D" parent="."]
 position = Vector2(3.57628e-07, -2.38419e-07)
 scale = Vector2(0.8125, 0.8125)
 texture = ExtResource("5_kb6p2")
+script = ExtResource("6_2ieo8")
+milk_textures = Array[Texture]([ExtResource("7_ebec5"), ExtResource("8_yllr7")])
+
+[node name="MilkPlace" type="Node2D" parent="Car"]
+position = Vector2(-8.61539, -27.0769)
+
+[node name="MilkPlace2" type="Node2D" parent="Car"]
+position = Vector2(7.38461, -27.0769)
+
+[node name="MilkPlace3" type="Node2D" parent="Car"]
+position = Vector2(7.38461, -17.2308)
+
+[node name="MilkPlace4" type="Node2D" parent="Car"]
+position = Vector2(-8.61539, -17.2308)
+
+[node name="MilkPlace5" type="Node2D" parent="Car"]
+position = Vector2(-8.61539, -4.92308)
+
+[node name="MilkPlace6" type="Node2D" parent="Car"]
+position = Vector2(7.38461, -4.92308)
+
+[node name="MilkPlace7" type="Node2D" parent="Car"]
+position = Vector2(7.38462, 6.15385)
+
+[node name="MilkPlace8" type="Node2D" parent="Car"]
+position = Vector2(-7.38462, 6.15385)
+
+[node name="MilkPlace9" type="Node2D" parent="Car"]
+position = Vector2(-7.38462, 17.2308)
+
+[node name="MilkPlace10" type="Node2D" parent="Car"]
+position = Vector2(7.38462, 17.2308)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_myinc")

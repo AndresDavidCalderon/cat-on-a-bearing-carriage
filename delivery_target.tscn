@@ -1,15 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfca212ra225f"]
+[gd_scene load_steps=10 format=3 uid="uid://dfca212ra225f"]
 
 [ext_resource type="Texture2D" uid="uid://dl6f057tkjd1a" path="res://icon.svg" id="1_232cv"]
 [ext_resource type="Script" uid="uid://bt2qb1snm43xt" path="res://delivery_target.gd" id="1_y2y3p"]
 [ext_resource type="Texture2D" uid="uid://rt247so2mlk6" path="res://UI/target_map_leyend.png" id="3_o8r2v"]
 [ext_resource type="Script" uid="uid://bfkxeq0ctt6tc" path="res://map_legend.gd" id="4_b0uhs"]
+[ext_resource type="Texture2D" uid="uid://c6mckc7oq6f7u" path="res://world-and-tiles/people/cap_guy.png" id="5_y55q6"]
+[ext_resource type="Texture2D" uid="uid://baj8bn7f1vko6" path="res://pot.png" id="6_4sdrl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y2y3p"]
-size = Vector2(48, 48)
+size = Vector2(81, 79.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y55q6"]
+size = Vector2(34, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4sdrl"]
+size = Vector2(21, 16)
 
 [node name="DeliveryTarget" type="Node2D"]
-z_index = 8
 script = ExtResource("1_y2y3p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -21,6 +28,7 @@ texture = ExtResource("1_232cv")
 [node name="Area" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+position = Vector2(1, -1)
 shape = SubResource("RectangleShape2D_y2y3p")
 
 [node name="MapLegend" type="Sprite2D" parent="."]
@@ -32,9 +40,29 @@ texture = ExtResource("3_o8r2v")
 script = ExtResource("4_b0uhs")
 
 [node name="MapLegend2" type="Sprite2D" parent="."]
-z_index = 10
+modulate = Color(1, 1, 1, 0.227451)
+z_index = 8
 position = Vector2(-1, -1)
 scale = Vector2(0.96795, 1.01923)
 texture = ExtResource("3_o8r2v")
+
+[node name="Person" type="StaticBody2D" parent="."]
+
+[node name="Person" type="Sprite2D" parent="Person"]
+texture = ExtResource("5_y55q6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Person"]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_y55q6")
+disabled = true
+
+[node name="PotColission" type="CollisionShape2D" parent="Person"]
+position = Vector2(25.5, -11)
+shape = SubResource("RectangleShape2D_4sdrl")
+disabled = true
+
+[node name="Pot" type="Sprite2D" parent="Person/PotColission"]
+position = Vector2(0.5, -1)
+texture = ExtResource("6_4sdrl")
 
 [connection signal="body_entered" from="Area" to="." method="_on_area_body_entered"]

@@ -80,6 +80,7 @@ func set_current_target(target:Node2D):
 		current_target.hide()
 	if target!=null:
 		target.show()
+		target.enable()
 	current_target=target
 
 func lost(loss_reason):

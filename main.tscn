@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://dnnka5th1gldj"]
+[gd_scene load_steps=58 format=4 uid="uid://dnnka5th1gldj"]
 
 [ext_resource type="Script" uid="uid://o74np0f72gru" path="res://world.gd" id="1_h2yge"]
 [ext_resource type="Texture2D" uid="uid://b7hor253hqvnx" path="res://world-and-tiles/normal_street.png" id="2_0odxb"]
@@ -14,14 +14,25 @@
 [ext_resource type="AudioStream" uid="uid://b4g6yycgv5kxi" path="res://sound/original_riff_cut.wav" id="14_w48qg"]
 [ext_resource type="Texture2D" uid="uid://b00pukuf55qpi" path="res://world-and-tiles/people/couple.png" id="16_2cqfq"]
 [ext_resource type="Script" uid="uid://d3cbvv7uhn2i2" path="res://world-and-tiles/people/couple.gd" id="16_yaehf"]
+[ext_resource type="Texture2D" uid="uid://dtjal6hkuu84b" path="res://world-and-tiles/people/chic_woman_white.png" id="17_d13ii"]
+[ext_resource type="Texture2D" uid="uid://dxv7f35w6tr43" path="res://world-and-tiles/people/blue_capul_tan_girl.png" id="18_1u8w0"]
 [ext_resource type="Texture2D" uid="uid://dnc8wfxr0kdlb" path="res://world-and-tiles/commercial/hanger.png" id="18_074og"]
 [ext_resource type="PackedScene" uid="uid://84qmbyy12hoi" path="res://UI/ui.tscn" id="18_ryguw"]
+[ext_resource type="Texture2D" uid="uid://djpebdt5uyx58" path="res://world-and-tiles/people/blond_sidehair_white.png" id="19_0odxb"]
 [ext_resource type="Texture2D" uid="uid://dwn2kdj0fs4do" path="res://world-and-tiles/commercial/earrings.png" id="19_82xsv"]
+[ext_resource type="Texture2D" uid="uid://c52ogfeh0vy5x" path="res://world-and-tiles/people/bald_black_dude.png" id="19_lswn8"]
 [ext_resource type="Texture2D" uid="uid://di3c6ndvxfu11" path="res://world-and-tiles/commercial/rooftop_furniture.png" id="19_ryguw"]
 [ext_resource type="Texture2D" uid="uid://dhq33jb87biyc" path="res://world-and-tiles/commercial/rings.png" id="20_getpj"]
+[ext_resource type="Texture2D" uid="uid://e6tq4v783uv7" path="res://world-and-tiles/people/black_and_blue_sidehair_white.png" id="21_a6jrf"]
 [ext_resource type="Texture2D" uid="uid://dhpb5hay7388f" path="res://world-and-tiles/guatape.png" id="21_getpj"]
 [ext_resource type="Texture2D" uid="uid://begdtvn2okh1b" path="res://world-and-tiles/commercial/necklace.png" id="21_ryguw"]
+[ext_resource type="Texture2D" uid="uid://bybdae0eyb6ug" path="res://world-and-tiles/people/double_ball_blond_girl.png" id="22_xuqvo"]
+[ext_resource type="Texture2D" uid="uid://cb0u2v8fogs3y" path="res://world-and-tiles/people/worker.png" id="23_qsp4k"]
+[ext_resource type="Texture2D" uid="uid://qo77bio35pav" path="res://world-and-tiles/people/worker_black.png" id="24_kq58d"]
 [ext_resource type="Script" uid="uid://b0ago8eshs451" path="res://world-and-tiles/small_open_roof.gd" id="25_lswn8"]
+[ext_resource type="Texture2D" uid="uid://s0pkdjthksvo" path="res://world-and-tiles/people/long_hair_girl.png" id="25_seu75"]
+[ext_resource type="Texture2D" uid="uid://c3v5cfq5pd7gf" path="res://world-and-tiles/people/blonde_dude.png" id="26_htxhm"]
+[ext_resource type="Texture2D" uid="uid://t3ptmihggdh8" path="res://world-and-tiles/people/long_hair_black_woman.png" id="27_jq2sk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lswn8"]
 texture = ExtResource("2_0odxb")
@@ -203,6 +214,12 @@ tile_size = Vector2i(64, 64)
 occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_dg77c")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d13ii"]
+size = Vector2(42, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xuqvo"]
+size = Vector2(29, 45)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2cqfq"]
 texture = ExtResource("14_vivmo")
@@ -466,40 +483,113 @@ position = Vector2(0, 1)
 [node name="UI" parent="." instance=ExtResource("18_ryguw")]
 
 [node name="DeliveryTarget" parent="." instance=ExtResource("4_1bvp3")]
-position = Vector2(912, 16)
+position = Vector2(939, 17)
+
+[node name="Person" parent="DeliveryTarget" index="4"]
+rotation = 1.57442
+
+[node name="Person" parent="DeliveryTarget/Person" index="0"]
+position = Vector2(-1, -16)
+texture = ExtResource("17_d13ii")
+
+[node name="CollisionShape2D" parent="DeliveryTarget/Person" index="1"]
+position = Vector2(-1, -2.5)
+shape = SubResource("RectangleShape2D_d13ii")
 
 [node name="DeliveryTarget2" parent="." instance=ExtResource("4_1bvp3")]
 position = Vector2(664, 992)
 
+[node name="Person" parent="DeliveryTarget2/Person" index="0"]
+position = Vector2(2, 13)
+rotation = -3.14114
+texture = ExtResource("18_1u8w0")
+
+[node name="PotColission" parent="DeliveryTarget2/Person" index="2"]
+position = Vector2(28, 9)
+
 [node name="DeliveryTarget3" parent="." instance=ExtResource("4_1bvp3")]
-position = Vector2(2384, 1752)
+position = Vector2(2384, 1777)
+
+[node name="Person" parent="DeliveryTarget3/Person" index="0"]
+position = Vector2(1, 13)
+rotation = 3.13961
+texture = ExtResource("19_lswn8")
+
+[node name="PotColission" parent="DeliveryTarget3/Person" index="2"]
+position = Vector2(31, -8)
 
 [node name="DeliveryTarget4" parent="." instance=ExtResource("4_1bvp3")]
 position = Vector2(2400, 288)
 
+[node name="Person" parent="DeliveryTarget4/Person" index="0"]
+position = Vector2(0, 15)
+rotation = 3.12255
+texture = ExtResource("19_0odxb")
+
+[node name="PotColission" parent="DeliveryTarget4/Person" index="2"]
+position = Vector2(25, 13)
+
 [node name="DeliveryTarget5" parent="." instance=ExtResource("4_1bvp3")]
 position = Vector2(1528, 488)
 
-[node name="DeliveryTarget6" parent="." instance=ExtResource("4_1bvp3")]
-position = Vector2(912, 1504)
+[node name="BlackAndBlueHairDelivery" parent="." instance=ExtResource("4_1bvp3")]
+position = Vector2(939, 1505)
 
-[node name="DeliveryTarget7" parent="." instance=ExtResource("4_1bvp3")]
+[node name="Person" parent="BlackAndBlueHairDelivery/Person" index="0"]
+position = Vector2(11, -2)
+rotation = 1.56448
+texture = ExtResource("21_a6jrf")
+
+[node name="CollisionShape2D" parent="BlackAndBlueHairDelivery/Person" index="1"]
+position = Vector2(-2.5, -1.5)
+shape = SubResource("RectangleShape2D_xuqvo")
+
+[node name="DoubleBallGirlDelivery" parent="." instance=ExtResource("4_1bvp3")]
 position = Vector2(-2328, 656)
+rotation = 1.5545
 
-[node name="DeliveryTarget8" parent="." instance=ExtResource("4_1bvp3")]
+[node name="Person" parent="DoubleBallGirlDelivery/Person" index="0"]
+position = Vector2(0.244481, -14.998)
+texture = ExtResource("22_xuqvo")
+
+[node name="Worker1Delivery" parent="." instance=ExtResource("4_1bvp3")]
 position = Vector2(768, 2688)
 
-[node name="DeliveryTarget9" parent="." instance=ExtResource("4_1bvp3")]
+[node name="Person" parent="Worker1Delivery/Person" index="0"]
+position = Vector2(2, 13)
+rotation = -3.10487
+texture = ExtResource("23_qsp4k")
+
+[node name="Worker2Delivery" parent="." instance=ExtResource("4_1bvp3")]
 position = Vector2(2176, 2688)
 
-[node name="DeliveryTarget10" parent="." instance=ExtResource("4_1bvp3")]
+[node name="Person" parent="Worker2Delivery/Person" index="0"]
+position = Vector2(1, 11)
+rotation = 3.12768
+texture = ExtResource("24_kq58d")
+
+[node name="LongHairDelivery" parent="." instance=ExtResource("4_1bvp3")]
 position = Vector2(384, -2624)
 
-[node name="DeliveryTarget11" parent="." instance=ExtResource("4_1bvp3")]
+[node name="Person" parent="LongHairDelivery/Person" index="0"]
+rotation = -3.1183
+texture = ExtResource("25_seu75")
+
+[node name="BlondeDudeDelivery" parent="." instance=ExtResource("4_1bvp3")]
 position = Vector2(2432, -2624)
+
+[node name="Person" parent="BlondeDudeDelivery/Person" index="0"]
+rotation = -3.13936
+texture = ExtResource("26_htxhm")
 
 [node name="DeliveryTarget12" parent="." instance=ExtResource("4_1bvp3")]
 position = Vector2(-640, -1280)
+
+[node name="Person" parent="DeliveryTarget12" index="4"]
+rotation = 1.56382
+
+[node name="Person" parent="DeliveryTarget12/Person" index="0"]
+texture = ExtResource("27_jq2sk")
 
 [node name="Shadows" type="Node2D" parent="."]
 modulate = Color(0, 0, 0, 0.376471)
@@ -592,3 +682,15 @@ shape = SubResource("RectangleShape2D_2cqfq")
 
 [connection signal="body_entered" from="SmallOpenRoof/Area2D" to="SmallOpenRoof" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="SmallOpenRoof/Area2D" to="SmallOpenRoof" method="_on_area_2d_body_exited"]
+
+[editable path="DeliveryTarget"]
+[editable path="DeliveryTarget2"]
+[editable path="DeliveryTarget3"]
+[editable path="DeliveryTarget4"]
+[editable path="BlackAndBlueHairDelivery"]
+[editable path="DoubleBallGirlDelivery"]
+[editable path="Worker1Delivery"]
+[editable path="Worker2Delivery"]
+[editable path="LongHairDelivery"]
+[editable path="BlondeDudeDelivery"]
+[editable path="DeliveryTarget12"]
