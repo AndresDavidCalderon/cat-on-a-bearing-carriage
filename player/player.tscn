@@ -30,7 +30,8 @@ cat_push = ExtResource("3_ebec5")
 cat_default = ExtResource("4_yllr7")
 
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(-4.17233e-07, 1.68383e-06)
+position = Vector2(3.57628e-07, -2.38419e-07)
+scale = Vector2(0.8125, 0.8125)
 texture = ExtResource("5_kb6p2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

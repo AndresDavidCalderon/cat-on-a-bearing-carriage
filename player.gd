@@ -39,13 +39,17 @@ var standard_speed_for_hit_soft_pitch=600
 var hit_sound_offset=-15
 var hard_to_soft=700
 
+var texture_overriden=false
+var impulse_texture_override_length=1
+
 @export var cat_drift:Texture
 @export var cat_push:Texture
 @export var cat_default:Texture
 
 func _process(delta: float) -> void:
 	if get_parent().running:
-		$Cat.texture=cat_default
+		if not texture_overriden:
+			$Cat.texture=cat_default
 		velocity=Vector2(0,-speed).rotated(rotation)
 		var collided = move_and_slide()
 		if collided:
@@ -88,6 +92,10 @@ func _process(delta: float) -> void:
 				speed_multiplier*=multiplier
 				var timer =get_tree().create_timer(tap_speed_duration)
 				timer.timeout.connect(revert_speed.bind(multiplier))
+				texture_overriden=true
+				$Cat.texture=cat_push
+				var texture_timer=get_tree().create_timer(impulse_texture_override_length)
+				texture_timer.timeout.connect(impulse_texture_end)
 			if turning:
 				if was_straight:
 					$Turn.play()
@@ -125,10 +133,14 @@ func _process(delta: float) -> void:
 				rotation+=drifting_steering_speed*delta
 				drift_direction=Rotation.Positive
 			
-			$Cat.texture=cat_drift
-			$Cat.flip_h=drift_direction==Rotation.Positive
+			if not texture_overriden:
+				$Cat.texture=cat_drift
+				$Cat.flip_h=drift_direction==Rotation.Positive
 func revert_speed(mult):
 	speed_multiplier/=mult
+
+func impulse_texture_end():
+	texture_overriden=false
 
 func set_state(new_state:State):
 	current_state=new_state
