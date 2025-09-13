@@ -8,8 +8,9 @@ func _ready() -> void:
 func _on_world_loss(reason) -> void:
 	show()
 	if reason==try_provider.lossReason.TIME_OUT:
-		$Panel/Description.text="""You ran out of time! Drifting can help a great deal when making sharp turns,
-		and that helps with not having to turn around later."""
+		$Panel/Description.text="""You ran out of time!"""
+		if randf()>0.5:
+			$Panel/Description.text+="\n Now you'll have to drink it all yourself"
 
 
 func _on_repeat_pressed() -> void:
