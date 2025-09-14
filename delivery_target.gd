@@ -1,6 +1,7 @@
 extends Node2D
 
 signal delivered
+var collisions=false
 
 func _ready() -> void:
 	get_node("/root/World").register_target(self)
@@ -14,5 +15,6 @@ func _on_area_body_entered(body: Node2D) -> void:
 			$Person/PotColission.set_deferred("disabled",true)
 
 func enable():
-	$Person/CollisionShape2D.set_deferred("disabled",false)
-	$Person/PotColission.set_deferred("disabled",false)
+	if collisions:
+		$Person/CollisionShape2D.set_deferred("disabled",false)
+		$Person/PotColission.set_deferred("disabled",false)

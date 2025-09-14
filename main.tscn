@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=4 uid="uid://dnnka5th1gldj"]
+[gd_scene load_steps=67 format=4 uid="uid://dnnka5th1gldj"]
 
 [ext_resource type="Script" uid="uid://o74np0f72gru" path="res://world.gd" id="1_h2yge"]
 [ext_resource type="Texture2D" uid="uid://b7hor253hqvnx" path="res://world-and-tiles/normal_street.png" id="2_0odxb"]
@@ -38,6 +38,8 @@
 [ext_resource type="AudioStream" uid="uid://djmcg6iyufla3" path="res://sound/delivery/delivery_b_short.wav" id="36_come4"]
 [ext_resource type="AudioStream" uid="uid://dvlb3l4ynrfop" path="res://sound/delivery/delivery_c.wav" id="37_h8e4i"]
 [ext_resource type="AudioStream" uid="uid://cfy4ja6fy6u6q" path="res://sound/delivery/delivery_d.wav" id="38_4lmeg"]
+[ext_resource type="AudioStream" uid="uid://dymhx8c4etvva" path="res://sound/loss.wav" id="39_come4"]
+[ext_resource type="AudioStream" uid="uid://bjatst7ruamqd" path="res://sound/win.wav" id="39_h8e4i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lswn8"]
 texture = ExtResource("2_0odxb")
@@ -723,6 +725,15 @@ shape = SubResource("RectangleShape2D_2cqfq")
 
 [node name="Delivery" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_0cp0l")
+volume_db = -10.0
+
+[node name="Win" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("39_h8e4i")
+volume_db = -9.0
+
+[node name="Loss" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("39_come4")
+volume_db = -10.0
 
 [connection signal="body_entered" from="SmallOpenRoof/Area2D" to="SmallOpenRoof" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="SmallOpenRoof/Area2D" to="SmallOpenRoof" method="_on_area_2d_body_exited"]

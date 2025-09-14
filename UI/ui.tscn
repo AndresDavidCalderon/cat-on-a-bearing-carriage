@@ -157,6 +157,7 @@ expand_mode = 3
 stretch_mode = 5
 
 [node name="StartPanel" type="Panel" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -241,7 +242,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CarStatsDebug" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 3
 anchor_left = 1.0
@@ -294,10 +294,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -377.0
-offset_top = -185.0
-offset_right = 368.0
-offset_bottom = 240.0
+offset_left = -442.0
+offset_top = -258.0
+offset_right = 445.0
+offset_bottom = 265.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_o2jkc")
@@ -336,13 +336,29 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -61.5
-offset_top = -52.0
-offset_right = 72.5
-offset_bottom = -28.0
+offset_left = -169.5
+offset_top = -109.0
+offset_right = 161.5
+offset_bottom = -63.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "See you tomorrow"
+
+[node name="SaveKey" type="Button" parent="WinPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -165.5
+offset_top = -81.0
+offset_right = 165.5
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Get a save key"
 
 [node name="DayBeaten" type="HBoxContainer" parent="WinPanel"]
 layout_mode = 1
@@ -401,6 +417,18 @@ render_target_update_mode = 4
 [node name="Camera2D" type="Camera2D" parent="Minimap/SubViewport"]
 zoom = Vector2(0.1, 0.1)
 script = ExtResource("13_duqhi")
+
+[node name="SaveKey" type="Panel" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 265.0
+offset_top = 139.0
+offset_right = -332.0
+offset_bottom = -145.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="pressed" from="Lost/Panel/Repeat" to="Lost" method="_on_repeat_pressed"]
 [connection signal="pressed" from="StartPanel/Start" to="StartPanel" method="_on_start_pressed"]

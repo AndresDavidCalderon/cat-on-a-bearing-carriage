@@ -17,12 +17,18 @@ var current_state:State=State.SLIDING
 # drift.
 
 @export var impulse_loss=30
+var impulse_loss_critic=0.1
+var critic_fast_treshhold=1000
 var impulse_per_tap=40
+var grace_time_after_tap=1
+
+# Critically low speed, should increase impulse per tap.
 var critic_treshhold=100
 var critic_impulse_per_tap=300
 var tap_speed_multiplier=1.1
 var critic_tap_speed_mutiplier=2
 var tap_speed_duration=1
+var time_since_tap=0
 
 # Spent when moving. Should be measured in pixels of distance.
 var impulse:float=600
@@ -30,6 +36,8 @@ var impulse:float=600
 var speed:float=impulse
 @export var steering_speed:float=1.5
 @export var drifting_steering_speed=3
+var break_force=500
+var breaking_enabled=false
 
 var pinpoint:Vector2 #Should be set when starting a drift.
 var drift_direction:Rotation
@@ -64,13 +72,20 @@ func _process(delta: float) -> void:
 		else:
 			was_separated=true
 		
-		impulse-=impulse_loss*delta
+		if time_since_tap>grace_time_after_tap:
+			if impulse<critic_fast_treshhold:
+				impulse-=impulse_loss*delta
+			else:
+				impulse-=impulse*impulse_loss_critic*delta
+				print("critic speed")
 		speed=impulse*speed_multiplier
 	
 		if impulse<=0:
 			impulse=0
 		
 		var circumstancial_steering_speed=steering_speed*delta
+		
+		time_since_tap+=delta
 		
 		# Simple sliding rotation logic, rotating on drift requires more collission checks
 		if current_state==State.SLIDING:
@@ -96,6 +111,7 @@ func _process(delta: float) -> void:
 				$Cat.texture=cat_push
 				var texture_timer=get_tree().create_timer(impulse_texture_override_length)
 				texture_timer.timeout.connect(impulse_texture_end)
+				time_since_tap=0
 			if turning:
 				if was_straight:
 					$Turn.play()
@@ -136,6 +152,10 @@ func _process(delta: float) -> void:
 			if not texture_overriden:
 				$Cat.texture=cat_drift
 				$Cat.flip_h=drift_direction==Rotation.Positive
+
+	if Input.is_action_pressed("break") and breaking_enabled:
+		impulse-=break_force*delta
+
 func revert_speed(mult):
 	speed_multiplier/=mult
 
