@@ -28,7 +28,6 @@ var running:bool=false
 func _ready() -> void:
 	randomize()
 	update_day_stats()
-	loss.connect(on_loss)
 
 func _process(delta: float) -> void:
 	if running:
@@ -39,12 +38,11 @@ func _process(delta: float) -> void:
 			remaining_time=0
 			set_running(false)
 			loss.emit(lossReason.TIME_OUT)
+			$Loss.play()
 
 func register_target(target:Node):
 	delivery_targets.append(target)
 
-func on_loss():
-	$Loss.play()
 
 func _on_start_pressed() -> void:
 	set_random_target()
@@ -57,7 +55,7 @@ func set_running(new_state:bool):
 		$Riff.playing=new_state
 	else:
 		var tween=create_tween()
-		tween.tween_property($Riff,"volume_db",-40,3)
+		tween.tween_property($Riff,"volume_db",-40,2)
 		tween.finished.connect(finish_song_fade)
 
 func finish_song_fade():
