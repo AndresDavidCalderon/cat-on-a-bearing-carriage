@@ -1,0 +1,25 @@
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://bjkjdd8uvghcr"]
+
+[ext_resource type="Texture2D" uid="uid://biu215h8h0bu2" path="res://world-and-tiles/park-san-roque.png" id="1_1idbw"]
+[ext_resource type="Texture2D" uid="uid://7f3o8454rtff" path="res://world-and-tiles/interior_floors.png" id="2_qyp22"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1u8w0"]
+texture = ExtResource("1_1idbw")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/next_alternative_id = 3
+1:0/0 = 0
+1:0/1 = 1
+2:0/0 = 0
+1:1/0 = 0
+0:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xuqvo"]
+texture = ExtResource("2_qyp22")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[resource]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_1u8w0")
+sources/1 = SubResource("TileSetAtlasSource_xuqvo")

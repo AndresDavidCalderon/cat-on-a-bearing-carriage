@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://1qj1odj523g"]
+
+[ext_resource type="Texture2D" uid="uid://dnc8wfxr0kdlb" path="res://world-and-tiles/commercial/hanger.png" id="1_ewh6t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_074og"]
+size = Vector2(32, 64)
+
+[node name="Hanger2" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("1_ewh6t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, -1)
+shape = SubResource("RectangleShape2D_074og")

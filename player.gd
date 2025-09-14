@@ -77,7 +77,6 @@ func _process(delta: float) -> void:
 				impulse-=impulse_loss*delta
 			else:
 				impulse-=impulse*impulse_loss_critic*delta
-				print("critic speed")
 		speed=impulse*speed_multiplier
 	
 		if impulse<=0:
