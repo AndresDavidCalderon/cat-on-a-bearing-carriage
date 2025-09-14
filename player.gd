@@ -112,6 +112,7 @@ func _process(delta: float) -> void:
 				var texture_timer=get_tree().create_timer(impulse_texture_override_length)
 				texture_timer.timeout.connect(impulse_texture_end)
 				time_since_tap=0
+				$Impulse.play()
 			if turning:
 				if was_straight:
 					$Turn.play()
