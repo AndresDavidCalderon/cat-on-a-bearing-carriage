@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7ac2058ekmt6"
-path="res://.godot/imported/cup.png-64e19febd75165375458c72448047144.ctex"
+uid="uid://dhq33jb87biyc"
+path="res://.godot/imported/rings.png-cf5493bc2771524e5b485bd3708a876e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://world-and-tiles/commercial/cup.png"
-dest_files=["res://.godot/imported/cup.png-64e19febd75165375458c72448047144.ctex"]
+source_file="res://world-and-tiles/commercial/for_counters/rings.png"
+dest_files=["res://.godot/imported/rings.png-cf5493bc2771524e5b485bd3708a876e.ctex"]
 
 [params]
 

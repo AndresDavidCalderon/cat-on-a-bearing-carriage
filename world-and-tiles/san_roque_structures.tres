@@ -1,8 +1,9 @@
-[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://cgcpoo028ojhv"]
+[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://cgcpoo028ojhv"]
 
 [ext_resource type="Texture2D" uid="uid://dgvd00j1gqaid" path="res://world-and-tiles/san-roque-structures.png" id="1_7b6vk"]
 [ext_resource type="Texture2D" uid="uid://c0oyarkri8a5j" path="res://world-and-tiles/counter.png" id="2_huq84"]
 [ext_resource type="Texture2D" uid="uid://dht6nxoyl0gq0" path="res://world-and-tiles/commercial/umbrella_tile.png" id="3_r3l4t"]
+[ext_resource type="Texture2D" uid="uid://bnm8ao0rdqnvs" path="res://world-and-tiles/commercial/ceilings/glass_ceiling.png" id="4_p8nk3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0odxb"]
 texture = ExtResource("1_7b6vk")
@@ -269,6 +270,64 @@ texture_region_size = Vector2i(32, 32)
 2:1/0 = 0
 3:1/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vrqh0"]
+texture = ExtResource("4_p8nk3")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/terrain_set = 2
+0:0/0/terrain = 0
+0:0/0/terrains_peering_bit/right_side = 0
+0:0/0/terrains_peering_bit/bottom_side = 0
+1:0/0 = 0
+1:0/0/terrain_set = 2
+1:0/0/terrain = 0
+1:0/0/terrains_peering_bit/right_side = 0
+1:0/0/terrains_peering_bit/bottom_side = 0
+1:0/0/terrains_peering_bit/left_side = 0
+2:0/next_alternative_id = 2
+2:0/0 = 0
+2:0/0/terrain_set = 2
+2:0/0/terrain = 0
+2:0/0/terrains_peering_bit/bottom_side = 0
+2:0/0/terrains_peering_bit/left_side = 0
+2:0/1 = 1
+2:0/1/terrain_set = 0
+0:1/0 = 0
+0:1/0/terrain_set = 2
+0:1/0/terrain = 0
+0:1/0/terrains_peering_bit/right_side = 0
+0:1/0/terrains_peering_bit/bottom_side = 0
+0:1/0/terrains_peering_bit/top_side = 0
+1:1/0 = 0
+1:1/0/terrain_set = 2
+1:1/0/terrain = 0
+1:1/0/terrains_peering_bit/right_side = 0
+1:1/0/terrains_peering_bit/bottom_side = 0
+1:1/0/terrains_peering_bit/left_side = 0
+1:1/0/terrains_peering_bit/top_side = 0
+2:1/0 = 0
+2:1/0/terrain_set = 2
+2:1/0/terrain = 0
+2:1/0/terrains_peering_bit/bottom_side = 0
+2:1/0/terrains_peering_bit/left_side = 0
+2:1/0/terrains_peering_bit/top_side = 0
+0:2/0 = 0
+0:2/0/terrain_set = 2
+0:2/0/terrain = 0
+0:2/0/terrains_peering_bit/right_side = 0
+0:2/0/terrains_peering_bit/top_side = 0
+1:2/0 = 0
+1:2/0/terrain_set = 2
+1:2/0/terrain = 0
+1:2/0/terrains_peering_bit/right_side = 0
+1:2/0/terrains_peering_bit/left_side = 0
+1:2/0/terrains_peering_bit/top_side = 0
+2:2/0 = 0
+2:2/0/terrain_set = 2
+2:2/0/terrain = 0
+2:2/0/terrains_peering_bit/left_side = 0
+2:2/0/terrains_peering_bit/top_side = 0
+
 [resource]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
@@ -280,6 +339,10 @@ terrain_set_1/terrain_0/name = "purple"
 terrain_set_1/terrain_0/color = Color(0.676982, 0.152115, 0.265182, 1)
 terrain_set_1/terrain_1/name = "green"
 terrain_set_1/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
+terrain_set_2/mode = 2
+terrain_set_2/terrain_0/name = "glass"
+terrain_set_2/terrain_0/color = Color(0, 0.435681, 0.486023, 1)
 sources/0 = SubResource("TileSetAtlasSource_0odxb")
 sources/1 = SubResource("TileSetAtlasSource_r3l4t")
 sources/2 = SubResource("TileSetAtlasSource_p8nk3")
+sources/3 = SubResource("TileSetAtlasSource_vrqh0")

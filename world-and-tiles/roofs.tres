@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dqne0052qr5py"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://dqne0052qr5py"]
 
 [ext_resource type="Texture2D" uid="uid://chaxne1hw1prg" path="res://world-and-tiles/roofs.png" id="1_66wo2"]
+[ext_resource type="Texture2D" uid="uid://08d55yefxqjf" path="res://world-and-tiles/commercial/ceilings/wood_bar_ceiling.png" id="2_uao4u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d13ii"]
 texture = ExtResource("1_66wo2")
@@ -216,6 +217,16 @@ texture_region_size = Vector2i(64, 64)
 7:6/0 = 0
 10:6/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_byi1r"]
+texture = ExtResource("2_uao4u")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+
 [resource]
 tile_size = Vector2i(64, 64)
 terrain_set_0/mode = 2
@@ -226,3 +237,4 @@ terrain_set_0/terrain_1/color = Color(0.798862, 0.584433, 0.448787, 1)
 terrain_set_0/terrain_2/name = "tiled_floor"
 terrain_set_0/terrain_2/color = Color(0.837794, 0.982317, 0.972341, 1)
 sources/0 = SubResource("TileSetAtlasSource_d13ii")
+sources/1 = SubResource("TileSetAtlasSource_byi1r")

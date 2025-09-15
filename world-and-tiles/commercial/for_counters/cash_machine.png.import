@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpbb0yaf5m88e"
-path="res://.godot/imported/guatape.png-ed632fa47ff4bebdda111650ed1fe865.ctex"
+uid="uid://bac8wrim1q00g"
+path="res://.godot/imported/cash_machine.png-f50382d58acbceec125b001a93fb3896.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://world-and-tiles/commercial/guatape.png"
-dest_files=["res://.godot/imported/guatape.png-ed632fa47ff4bebdda111650ed1fe865.ctex"]
+source_file="res://world-and-tiles/commercial/for_counters/cash_machine.png"
+dest_files=["res://.godot/imported/cash_machine.png-f50382d58acbceec125b001a93fb3896.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dal2r3hrto8mv"
-path="res://.godot/imported/yellow_plate.png-efc741be956e03ec4a4c5d50cd5a6990.ctex"
+uid="uid://dwn2kdj0fs4do"
+path="res://.godot/imported/earrings.png-571e90f196ce06a9bfd466e7a24b73e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://world-and-tiles/commercial/yellow_plate.png"
-dest_files=["res://.godot/imported/yellow_plate.png-efc741be956e03ec4a4c5d50cd5a6990.ctex"]
+source_file="res://world-and-tiles/commercial/for_counters/earrings.png"
+dest_files=["res://.godot/imported/earrings.png-571e90f196ce06a9bfd466e7a24b73e1.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d8rcfwuy5gll"
-path="res://.godot/imported/flower_platform.png-6b644dd4bcc8f21d1ca2cf0ba647f3a4.ctex"
+uid="uid://dipyi5vaeg6rj"
+path="res://.godot/imported/full_yellow_plate.png-2c20f8087ab5daf9b735ef027e940de4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://world-and-tiles/commercial/flower_platform.png"
-dest_files=["res://.godot/imported/flower_platform.png-6b644dd4bcc8f21d1ca2cf0ba647f3a4.ctex"]
+source_file="res://world-and-tiles/commercial/for_counters/full_yellow_plate.png"
+dest_files=["res://.godot/imported/full_yellow_plate.png-2c20f8087ab5daf9b735ef027e940de4.ctex"]
 
 [params]
 

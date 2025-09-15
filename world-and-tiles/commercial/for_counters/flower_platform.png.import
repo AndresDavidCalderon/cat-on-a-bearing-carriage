@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1miv6d20ug1i"
-path="res://.godot/imported/fruit_paint.png-925f506cfc0817a334808708a9173e38.ctex"
+uid="uid://d8rcfwuy5gll"
+path="res://.godot/imported/flower_platform.png-11400dd7507b756a32ae7c148419e1ff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://world-and-tiles/commercial/fruit_paint.png"
-dest_files=["res://.godot/imported/fruit_paint.png-925f506cfc0817a334808708a9173e38.ctex"]
+source_file="res://world-and-tiles/commercial/for_counters/flower_platform.png"
+dest_files=["res://.godot/imported/flower_platform.png-11400dd7507b756a32ae7c148419e1ff.ctex"]
 
 [params]
 

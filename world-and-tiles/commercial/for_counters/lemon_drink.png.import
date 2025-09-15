@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwn2kdj0fs4do"
-path="res://.godot/imported/earrings.png-9498b4236fb5e7c9a8f5c3e60433fb8f.ctex"
+uid="uid://bk5n6s1j82sv6"
+path="res://.godot/imported/lemon_drink.png-7044a5bcf48e83d79eb2c90ca4b29d27.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://world-and-tiles/commercial/earrings.png"
-dest_files=["res://.godot/imported/earrings.png-9498b4236fb5e7c9a8f5c3e60433fb8f.ctex"]
+source_file="res://world-and-tiles/commercial/for_counters/lemon_drink.png"
+dest_files=["res://.godot/imported/lemon_drink.png-7044a5bcf48e83d79eb2c90ca4b29d27.ctex"]
 
 [params]
 

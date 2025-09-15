@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwvmhf0ha4xg5"
-path="res://.godot/imported/cat_in_guatape.png-27b31d9b763efc9c7873482b26681c26.ctex"
+uid="uid://b1m2sojuw0ojw"
+path="res://.godot/imported/xp_paint.png-030a298e835d9e71a32814ab405bf824.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://world-and-tiles/commercial/cat_in_guatape.png"
-dest_files=["res://.godot/imported/cat_in_guatape.png-27b31d9b763efc9c7873482b26681c26.ctex"]
+source_file="res://world-and-tiles/commercial/for_counters/xp_paint.png"
+dest_files=["res://.godot/imported/xp_paint.png-030a298e835d9e71a32814ab405bf824.ctex"]
 
 [params]
 

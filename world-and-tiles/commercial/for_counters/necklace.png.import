@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://begdtvn2okh1b"
-path="res://.godot/imported/necklace.png-89af47f396d2291986aaf9f87c7bde71.ctex"
+path="res://.godot/imported/necklace.png-7f4cb5aac3b986f016ee8d00163d32d3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://world-and-tiles/commercial/necklace.png"
-dest_files=["res://.godot/imported/necklace.png-89af47f396d2291986aaf9f87c7bde71.ctex"]
+source_file="res://world-and-tiles/commercial/for_counters/necklace.png"
+dest_files=["res://.godot/imported/necklace.png-7f4cb5aac3b986f016ee8d00163d32d3.ctex"]
 
 [params]
 

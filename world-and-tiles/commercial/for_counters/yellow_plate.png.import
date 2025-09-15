@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://x1n5kvmyx3gd"
-path="res://.godot/imported/coltejer.png-a190d459eeea999a0ae5239201521bfe.ctex"
+uid="uid://dal2r3hrto8mv"
+path="res://.godot/imported/yellow_plate.png-9ef0ace66af9e187385dcc556ed02a6e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://world-and-tiles/commercial/coltejer.png"
-dest_files=["res://.godot/imported/coltejer.png-a190d459eeea999a0ae5239201521bfe.ctex"]
+source_file="res://world-and-tiles/commercial/for_counters/yellow_plate.png"
+dest_files=["res://.godot/imported/yellow_plate.png-9ef0ace66af9e187385dcc556ed02a6e.ctex"]
 
 [params]
 

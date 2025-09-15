@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bac8wrim1q00g"
-path="res://.godot/imported/cash_machine.png-3af1be6870d086a8e1f954d76d986cdf.ctex"
+uid="uid://bnm8ao0rdqnvs"
+path="res://.godot/imported/glass_ceiling.png-55915691e8dd0ce579f6ed763a972781.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://world-and-tiles/commercial/cash_machine.png"
-dest_files=["res://.godot/imported/cash_machine.png-3af1be6870d086a8e1f954d76d986cdf.ctex"]
+source_file="res://world-and-tiles/commercial/ceilings/glass_ceiling.png"
+dest_files=["res://.godot/imported/glass_ceiling.png-55915691e8dd0ce579f6ed763a972781.ctex"]
 
 [params]
 

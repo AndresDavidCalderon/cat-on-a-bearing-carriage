@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://s7hwnb3mwgcv"
-path="res://.godot/imported/combined_plate.png-68a056a50b64965daf303a19b631a2f4.ctex"
+uid="uid://08d55yefxqjf"
+path="res://.godot/imported/wood_bar_ceiling.png-61b618386db23df46016b85ced80842c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://world-and-tiles/commercial/combined_plate.png"
-dest_files=["res://.godot/imported/combined_plate.png-68a056a50b64965daf303a19b631a2f4.ctex"]
+source_file="res://world-and-tiles/commercial/ceilings/wood_bar_ceiling.png"
+dest_files=["res://.godot/imported/wood_bar_ceiling.png-61b618386db23df46016b85ced80842c.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dipyi5vaeg6rj"
-path="res://.godot/imported/full_yellow_plate.png-0f06def15d5514ef143d2ddd294815c6.ctex"
+uid="uid://bte6147aie8kd"
+path="res://.godot/imported/bridge.png-ee8569d94ed4d0fcb90c9e9cd9c9e16c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://world-and-tiles/commercial/full_yellow_plate.png"
-dest_files=["res://.godot/imported/full_yellow_plate.png-0f06def15d5514ef143d2ddd294815c6.ctex"]
+source_file="res://world-and-tiles/commercial/for_counters/bridge.png"
+dest_files=["res://.godot/imported/bridge.png-ee8569d94ed4d0fcb90c9e9cd9c9e16c.ctex"]
 
 [params]
 

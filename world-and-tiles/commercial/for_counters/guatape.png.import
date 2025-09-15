@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bte6147aie8kd"
-path="res://.godot/imported/bridge.png-9aa53b3b0b49d44fe62f46f43fa953ea.ctex"
+uid="uid://dpbb0yaf5m88e"
+path="res://.godot/imported/guatape.png-d1d388ae7063f16c62eee2fedd461a50.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://world-and-tiles/commercial/bridge.png"
-dest_files=["res://.godot/imported/bridge.png-9aa53b3b0b49d44fe62f46f43fa953ea.ctex"]
+source_file="res://world-and-tiles/commercial/for_counters/guatape.png"
+dest_files=["res://.godot/imported/guatape.png-d1d388ae7063f16c62eee2fedd461a50.ctex"]
 
 [params]
 
