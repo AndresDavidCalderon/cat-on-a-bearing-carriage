@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dt58pb4di5047"
-path="res://.godot/imported/welcome_mat.png-2869510fe5d0f6c6ed203634957419d3.ctex"
+uid="uid://dq4bnwbkbk6re"
+path="res://.godot/imported/park_topper.png-d6ea078595b4d3573238fec347efaf05.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://world-and-tiles/commercial/welcome_mat.png"
-dest_files=["res://.godot/imported/welcome_mat.png-2869510fe5d0f6c6ed203634957419d3.ctex"]
+source_file="res://world-and-tiles/commercial/floor/park_topper.png"
+dest_files=["res://.godot/imported/park_topper.png-d6ea078595b4d3573238fec347efaf05.ctex"]
 
 [params]
 
