@@ -4,6 +4,7 @@ extends Control
 
 func _ready() -> void:
 	match_provider.packet_delivered.connect(_on_world_packet_delivered)
+	match_provider.day_stats_set.connect(_on_world_packet_delivered)
 	match_provider.match_state_changed.connect(_on_world_match_state_changed)
 
 func _on_world_packet_delivered() -> void:

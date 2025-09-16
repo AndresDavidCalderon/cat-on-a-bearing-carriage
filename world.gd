@@ -16,8 +16,12 @@ enum matchState{
 
 signal packet_delivered
 signal loss(reason:lossReason)
+
+## Sent by set_match_state
 signal match_state_changed(new_state:matchState)
 signal day_stats_set
+
+## Emitted when winning. set_match_state doesnt emit this.
 signal win
 
 var current_match_state=matchState.PREVIOUS
@@ -25,6 +29,7 @@ var current_match_state=matchState.PREVIOUS
 var delivery_targets=[]
 
 var current_target:Node=null
+var next_target:Node=null
 var packet_score:int=0
 var base_milk_by_minute=3
 var milk_by_minute_multiplier:float=1.3
@@ -86,10 +91,21 @@ func target_reached():
 		win.emit()
 
 func set_random_target():
+	if next_target!=null:
+		set_current_target(next_target)
+		if packet_score<=packet_target-2:
+			next_target=generate_random_target()
+		else:
+			next_target=null
+	else:
+		set_current_target(generate_random_target())
+		next_target=generate_random_target()
+
+func generate_random_target():
 	var new_target=null
 	while new_target==current_target or new_target==null:
 		new_target=delivery_targets.pick_random()
-	set_current_target(new_target)
+	return new_target
 
 func set_current_target(target:Node2D):
 	if current_target!=null:
