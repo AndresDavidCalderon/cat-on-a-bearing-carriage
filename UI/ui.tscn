@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://84qmbyy12hoi"]
+[gd_scene load_steps=22 format=3 uid="uid://84qmbyy12hoi"]
 
 [ext_resource type="Theme" uid="uid://ctgv0x2t6xkc6" path="res://UI/free_ui_theme.tres" id="1_o2jkc"]
 [ext_resource type="Script" uid="uid://4317v2mqkbjk" path="res://UI/stats.gd" id="2_2qbci"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://cdk8argtawdwk" path="res://UI/which.gd" id="17_8gukh"]
 [ext_resource type="PackedScene" uid="uid://cpg5wpqgb71y5" path="res://UI/card.tscn" id="18_8gkfd"]
 [ext_resource type="Resource" uid="uid://ko7yxfdo88du" path="res://charachters/which_session.dtl" id="19_0tr35"]
+[ext_resource type="Resource" uid="uid://qa1fokbry0ad" path="res://charachters/blessing_recieve.timeline.dtl" id="20_7j5ik"]
 
 [sub_resource type="Gradient" id="Gradient_82xsv"]
 colors = PackedColorArray(0.93, 0.1488, 0.16182, 1, 1, 1, 0.31, 1)
@@ -495,43 +496,7 @@ grow_vertical = 2
 script = ExtResource("17_8gukh")
 card = ExtResource("18_8gkfd")
 timeline = ExtResource("19_0tr35")
-
-[node name="Panel" type="Panel" parent="Which"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 113.0
-offset_top = -146.0
-offset_right = -99.0
-offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="Label" type="Label" parent="Which/Panel"]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 16.0
-offset_right = 129.0
-offset_bottom = 39.0
-text = "Choose a card"
-
-[node name="Ok" type="Button" parent="Which/Panel"]
-visible = false
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -61.0
-offset_top = -39.0
-offset_right = -24.0
-offset_bottom = -11.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Ok"
+end_timeline = ExtResource("20_7j5ik")
 
 [node name="Cards" type="HBoxContainer" parent="Which"]
 layout_mode = 1
@@ -550,4 +515,3 @@ grow_vertical = 2
 [connection signal="pressed" from="Lost/Panel/Repeat" to="Lost" method="_on_repeat_pressed"]
 [connection signal="pressed" from="StartPanel/Start" to="StartPanel" method="_on_start_pressed"]
 [connection signal="timeout" from="Speed/CoinCheck" to="Speed" method="_on_coin_check_timeout"]
-[connection signal="pressed" from="Which/Panel/Ok" to="Which" method="_on_ok_pressed"]

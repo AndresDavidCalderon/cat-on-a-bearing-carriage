@@ -1,0 +1,14 @@
+if {BLESS} == "PENDING":
+	Something went wrong, sorry. Send Calderón Jimenez a slack message.
+elif {BLESS} == "EXTRA_TIME_30_SEC":
+	witch: The stars aligned and now you have 30 seconds more to do today's deliveries
+elif {BLESS} == "EXTRA_TIME_60_SEC":
+	witch: The univered conspired for you and now you have 60 seconds more for today's deliveries
+elif {BLESS} == "NEXT_POINT_PREDICTION":
+	witch: Your ears have been blessed and now you can predict where the next delivery will be.
+elif {BLESS} == "LESS_DELIVERY_2":
+	witch: The spirits have filled people's pots and now you have 2 less deliveries today.
+elif {BLESS} == "DISTANCE_DELIVERY":
+	witch: Your charisma allows you to do deliveres from 3 times farther away.
+elif {BLESS} == "STOP_DRIFT":
+	witch: It seems like you were born februwary 5th.. and then 5+2=7 and then.. anyway now your car doesn't slide when you drift.

@@ -9,3 +9,6 @@ enum BlessType{
 	DISTANCE_DELIVERY,
 	STOP_DRIFT
 }
+
+func start_blessing(what:BlessType):
+	pass
