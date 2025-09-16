@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://84qmbyy12hoi"]
+[gd_scene load_steps=18 format=3 uid="uid://84qmbyy12hoi"]
 
 [ext_resource type="Theme" uid="uid://ctgv0x2t6xkc6" path="res://UI/free_ui_theme.tres" id="1_o2jkc"]
 [ext_resource type="Script" uid="uid://4317v2mqkbjk" path="res://UI/stats.gd" id="2_2qbci"]
@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://b7btsnvvggr5n" path="res://UI/win.png" id="11_awqy2"]
 [ext_resource type="Script" uid="uid://vcy7cw0cm6a1" path="res://UI/minimap.gd" id="12_8wcgx"]
 [ext_resource type="Script" uid="uid://chi3x5cviupvi" path="res://UI/map_camera.gd" id="13_duqhi"]
+[ext_resource type="Script" uid="uid://bq4hf7obe3cs4" path="res://UI/speed.gd" id="15_ow1yt"]
+[ext_resource type="Script" uid="uid://38oupwjpwrur" path="res://UI/coins.gd" id="16_o2t6a"]
 
 [sub_resource type="Gradient" id="Gradient_82xsv"]
 colors = PackedColorArray(0.93, 0.1488, 0.16182, 1, 1, 1, 0.31, 1)
@@ -429,6 +431,55 @@ offset_right = -332.0
 offset_bottom = -145.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Speed" type="ProgressBar" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -163.0
+offset_top = -181.0
+offset_bottom = -154.0
+grow_horizontal = 0
+grow_vertical = 0
+max_value = 150.0
+show_percentage = false
+script = ExtResource("15_ow1yt")
+coin_color = Color(0.8075, 0.85, 0, 1)
+
+[node name="Label" type="Label" parent="Speed"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CoinCheck" type="Timer" parent="Speed"]
+
+[node name="Coins" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -232.0
+offset_right = -88.0
+offset_bottom = -192.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("16_o2t6a")
+
+[node name="Label" type="Label" parent="Coins"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Coins:"
 
 [connection signal="pressed" from="Lost/Panel/Repeat" to="Lost" method="_on_repeat_pressed"]
 [connection signal="pressed" from="StartPanel/Start" to="StartPanel" method="_on_start_pressed"]
