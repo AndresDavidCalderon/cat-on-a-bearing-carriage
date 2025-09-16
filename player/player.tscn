@@ -18,7 +18,7 @@
 size = Vector2(26, 52)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dg77c"]
-size = Vector2(9, 7.5)
+size = Vector2(9, 51.75)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jq2sk"]
 streams_count = 3
@@ -79,26 +79,14 @@ ignore_rotation = false
 position = Vector2(-16, 22)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
-position = Vector2(-2.5, 0)
-shape = SubResource("RectangleShape2D_dg77c")
-
-[node name="LeftFront" type="Area2D" parent="."]
-position = Vector2(-16, -22)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftFront"]
-position = Vector2(-2.5, 0)
+position = Vector2(-3, -22)
 shape = SubResource("RectangleShape2D_dg77c")
 
 [node name="Right" type="Area2D" parent="."]
 position = Vector2(18, 22)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
-shape = SubResource("RectangleShape2D_dg77c")
-
-[node name="RightFront" type="Area2D" parent="."]
-position = Vector2(18, -22)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RightFront"]
+position = Vector2(0, -22.125)
 shape = SubResource("RectangleShape2D_dg77c")
 
 [node name="Cat" type="Sprite2D" parent="."]

@@ -12,14 +12,14 @@ enum Rotation{
 var speed_multiplier=1
 var current_state:State=State.SLIDING
 @export var drift_point_offset:Vector2=Vector2(0,-12)
-@export var drift_movement:Vector2=Vector2(1,0)
-@export var speed_to_drift:float=0.4 # Multiplies how much the car slides, relative to its original speed before
+@export var drift_movement:Vector2=Vector2(1,-1)
+@export var speed_to_drift:float=40 # Multiplies how much the car slides, relative to its original speed before
 # drift.
 
 @export var impulse_loss=30
 var impulse_loss_critic=0.1
 var critic_fast_treshhold=1000
-var impulse_per_tap=40
+var impulse_per_tap=10
 var grace_time_after_tap=1
 
 # Critically low speed, should increase impulse per tap.
@@ -35,7 +35,7 @@ var impulse:float=600
 # Spends impulse.
 var speed:float=impulse
 @export var steering_speed:float=1.5
-@export var drifting_steering_speed=3
+@export var drifting_steering_speed=4
 var break_force=500
 var breaking_enabled=false
 
@@ -46,6 +46,7 @@ var was_straight=false
 var standard_speed_for_hit_soft_pitch=600
 var hit_sound_offset=-15
 var hard_to_soft=700
+var drift_rotation_knockback=200
 
 var texture_overriden=false
 var impulse_texture_override_length=1
@@ -132,23 +133,29 @@ func _process(delta: float) -> void:
 			set_state(State.SLIDING)
 		
 		if current_state==State.DRIFTING:
-			var circumstantial_drift_slide=drift_movement.rotated(rotation)*speed*speed_to_drift
+			var circumstantial_drift_slide=drift_movement*log(speed)*speed_to_drift
 			position=pinpoint-drift_point_offset.rotated(rotation)
 			var relevant_area:Area2D
 			if drift_direction==Rotation.Negative:
 				relevant_area=$Right
 			else:
 				relevant_area=$Left
+				circumstantial_drift_slide.x*=-1
+			circumstantial_drift_slide=circumstantial_drift_slide.rotated(rotation)
 			if not has_relevant_bodies(relevant_area):
-				pinpoint+=circumstantial_drift_slide*delta*(-1 if drift_direction==Rotation.Positive else 1)
+				pinpoint+=circumstantial_drift_slide*delta
 			
-			if Input.is_action_pressed("SteerLeft") and not has_relevant_bodies($Right):
+			if Input.is_action_pressed("SteerLeft"):
+				if has_relevant_bodies($Right):
+					pinpoint+=Vector2(-drift_rotation_knockback,0).rotated(rotation)*delta
 				rotation-=drifting_steering_speed*delta
 				drift_direction=Rotation.Negative
-			if Input.is_action_pressed("SteerRight") and not has_relevant_bodies($Left):
-				rotation+=drifting_steering_speed*delta
-				drift_direction=Rotation.Positive
-			
+			if Input.is_action_pressed("SteerRight"):
+					if has_relevant_bodies($Left):
+						pinpoint+=Vector2(drift_rotation_knockback,0).rotated(rotation)*delta
+					rotation+=drifting_steering_speed*delta
+					drift_direction=Rotation.Positive
+
 			if not texture_overriden:
 				$Cat.texture=cat_drift
 				$Cat.flip_h=drift_direction==Rotation.Positive
