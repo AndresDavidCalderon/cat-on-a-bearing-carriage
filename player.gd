@@ -56,7 +56,7 @@ var impulse_texture_override_length=1
 @export var cat_default:Texture
 
 func _process(delta: float) -> void:
-	if get_parent().running:
+	if get_parent().current_match_state==get_parent().matchState.PLAYING:
 		if not texture_overriden:
 			$Cat.texture=cat_default
 		velocity=Vector2(0,-speed).rotated(rotation)

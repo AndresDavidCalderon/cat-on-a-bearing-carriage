@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpg5wpqgb71y5"]
+
+[ext_resource type="Script" uid="uid://vr3gy4un1qeh" path="res://UI/card.gd" id="1_gjfx2"]
+[ext_resource type="Texture2D" uid="uid://btied655dbety" path="res://world-and-tiles/commercial/billiards.png" id="1_ww2gn"]
+
+[node name="Card" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -40.0
+offset_top = -123.0
+offset_right = 39.0
+offset_bottom = -1.0
+pivot_offset = Vector2(40, 122)
+script = ExtResource("1_gjfx2")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -120.0
+offset_right = 40.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_ww2gn")
+
+[node name="Select" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[connection signal="pressed" from="Select" to="." method="_on_select_pressed"]

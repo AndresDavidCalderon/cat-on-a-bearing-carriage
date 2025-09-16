@@ -7,10 +7,11 @@ func _ready() -> void:
 	hide()
 
 
-func _on_world_match_state_changed(new_state: bool) -> void:
-	if new_state==true:
+func _on_world_match_state_changed(new_state:int) -> void:
+	if new_state==match_provider.matchState.PLAYING:
 		show()
 
 func _process(delta: float) -> void:
-	if match_provider.running:
-		$Label.text=str(int(match_provider.remaining_time))
+	match match_provider.current_match_state:
+		match_provider.matchState.PLAYING:
+			$Label.text=str(int(match_provider.remaining_time))

@@ -1,0 +1,11 @@
+extends Node
+class_name Blessings
+
+enum BlessType{
+	EXTRA_TIME_30_SEC,
+	EXTRA_TIME_60_SEC,
+	NEXT_POINT_PREDICTION,
+	LESS_DELIVERY_2,
+	DISTANCE_DELIVERY,
+	STOP_DRIFT
+}

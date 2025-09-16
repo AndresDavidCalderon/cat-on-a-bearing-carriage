@@ -10,12 +10,13 @@ enum matchState{
 	PLAYING,
 	WON,
 	LOST,
-	PREVIOUS
+	PREVIOUS,
+	PAUSED
 }
 
 signal packet_delivered
 signal loss(reason:lossReason)
-signal match_state_changed(new_state:bool)
+signal match_state_changed(new_state:matchState)
 signal day_stats_set
 signal win
 
@@ -25,28 +26,26 @@ var delivery_targets=[]
 
 var current_target:Node=null
 var packet_score:int=0
-var base_milk_by_minute=4
+var base_milk_by_minute=3
 var milk_by_minute_multiplier:float=1.3
 var packet_target:int=10
 var target_time=0
 var remaining_time:float
-
-var running:bool=false
 
 func _ready() -> void:
 	randomize()
 	update_day_stats()
 
 func _process(delta: float) -> void:
-	if running:
+	if current_match_state==matchState.PLAYING:
 		remaining_time-=delta
 		if remaining_time<15:
 			$Riff.pitch_scale=1.3
 		if remaining_time<0:
 			remaining_time=0
-			set_running(false)
-			loss.emit(lossReason.TIME_OUT)
 			current_match_state=matchState.LOST
+			set_match_state(matchState.LOST)
+			loss.emit(lossReason.TIME_OUT)
 
 func register_target(target:Node):
 	delivery_targets.append(target)
@@ -54,17 +53,19 @@ func register_target(target:Node):
 
 func _on_start_pressed() -> void:
 	set_random_target()
-	set_running(true)
+	set_match_state(matchState.PLAYING)
 
-func set_running(new_state:bool):
-	running=new_state
+func set_match_state(new_state:matchState):
+	current_match_state=new_state
+	match new_state:
+		matchState.WON,matchState.LOST:
+			var tween=create_tween()
+			tween.tween_property($Riff,"volume_db",-40,0.5)
+			tween.finished.connect(finish_song_fade)
+		matchState.PLAYING:
+			$Riff.play() 
+		
 	match_state_changed.emit(new_state)
-	if new_state:
-		$Riff.playing=new_state
-	else:
-		var tween=create_tween()
-		tween.tween_property($Riff,"volume_db",-40,0.5)
-		tween.finished.connect(finish_song_fade)
 
 func finish_song_fade():
 	$Riff.playing=false
@@ -81,8 +82,7 @@ func target_reached():
 		set_random_target()
 		packet_delivered.emit()
 	else:
-		set_running(false)
-		current_match_state=matchState.WON
+		set_match_state(matchState.WON)
 		win.emit()
 
 func set_random_target():
