@@ -6,12 +6,20 @@ enum lossReason{
 	TIME_OUT
 }
 
+enum matchState{
+	PLAYING,
+	WON,
+	LOST,
+	PREVIOUS
+}
 
 signal packet_delivered
 signal loss(reason:lossReason)
 signal match_state_changed(new_state:bool)
 signal day_stats_set
 signal win
+
+var current_match_state=matchState.PREVIOUS
 
 var delivery_targets=[]
 
@@ -38,7 +46,7 @@ func _process(delta: float) -> void:
 			remaining_time=0
 			set_running(false)
 			loss.emit(lossReason.TIME_OUT)
-			$Loss.play()
+			current_match_state=matchState.LOST
 
 func register_target(target:Node):
 	delivery_targets.append(target)
@@ -55,11 +63,16 @@ func set_running(new_state:bool):
 		$Riff.playing=new_state
 	else:
 		var tween=create_tween()
-		tween.tween_property($Riff,"volume_db",-40,2)
+		tween.tween_property($Riff,"volume_db",-40,0.5)
 		tween.finished.connect(finish_song_fade)
 
 func finish_song_fade():
 	$Riff.playing=false
+	match current_match_state:
+		matchState.WON:
+			$Win.play()
+		matchState.LOST:
+			$Loss.play()
 
 func target_reached():
 	packet_score+=1
@@ -69,7 +82,7 @@ func target_reached():
 		packet_delivered.emit()
 	else:
 		set_running(false)
-		$Win.play()
+		current_match_state=matchState.WON
 		win.emit()
 
 func set_random_target():

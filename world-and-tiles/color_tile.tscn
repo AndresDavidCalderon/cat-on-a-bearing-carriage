@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2nbpxkdib50j"]
+
+[ext_resource type="Texture2D" uid="uid://csiag425yootq" path="res://world-and-tiles/color_floor_base.png" id="1_7iw1f"]
+[ext_resource type="Texture2D" uid="uid://hee2mbekv704" path="res://world-and-tiles/color_tile_color.png" id="1_jmysq"]
+[ext_resource type="Script" uid="uid://bn4p5j2m01t68" path="res://world-and-tiles/color_tile.gd" id="1_udii4"]
+[ext_resource type="Texture2D" uid="uid://bdekfksbvok81" path="res://world-and-tiles/2d_lights_and_shadows_neutral_point_light.webp" id="3_m400h"]
+
+[node name="ColorTile" type="Node2D"]
+script = ExtResource("1_udii4")
+colors = Array[Color]([Color(0.1598, 0.136, 0.85, 1), Color(0.85, 0.1717, 0.136, 1), Color(1, 1, 1, 1), Color(0.2352, 0.84, 0.2856, 1), Color(0.89, 0.1068, 0.746413, 1), Color(1, 0.903, 0.03, 1)])
+
+[node name="Color" type="Sprite2D" parent="."]
+modulate = Color(1, 0.23, 0.23, 1)
+texture = ExtResource("1_jmysq")
+
+[node name="Base" type="Sprite2D" parent="."]
+texture = ExtResource("1_7iw1f")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-3.8147e-06, -3.8147e-06)
+scale = Vector2(0.585938, 0.585938)
+energy = 0.1
+texture = ExtResource("3_m400h")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
