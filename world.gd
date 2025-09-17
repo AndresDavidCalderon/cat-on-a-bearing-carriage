@@ -47,6 +47,7 @@ func _process(delta: float) -> void:
 		if remaining_time<15:
 			$Riff.pitch_scale=1.3
 		if remaining_time<0:
+			$Riff.pitch_scale=1.0
 			remaining_time=0
 			current_match_state=matchState.LOST
 			set_match_state(matchState.LOST)

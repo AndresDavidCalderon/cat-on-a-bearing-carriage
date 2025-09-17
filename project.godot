@@ -35,7 +35,8 @@ directories/dtl_directory={
 "which_session": "res://charachters/which_session.dtl"
 }
 variables={
-"BLESS": "PENDING"
+"BLESS": "PENDING",
+"BLESS_COST": 50
 }
 glossary/default_case_sensitive=true
 layout/style_list=[]

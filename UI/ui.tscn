@@ -464,6 +464,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CoinCheck" type="Timer" parent="Speed"]
+wait_time = 0.5
 
 [node name="Coins" type="Control" parent="."]
 layout_mode = 3

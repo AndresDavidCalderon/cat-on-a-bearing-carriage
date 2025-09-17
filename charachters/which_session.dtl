@@ -1,7 +1,12 @@
-witch: Hello! Would you like to try your luck for 50 coins?
-- No
+if {GlobalScore.coins} >= {BLESS_COST}:
+	witch: Hello! Would you like to try your luck for 50 coins?
+	- No
+		[signal arg="WITCH_NEGATIVE_END"]
+	- Yes
+		[signal arg="BUY_BLESSING"]
+		witch: Pick a card
+		set {BLESS} = "PENDING"
+		[signal arg="DISPLAY_CARDS"]
+else:
+	Sorry honey, you need at least {BLESS_COST} coins. You can get coins by going fast. Tourists love that.
 	[signal arg="WITCH_NEGATIVE_END"]
-- Yes
-	witch: Pick a card
-	set {BLESS} = "PENDING"
-	[signal arg="DISPLAY_CARDS"]

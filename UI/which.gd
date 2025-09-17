@@ -36,7 +36,8 @@ func on_timeline_signal(argument:String):
 			bless_manager.start_blessing(selected)
 			Dialogic.signal_event.disconnect(on_timeline_signal)
 			hide()
-			
+		"BUY_BLESSING":
+			GlobalScore.set_coins(GlobalScore.coins-Blessings.cost)
 
 func on_card_picked(blessing:int):
 	selected=blessing

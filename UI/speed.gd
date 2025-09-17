@@ -8,12 +8,13 @@ var value_100=800
 var time_after_100=0
 var duplicate_after=2
 var triplicate_afer=8
+var coins_after=80
 var was_under=true
 
 func _process(delta: float) -> void:
 	value=((player.speed+offset)/value_100)*100
 	$Label.text=str(int(value))
-	if value>100:
+	if value>coins_after:
 		self_modulate=coin_color
 		time_after_100+=delta
 		if was_under:
@@ -27,7 +28,7 @@ func _process(delta: float) -> void:
 
 
 func _on_coin_check_timeout() -> void:
-	if value>100:
+	if value>coins_after:
 		var circumstancial_price=1
 		if time_after_100>duplicate_after:
 			circumstancial_price*=2

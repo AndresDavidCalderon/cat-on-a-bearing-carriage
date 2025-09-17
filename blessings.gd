@@ -11,7 +11,7 @@ enum BlessType{
 }
 
 @export var delivery_target_shape:Shape2D
-
+static var cost=50
 var prediction=false
 var stop_drift=false
 
