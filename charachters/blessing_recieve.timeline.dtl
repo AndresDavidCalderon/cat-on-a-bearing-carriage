@@ -12,3 +12,4 @@ elif {BLESS} == "DISTANCE_DELIVERY":
 	witch: Your charisma allows you to do deliveres from 3 times farther away.
 elif {BLESS} == "STOP_DRIFT":
 	witch: It seems like you were born februwary 5th.. and then 5+2=7 and then.. anyway now your car doesn't slide when you drift.
+[signal arg="WITCH_RECIEVE_END"]

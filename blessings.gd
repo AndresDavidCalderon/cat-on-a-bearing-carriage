@@ -9,7 +9,13 @@ enum BlessType{
 	DISTANCE_DELIVERY,
 	STOP_DRIFT
 }
+
+@export var delivery_target_shape:Shape2D
+
 var prediction=false
+var stop_drift=false
+
+var avaliable_blessings=BlessType.values()
 
 func start_blessing(what:BlessType):
 	match what:
@@ -27,6 +33,12 @@ func start_blessing(what:BlessType):
 				get_parent().set_match_state(get_parent().matchState.WON)
 				get_parent().win.emit()
 			get_parent().day_stats_set.emit()
+		BlessType.DISTANCE_DELIVERY:
+			delivery_target_shape.size.x*=3
+			delivery_target_shape.size.y*=3
+		BlessType.STOP_DRIFT:
+			stop_drift=true
+	avaliable_blessings.erase(what)
 
 func update_prediction():
 	if get_parent().next_target==null:

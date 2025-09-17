@@ -1,9 +1,10 @@
-[gd_scene load_steps=53 format=4 uid="uid://dnnka5th1gldj"]
+[gd_scene load_steps=54 format=4 uid="uid://dnnka5th1gldj"]
 
 [ext_resource type="Script" uid="uid://o74np0f72gru" path="res://world.gd" id="1_h2yge"]
 [ext_resource type="Script" uid="uid://21cvdt1d6hdp" path="res://blessings.gd" id="2_4k2k6"]
 [ext_resource type="TileSet" uid="uid://bfmb3jarndwih" path="res://world-and-tiles/floor.tres" id="2_jq2sk"]
 [ext_resource type="Texture2D" uid="uid://cf3pv4rpqgja8" path="res://boost.png" id="3_0rl1p"]
+[ext_resource type="Shape2D" uid="uid://uv08b0a3kg3o" path="res://world-and-tiles/delivery_target_shape.tres" id="3_facbu"]
 [ext_resource type="PackedScene" uid="uid://dfca212ra225f" path="res://delivery_target.tscn" id="4_1bvp3"]
 [ext_resource type="TileSet" uid="uid://bjkjdd8uvghcr" path="res://world-and-tiles/small_floors.tres" id="4_facbu"]
 [ext_resource type="Script" uid="uid://bfkxeq0ctt6tc" path="res://map_legend.gd" id="4_ok6jj"]
@@ -217,6 +218,7 @@ script = ExtResource("1_h2yge")
 
 [node name="Blessings" type="Node" parent="."]
 script = ExtResource("2_4k2k6")
+delivery_target_shape = ExtResource("3_facbu")
 
 [node name="NextTarget" type="Node2D" parent="Blessings"]
 visible = false

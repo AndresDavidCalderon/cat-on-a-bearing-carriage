@@ -3,12 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://dl6f057tkjd1a" path="res://icon.svg" id="1_232cv"]
 [ext_resource type="Script" uid="uid://bt2qb1snm43xt" path="res://delivery_target.gd" id="1_y2y3p"]
 [ext_resource type="Texture2D" uid="uid://rt247so2mlk6" path="res://UI/target_map_leyend.png" id="3_o8r2v"]
+[ext_resource type="Shape2D" uid="uid://uv08b0a3kg3o" path="res://world-and-tiles/delivery_target_shape.tres" id="3_ufrie"]
 [ext_resource type="Script" uid="uid://bfkxeq0ctt6tc" path="res://map_legend.gd" id="4_b0uhs"]
 [ext_resource type="Texture2D" uid="uid://c6mckc7oq6f7u" path="res://world-and-tiles/people/cap_guy.png" id="5_y55q6"]
 [ext_resource type="Texture2D" uid="uid://baj8bn7f1vko6" path="res://pot.png" id="6_4sdrl"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y2y3p"]
-size = Vector2(81, 79.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y55q6"]
 size = Vector2(34, 25)
@@ -29,7 +27,7 @@ texture = ExtResource("1_232cv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
 position = Vector2(1, -1)
-shape = SubResource("RectangleShape2D_y2y3p")
+shape = ExtResource("3_ufrie")
 
 [node name="MapLegend" type="Sprite2D" parent="."]
 visibility_layer = 2

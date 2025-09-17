@@ -9,6 +9,9 @@ enum Rotation{
 	Negative,
 	Positive
 }
+
+@onready var blessing_provider = get_node("/root/World/Blessings")
+
 var speed_multiplier=1
 var current_state:State=State.SLIDING
 @export var drift_point_offset:Vector2=Vector2(0,-12)
@@ -142,7 +145,7 @@ func _process(delta: float) -> void:
 				relevant_area=$Left
 				circumstantial_drift_slide.x*=-1
 			circumstantial_drift_slide=circumstantial_drift_slide.rotated(rotation)
-			if not has_relevant_bodies(relevant_area):
+			if (not has_relevant_bodies(relevant_area)) and not blessing_provider.stop_drift:
 				pinpoint+=circumstantial_drift_slide*delta
 			
 			if Input.is_action_pressed("SteerLeft"):
