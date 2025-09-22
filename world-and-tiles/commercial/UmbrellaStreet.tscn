@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://buny56nbaupuv"]
+[gd_scene load_steps=53 format=4 uid="uid://buny56nbaupuv"]
 
 [ext_resource type="TileSet" uid="uid://dmw8vb3c385ga" path="res://world-and-tiles/default.tres" id="1_8o0vf"]
 [ext_resource type="TileSet" uid="uid://cgcpoo028ojhv" path="res://world-and-tiles/san_roque_structures.tres" id="2_2rfem"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dt58pb4di5047" path="res://world-and-tiles/commercial/floor/welcome_mat.png" id="3_lbvde"]
 [ext_resource type="Texture2D" uid="uid://7f3o8454rtff" path="res://world-and-tiles/interior_floors.png" id="3_pxedk"]
 [ext_resource type="Texture2D" uid="uid://dhq33jb87biyc" path="res://world-and-tiles/commercial/for_counters/rings.png" id="4_37gjm"]
+[ext_resource type="Texture2D" uid="uid://cqc0el47unvxy" path="res://world-and-tiles/commercial/floor/magic_ring.png" id="4_a3fgg"]
 [ext_resource type="PackedScene" uid="uid://1qj1odj523g" path="res://world-and-tiles/commercial/hanger.tscn" id="5_7in6g"]
 [ext_resource type="Texture2D" uid="uid://dwn2kdj0fs4do" path="res://world-and-tiles/commercial/for_counters/earrings.png" id="5_pxedk"]
 [ext_resource type="Texture2D" uid="uid://bac8wrim1q00g" path="res://world-and-tiles/commercial/for_counters/cash_machine.png" id="6_37gjm"]
@@ -22,10 +23,16 @@
 [ext_resource type="Texture2D" uid="uid://b1m2sojuw0ojw" path="res://world-and-tiles/commercial/for_counters/xp_paint.png" id="18_pxu0r"]
 [ext_resource type="Texture2D" uid="uid://b7ac2058ekmt6" path="res://world-and-tiles/commercial/for_counters/cup.png" id="19_jghe6"]
 [ext_resource type="Texture2D" uid="uid://s7hwnb3mwgcv" path="res://world-and-tiles/commercial/for_counters/combined_plate.png" id="20_xt02a"]
+[ext_resource type="Script" uid="uid://berajvsy0qe7g" path="res://world-and-tiles/commercial/which_things.gd" id="21_eeyqx"]
 [ext_resource type="Texture2D" uid="uid://d8rcfwuy5gll" path="res://world-and-tiles/commercial/for_counters/flower_platform.png" id="21_o208k"]
 [ext_resource type="Texture2D" uid="uid://dipyi5vaeg6rj" path="res://world-and-tiles/commercial/for_counters/full_yellow_plate.png" id="22_pxqjv"]
+[ext_resource type="Texture2D" uid="uid://sivjhp0x3vbc" path="res://world-and-tiles/commercial/for_counters/wood_wand.png" id="22_vcfid"]
 [ext_resource type="Texture2D" uid="uid://dal2r3hrto8mv" path="res://world-and-tiles/commercial/for_counters/yellow_plate.png" id="23_jd43t"]
 [ext_resource type="Script" uid="uid://b0ago8eshs451" path="res://world-and-tiles/dissapearing_roof.gd" id="23_kjtkv"]
+[ext_resource type="Texture2D" uid="uid://bv8lcwtri76gx" path="res://world-and-tiles/commercial/for_counters/feather.png" id="23_x3n44"]
+[ext_resource type="Texture2D" uid="uid://b1g23ceiosk1n" path="res://world-and-tiles/commercial/for_counters/odor_thing.png" id="24_mpusi"]
+[ext_resource type="Texture2D" uid="uid://se61ox56ybfp" path="res://world-and-tiles/commercial/for_counters/dream_trap.png" id="24_yvklf"]
+[ext_resource type="Texture2D" uid="uid://calp2fyjkf18p" path="res://world-and-tiles/commercial/for_counters/pen.png" id="25_eeyqx"]
 [ext_resource type="Texture2D" uid="uid://cm1mulihlj5v7" path="res://world-and-tiles/commercial/carambola.png" id="25_h3p6n"]
 [ext_resource type="Texture2D" uid="uid://btied655dbety" path="res://world-and-tiles/commercial/billiards.png" id="26_kkrbm"]
 [ext_resource type="Texture2D" uid="uid://bkahuc5w8q6af" path="res://world-and-tiles/commercial/for_counters/wine.png" id="26_w133a"]
@@ -35,7 +42,7 @@
 [ext_resource type="Texture2D" uid="uid://cpkqb6t3o2dd6" path="res://world-and-tiles/long_plastic_chair_with_back.png" id="30_fakhp"]
 [ext_resource type="Script" uid="uid://cla1bctf4tlcb" path="res://world-and-tiles/commercial/interactable.gd" id="34_2ha47"]
 [ext_resource type="Script" uid="uid://dtprbxl0llt8s" path="res://world-and-tiles/commercial/which.gd" id="34_t6s7j"]
-[ext_resource type="Texture2D" uid="uid://cf3pv4rpqgja8" path="res://boost.png" id="34_v1k3e"]
+[ext_resource type="Texture2D" uid="uid://riphyeunngd2" path="res://charachters/which_top.png" id="36_t6s7j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x8iis"]
 texture = ExtResource("3_pxedk")
@@ -45,6 +52,38 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_37gjm"]
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_x8iis")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rteil"]
+atlas = ExtResource("24_mpusi")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvklf"]
+atlas = ExtResource("24_mpusi")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eeyqx"]
+atlas = ExtResource("24_mpusi")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4fen6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rteil")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yvklf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eeyqx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kjtkv"]
+size = Vector2(251, 218)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vd024"]
 texture = ExtResource("8_x8iis")
@@ -74,14 +113,11 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_vd024")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kjtkv"]
-size = Vector2(251, 218)
-
 [node name="UmbrellaStreet" type="Node2D"]
 
 [node name="RoofAsFloor" type="TileMapLayer" parent="."]
 z_index = -1
-tile_map_data = PackedByteArray("AAAAAAcAAAAFAAkAAAAAAAYAAAAFAAgAAAAAAAUAAAAEAAgAAAABAAUAAAAFAAgAAAABAAQAAAAFAAgAAAABAAMAAAAGAAcAAAAAAAMAAAAEAAgAAAAAAAQAAAAEAAgAAAABAAYAAAAFAAgAAAACAAYAAAAFAAgAAAACAAcAAAAFAAkAAAADAAcAAAAGAAkAAAADAAYAAAAGAAgAAAACAAUAAAAFAAgAAAABAAcAAAAFAAkAAAADAAUAAAAGAAcAAAACAAQAAAAGAAcAAAAAAAIAAAAGAAcAAAADAAEAAAAHAAkAAAAEAAEAAAAIAAcAAAAFAAEAAAAIAAcAAAAGAAEAAAAIAAcAAAAHAAEAAAAIAAcAAAAIAAEAAAAIAAcAAAAJAAEAAAAIAAcAAAAKAAEAAAAIAAcAAAALAAEAAAAJAAcAAAALAAIAAAAJAAgAAAALAAMAAAAJAAgAAAALAAQAAAAJAAgAAAAKAAQAAAAIAAgAAAAJAAMAAAAIAAgAAAAJAAIAAAAIAAgAAAAKAAIAAAAIAAgAAAAKAAMAAAAIAAgAAAAJAAQAAAAIAAgAAAAJAAUAAAAIAAgAAAAKAAUAAAAIAAgAAAAJAAYAAAAIAAkAAAAIAAUAAAAHAAkAAAAIAAQAAAAIAAgAAAAHAAQAAAAHAAkAAAAHAAMAAAAIAAgAAAAIAAMAAAAIAAgAAAAHAAIAAAAIAAgAAAAIAAIAAAAIAAgAAAAGAAIAAAAIAAgAAAAFAAIAAAAIAAkAAAAEAAIAAAAHAAkAAAAGAAMAAAAHAAkAAAAKAAYAAAAJAAkAAAALAAUAAAAJAAkAAAAoABUAAAAJAAkAAAAoABQAAAAJAAgAAAAoABMAAAAJAAgAAAAoABIAAAAJAAgAAAAoABEAAAAJAAgAAAAoABAAAAAJAAgAAAAoAA8AAAAJAAgAAAAnAA8AAAAIAAgAAAAmAA8AAAAIAAgAAAAlAA8AAAAIAAgAAAAjAA8AAAAIAAgAAAAiAA8AAAAHAAkAAAAkAA8AAAAIAAgAAAAjABAAAAAHAAkAAAAkABAAAAAIAAgAAAAlABAAAAAIAAgAAAAmABAAAAAIAAgAAAAnABAAAAAIAAgAAAAnABEAAAAIAAgAAAAmABEAAAAIAAgAAAAlABEAAAAIAAgAAAAkABEAAAAHAAkAAAAmABIAAAAIAAgAAAAlABIAAAAHAAkAAAAnABIAAAAIAAgAAAAnABMAAAAIAAgAAAAmABMAAAAHAAkAAAAnABQAAAAHAAkAAAAiAA4AAAAHAAcAAAAjAA4AAAAIAAcAAAAkAA4AAAAIAAcAAAAlAA4AAAAIAAcAAAAmAA4AAAAIAAcAAAAnAA4AAAAIAAcAAAAoAA4AAAAJAAcAAAA=")
+tile_map_data = PackedByteArray("AAAAAAcAAAAFAAkAAAAAAAYAAAAFAAgAAAAAAAUAAAAEAAgAAAABAAUAAAAFAAgAAAABAAQAAAAFAAgAAAABAAMAAAAGAAcAAAAAAAMAAAAEAAgAAAAAAAQAAAAEAAgAAAABAAYAAAAFAAgAAAACAAYAAAAFAAgAAAACAAcAAAAFAAkAAAADAAcAAAAGAAkAAAADAAYAAAAGAAgAAAACAAUAAAAFAAgAAAABAAcAAAAFAAkAAAADAAUAAAAGAAcAAAACAAQAAAAGAAcAAAAAAAIAAAAGAAcAAAADAAEAAAAHAAkAAAAEAAEAAAAIAAcAAAAFAAEAAAAIAAcAAAAGAAEAAAAIAAcAAAAHAAEAAAAIAAcAAAAIAAEAAAAIAAcAAAAJAAEAAAAIAAcAAAAKAAEAAAAIAAcAAAALAAEAAAAJAAcAAAALAAIAAAAJAAgAAAALAAMAAAAJAAgAAAALAAQAAAAJAAgAAAAKAAQAAAAIAAgAAAAJAAMAAAAIAAgAAAAJAAIAAAAIAAgAAAAKAAIAAAAIAAgAAAAKAAMAAAAIAAgAAAAJAAQAAAAIAAgAAAAJAAUAAAAIAAgAAAAKAAUAAAAIAAgAAAAJAAYAAAAIAAkAAAAIAAUAAAAHAAkAAAAIAAQAAAAIAAgAAAAHAAQAAAAHAAkAAAAHAAMAAAAIAAgAAAAIAAMAAAAIAAgAAAAHAAIAAAAIAAgAAAAIAAIAAAAIAAgAAAAGAAIAAAAIAAgAAAAFAAIAAAAIAAkAAAAEAAIAAAAHAAkAAAAGAAMAAAAHAAkAAAAKAAYAAAAJAAkAAAALAAUAAAAJAAkAAAAoABUAAAAJAAkAAAAoABQAAAAJAAgAAAAoABMAAAAJAAgAAAAoABIAAAAJAAgAAAAoABEAAAAJAAgAAAAoABAAAAAJAAgAAAAoAA8AAAAJAAgAAAAnAA8AAAAIAAgAAAAmAA8AAAAIAAgAAAAlAA8AAAAIAAgAAAAjAA8AAAAIAAgAAAAiAA8AAAAHAAkAAAAkAA8AAAAIAAgAAAAjABAAAAAHAAkAAAAkABAAAAAIAAgAAAAlABAAAAAIAAgAAAAmABAAAAAIAAgAAAAnABAAAAAIAAgAAAAnABEAAAAIAAgAAAAmABEAAAAIAAgAAAAlABEAAAAIAAgAAAAkABEAAAAHAAkAAAAmABIAAAAIAAgAAAAlABIAAAAHAAkAAAAnABIAAAAIAAgAAAAnABMAAAAIAAgAAAAmABMAAAAHAAkAAAAnABQAAAAHAAkAAAAiAA4AAAAHAAcAAAAjAA4AAAAIAAcAAAAkAA4AAAAIAAcAAAAlAA4AAAAIAAcAAAAmAA4AAAAIAAcAAAAnAA4AAAAIAAcAAAAoAA4AAAAJAAcAAAAdAAoAAAAFAAkAAAAdAAkAAAAEAAcAAAAeAAkAAAAFAAgAAAAfAAkAAAAFAAcAAAAfAAoAAAAFAAgAAAAgAAoAAAAFAAgAAAAfAAsAAAAFAAgAAAAeAAsAAAAEAAkAAAAeAAoAAAAFAAgAAAAgAAsAAAAFAAgAAAAgAAwAAAAFAAgAAAAfAAwAAAAEAAkAAAAhAAwAAAAGAAgAAAAhAA0AAAAGAAkAAAAgAA0AAAAEAAkAAAAhAAoAAAAGAAgAAAAhAAkAAAAGAAcAAAAhAAsAAAAGAAgAAAAgAAkAAAAFAAcAAAA=")
 tile_set = ExtResource("2_4vfi2")
 
 [node name="Floor" type="TileMapLayer" parent="."]
@@ -120,7 +156,7 @@ scale = Vector2(0.6875, 0.647059)
 texture = ExtResource("7_6j4l2")
 
 [node name="Counters" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAHAA4AAQAFAAEAAAAGAA4AAQAFAAEAAAAFAA4AAQAFAAEAAAAEAA4AAQAEAAAAAAAEAA8AAQAGAAMAAAAWAAMAAQADAAAAAAAVAAMAAQACAAIAAAAUAAMAAQACAAIAAAATAAMAAQACAAIAAAASAAMAAQACAAIAAAARAAMAAQACAAIAAAAQAAMAAQACAAIAAAAPAAMAAQACAAIAAAAOAAMAAQACAAIAAAANAAMAAQACAAIAAAAMAAMAAQACAAIAAAALAAMAAQACAAIAAAAKAAMAAQACAAIAAAAJAAMAAQAAAAMAAAAJAAIAAQAIAAMAAAAWAAQAAQABAAIAAAAWAAUAAQABAAIAAAAWAAYAAQABAAIAAAAWAAcAAQABAAIAAAAWAAgAAQABAAIAAAAWAAkAAQABAAIAAABHAB8AAQAFAAEAAABIAB8AAQAFAAEAAABJAB8AAQAFAAEAAABKAB8AAQAFAAEAAABLAB8AAQAFAAEAAABMAB8AAQAFAAEAAABNAB8AAQAFAAEAAABGAB8AAQAFAAAAAABPAB8AAQAGAAEAAABPACAAAQAEAAIAAABPACEAAQAEAAIAAABPACIAAQAEAAIAAABPACMAAQAEAAIAAABPACQAAQAEAAIAAABPACUAAQAEAAIAAABPACYAAQAEAAMAAABIACIAAQAFAAIAAABLACIAAQAGAAIAAABJACIAAQAFAAEAAABKACIAAQAFAAEAAABGAB4AAQAGAAMAAABOAB8AAQAFAAEAAAA=")
+tile_map_data = PackedByteArray("AAAHAA4AAQAFAAEAAAAGAA4AAQAFAAEAAAAFAA4AAQAFAAEAAAAEAA4AAQAEAAAAAAAEAA8AAQAGAAMAAAAWAAMAAQADAAAAAAAVAAMAAQACAAIAAAAUAAMAAQACAAIAAAATAAMAAQACAAIAAAASAAMAAQACAAIAAAARAAMAAQACAAIAAAAQAAMAAQACAAIAAAAPAAMAAQACAAIAAAAOAAMAAQACAAIAAAANAAMAAQACAAIAAAAMAAMAAQACAAIAAAALAAMAAQACAAIAAAAKAAMAAQACAAIAAAAJAAMAAQAAAAMAAAAJAAIAAQAIAAMAAAAWAAQAAQABAAIAAAAWAAUAAQABAAIAAAAWAAYAAQABAAIAAAAWAAcAAQABAAIAAAAWAAgAAQABAAIAAAAWAAkAAQABAAIAAABHAB8AAQAFAAEAAABIAB8AAQAFAAEAAABJAB8AAQAFAAEAAABKAB8AAQAFAAEAAABLAB8AAQAFAAEAAABMAB8AAQAFAAEAAABNAB8AAQAFAAEAAABGAB8AAQAFAAAAAABPAB8AAQAGAAEAAABPACAAAQAEAAIAAABPACEAAQAEAAIAAABPACIAAQAEAAIAAABPACMAAQAEAAIAAABPACQAAQAEAAIAAABPACUAAQAEAAIAAABPACYAAQAEAAMAAABIACIAAQAFAAIAAABLACIAAQAGAAIAAABJACIAAQAFAAEAAABKACIAAQAFAAEAAABGAB4AAQAGAAMAAABOAB8AAQAFAAEAAAA8ABMAAQAFAAEAAAA9ABMAAQAFAAEAAAA+ABMAAQAFAAEAAAA/ABMAAQAFAAEAAABAABMAAQAFAAEAAABBABMAAQAFAAEAAABDABMAAQAFAAEAAABCABMAAQAFAAEAAAA7ABMAAQAFAAEAAAA6ABMAAQAFAAEAAAA=")
 tile_set = ExtResource("2_2rfem")
 
 [node name="Art" type="Node2D" parent="."]
@@ -189,6 +225,62 @@ position = Vector2(2546, 1173)
 rotation = 1.5708
 scale = Vector2(0.598831, 0.598831)
 texture = ExtResource("23_jd43t")
+
+[node name="WhichThings" type="Node2D" parent="."]
+position = Vector2(2012, 627)
+script = ExtResource("21_eeyqx")
+
+[node name="Sprite2D" type="Sprite2D" parent="WhichThings"]
+position = Vector2(-34, -3)
+texture = ExtResource("22_vcfid")
+
+[node name="Sprite2D2" type="Sprite2D" parent="WhichThings"]
+position = Vector2(-66, -4)
+scale = Vector2(0.46875, 0.46875)
+texture = ExtResource("23_x3n44")
+
+[node name="Sprite2D4" type="Sprite2D" parent="WhichThings"]
+position = Vector2(68, -3.99997)
+scale = Vector2(0.328124, 0.328124)
+texture = ExtResource("24_yvklf")
+
+[node name="Sprite2D5" type="Sprite2D" parent="WhichThings"]
+position = Vector2(96.9999, -3)
+scale = Vector2(0.476559, 0.476559)
+texture = ExtResource("25_eeyqx")
+
+[node name="Sprite2D3" type="AnimatedSprite2D" parent="WhichThings"]
+position = Vector2(33, -4)
+scale = Vector2(0.46875, 0.46875)
+sprite_frames = SubResource("SpriteFrames_4fen6")
+frame_progress = 0.0787872
+
+[node name="MagicRing" type="Sprite2D" parent="WhichThings"]
+z_index = -1
+position = Vector2(-5, 65)
+texture = ExtResource("4_a3fgg")
+
+[node name="Which" type="Node2D" parent="WhichThings"]
+position = Vector2(0, -19)
+script = ExtResource("34_t6s7j")
+
+[node name="Interactable" type="Area2D" parent="WhichThings/Which"]
+script = ExtResource("34_2ha47")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WhichThings/Which/Interactable"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_kjtkv")
+
+[node name="Label" type="Label" parent="WhichThings/Which/Interactable"]
+offset_left = 22.0
+offset_top = -45.0
+offset_right = 62.0
+offset_bottom = -22.0
+text = "Interact [E]"
+
+[node name="Sprite2D" type="Sprite2D" parent="WhichThings/Which"]
+rotation = 3.14159
+texture = ExtResource("36_t6s7j")
 
 [node name="PayMachine2" type="Sprite2D" parent="."]
 position = Vector2(355, 109)
@@ -485,25 +577,4 @@ position = Vector2(32, 224)
 [node name="Hanger5" parent="." instance=ExtResource("5_7in6g")]
 position = Vector2(32, 288)
 
-[node name="Which" type="Node2D" parent="."]
-position = Vector2(2096, 640)
-script = ExtResource("34_t6s7j")
-
-[node name="Interactable" type="Area2D" parent="Which"]
-script = ExtResource("34_2ha47")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Which/Interactable"]
-position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_kjtkv")
-
-[node name="Label" type="Label" parent="Which/Interactable"]
-offset_left = 22.0
-offset_top = -45.0
-offset_right = 62.0
-offset_bottom = -22.0
-text = "Interact [E]"
-
-[node name="Sprite2D" type="Sprite2D" parent="Which"]
-texture = ExtResource("34_v1k3e")
-
-[connection signal="interacted" from="Which/Interactable" to="Which" method="_on_interactable_interacted"]
+[connection signal="interacted" from="WhichThings/Which/Interactable" to="WhichThings/Which" method="_on_interactable_interacted"]

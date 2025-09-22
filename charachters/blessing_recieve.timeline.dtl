@@ -1,3 +1,5 @@
+join cat left
+join witch right
 if {BLESS} == "PENDING":
 	Something went wrong, sorry. Send Calderón Jimenez a slack message.
 elif {BLESS} == "EXTRA_TIME_30_SEC":

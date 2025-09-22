@@ -32,6 +32,7 @@ directories/dch_directory={
 }
 directories/dtl_directory={
 "blessing_recieve": "res://charachters/blessing_recieve.timeline.dtl",
+"which_intro_timeline": "res://charachters/which_intro_timeline.dtl",
 "which_session": "res://charachters/which_session.dtl"
 }
 variables={
@@ -39,8 +40,8 @@ variables={
 "BLESS_COST": 50
 }
 glossary/default_case_sensitive=true
-layout/style_list=[]
-layout/default_style="Default"
+layout/style_list=["res://charachters/visual_novel_style.tres"]
+layout/default_style="res://charachters/visual_novel_style.tres"
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.01
 text/initial_text_reveal_skippable=true

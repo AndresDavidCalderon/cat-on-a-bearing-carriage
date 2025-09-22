@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://84qmbyy12hoi"]
+[gd_scene load_steps=27 format=3 uid="uid://84qmbyy12hoi"]
 
 [ext_resource type="Theme" uid="uid://ctgv0x2t6xkc6" path="res://UI/free_ui_theme.tres" id="1_o2jkc"]
 [ext_resource type="Script" uid="uid://4317v2mqkbjk" path="res://UI/stats.gd" id="2_2qbci"]
@@ -20,11 +20,19 @@
 [ext_resource type="PackedScene" uid="uid://cpg5wpqgb71y5" path="res://UI/card.tscn" id="18_8gkfd"]
 [ext_resource type="Resource" uid="uid://ko7yxfdo88du" path="res://charachters/which_session.dtl" id="19_0tr35"]
 [ext_resource type="Resource" uid="uid://qa1fokbry0ad" path="res://charachters/blessing_recieve.timeline.dtl" id="20_7j5ik"]
+[ext_resource type="Script" uid="uid://cvjyconk08u2m" path="res://UI/which_intro.gd" id="21_i1yd8"]
+[ext_resource type="Texture2D" uid="uid://5i87cwsfxk4x" path="res://intro/which_1.png" id="22_awqy2"]
+[ext_resource type="Texture2D" uid="uid://dl6cf25a3j10w" path="res://intro/glow_out.png" id="23_8wcgx"]
+[ext_resource type="Resource" uid="uid://dmjojbcjc6iqb" path="res://charachters/which_intro_timeline.dtl" id="24_8wcgx"]
 
 [sub_resource type="Gradient" id="Gradient_82xsv"]
 colors = PackedColorArray(0.93, 0.1488, 0.16182, 1, 1, 1, 0.31, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7j5ik"]
+bg_color = Color(0, 0, 0, 1)
+
 [node name="UI" type="CanvasLayer"]
+layer = 0
 
 [node name="Stats" type="Control" parent="."]
 layout_mode = 3
@@ -318,7 +326,6 @@ offset_bottom = 104.0
 text = "minimap target:"
 
 [node name="WinPanel" type="Panel" parent="."]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -494,6 +501,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_o2jkc")
 script = ExtResource("17_8gukh")
 card = ExtResource("18_8gkfd")
 timeline = ExtResource("19_0tr35")
@@ -513,6 +521,58 @@ offset_bottom = 101.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="WhichIntro" type="Panel" parent="Which"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7j5ik")
+script = ExtResource("21_i1yd8")
+slides = Array[Texture]([ExtResource("22_awqy2"), ExtResource("23_8wcgx")])
+timeline = ExtResource("24_8wcgx")
+
+[node name="Slide" type="TextureRect" parent="Which/WhichIntro"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("22_awqy2")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Next" type="Button" parent="Which/WhichIntro"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -114.0
+offset_top = -66.0
+offset_right = -25.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Next"
+
+[node name="Full" type="Button" parent="Which/WhichIntro"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
 [connection signal="pressed" from="Lost/Panel/Repeat" to="Lost" method="_on_repeat_pressed"]
 [connection signal="pressed" from="StartPanel/Start" to="StartPanel" method="_on_start_pressed"]
 [connection signal="timeout" from="Speed/CoinCheck" to="Speed" method="_on_coin_check_timeout"]
+[connection signal="ended" from="Which/WhichIntro" to="WinPanel" method="_on_intro_ended"]
+[connection signal="pressed" from="Which/WhichIntro/Next" to="Which/WhichIntro" method="_on_next_pressed"]
+[connection signal="pressed" from="Which/WhichIntro/Full" to="Which/WhichIntro" method="_on_full_pressed"]
