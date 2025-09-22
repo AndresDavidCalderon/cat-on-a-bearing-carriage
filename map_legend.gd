@@ -31,4 +31,4 @@ func _process(_delta: float) -> void:
 				closest_distance=distance
 				closest_point=point
 				closest_idx=i
-		global_position=closest_point
+		global_position=camera.get_target_position()+(closest_point-camera.get_target_position())*0.9

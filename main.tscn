@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://o74np0f72gru" path="res://world.gd" id="1_h2yge"]
 [ext_resource type="Script" uid="uid://21cvdt1d6hdp" path="res://blessings.gd" id="2_4k2k6"]
 [ext_resource type="TileSet" uid="uid://bfmb3jarndwih" path="res://world-and-tiles/floor.tres" id="2_jq2sk"]
-[ext_resource type="Texture2D" uid="uid://cf3pv4rpqgja8" path="res://boost.png" id="3_0rl1p"]
 [ext_resource type="Shape2D" uid="uid://uv08b0a3kg3o" path="res://world-and-tiles/delivery_target_shape.tres" id="3_facbu"]
 [ext_resource type="PackedScene" uid="uid://dfca212ra225f" path="res://delivery_target.tscn" id="4_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://c7s6rqcbqufj2" path="res://UI/prediction.png" id="4_b1qrp"]
 [ext_resource type="TileSet" uid="uid://bjkjdd8uvghcr" path="res://world-and-tiles/small_floors.tres" id="4_facbu"]
 [ext_resource type="Script" uid="uid://bfkxeq0ctt6tc" path="res://map_legend.gd" id="4_ok6jj"]
 [ext_resource type="TileSet" uid="uid://cgcpoo028ojhv" path="res://world-and-tiles/san_roque_structures.tres" id="5_1u8w0"]
@@ -229,8 +229,8 @@ light_mask = 2
 visibility_layer = 2
 z_index = 10
 position = Vector2(65, 61.3045)
-scale = Vector2(3.70833, 3.55435)
-texture = ExtResource("3_0rl1p")
+scale = Vector2(4, 4)
+texture = ExtResource("4_b1qrp")
 script = ExtResource("4_ok6jj")
 
 [node name="Floor" type="TileMapLayer" parent="."]

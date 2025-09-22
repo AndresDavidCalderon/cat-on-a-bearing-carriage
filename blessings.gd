@@ -37,7 +37,7 @@ func start_blessing(what:BlessType):
 			delivery_target_shape.size.x*=3
 			delivery_target_shape.size.y*=3
 			for i in get_parent().delivery_targets:
-				i.get_node("VisibleTarget").scale*=3
+				i.get_node("VisibleLegend").scale*=3
 		BlessType.STOP_DRIFT:
 			stop_drift=true
 	avaliable_blessings.erase(what)
