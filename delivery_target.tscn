@@ -33,15 +33,14 @@ shape = ExtResource("3_ufrie")
 visibility_layer = 2
 z_index = 10
 position = Vector2(7.62939e-06, 7.62939e-06)
-scale = Vector2(1.9359, 2.03846)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("3_o8r2v")
 script = ExtResource("4_b0uhs")
 
-[node name="MapLegend2" type="Sprite2D" parent="."]
+[node name="VisibleLegend" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.227451)
 z_index = 8
 position = Vector2(-1, -1)
-scale = Vector2(0.96795, 1.01923)
 texture = ExtResource("3_o8r2v")
 
 [node name="Person" type="StaticBody2D" parent="."]

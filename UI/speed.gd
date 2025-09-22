@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 
 
 func _on_coin_check_timeout() -> void:
-	if value>coins_after:
+	if value>coins_after and player.get_parent().current_match_state==player.get_parent().matchState.PLAYING:
 		var circumstancial_price=1
 		if time_after_100>duplicate_after:
 			circumstancial_price*=2

@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+signal drift_started
+signal drift_ended
+
 enum State{
 	SLIDING,
 	DRIFTING
@@ -20,7 +23,7 @@ var current_state:State=State.SLIDING
 # drift.
 
 @export var impulse_loss=30
-var impulse_loss_critic=0.1
+var impulse_loss_critic=0.05
 var critic_fast_treshhold=1000
 var impulse_per_tap=10
 var grace_time_after_tap=1
@@ -126,6 +129,7 @@ func _process(delta: float) -> void:
 		if Input.is_action_just_pressed("drift"):
 			set_state(State.DRIFTING)
 			$Drift.play()
+			drift_started.emit()
 			pinpoint=position+drift_point_offset.rotated(rotation)
 			if Input.is_action_pressed("SteerLeft"):
 				drift_direction=Rotation.Negative
@@ -134,6 +138,7 @@ func _process(delta: float) -> void:
 		
 		if Input.is_action_just_released("drift"):
 			set_state(State.SLIDING)
+			drift_ended.emit()
 		
 		if current_state==State.DRIFTING:
 			var circumstantial_drift_slide=drift_movement*log(speed)*speed_to_drift
