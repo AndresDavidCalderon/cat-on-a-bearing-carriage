@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgvd00j1gqaid"
-path="res://.godot/imported/san-roque-structures.png-ccfd82c8a08ebae309fa1333d0832064.ctex"
+uid="uid://dv5u0hxvqxcum"
+path="res://.godot/imported/speedometer_tick.png-679ad6ba73d947b3fadff2e751d09370.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://world-and-tiles/san-roque-structures.png"
-dest_files=["res://.godot/imported/san-roque-structures.png-ccfd82c8a08ebae309fa1333d0832064.ctex"]
+source_file="res://UI/speedometer_tick.png"
+dest_files=["res://.godot/imported/speedometer_tick.png-679ad6ba73d947b3fadff2e751d09370.ctex"]
 
 [params]
 

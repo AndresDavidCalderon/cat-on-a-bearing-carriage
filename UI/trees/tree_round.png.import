@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgvd00j1gqaid"
-path="res://.godot/imported/san-roque-structures.png-ccfd82c8a08ebae309fa1333d0832064.ctex"
+uid="uid://cgn5jykwsmely"
+path="res://.godot/imported/tree_round.png-14bd019d2952d7164203e080e6a3892e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://world-and-tiles/san-roque-structures.png"
-dest_files=["res://.godot/imported/san-roque-structures.png-ccfd82c8a08ebae309fa1333d0832064.ctex"]
+source_file="res://UI/trees/tree_round.png"
+dest_files=["res://.godot/imported/tree_round.png-14bd019d2952d7164203e080e6a3892e.ctex"]
 
 [params]
 
