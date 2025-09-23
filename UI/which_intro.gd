@@ -7,6 +7,7 @@ signal ended
 var current_slide=0
 
 func start():
+	grab_focus()
 	get_parent().show()
 	show()
 	$Slide.texture=slides[0]
