@@ -5,4 +5,4 @@ func _ready() -> void:
 	GlobalScore.coins_changed.connect(update)
 
 func update():
-	$Label.text="Coins: "+str(GlobalScore.coins)
+	$Label.text=str(GlobalScore.coins)

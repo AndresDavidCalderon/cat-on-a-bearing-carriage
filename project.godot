@@ -31,7 +31,7 @@ directories/dch_directory={
 "witch": "res://charachters/witch.dch"
 }
 directories/dtl_directory={
-"blessing_recieve": "res://charachters/blessing_recieve.timeline.dtl",
+"blessing_recieve.timeline": "res://charachters/blessing_recieve.timeline.dtl",
 "which_intro_timeline": "res://charachters/which_intro_timeline.dtl",
 "which_session": "res://charachters/which_session.dtl"
 }

@@ -1,4 +1,4 @@
-extends ProgressBar
+extends Control
 
 @onready var player=get_node("/root/World/Player")
 @export var coin_color:Color
@@ -8,11 +8,13 @@ var value_100=800
 var time_after_100=0
 var duplicate_after=2
 var triplicate_afer=8
-var coins_after=80
+var coins_after=90
 var was_under=true
+var value:float
+var max_value=150
 
 func _process(delta: float) -> void:
-	value=((player.speed+offset)/value_100)*100
+	set_value(((player.speed+offset)/value_100)*100)
 	$Label.text=str(int(value))
 	if value>coins_after:
 		self_modulate=coin_color
@@ -35,3 +37,8 @@ func _on_coin_check_timeout() -> void:
 		if time_after_100>triplicate_afer:
 			circumstancial_price*=3
 		GlobalScore.set_coins(GlobalScore.coins+circumstancial_price)
+
+func set_value(new_value):
+	value=new_value
+	var effective_value=min(max_value,value)
+	$Tick.position.x=(effective_value/max_value)*145

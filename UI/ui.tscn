@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://84qmbyy12hoi"]
+[gd_scene load_steps=31 format=3 uid="uid://84qmbyy12hoi"]
 
 [ext_resource type="Theme" uid="uid://ctgv0x2t6xkc6" path="res://UI/free_ui_theme.tres" id="1_o2jkc"]
 [ext_resource type="Script" uid="uid://4317v2mqkbjk" path="res://UI/stats.gd" id="2_2qbci"]
@@ -15,16 +15,19 @@
 [ext_resource type="Script" uid="uid://vcy7cw0cm6a1" path="res://UI/minimap.gd" id="12_8wcgx"]
 [ext_resource type="Script" uid="uid://chi3x5cviupvi" path="res://UI/map_camera.gd" id="13_duqhi"]
 [ext_resource type="Script" uid="uid://bq4hf7obe3cs4" path="res://UI/speed.gd" id="15_ow1yt"]
+[ext_resource type="Texture2D" uid="uid://jlcsbcxsw6hp" path="res://UI/speedometer_base.png" id="16_665m6"]
 [ext_resource type="Script" uid="uid://38oupwjpwrur" path="res://UI/coins.gd" id="16_o2t6a"]
 [ext_resource type="Script" uid="uid://cdk8argtawdwk" path="res://UI/which.gd" id="17_8gukh"]
+[ext_resource type="Texture2D" uid="uid://dv5u0hxvqxcum" path="res://UI/speedometer_tick.png" id="17_k01bw"]
+[ext_resource type="Texture2D" uid="uid://b1qvetfi5dbgh" path="res://UI/coin.png" id="17_tjmo3"]
 [ext_resource type="PackedScene" uid="uid://cpg5wpqgb71y5" path="res://UI/card.tscn" id="18_8gkfd"]
-[ext_resource type="Resource" uid="uid://ko7yxfdo88du" path="res://charachters/which_session.dtl" id="19_0tr35"]
-[ext_resource type="Resource" uid="uid://qa1fokbry0ad" path="res://charachters/blessing_recieve.timeline.dtl" id="20_7j5ik"]
+[ext_resource type="Resource" path="res://charachters/which_session.dtl" id="19_0tr35"]
+[ext_resource type="Resource" path="res://charachters/blessing_recieve.timeline.dtl" id="20_7j5ik"]
 [ext_resource type="Script" uid="uid://dfcfm1oynnn6c" path="res://UI/cards.gd" id="21_duqhi"]
 [ext_resource type="Script" uid="uid://cvjyconk08u2m" path="res://UI/which_intro.gd" id="21_i1yd8"]
 [ext_resource type="Texture2D" uid="uid://5i87cwsfxk4x" path="res://intro/which_1.png" id="22_awqy2"]
 [ext_resource type="Texture2D" uid="uid://dl6cf25a3j10w" path="res://intro/glow_out.png" id="23_8wcgx"]
-[ext_resource type="Resource" uid="uid://dmjojbcjc6iqb" path="res://charachters/which_intro_timeline.dtl" id="24_8wcgx"]
+[ext_resource type="Resource" path="res://charachters/which_intro_timeline.dtl" id="24_8wcgx"]
 
 [sub_resource type="Gradient" id="Gradient_82xsv"]
 colors = PackedColorArray(0.93, 0.1488, 0.16182, 1, 1, 1, 0.31, 1)
@@ -446,19 +449,19 @@ offset_bottom = -145.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Speed" type="ProgressBar" parent="."]
+[node name="Speed" type="Control" parent="."]
+layout_mode = 3
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -163.0
-offset_top = -181.0
-offset_bottom = -154.0
+offset_left = -176.0
+offset_top = -185.0
+offset_right = -13.0
+offset_bottom = -158.0
 grow_horizontal = 0
 grow_vertical = 0
-max_value = 150.0
-show_percentage = false
 script = ExtResource("15_ow1yt")
 coin_color = Color(0.8075, 0.85, 0, 1)
 
@@ -467,6 +470,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -13.0
 grow_horizontal = 2
 grow_vertical = 2
 horizontal_alignment = 1
@@ -475,28 +479,46 @@ vertical_alignment = 1
 [node name="CoinCheck" type="Timer" parent="Speed"]
 wait_time = 0.5
 
-[node name="Coins" type="Control" parent="."]
-layout_mode = 3
+[node name="Base" type="TextureRect" parent="Speed"]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 40.0
+texture = ExtResource("16_665m6")
+stretch_mode = 5
+
+[node name="Tick" type="TextureRect" parent="Speed"]
+layout_mode = 0
+offset_top = 17.0
+offset_right = 4.0
+offset_bottom = 30.0
+texture = ExtResource("17_k01bw")
+stretch_mode = 5
+
+[node name="Coins" type="HBoxContainer" parent="."]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -128.0
-offset_top = -232.0
-offset_right = -88.0
+offset_left = -142.0
+offset_top = -256.0
+offset_right = -27.0
 offset_bottom = -192.0
 grow_horizontal = 0
 grow_vertical = 0
+theme = ExtResource("1_o2jkc")
 script = ExtResource("16_o2t6a")
 
+[node name="TextureRect" type="TextureRect" parent="Coins"]
+layout_mode = 2
+texture = ExtResource("17_tjmo3")
+
 [node name="Label" type="Label" parent="Coins"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Coins:"
+layout_mode = 2
+text = "#"
 
 [node name="Which" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
