@@ -10,15 +10,17 @@ func start():
 	grab_focus()
 	get_parent().show()
 	show()
-	$Slide.texture=slides[0]
 
 
 func _on_next_pressed() -> void:
 	current_slide+=1
 	if current_slide>=slides.size():
+		grab_focus()
 		$Next.hide()
-		Dialogic.start(timeline)
+		$Next.pressed.disconnect(_on_next_pressed)
+		$Full.pressed.disconnect(_on_full_pressed)
 		Dialogic.timeline_ended.connect(ended.emit)
+		Dialogic.start(timeline)
 	else:
 		$Slide.texture=slides[current_slide]
 

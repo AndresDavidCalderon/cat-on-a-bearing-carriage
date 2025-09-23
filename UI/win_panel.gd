@@ -7,7 +7,11 @@ func _ready() -> void:
 	if GlobalScore.current_day!=1:
 		$NextDay.pressed.connect(get_node("/root/World")._on_next_day_pressed)
 	else:
-		$NextDay.pressed.connect(get_node("%WhichIntro").start)
+		$NextDay.pressed.connect(on_day_1_next)
+
+func on_day_1_next():
+	hide()
+	get_node("%WhichIntro").start()
 
 func _on_world_win() -> void:
 	show()
