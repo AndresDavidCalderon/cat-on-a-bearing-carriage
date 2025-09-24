@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://buny56nbaupuv"]
+[gd_scene load_steps=55 format=4 uid="uid://buny56nbaupuv"]
 
 [ext_resource type="TileSet" uid="uid://dmw8vb3c385ga" path="res://world-and-tiles/default.tres" id="1_8o0vf"]
 [ext_resource type="TileSet" uid="uid://cgcpoo028ojhv" path="res://world-and-tiles/san_roque_structures.tres" id="2_2rfem"]
@@ -39,7 +39,9 @@
 [ext_resource type="Texture2D" uid="uid://bpdek6m6p3bd3" path="res://world-and-tiles/commercial/for_counters/champagne.png" id="27_v2v4l"]
 [ext_resource type="Texture2D" uid="uid://bk5n6s1j82sv6" path="res://world-and-tiles/commercial/for_counters/lemon_drink.png" id="28_8w7cc"]
 [ext_resource type="Texture2D" uid="uid://ir2chh4orix2" path="res://world-and-tiles/plastic_chair_with_back.png" id="29_8w7cc"]
+[ext_resource type="Theme" uid="uid://ctgv0x2t6xkc6" path="res://UI/free_ui_theme.tres" id="30_4fen6"]
 [ext_resource type="Texture2D" uid="uid://cpkqb6t3o2dd6" path="res://world-and-tiles/long_plastic_chair_with_back.png" id="30_fakhp"]
+[ext_resource type="Texture2D" uid="uid://bdekfksbvok81" path="res://world-and-tiles/2d_lights_and_shadows_neutral_point_light.webp" id="32_q8x58"]
 [ext_resource type="Script" uid="uid://cla1bctf4tlcb" path="res://world-and-tiles/commercial/interactable.gd" id="34_2ha47"]
 [ext_resource type="Script" uid="uid://dtprbxl0llt8s" path="res://world-and-tiles/commercial/which.gd" id="34_t6s7j"]
 [ext_resource type="Texture2D" uid="uid://riphyeunngd2" path="res://charachters/which_top.png" id="36_t6s7j"]
@@ -265,6 +267,7 @@ position = Vector2(0, -19)
 script = ExtResource("34_t6s7j")
 
 [node name="Interactable" type="Area2D" parent="WhichThings/Which"]
+z_index = 3
 script = ExtResource("34_2ha47")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WhichThings/Which/Interactable"]
@@ -276,11 +279,18 @@ offset_left = 22.0
 offset_top = -45.0
 offset_right = 62.0
 offset_bottom = -22.0
+theme = ExtResource("30_4fen6")
 text = "Interact [E]"
 
 [node name="Sprite2D" type="Sprite2D" parent="WhichThings/Which"]
 rotation = 3.14159
 texture = ExtResource("36_t6s7j")
+
+[node name="PointLight2D" type="PointLight2D" parent="WhichThings"]
+position = Vector2(-6, 66)
+color = Color(1, 0.84313726, 0, 1)
+texture = ExtResource("32_q8x58")
+texture_scale = 2.0
 
 [node name="PayMachine2" type="Sprite2D" parent="."]
 position = Vector2(355, 109)

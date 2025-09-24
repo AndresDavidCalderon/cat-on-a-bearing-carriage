@@ -39,6 +39,6 @@ func _on_coin_check_timeout() -> void:
 		GlobalScore.set_coins(GlobalScore.coins+circumstancial_price)
 
 func set_value(new_value):
-	value=new_value
+	value=max(new_value,0)
 	var effective_value=min(max_value,value)
 	$Tick.position.x=(effective_value/max_value)*145
