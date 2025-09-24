@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqjososkfpuro"]
+
+[ext_resource type="Script" uid="uid://b0ago8eshs451" path="res://world-and-tiles/dissapearing_roof.gd" id="1_2mr6m"]
+[ext_resource type="Texture2D" uid="uid://b7fdbq3mdggre" path="res://world-and-tiles/trees/tree_round.png" id="1_rtv4v"]
+[ext_resource type="Texture2D" uid="uid://dpaqr1ellt13k" path="res://world-and-tiles/trees/tree_branches.png" id="2_nngbu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nngbu"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2mr6m"]
+radius = 62.03225
+
+[node name="Tree" type="StaticBody2D" node_paths=PackedStringArray("change_modulate_of")]
+script = ExtResource("1_2mr6m")
+interior_opacity = 0.5
+default_opacity = 1.0
+change_modulate_of = NodePath("Sprite")
+
+[node name="Branch" type="Sprite2D" parent="."]
+texture = ExtResource("2_nngbu")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_rtv4v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_nngbu")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_2mr6m")

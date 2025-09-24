@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://reh6r6eoehw"
-path="res://.godot/imported/dog_body.png-10cec2a0c9a3207c566331528d2cabb9.ctex"
+path="res://.godot/imported/dog_body.png-f4091c604b66f0c44372a03e07519df0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://world-and-tiles/kids/dog_body.png"
-dest_files=["res://.godot/imported/dog_body.png-10cec2a0c9a3207c566331528d2cabb9.ctex"]
+source_file="res://world-and-tiles/yards/dog_body.png"
+dest_files=["res://.godot/imported/dog_body.png-f4091c604b66f0c44372a03e07519df0.ctex"]
 
 [params]
 
