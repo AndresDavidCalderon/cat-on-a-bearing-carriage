@@ -569,6 +569,32 @@ shape = SubResource("CircleShape2D_0n3wm")
 position = Vector2(-16, -32)
 shape = SubResource("CircleShape2D_gngh3")
 
+[node name="RoadMarkings" type="Node2D" parent="."]
+
+[node name="Line2D" type="Line2D" parent="RoadMarkings"]
+points = PackedVector2Array(192, 1984, 192, 2816, 1344, 2816)
+default_color = Color(1, 1, 0, 1)
+
+[node name="Line2D2" type="Line2D" parent="RoadMarkings"]
+points = PackedVector2Array(1472, 1984, 1472, 2624)
+default_color = Color(1, 1, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="RoadMarkings"]
+points = PackedVector2Array(1600, 2816, 2624, 2816)
+default_color = Color(1, 1, 0, 1)
+
+[node name="Line2D4" type="Line2D" parent="RoadMarkings"]
+points = PackedVector2Array(2752, 2624, 2752, 1984)
+default_color = Color(1, 1, 0, 1)
+
+[node name="Line2D5" type="Line2D" parent="RoadMarkings"]
+points = PackedVector2Array(1632, 1888, 2624, 1888)
+default_color = Color(1, 1, 0, 1)
+
+[node name="Line2D6" type="Line2D" parent="RoadMarkings"]
+points = PackedVector2Array(320, 1888, 1344, 1888)
+default_color = Color(1, 1, 0, 1)
+
 [editable path="DeliveryTarget"]
 [editable path="DeliveryTarget2"]
 [editable path="DeliveryTarget3"]

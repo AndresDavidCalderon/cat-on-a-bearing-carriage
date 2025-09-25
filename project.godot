@@ -13,9 +13,9 @@ config_version=5
 config/name="cat-on-a-ball-bearing-carriage"
 run/main_scene="uid://cb3e5ub814mvb"
 config/features=PackedStringArray("4.5", "Forward Plus")
+config/icon="uid://defj10u86gow4"
 boot_splash/use_filter=false
 boot_splash/image="uid://myyh3hle68q2"
-config/icon="uid://defj10u86gow4"
 
 [audio]
 
@@ -28,15 +28,8 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]
 
-directories/dch_directory={
-"cat": "res://charachters/cat.dch",
-"witch": "res://charachters/witch.dch"
-}
-directories/dtl_directory={
-"blessing_recieve.timeline": "res://charachters/blessing_recieve.timeline.dtl",
-"which_intro_timeline": "res://charachters/which_intro_timeline.dtl",
-"which_session": "res://charachters/which_session.dtl"
-}
+directories/dch_directory={}
+directories/dtl_directory={}
 variables={
 "BLESS": "PENDING",
 "BLESS_COST": 50
