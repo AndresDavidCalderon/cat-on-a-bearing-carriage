@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://c74pefbvka83h"]
+
+[ext_resource type="Texture2D" uid="uid://1lhmr1dac5qw" path="res://world-and-tiles/industrial/chiva.png" id="1_s57gf"]
+[ext_resource type="Script" uid="uid://c6kaydaownb67" path="res://world-and-tiles/industrial/chiva.gd" id="1_yt84i"]
+[ext_resource type="Texture2D" uid="uid://rt0emyxjvm1c" path="res://world-and-tiles/industrial/chiva_weels.png" id="2_3us7g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s57gf"]
+size = Vector2(68, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3us7g"]
+size = Vector2(47, 28)
+
+[node name="Chiva" type="AnimatableBody2D"]
+script = ExtResource("1_yt84i")
+
+[node name="WheelL" type="Sprite2D" parent="."]
+position = Vector2(-24, -41)
+texture = ExtResource("2_3us7g")
+
+[node name="WheelR" type="Sprite2D" parent="."]
+position = Vector2(23, -42)
+texture = ExtResource("2_3us7g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_s57gf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 21)
+shape = SubResource("RectangleShape2D_s57gf")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -41)
+shape = SubResource("RectangleShape2D_3us7g")

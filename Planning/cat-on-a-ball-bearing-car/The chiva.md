@@ -1,0 +1,3 @@
+The chiva should serve the industrial area from day 3. It should appear on a random point of the first 1/2 of the time (If it does or not is a random bool). It should enter from one of the town gates (Opens before entering) , which should not be trespassable for the cat. A dense fog should appear when he gets near not letting him out. After entering it should do the necessary turns to get to a random one of the 2 warehouses and stop there. Eventually there should be workers that pick stuff up and get it inside the warehouses and the chiva should leave.
+
+The chiva should stop when finding the player up front, However wont flinch when the player hits it. This is how most cars should operate.
