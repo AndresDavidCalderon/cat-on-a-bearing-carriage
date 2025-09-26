@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=4 uid="uid://dnnka5th1gldj"]
+[gd_scene load_steps=65 format=4 uid="uid://dnnka5th1gldj"]
 
 [ext_resource type="Script" uid="uid://o74np0f72gru" path="res://world.gd" id="1_h2yge"]
 [ext_resource type="Script" uid="uid://21cvdt1d6hdp" path="res://blessings.gd" id="2_4k2k6"]
@@ -44,6 +44,7 @@
 [ext_resource type="Texture2D" uid="uid://cvewte4y3g4dh" path="res://world-and-tiles/trees/pink_tree.png" id="42_0cp0l"]
 [ext_resource type="Texture2D" uid="uid://dmbckcqcj4gxu" path="res://world-and-tiles/trees/big_tree_pink.png" id="43_d2t1y"]
 [ext_resource type="Texture2D" uid="uid://23fdjjjh68o5" path="res://world-and-tiles/trees/big_branches.png" id="43_gngh3"]
+[ext_resource type="PackedScene" uid="uid://c74pefbvka83h" path="res://world-and-tiles/industrial/chiva.tscn" id="45_0n3wm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d13ii"]
 size = Vector2(42, 25)
@@ -605,6 +606,30 @@ default_color = Color(1, 0.9529412, 0, 1)
 z_index = -1
 points = PackedVector2Array(192, 2592, 192, 1984)
 default_color = Color(1, 0.9529412, 0, 1)
+
+[node name="CarManager" type="Node" parent="."]
+
+[node name="Chiva" parent="CarManager" node_paths=PackedStringArray("path") instance=ExtResource("45_0n3wm")]
+position = Vector2(-1824, -432)
+rotation = 3.1415882
+path = NodePath("../Path")
+
+[node name="Path" type="Node" parent="CarManager"]
+
+[node name="Node2D" type="Node2D" parent="CarManager/Path"]
+position = Vector2(-1832, -304)
+
+[node name="Node2D2" type="Node2D" parent="CarManager/Path"]
+position = Vector2(-192, -328)
+
+[node name="Node2D4" type="Node2D" parent="CarManager/Path"]
+position = Vector2(87, -240)
+
+[node name="Node2D3" type="Node2D" parent="CarManager/Path"]
+position = Vector2(214, 14)
+
+[node name="Node2D5" type="Node2D" parent="CarManager/Path"]
+position = Vector2(232, 1664)
 
 [editable path="DeliveryTarget"]
 [editable path="DeliveryTarget2"]
