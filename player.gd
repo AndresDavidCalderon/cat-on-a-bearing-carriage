@@ -23,7 +23,9 @@ var current_state:State=State.SLIDING
 # drift.
 
 @export var impulse_loss=30
-var impulse_loss_critic=0.05
+
+## spered*this is deducted after passing critic_fast_treshold
+var impulse_loss_critic=0.001
 var critic_fast_treshhold=1000
 var impulse_per_tap=10
 var grace_time_after_tap=1
