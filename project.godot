@@ -25,6 +25,7 @@ driver/output_latency=5
 
 GlobalScore="*res://global_score.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+Weather="*res://weather.gd"
 
 [dialogic]
 
