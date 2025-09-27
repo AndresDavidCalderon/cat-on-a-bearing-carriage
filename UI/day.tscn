@@ -1,12 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://qlv7g8f72gl3"]
+[gd_scene load_steps=5 format=3 uid="uid://qlv7g8f72gl3"]
 
+[ext_resource type="Theme" uid="uid://ctgv0x2t6xkc6" path="res://UI/free_ui_theme.tres" id="1_mr6md"]
 [ext_resource type="Texture2D" uid="uid://2ap3y6r7hb06" path="res://UI/calendar/sunny.png" id="1_njjk3"]
+[ext_resource type="Texture2D" uid="uid://dk6cdwj8vvsgl" path="res://UI/calendar/sunny_icon.png" id="2_n2se8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3bux6"]
 bg_color = Color(1, 1, 0.19999999, 0.92156863)
 
 [node name="Day" type="Panel"]
 custom_minimum_size = Vector2(70, 70)
+theme = ExtResource("1_mr6md")
 theme_override_styles/panel = SubResource("StyleBoxFlat_3bux6")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -26,13 +29,24 @@ texture = ExtResource("1_njjk3")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -27.0
-offset_right = -5.0
-offset_bottom = 38.0
-grow_horizontal = 0
+offset_right = 22.0
+offset_bottom = 45.0
 theme_override_font_sizes/font_size = 32
 text = "1"
 horizontal_alignment = 2
+
+[node name="Icons" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -28.0
+offset_top = 4.0
+offset_right = -3.0
+offset_bottom = 29.0
+grow_horizontal = 0
+
+[node name="Weather" type="TextureRect" parent="Icons"]
+layout_mode = 2
+texture = ExtResource("2_n2se8")
+expand_mode = 3
