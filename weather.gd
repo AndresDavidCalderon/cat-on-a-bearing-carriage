@@ -14,9 +14,7 @@ var forecast={}
 func get_forecast_range(day1:int,day2:int):
 	var report=[]
 	for i in range(day1,day2+1):
-		if not i in forecast:
-			define_forecast(i)
-		report.append(forecast[i]["weather"])
+		report.append(getdefine(i)["weather"])
 	
 	return report
 
@@ -28,3 +26,11 @@ func define_forecast(day:int):
 		forecast[day]["weather"]=Weather.SUNNY
 	if day==3:
 		forecast[day]["weather"]=Weather.RAINY
+
+func get_weather_today():
+	return getdefine(GlobalScore.current_day)["weather"]
+
+func getdefine(day):
+	if not day in forecast:
+		define_forecast(day)
+	return forecast[day]

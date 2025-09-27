@@ -15,4 +15,5 @@ func _ready() -> void:
 		add_child(new_day)
 		if day!=GlobalScore.current_day:
 			new_day.remove_theme_stylebox_override("panel")
+			new_day.get_node("Today").hide()
 		day+=1

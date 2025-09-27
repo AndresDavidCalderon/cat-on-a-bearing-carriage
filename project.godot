@@ -74,6 +74,10 @@ window/stretch/mode="canvas_items"
 
 enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/godot_super-wakatime/plugin.cfg")
 
+[global_group]
+
+shadows="Objects whose alpha should change depending on weather"
+
 [input]
 
 SteerLeft={

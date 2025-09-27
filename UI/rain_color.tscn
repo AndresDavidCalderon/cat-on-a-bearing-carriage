@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dwvcii7w80j2m"]
+
+[node name="RainColor" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.6853, 0.8285899, 0.89, 0.09411765)

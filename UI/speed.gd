@@ -2,29 +2,40 @@ extends Control
 
 @onready var player=get_node("/root/World/Player")
 @export var coin_color:Color
+@export var normal_color:Color
 
+# Applied over the player's speed. A logarithm base 10 is applied after
 var offset=-500
-var value_100=800
+
+## Exchange rate from player speed to value.
+## This, in sqrt(speed) represents a value of 100
+var value_100=40
 var time_after_100=0
 var duplicate_after=2
 var triplicate_afer=8
-var coins_after=90
+var coins_after=100
 var was_under=true
 var value:float
-var max_value=150
+var max_value=110
+var rotation_speed=3
+var last_delta=0
+
+# Rotation when effective value=dwdmax value
+var total_rotation=PI
 
 func _process(delta: float) -> void:
-	set_value(((player.speed+offset)/value_100)*100)
+	last_delta=delta
+	set_value((sqrt(player.speed+offset)/value_100)*100)
 	$Label.text=str(int(value))
 	if value>coins_after:
-		self_modulate=coin_color
+		$Tick.self_modulate=coin_color
 		time_after_100+=delta
 		if was_under:
 			$CoinCheck.start()
 		was_under=false
 	else:
 		was_under=true
-		self_modulate=Color.WHITE
+		$Tick.self_modulate=normal_color
 		time_after_100=0
 		$CoinCheck.stop()
 
@@ -41,4 +52,4 @@ func _on_coin_check_timeout() -> void:
 func set_value(new_value):
 	value=max(new_value,0)
 	var effective_value=min(max_value,value)
-	$Tick.position.x=(effective_value/max_value)*145
+	$Tick.rotation= rotate_toward($Tick.rotation,(effective_value/max_value)*total_rotation,rotation_speed*last_delta)

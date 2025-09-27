@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://qlv7g8f72gl3"]
+[gd_scene load_steps=6 format=3 uid="uid://qlv7g8f72gl3"]
 
 [ext_resource type="Theme" uid="uid://ctgv0x2t6xkc6" path="res://UI/free_ui_theme.tres" id="1_mr6md"]
 [ext_resource type="Texture2D" uid="uid://2ap3y6r7hb06" path="res://UI/calendar/sunny.png" id="1_njjk3"]
 [ext_resource type="Texture2D" uid="uid://dk6cdwj8vvsgl" path="res://UI/calendar/sunny_icon.png" id="2_n2se8"]
+[ext_resource type="Texture2D" uid="uid://trqimipobeav" path="res://UI/calendar/today_check.png" id="4_6dhwq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3bux6"]
 bg_color = Color(1, 1, 0.19999999, 0.92156863)
@@ -50,3 +51,15 @@ grow_horizontal = 0
 layout_mode = 2
 texture = ExtResource("2_n2se8")
 expand_mode = 3
+
+[node name="Today" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = -35.0
+offset_right = 36.0
+offset_bottom = -6.0
+grow_vertical = 0
+texture = ExtResource("4_6dhwq")
