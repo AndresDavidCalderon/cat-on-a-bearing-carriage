@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=4 uid="uid://buny56nbaupuv"]
+[gd_scene load_steps=56 format=4 uid="uid://buny56nbaupuv"]
 
 [ext_resource type="TileSet" uid="uid://dmw8vb3c385ga" path="res://world-and-tiles/default.tres" id="1_8o0vf"]
 [ext_resource type="TileSet" uid="uid://cgcpoo028ojhv" path="res://world-and-tiles/san_roque_structures.tres" id="2_2rfem"]
@@ -45,6 +45,7 @@
 [ext_resource type="Script" uid="uid://cla1bctf4tlcb" path="res://world-and-tiles/commercial/interactable.gd" id="34_2ha47"]
 [ext_resource type="Script" uid="uid://dtprbxl0llt8s" path="res://world-and-tiles/commercial/which.gd" id="34_t6s7j"]
 [ext_resource type="Texture2D" uid="uid://riphyeunngd2" path="res://charachters/which_top.png" id="36_t6s7j"]
+[ext_resource type="Texture2D" uid="uid://bcfaoh8qhfdac" path="res://UI/map/which.png" id="37_cvik4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x8iis"]
 texture = ExtResource("3_pxedk")
@@ -443,6 +444,14 @@ position = Vector2(-6, 66)
 color = Color(1, 0.84313726, 0, 1)
 texture = ExtResource("32_q8x58")
 texture_scale = 2.0
+
+[node name="MapIcon" type="Sprite2D" parent="WhichThings"]
+light_mask = 0
+visibility_layer = 2
+z_index = 10
+position = Vector2(0.99998474, -19.999992)
+scale = Vector2(7.40625, 7.40625)
+texture = ExtResource("37_cvik4")
 
 [node name="DiagonalBigRoof" type="TileMapLayer" parent="."]
 visible = false
