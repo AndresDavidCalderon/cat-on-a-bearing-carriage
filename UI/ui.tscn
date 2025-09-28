@@ -1,5 +1,6 @@
-[gd_scene load_steps=38 format=3 uid="uid://84qmbyy12hoi"]
+[gd_scene load_steps=40 format=3 uid="uid://84qmbyy12hoi"]
 
+[ext_resource type="Script" uid="uid://cjpt6tedm8mpx" path="res://UI/ui.gd" id="1_6sqwf"]
 [ext_resource type="Theme" uid="uid://ctgv0x2t6xkc6" path="res://UI/free_ui_theme.tres" id="1_o2jkc"]
 [ext_resource type="Script" uid="uid://bgl7m6iptxnyi" path="res://UI/rain_color.gd" id="1_oejq4"]
 [ext_resource type="Script" uid="uid://4317v2mqkbjk" path="res://UI/stats.gd" id="2_2qbci"]
@@ -35,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://5i87cwsfxk4x" path="res://intro/which_1.png" id="22_awqy2"]
 [ext_resource type="Texture2D" uid="uid://dl6cf25a3j10w" path="res://intro/glow_out.png" id="23_8wcgx"]
 [ext_resource type="Resource" uid="uid://dmjojbcjc6iqb" path="res://charachters/which_intro_timeline.dtl" id="24_8wcgx"]
+[ext_resource type="Script" uid="uid://wuri1yic2vv7" path="res://UI/full_map.gd" id="37_2hqip"]
 
 [sub_resource type="Gradient" id="Gradient_82xsv"]
 colors = PackedColorArray(0.93, 0.1488, 0.16182, 1, 1, 1, 0.31, 1)
@@ -44,6 +46,7 @@ bg_color = Color(0, 0, 0, 1)
 
 [node name="UI" type="CanvasLayer"]
 layer = 0
+script = ExtResource("1_6sqwf")
 
 [node name="RainColor" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -79,6 +82,7 @@ layout_mode = 2
 text = "bottles delivered"
 
 [node name="Minimap" type="SubViewportContainer" parent="."]
+unique_name_in_owner = true
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -92,12 +96,14 @@ grow_horizontal = 0
 grow_vertical = 0
 script = ExtResource("12_8wcgx")
 
-[node name="SubViewport" type="SubViewport" parent="Minimap"]
+[node name="MiniSubViewport" type="SubViewport" parent="Minimap"]
+unique_name_in_owner = true
 handle_input_locally = false
 size = Vector2i(128, 128)
 render_target_update_mode = 4
 
-[node name="Camera2D" type="Camera2D" parent="Minimap/SubViewport"]
+[node name="MiniMapCamera" type="Camera2D" parent="Minimap/MiniSubViewport"]
+unique_name_in_owner = true
 zoom = Vector2(0.1, 0.1)
 script = ExtResource("13_duqhi")
 
@@ -655,6 +661,29 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 flat = true
+
+[node name="FullMap" type="SubViewportContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 282.0
+offset_top = 118.0
+offset_right = -278.52698
+offset_bottom = -140.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("37_2hqip")
+
+[node name="FullSubViewport" type="SubViewport" parent="FullMap"]
+unique_name_in_owner = true
+handle_input_locally = false
+size = Vector2i(590, 390)
+render_target_update_mode = 4
+
+[node name="FullMapCamera" type="Camera2D" parent="FullMap/FullSubViewport"]
+unique_name_in_owner = true
+zoom = Vector2(0.1, 0.1)
+script = ExtResource("13_duqhi")
 
 [connection signal="pressed" from="Lost/Panel/Repeat" to="Lost" method="_on_repeat_pressed"]
 [connection signal="pressed" from="StartPanel/Start" to="StartPanel" method="_on_start_pressed"]

@@ -1,15 +1,10 @@
 extends Sprite2D
 
-@onready var viewport:SubViewport=get_node("/root/World").minimap_viewport
-
-func _ready() -> void:
-	get_node("/root/World").ready.connect(set_viewport)
-
-func set_viewport():
-	viewport=get_node("/root/World").minimap_viewport
+@onready var ui:CanvasLayer=get_node("/root/World/UI")
 
 func _process(_delta: float) -> void:
-	var camera:Camera2D=viewport.get_node("Camera2D")
+	var camera:Camera2D=ui.map_camera
+	var viewport=ui.map_viewport
 	var size=viewport.get_visible_rect().size/camera.zoom
 	var view=Rect2(camera.get_target_position()-size/2,size)
 	if view.has_point(get_parent().global_position):
@@ -31,4 +26,7 @@ func _process(_delta: float) -> void:
 				closest_distance=distance
 				closest_point=point
 				closest_idx=i
-		global_position=camera.get_target_position()+(closest_point-camera.get_target_position())*0.9
+		var distance_multiplier=1
+		if ui.get_node("%Minimap").visible:
+			distance_multiplier*=0.9
+		global_position=camera.get_target_position()+(closest_point-camera.get_target_position())*distance_multiplier
