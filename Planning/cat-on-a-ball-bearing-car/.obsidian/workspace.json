@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "The chiva.md",
+                "file": "Speed.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "The chiva"
+              "title": "Speed"
             }
           }
         ],
@@ -189,6 +189,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "obsidian-git:Open Git source control": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
@@ -201,8 +202,9 @@
   },
   "active": "40f89c0c863bbe02",
   "lastOpenFiles": [
-    "The dog.md",
     "The chiva.md",
+    "Speed.md",
+    "The dog.md",
     "About drift limits.md",
     "About drift hits..md",
     "Special events.md",

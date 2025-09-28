@@ -345,6 +345,14 @@ offset_right = 139.0
 offset_bottom = 104.0
 text = "minimap target:"
 
+[node name="ImpulseReduction" type="Label" parent="CarStatsDebug"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 102.0
+offset_right = 267.0
+offset_bottom = 151.0
+text = "Impulse reduction:"
+
 [node name="Speed" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 7

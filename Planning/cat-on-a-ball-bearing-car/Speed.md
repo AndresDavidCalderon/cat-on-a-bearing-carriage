@@ -1,0 +1,1 @@
+I have a problem and it's that I implemented speed multipliers for the pushing action to feel satisfying, but after adding the speedometer, it messes up the way coins are got, because these pushes get you above the coin area.

@@ -8,3 +8,4 @@ func _process(delta: float) -> void:
 	$Speed.text="Speed: "+str(player.speed)
 	$SpeedMultiplier.text="Speed multiplier: "+str(player.speed_multiplier)
 	$mapTarget.text="map target:"+str(get_node("../Minimap/SubViewport/Camera2D").get_target_position())
+	$ImpulseReduction.text="Impulse reduction: "+player.debug_last_impulse_loss_type

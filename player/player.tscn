@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dhjjje2b1xoa0"]
+[gd_scene load_steps=39 format=3 uid="uid://dhjjje2b1xoa0"]
 
 [ext_resource type="Script" uid="uid://dg6hodfjfupjm" path="res://player.gd" id="1_8t03j"]
 [ext_resource type="Texture2D" uid="uid://bvqxs4m7uo268" path="res://player/cat_drift.png" id="2_2ieo8"]
@@ -15,6 +15,9 @@
 [ext_resource type="AudioStream" uid="uid://dtcide14g7v3v" path="res://player/turn_c.wav" id="10_c35mf"]
 [ext_resource type="Texture2D" uid="uid://r5wi4jnjbrhj" path="res://player/pushing_spirit.png" id="14_kb6p2"]
 [ext_resource type="Script" uid="uid://baaw1d56uj755" path="res://player/pushing_spirit.gd" id="14_wodsf"]
+[ext_resource type="Texture2D" uid="uid://0posygpel24g" path="res://player/car_splash.png" id="16_32hag"]
+[ext_resource type="Script" uid="uid://bhu11i76vhsjc" path="res://player/splash.gd" id="16_tqiix"]
+[ext_resource type="Texture2D" uid="uid://cqve0r0ji8q4n" path="res://world-and-tiles/weather/rainy_splash.png" id="18_e7oew"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_myinc"]
 size = Vector2(26, 52)
@@ -88,6 +91,109 @@ _data = {
 &"RESET": SubResource("Animation_wodsf"),
 &"grab": SubResource("Animation_kb6p2")
 }
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65viv"]
+atlas = ExtResource("16_32hag")
+region = Rect2(40, 0, 10, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqiix"]
+atlas = ExtResource("16_32hag")
+region = Rect2(10, 0, 10, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7oew"]
+atlas = ExtResource("16_32hag")
+region = Rect2(20, 0, 10, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c35mf"]
+atlas = ExtResource("16_32hag")
+region = Rect2(30, 0, 10, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32hag"]
+atlas = ExtResource("16_32hag")
+region = Rect2(0, 0, 10, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wodsf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65viv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqiix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7oew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c35mf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65viv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32hag")
+}],
+"loop": false,
+"name": &"default",
+"speed": 30.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7c3f"]
+atlas = ExtResource("18_e7oew")
+region = Rect2(0, 0, 79, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjvpn"]
+atlas = ExtResource("18_e7oew")
+region = Rect2(79, 0, 79, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7qer"]
+atlas = ExtResource("18_e7oew")
+region = Rect2(158, 0, 79, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4c7l"]
+atlas = ExtResource("18_e7oew")
+region = Rect2(237, 0, 79, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knn7v"]
+atlas = ExtResource("18_e7oew")
+region = Rect2(316, 0, 79, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7pqkx"]
+atlas = ExtResource("18_e7oew")
+region = Rect2(395, 0, 79, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uw77l"]
+atlas = ExtResource("18_e7oew")
+region = Rect2(474, 0, 79, 75)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tqiix"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7c3f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjvpn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7qer")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4c7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knn7v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7pqkx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uw77l")
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_8t03j")
@@ -190,5 +296,45 @@ libraries = {
 &"": SubResource("AnimationLibrary_wodsf")
 }
 
+[node name="Splash" type="Node" parent="."]
+script = ExtResource("16_tqiix")
+
+[node name="SplashRight" type="AnimatedSprite2D" parent="Splash"]
+visible = false
+modulate = Color(1, 1, 1, 0.49803922)
+position = Vector2(20, 0)
+sprite_frames = SubResource("SpriteFrames_wodsf")
+frame = 1
+frame_progress = 0.3442768
+
+[node name="SplashLeft" type="AnimatedSprite2D" parent="Splash"]
+visible = false
+modulate = Color(1, 1, 1, 0.49803922)
+position = Vector2(-18, 0)
+sprite_frames = SubResource("SpriteFrames_wodsf")
+frame = 5
+frame_progress = 1.0
+flip_h = true
+
+[node name="SprinkleR" type="AnimatedSprite2D" parent="Splash"]
+modulate = Color(1, 1, 1, 0.49803922)
+position = Vector2(52, -11)
+sprite_frames = SubResource("SpriteFrames_tqiix")
+frame = 6
+frame_progress = 1.0
+
+[node name="SprinkleL" type="AnimatedSprite2D" parent="Splash"]
+modulate = Color(1, 1, 1, 0.49803922)
+position = Vector2(-52, -12)
+sprite_frames = SubResource("SpriteFrames_tqiix")
+frame = 6
+frame_progress = 1.0
+flip_h = true
+
 [connection signal="drift_ended" from="." to="PushingSpirit" method="_on_player_drift_ended"]
 [connection signal="drift_started" from="." to="PushingSpirit" method="_on_player_drift_started"]
+[connection signal="drift_started" from="." to="Splash" method="_on_player_drift_started"]
+[connection signal="animation_finished" from="Splash/SplashRight" to="Splash" method="_on_splash_right_animation_finished"]
+[connection signal="animation_finished" from="Splash/SplashLeft" to="Splash" method="_on_splash_left_animation_finished"]
+[connection signal="animation_finished" from="Splash/SprinkleR" to="Splash" method="_on_splash_right_animation_finished"]
+[connection signal="animation_finished" from="Splash/SprinkleL" to="Splash" method="_on_splash_right_animation_finished"]

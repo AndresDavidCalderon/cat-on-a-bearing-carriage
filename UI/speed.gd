@@ -4,16 +4,16 @@ extends Control
 @export var coin_color:Color
 @export var normal_color:Color
 
-# Applied over the player's speed. A logarithm base 10 is applied after
-var offset=-500 
+## Applied over the player's impulse. A logarithm base 10 is applied after
+var offset=-600 
 
 ## Exchange rate from player speed to value.
 ## This, in sqrt(speed) represents a value of 100
-var value_100=326
+var value_100=85
 var time_after_100=0
 var duplicate_after=2
 var triplicate_afer=8
-var coins_after=100
+var coins_after=90
 var was_under=true
 var value:float
 var max_value=125
@@ -25,7 +25,7 @@ var total_rotation=PI
 
 func _process(delta: float) -> void:
 	last_delta=delta
-	var curved_speed=float(max(player.speed+offset,0))**0.9
+	var curved_speed=float(max(player.impulse+offset,0))**0.8
 	set_value((curved_speed/value_100)*100)
 	$Label.text=str(int(value))
 	if value>coins_after:

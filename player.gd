@@ -25,8 +25,8 @@ var current_state:State=State.SLIDING
 @export var impulse_loss=30
 
 ## spered*this is deducted after passing critic_fast_treshold
-var impulse_loss_critic=0.001
-var critic_fast_treshhold=1000
+var impulse_loss_critic=0.03
+var critic_fast_treshhold=1100
 var impulse_per_tap=10
 var grace_time_after_tap=1
 
@@ -55,9 +55,12 @@ var standard_speed_for_hit_soft_pitch=600
 var hit_sound_offset=-15
 var hard_to_soft=700
 var drift_rotation_knockback=200
+var slide_rain_multiplier=2
 
 var texture_overriden=false
 var impulse_texture_override_length=1
+
+var debug_last_impulse_loss_type:String="NONE"
 
 @export var cat_drift:Texture
 @export var cat_push:Texture
@@ -84,8 +87,12 @@ func _process(delta: float) -> void:
 		if time_since_tap>grace_time_after_tap:
 			if impulse<critic_fast_treshhold:
 				impulse-=impulse_loss*delta
+				debug_last_impulse_loss_type="STATIC"
 			else:
 				impulse-=impulse*impulse_loss_critic*delta
+				debug_last_impulse_loss_type="PROPORTIONAL"
+		else:
+			debug_last_impulse_loss_type="NONE (grace)"
 		speed=impulse*speed_multiplier
 	
 		if impulse<=0:
@@ -144,6 +151,9 @@ func _process(delta: float) -> void:
 		
 		if current_state==State.DRIFTING:
 			var circumstantial_drift_slide=drift_movement*log(speed)*speed_to_drift
+			if Weather.get_weather_today()==Weather.Weather.RAINY:
+				circumstantial_drift_slide*=slide_rain_multiplier
+				
 			position=pinpoint-drift_point_offset.rotated(rotation)
 			var relevant_area:Area2D
 			if drift_direction==Rotation.Negative:
