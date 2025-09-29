@@ -150,7 +150,9 @@ func _process(delta: float) -> void:
 			drift_ended.emit()
 		
 		if current_state==State.DRIFTING:
-			var circumstantial_drift_slide=drift_movement*log(speed)*speed_to_drift
+			var circumstantial_drift_slide=drift_movement*speed_to_drift
+			if log(speed)>0:
+				circumstantial_drift_slide*=log(speed)
 			if Weather.get_weather_today()==Weather.Weather.RAINY:
 				circumstantial_drift_slide*=slide_rain_multiplier
 				

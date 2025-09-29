@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://0v15so4ul81s"]
+
+[ext_resource type="Script" uid="uid://cdtrmooyk8pif" path="res://world-and-tiles/people/pedestrian.gd" id="1_puul5"]
+[ext_resource type="Texture2D" uid="uid://brdc56e8bvkh3" path="res://world-and-tiles/people/bald_white_dude.png" id="2_6tftc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uypp3"]
+radius = 9.0
+height = 32.00006
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_puul5"]
+size = Vector2(31, 37)
+
+[node name="Pedestrian" type="AnimatableBody2D"]
+sync_to_physics = false
+script = ExtResource("1_puul5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_6tftc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 12)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_uypp3")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 30.0
+target_desired_distance = 30.0
+path_postprocessing = 1
+avoidance_enabled = true
+radius = 20.0
+neighbor_distance = 1000.0
+max_speed = 200.0
+
+[node name="AttentionSpan" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="WayArea" type="Area2D" parent="."]
+position = Vector2(0, -13)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WayArea"]
+position = Vector2(0.5, -3.5)
+shape = SubResource("RectangleShape2D_puul5")
+
+[connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="timeout" from="AttentionSpan" to="." method="_on_attention_span_timeout"]

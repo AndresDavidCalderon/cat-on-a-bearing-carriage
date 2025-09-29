@@ -342,6 +342,11 @@ frame = 6
 frame_progress = 1.0
 flip_h = true
 
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+radius = 30.95
+vertices = PackedVector2Array(-13, -26, 13, -26, 13, 26, -13, 26)
+avoidance_enabled = false
+
 [connection signal="drift_ended" from="." to="PushingSpirit" method="_on_player_drift_ended"]
 [connection signal="drift_started" from="." to="PushingSpirit" method="_on_player_drift_started"]
 [connection signal="drift_started" from="." to="Splash" method="_on_player_drift_started"]

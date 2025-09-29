@@ -32,3 +32,7 @@ shape = SubResource("RectangleShape2D_s57gf")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -41)
 shape = SubResource("RectangleShape2D_3us7g")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+position = Vector2(0, 10)
+radius = 71.2

@@ -391,6 +391,7 @@ texture = ExtResource("12_r7hxi")
 [node name="Area2D" type="Area2D" parent="SmallRoof"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SmallRoof/Area2D"]
+visible = false
 polygon = PackedVector2Array(0, 0, 773, -1, 768, 263, 767, 647, 618, 747, 260, 389, 256, 530, -6, 519)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="SmallRoof/Area2D"]
