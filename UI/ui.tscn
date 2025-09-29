@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://84qmbyy12hoi"]
+[gd_scene load_steps=46 format=3 uid="uid://84qmbyy12hoi"]
 
 [ext_resource type="Script" uid="uid://cjpt6tedm8mpx" path="res://UI/ui.gd" id="1_6sqwf"]
 [ext_resource type="Theme" uid="uid://ctgv0x2t6xkc6" path="res://UI/free_ui_theme.tres" id="1_o2jkc"]
@@ -36,12 +36,146 @@
 [ext_resource type="Texture2D" uid="uid://5i87cwsfxk4x" path="res://intro/which_1.png" id="22_awqy2"]
 [ext_resource type="Texture2D" uid="uid://dl6cf25a3j10w" path="res://intro/glow_out.png" id="23_8wcgx"]
 [ext_resource type="Resource" uid="uid://dmjojbcjc6iqb" path="res://charachters/which_intro_timeline.dtl" id="24_8wcgx"]
+[ext_resource type="Texture2D" uid="uid://bfl4s7x8i3k4s" path="res://UI/star_effect.png" id="30_apk2w"]
 [ext_resource type="Script" uid="uid://wuri1yic2vv7" path="res://UI/full_map.gd" id="37_2hqip"]
 [ext_resource type="Texture2D" uid="uid://7rvd3tk4hpsx" path="res://UI/map/border.png" id="38_ld37b"]
 [ext_resource type="Material" uid="uid://dg3ntb24o3iwd" path="res://UI/map/fading_material.tres" id="38_oaf0t"]
 
 [sub_resource type="Gradient" id="Gradient_82xsv"]
 colors = PackedColorArray(0.93, 0.1488, 0.16182, 1, 1, 1, 0.31, 1)
+
+[sub_resource type="Animation" id="Animation_apk2w"]
+resource_name = "fadeIN"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Stars:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 70), Vector2(0, 3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Stars2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.03333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(46, 70), Vector2(42, 27)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(24, 70), Vector2(23, 22)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Stars:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 4.4382772),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Stars2:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.36666667),
+"transitions": PackedFloat32Array(1, 3.1383379),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ypubg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Stars2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(46, 70)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Stars:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 70)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(24, 70)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Stars:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Stars2:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ypubg"]
+_data = {
+&"RESET": SubResource("Animation_ypubg"),
+&"fadeIN": SubResource("Animation_apk2w")
+}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7j5ik"]
 bg_color = Color(0, 0, 0, 1)
@@ -587,28 +721,80 @@ offset_bottom = -145.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Coins" type="HBoxContainer" parent="."]
+[node name="Coins" type="Control" parent="."]
+layout_mode = 3
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -142.0
-offset_top = -256.0
-offset_right = -27.0
-offset_bottom = -192.0
+offset_left = -179.0
+offset_top = -255.0
+offset_right = -64.0
+offset_bottom = -191.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("1_o2jkc")
 script = ExtResource("16_o2t6a")
 
-[node name="TextureRect" type="TextureRect" parent="Coins"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Coins"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Coins/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("17_tjmo3")
 
-[node name="Label" type="Label" parent="Coins"]
+[node name="Label" type="Label" parent="Coins/HBoxContainer"]
 layout_mode = 2
 text = "#"
+
+[node name="WinEffect" type="Control" parent="Coins"]
+clip_contents = true
+anchors_preset = 0
+offset_left = 71.0
+offset_top = -43.0
+offset_right = 155.0
+offset_bottom = 26.0
+
+[node name="Label" type="Label" parent="Coins/WinEffect"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 70.0
+offset_right = 64.0
+offset_bottom = 108.00008
+theme_override_colors/font_color = Color(1, 0.9529412, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "+1"
+
+[node name="Stars" type="TextureRect" parent="Coins/WinEffect"]
+layout_mode = 1
+offset_left = 1.0
+offset_top = 70.0
+offset_right = 41.0
+offset_bottom = 110.000114
+texture = ExtResource("30_apk2w")
+
+[node name="Stars2" type="TextureRect" parent="Coins/WinEffect"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -38.0
+offset_top = 1.0
+offset_right = 1.9999924
+offset_bottom = 41.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("30_apk2w")
+
+[node name="FadeIn" type="AnimationPlayer" parent="Coins/WinEffect"]
+libraries = {
+&"": SubResource("AnimationLibrary_ypubg")
+}
 
 [node name="Which" type="Control" parent="."]
 visible = false
