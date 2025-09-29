@@ -12,11 +12,14 @@ var relevant_width:float=1200
 
 ## Half of the height of the relevant_area
 var relevant_height:float=800
+var modulate_multiplier:float=0
 
 func _ready() -> void:
 	if Weather.get_weather_today()==Weather.Weather.RAINY:
 		$NewDroplet.start()
 		$NewRay.start()
+		for i in get_tree().get_nodes_in_group("shadows"):
+			i.modulate.a*=modulate_multiplier
 
 func get_relevant_random_point():
 	var offset_y=randf_range(-relevant_height,relevant_height)

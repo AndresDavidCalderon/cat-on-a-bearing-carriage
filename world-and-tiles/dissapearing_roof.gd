@@ -3,12 +3,13 @@ extends CanvasItem
 @onready var player = get_node("/root/World/Player")
 
 @export var interior_opacity=0.1
-@export var default_opacity=0.8
+@export var default_opacity=0.97
 var current_tween:Tween
 @export var change_modulate_of:CanvasItem=self
 
 func _ready() -> void:
 	show()
+	modulate.a=default_opacity
 	$Area2D.body_entered.connect(_on_area_2d_body_entered)
 	$Area2D.body_exited.connect(_on_area_2d_body_exited)
 
