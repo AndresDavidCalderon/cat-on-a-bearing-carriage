@@ -21,7 +21,7 @@ func _input(event: InputEvent) -> void:
 			show()
 			get_parent().map_camera=$FullMap/FullSubViewport/FullMapCamera
 			get_parent().map_viewport=$FullMap/FullSubViewport
-			%Minimap.hide()
+			%MiniMapContainer.hide()
 
 func disable():
 	hide()
