@@ -27,6 +27,6 @@ func _process(_delta: float) -> void:
 				closest_point=point
 				closest_idx=i
 		var distance_multiplier=1
-		if ui.get_node("%Minimap").visible:
+		if ui.get_node("%MiniMapContainer").visible:
 			distance_multiplier*=0.9
 		global_position=camera.get_target_position()+(closest_point-camera.get_target_position())*distance_multiplier

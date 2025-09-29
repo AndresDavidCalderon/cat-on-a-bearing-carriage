@@ -206,6 +206,7 @@ cat_default = ExtResource("4_yllr7")
 [node name="MapIcon" type="Sprite2D" parent="."]
 light_mask = 0
 visibility_layer = 2
+z_index = 10
 position = Vector2(1, 0)
 scale = Vector2(4.03125, 4.03125)
 texture = ExtResource("19_c35mf")

@@ -1,4 +1,4 @@
-extends SubViewportContainer
+extends Control
 
 @onready var match_provider=get_node("/root/World")
 
@@ -19,13 +19,13 @@ func _input(event: InputEvent) -> void:
 			disable()
 		else:
 			show()
-			get_parent().map_camera=$FullSubViewport/FullMapCamera
-			get_parent().map_viewport=$FullSubViewport
+			get_parent().map_camera=$FullMap/FullSubViewport/FullMapCamera
+			get_parent().map_viewport=$FullMap/FullSubViewport
 			%Minimap.hide()
 
 func disable():
 	hide()
 	get_parent().map_camera=%MiniMapCamera
 	get_parent().map_viewport=%MiniSubViewport
-	%Minimap.show()
+	%MiniMapContainer.show()
 	

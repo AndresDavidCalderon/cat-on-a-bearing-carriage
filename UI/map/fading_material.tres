@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dg3ntb24o3iwd"]
+
+[ext_resource type="Shader" uid="uid://b7nqr3776gm35" path="res://UI/fullmap.gdshader" id="1_xpkoq"]
+
+[resource]
+shader = ExtResource("1_xpkoq")
+shader_parameter/right = 0.95
+shader_parameter/left = 0.04
+shader_parameter/up = 0.04
+shader_parameter/down = 0.96
+shader_parameter/fade_distance = 0.04
