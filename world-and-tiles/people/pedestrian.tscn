@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://0v15so4ul81s"]
+[gd_scene load_steps=6 format=3 uid="uid://0v15so4ul81s"]
 
 [ext_resource type="Script" uid="uid://cdtrmooyk8pif" path="res://world-and-tiles/people/pedestrian.gd" id="1_puul5"]
 [ext_resource type="Texture2D" uid="uid://brdc56e8bvkh3" path="res://world-and-tiles/people/bald_white_dude.png" id="2_6tftc"]
@@ -8,7 +8,10 @@ radius = 9.0
 height = 32.00006
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_puul5"]
-size = Vector2(31, 37)
+size = Vector2(31, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6tftc"]
+size = Vector2(136.5, 140)
 
 [node name="Pedestrian" type="AnimatableBody2D"]
 sync_to_physics = false
@@ -26,7 +29,6 @@ shape = SubResource("CapsuleShape2D_uypp3")
 path_desired_distance = 30.0
 target_desired_distance = 30.0
 path_postprocessing = 1
-avoidance_enabled = true
 radius = 20.0
 neighbor_distance = 1000.0
 max_speed = 200.0
@@ -39,8 +41,14 @@ one_shot = true
 position = Vector2(0, -13)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WayArea"]
-position = Vector2(0.5, -3.5)
+position = Vector2(0.5, -2)
 shape = SubResource("RectangleShape2D_puul5")
+
+[node name="PopulationCheck" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PopulationCheck"]
+position = Vector2(1, 12)
+shape = SubResource("RectangleShape2D_6tftc")
 
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
