@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "The dog.md",
+                "file": "Resolutions.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "The dog"
+              "title": "Resolutions"
             }
           }
         ],
@@ -188,11 +188,12 @@
   },
   "active": "6853d7a5e9dd5975",
   "lastOpenFiles": [
+    "The dog.md",
+    "Resolutions.md",
+    "About drift limits.md",
     "About pedestrian colissions..md",
     "Speed.md",
     "The chiva.md",
-    "The dog.md",
-    "About drift limits.md",
     "About drift hits..md",
     "Special events.md",
     "Welcome.md",

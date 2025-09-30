@@ -1,90 +1,12 @@
-[gd_scene load_steps=19 format=3 uid="uid://cb3e5ub814mvb"]
+[gd_scene load_steps=8 format=3 uid="uid://cb3e5ub814mvb"]
 
 [ext_resource type="Texture2D" uid="uid://d20pwkwkvpjac" path="res://intro/setup.png" id="1_fpmxm"]
 [ext_resource type="Theme" uid="uid://ctgv0x2t6xkc6" path="res://UI/free_ui_theme.tres" id="1_jkt4n"]
 [ext_resource type="Script" uid="uid://buc1hobb84yqe" path="res://intro/intro.gd" id="2_vjsr4"]
 [ext_resource type="Texture2D" uid="uid://bpedt8xjqiede" path="res://intro/delivery.png" id="4_pxqmo"]
-[ext_resource type="Texture2D" uid="uid://dfk0elxph6mp" path="res://intro/push_animation.png" id="5_1q7h5"]
 [ext_resource type="Script" uid="uid://bqh3fkw3ei5fy" path="res://intro/push.gd" id="5_a5lnx"]
 [ext_resource type="Texture2D" uid="uid://k8ly3psn6r1c" path="res://intro/drift.png" id="6_1q7h5"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a5lnx"]
-atlas = ExtResource("5_1q7h5")
-region = Rect2(0, 0, 340, 225)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6ct58"]
-atlas = ExtResource("5_1q7h5")
-region = Rect2(340, 0, 340, 225)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_krbtg"]
-atlas = ExtResource("5_1q7h5")
-region = Rect2(680, 0, 340, 225)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xwdvp"]
-atlas = ExtResource("5_1q7h5")
-region = Rect2(1020, 0, 340, 225)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8c3ee"]
-atlas = ExtResource("5_1q7h5")
-region = Rect2(1360, 0, 340, 225)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2i53d"]
-atlas = ExtResource("5_1q7h5")
-region = Rect2(1700, 0, 340, 225)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_axcp6"]
-atlas = ExtResource("5_1q7h5")
-region = Rect2(2040, 0, 340, 225)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sg2fo"]
-atlas = ExtResource("5_1q7h5")
-region = Rect2(2380, 0, 340, 225)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1l24h"]
-atlas = ExtResource("5_1q7h5")
-region = Rect2(2720, 0, 340, 225)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ie2y0"]
-atlas = ExtResource("5_1q7h5")
-region = Rect2(3060, 0, 340, 225)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ao3yw"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a5lnx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6ct58")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_krbtg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xwdvp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8c3ee")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2i53d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_axcp6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sg2fo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1l24h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ie2y0")
-}],
-"loop": false,
-"name": &"default",
-"speed": 8.0
-}]
+[ext_resource type="Texture2D" uid="uid://bh7v0hn7rwkw" path="res://intro/push.png" id="6_a5lnx"]
 
 [node name="Intro" type="Control"]
 layout_mode = 3
@@ -105,7 +27,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="1" type="Control" parent="Slides"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -220,12 +141,10 @@ offset_bottom = 321.0
 grow_horizontal = 2
 script = ExtResource("5_a5lnx")
 
-[node name="TextureRect" type="AnimatedSprite2D" parent="Slides/3/Push"]
-position = Vector2(790, 146.00002)
-scale = Vector2(1.0494447, 1.0494444)
-sprite_frames = SubResource("SpriteFrames_ao3yw")
-frame = 9
-frame_progress = 1.0
+[node name="EndImpulse" type="Sprite2D" parent="Slides/3/Push"]
+position = Vector2(733, 153)
+scale = Vector2(2.375626, 2.3756251)
+texture = ExtResource("6_a5lnx")
 
 [node name="Label" type="Label" parent="Slides/3/Push"]
 layout_mode = 1
@@ -298,7 +217,5 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "Next"
 
-[connection signal="visibility_changed" from="Slides/3" to="Slides/3/Push" method="_on__visibility_changed"]
-[connection signal="mouse_entered" from="Slides/3/Push" to="Slides/3/Push" method="_on_mouse_entered"]
 [connection signal="pressed" from="Next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="Next/Visible" to="." method="_on_visible_pressed"]
