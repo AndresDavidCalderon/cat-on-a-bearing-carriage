@@ -42,7 +42,13 @@ func _process(delta: float) -> void:
 	last_delta=delta
 	$Debug/MoveIntention.rotation=move_intention.angle()
 	$Debug.rotation=-rotation
+	if move_intention.length()!=0:
+		$Arms.play("walking")
+	else:
+		$Arms.play("stand")
+	
 	if $NavigationAgent2D.is_navigation_finished() or match_provider.current_match_state!=match_provider.matchState.PLAYING:
+		move_intention=Vector2.ZERO
 		return
 	
 	match current_state:
@@ -76,6 +82,7 @@ func _process(delta: float) -> void:
 				## This is here in case someone else is gives way to us while we gave way.
 				## Somehow that scenario makes it so that the giver doesn't reset this properly.
 				give_way=true
+	
 
 func set_state(new_state:int):
 	current_state=new_state

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4e5xosq021dm"
-path="res://.godot/imported/bald_black_dude_base.png-6d1b511bc9a95949fb3a2e5eafe2f70a.ctex"
+uid="uid://dvimqt0eh13hf"
+path="res://.godot/imported/bald_white_dude.png-f760b8099eb4e09bd55bae0308778dbf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://world-and-tiles/people/bald_black_dude_base.png"
-dest_files=["res://.godot/imported/bald_black_dude_base.png-6d1b511bc9a95949fb3a2e5eafe2f70a.ctex"]
+source_file="res://world-and-tiles/people/bald_white_dude.png"
+dest_files=["res://.godot/imported/bald_white_dude.png-f760b8099eb4e09bd55bae0308778dbf.ctex"]
 
 [params]
 
