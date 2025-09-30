@@ -12,7 +12,7 @@ var current_state=State.GOING
 
 
 var speed=200
-var give_way_speed=50
+var give_way_speed=100
 var rotation_speed=20
 var last_delta:float
 var give_way_angle:float=0
@@ -35,6 +35,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	last_delta=delta
+	$Debug/MoveIntention.rotation=move_intention.angle()
+	$Debug.rotation=-rotation
 	if $NavigationAgent2D.is_navigation_finished() or match_provider.current_match_state!=match_provider.matchState.PLAYING:
 		return
 	

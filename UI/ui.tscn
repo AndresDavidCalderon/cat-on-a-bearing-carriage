@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://84qmbyy12hoi"]
+[gd_scene load_steps=47 format=3 uid="uid://84qmbyy12hoi"]
 
 [ext_resource type="Script" uid="uid://cjpt6tedm8mpx" path="res://UI/ui.gd" id="1_6sqwf"]
 [ext_resource type="Theme" uid="uid://ctgv0x2t6xkc6" path="res://UI/free_ui_theme.tres" id="1_o2jkc"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://dybwj42npbcym" path="res://UI/start.gd" id="7_0tr35"]
 [ext_resource type="Script" uid="uid://d7wqpm15grcy" path="res://UI/time.gd" id="8_7j5ik"]
 [ext_resource type="Script" uid="uid://dol6vlmwwr3ga" path="res://UI/car_stats_debug.gd" id="9_i1yd8"]
+[ext_resource type="Texture2D" uid="uid://dtxa3rnqoa1f3" path="res://UI/map/toggle.png" id="9_ypubg"]
 [ext_resource type="Script" uid="uid://dba4y85gilasm" path="res://UI/win_panel.gd" id="10_j5i65"]
 [ext_resource type="Texture2D" uid="uid://b7btsnvvggr5n" path="res://UI/win.png" id="11_awqy2"]
 [ext_resource type="Script" uid="uid://vcy7cw0cm6a1" path="res://UI/minimap.gd" id="12_8wcgx"]
@@ -266,6 +267,20 @@ render_target_update_mode = 4
 unique_name_in_owner = true
 zoom = Vector2(0.1, 0.1)
 script = ExtResource("13_duqhi")
+
+[node name="TextureRect" type="TextureRect" parent="MiniMapContainer"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -80.0
+offset_top = 38.0
+offset_right = -36.0
+offset_bottom = 68.0
+grow_horizontal = 0
+texture = ExtResource("9_ypubg")
+expand_mode = 3
+stretch_mode = 5
 
 [node name="Compass" type="Control" parent="."]
 modulate = Color(1, 1, 1, 0.784314)
