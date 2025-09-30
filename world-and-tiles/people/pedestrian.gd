@@ -17,7 +17,7 @@ var give_way_speed=100
 var rotation_speed=20
 var last_delta:float
 var give_way_angle:float=0
-var angle_give_way_offset_p_second:float=0
+var angle_give_way_offset_p_second:float=1
 
 ## Can be managed by another pedestrian if they find the intersection first.
 ## they must change it back to true after finding we are no longer in their way.
@@ -53,12 +53,11 @@ func _process(delta: float) -> void:
 			if give_way:
 				for i in $WayArea.get_overlapping_bodies():
 					if i is Pedestrian:
-						if i.current_state!=State.GIVING_WAY:
-							i.give_way=false
-							set_state(State.GIVING_WAY)
-							giving_way_to=i
-							give_way_angle=i.move_intention.angle()
-							break
+						i.give_way=false
+						set_state(State.GIVING_WAY)
+						giving_way_to=i
+						give_way_angle=i.move_intention.angle()
+						break
 			if $NavigationAgent2D.avoidance_enabled:
 				$NavigationAgent2D.set_velocity(new_velocity)
 			else:
@@ -74,6 +73,9 @@ func _process(delta: float) -> void:
 			if not pedestrians_in_area().has(giving_way_to):
 				giving_way_to.give_way=true
 				set_state(State.GOING)
+				## This is here in case someone else is gives way to us while we gave way.
+				## Somehow that scenario makes it so that the giver doesn't reset this properly.
+				give_way=true
 
 func set_state(new_state:int):
 	current_state=new_state
