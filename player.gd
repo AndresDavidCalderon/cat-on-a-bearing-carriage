@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 signal drift_started
 signal drift_ended
+signal hit
 
 enum State{
 	SLIDING,
@@ -51,9 +52,6 @@ var pinpoint:Vector2 #Should be set when starting a drift.
 var drift_direction:Rotation
 var was_separated=true
 var was_straight=false
-var standard_speed_for_hit_soft_pitch=600
-var hit_sound_offset=-15
-var hard_to_soft=700
 var drift_rotation_knockback=200
 var slide_rain_multiplier=2
 
@@ -74,12 +72,7 @@ func _process(delta: float) -> void:
 		var collided = move_and_slide()
 		if collided:
 			if was_separated:
-				if speed>hard_to_soft:
-					$HitHard.play()
-					$HitHard.pitch_scale=standard_speed_for_hit_soft_pitch/speed
-					$HitHard.volume_db=(standard_speed_for_hit_soft_pitch/speed)**2+hit_sound_offset
-				else:
-					$HitSoft.play()
+				hit.emit()
 			was_separated=false
 		else:
 			was_separated=true

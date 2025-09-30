@@ -1,10 +1,11 @@
-[gd_scene load_steps=41 format=3 uid="uid://dhjjje2b1xoa0"]
+[gd_scene load_steps=42 format=3 uid="uid://dhjjje2b1xoa0"]
 
 [ext_resource type="Script" uid="uid://dg6hodfjfupjm" path="res://player.gd" id="1_8t03j"]
 [ext_resource type="Texture2D" uid="uid://bvqxs4m7uo268" path="res://player/cat_drift.png" id="2_2ieo8"]
 [ext_resource type="Texture2D" uid="uid://cgskcw252syn2" path="res://player/cat_push.png" id="3_ebec5"]
 [ext_resource type="Texture2D" uid="uid://4d1qt7imo57v" path="res://player/cat.png" id="4_yllr7"]
 [ext_resource type="Texture2D" uid="uid://bxwifrw0on3r8" path="res://player/car.png" id="5_kb6p2"]
+[ext_resource type="Script" uid="uid://ctea6d6h84fjd" path="res://player/hit_sound.gd" id="5_x7c3f"]
 [ext_resource type="Script" uid="uid://gsd8sxolqch3" path="res://player/car.gd" id="6_2ieo8"]
 [ext_resource type="Script" uid="uid://bfkxeq0ctt6tc" path="res://map_legend.gd" id="6_65viv"]
 [ext_resource type="AudioStream" uid="uid://djgf0v36ttelk" path="res://player/hit_hard.wav" id="6_wodsf"]
@@ -205,7 +206,19 @@ cat_drift = ExtResource("2_2ieo8")
 cat_push = ExtResource("3_ebec5")
 cat_default = ExtResource("4_yllr7")
 
+[node name="HitSound" type="Node" parent="."]
+script = ExtResource("5_x7c3f")
+
+[node name="HitHard" type="AudioStreamPlayer" parent="HitSound"]
+stream = ExtResource("6_wodsf")
+volume_db = -2.0
+
+[node name="HitSoft" type="AudioStreamPlayer" parent="HitSound"]
+stream = ExtResource("7_32hag")
+volume_db = -2.0
+
 [node name="MapIcon" type="Sprite2D" parent="."]
+visible = false
 light_mask = 0
 visibility_layer = 2
 z_index = 10
@@ -274,14 +287,6 @@ shape = SubResource("RectangleShape2D_dg77c")
 [node name="Cat" type="Sprite2D" parent="."]
 position = Vector2(0, 28)
 texture = ExtResource("4_yllr7")
-
-[node name="HitHard" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_wodsf")
-volume_db = -2.0
-
-[node name="HitSoft" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_32hag")
-volume_db = -2.0
 
 [node name="Turn" type="AudioStreamPlayer" parent="."]
 volume_db = -5.0
@@ -352,6 +357,7 @@ avoidance_enabled = false
 [connection signal="drift_ended" from="." to="PushingSpirit" method="_on_player_drift_ended"]
 [connection signal="drift_started" from="." to="PushingSpirit" method="_on_player_drift_started"]
 [connection signal="drift_started" from="." to="Splash" method="_on_player_drift_started"]
+[connection signal="hit" from="." to="HitSound" method="_on_player_hit"]
 [connection signal="animation_finished" from="Splash/SplashRight" to="Splash" method="_on_splash_right_animation_finished"]
 [connection signal="animation_finished" from="Splash/SplashLeft" to="Splash" method="_on_splash_left_animation_finished"]
 [connection signal="animation_finished" from="Splash/SprinkleR" to="Splash" method="_on_splash_right_animation_finished"]
