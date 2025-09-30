@@ -47,7 +47,16 @@ func _process(delta: float) -> void:
 	else:
 		$Arms.play("stand")
 	
-	if $NavigationAgent2D.is_navigation_finished() or match_provider.current_match_state!=match_provider.matchState.PLAYING:
+	if (not $NavigationAgent2D.is_target_reachable()) and not $VisibleOnScreenNotifier2D.is_on_screen():
+		for i in get_parent().get_node("InterestPoints").get_children():
+			if not i.get_node("ScreenNotifier").is_on_screen():
+				global_position=i.global_position
+				set_new_target()
+	
+	
+	
+	if ($NavigationAgent2D.is_navigation_finished() or match_provider.current_match_state!=match_provider.matchState.PLAYING or
+		not_pedestrians().size()>0):
 		move_intention=Vector2.ZERO
 		return
 	
@@ -99,12 +108,11 @@ func _on_navigation_agent_2d_navigation_finished() -> void:
 func set_new_target():
 	$NavigationAgent2D.target_position=get_parent().get_node("InterestPoints").get_children().pick_random().global_position
 
+func not_pedestrians():
+	return $OtherObstacle.get_overlapping_bodies()
+
 func pedestrians_in_area():
-	var pedestrians=[]
-	for i in $WayArea.get_overlapping_bodies():
-		if i is Pedestrian:
-			pedestrians.append(i)
-	return pedestrians
+	return $WayArea.get_overlapping_bodies().filter(is_pedestrian)
 
 func is_pedestrian(a):
 	return a is Pedestrian
