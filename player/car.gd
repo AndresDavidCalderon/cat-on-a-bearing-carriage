@@ -11,8 +11,8 @@ func _ready() -> void:
 	match_provider.packet_delivered.connect(on_delivery)
 	avaliable_places=get_children()
 
-func match_change(state:bool):
-	if state:
+func match_change(state:int):
+	if state==match_provider.matchState.PLAYING:
 		setup_bottles(match_provider.packet_target)
 
 func on_delivery():
