@@ -17,22 +17,22 @@
 [ext_resource type="TileSet" uid="uid://dmw8vb3c385ga" path="res://world-and-tiles/default.tres" id="13_h8e4i"]
 [ext_resource type="Texture2D" uid="uid://c5kle7d46dh" path="res://world-and-tiles/pool.png" id="14_vivmo"]
 [ext_resource type="AudioStream" uid="uid://b4g6yycgv5kxi" path="res://sound/original_riff_cut.wav" id="14_w48qg"]
-[ext_resource type="Texture2D" uid="uid://b00pukuf55qpi" path="res://world-and-tiles/people/couple.png" id="16_2cqfq"]
+[ext_resource type="Texture2D" uid="uid://b00pukuf55qpi" path="res://world-and-tiles/people/skins/couple.png" id="16_2cqfq"]
 [ext_resource type="Script" uid="uid://d3cbvv7uhn2i2" path="res://world-and-tiles/people/couple.gd" id="16_yaehf"]
-[ext_resource type="Texture2D" uid="uid://dtjal6hkuu84b" path="res://world-and-tiles/people/chic_woman_white.png" id="17_d13ii"]
-[ext_resource type="Texture2D" uid="uid://dxv7f35w6tr43" path="res://world-and-tiles/people/blue_capul_tan_girl.png" id="18_1u8w0"]
+[ext_resource type="Texture2D" uid="uid://dtjal6hkuu84b" path="res://world-and-tiles/people/skins/chic_woman_white.png" id="17_d13ii"]
+[ext_resource type="Texture2D" uid="uid://dxv7f35w6tr43" path="res://world-and-tiles/people/skins/blue_capul_tan_girl.png" id="18_1u8w0"]
 [ext_resource type="PackedScene" uid="uid://84qmbyy12hoi" path="res://UI/ui.tscn" id="18_ryguw"]
-[ext_resource type="Texture2D" uid="uid://djpebdt5uyx58" path="res://world-and-tiles/people/blond_sidehair_white.png" id="19_0odxb"]
-[ext_resource type="Texture2D" uid="uid://c52ogfeh0vy5x" path="res://world-and-tiles/people/bald_black_dude.png" id="19_lswn8"]
+[ext_resource type="Texture2D" uid="uid://djpebdt5uyx58" path="res://world-and-tiles/people/skins/blond_sidehair_white.png" id="19_0odxb"]
+[ext_resource type="Texture2D" uid="uid://c52ogfeh0vy5x" path="res://world-and-tiles/people/skins/bald_black_dude.png" id="19_lswn8"]
 [ext_resource type="Texture2D" uid="uid://di3c6ndvxfu11" path="res://world-and-tiles/commercial/rooftop_furniture.png" id="19_ryguw"]
-[ext_resource type="Texture2D" uid="uid://e6tq4v783uv7" path="res://world-and-tiles/people/black_and_blue_sidehair_white.png" id="21_a6jrf"]
-[ext_resource type="Texture2D" uid="uid://bybdae0eyb6ug" path="res://world-and-tiles/people/double_ball_blond_girl.png" id="22_xuqvo"]
-[ext_resource type="Texture2D" uid="uid://cb0u2v8fogs3y" path="res://world-and-tiles/people/worker.png" id="23_qsp4k"]
-[ext_resource type="Texture2D" uid="uid://qo77bio35pav" path="res://world-and-tiles/people/worker_black.png" id="24_kq58d"]
+[ext_resource type="Texture2D" uid="uid://e6tq4v783uv7" path="res://world-and-tiles/people/skins/black_and_blue_sidehair_white.png" id="21_a6jrf"]
+[ext_resource type="Texture2D" uid="uid://bybdae0eyb6ug" path="res://world-and-tiles/people/skins/double_ball_blond_girl.png" id="22_xuqvo"]
+[ext_resource type="Texture2D" uid="uid://cb0u2v8fogs3y" path="res://world-and-tiles/people/skins/worker.png" id="23_qsp4k"]
+[ext_resource type="Texture2D" uid="uid://qo77bio35pav" path="res://world-and-tiles/people/skins/worker_black.png" id="24_kq58d"]
 [ext_resource type="Texture2D" uid="uid://nk11qoels7te" path="res://world-and-tiles/yards/dog_house.png" id="25_h8e4i"]
-[ext_resource type="Texture2D" uid="uid://s0pkdjthksvo" path="res://world-and-tiles/people/long_hair_girl.png" id="25_seu75"]
-[ext_resource type="Texture2D" uid="uid://c3v5cfq5pd7gf" path="res://world-and-tiles/people/blonde_dude.png" id="26_htxhm"]
-[ext_resource type="Texture2D" uid="uid://t3ptmihggdh8" path="res://world-and-tiles/people/long_hair_black_woman.png" id="27_jq2sk"]
+[ext_resource type="Texture2D" uid="uid://s0pkdjthksvo" path="res://world-and-tiles/people/skins/long_hair_girl.png" id="25_seu75"]
+[ext_resource type="Texture2D" uid="uid://c3v5cfq5pd7gf" path="res://world-and-tiles/people/skins/blonde_dude.png" id="26_htxhm"]
+[ext_resource type="Texture2D" uid="uid://t3ptmihggdh8" path="res://world-and-tiles/people/skins/long_hair_black_woman.png" id="27_jq2sk"]
 [ext_resource type="Texture2D" uid="uid://b5h2f88yyh2fa" path="res://world-and-tiles/commercial/umberella.png" id="31_4k2k6"]
 [ext_resource type="PackedScene" uid="uid://buny56nbaupuv" path="res://world-and-tiles/commercial/UmbrellaStreet.tscn" id="34_4k2k6"]
 [ext_resource type="AudioStream" uid="uid://b1d3pm10botcx" path="res://sound/delivery/delivery_a.wav" id="35_b1qrp"]
@@ -535,6 +535,21 @@ position = Vector2(-669, -2521)
 
 [node name="Pedestrian5" parent="CivilNavigation" instance=ExtResource("35_uypp3")]
 position = Vector2(-684, -980)
+
+[node name="Pedestrian6" parent="CivilNavigation" instance=ExtResource("35_uypp3")]
+position = Vector2(-480, 214)
+
+[node name="Pedestrian7" parent="CivilNavigation" instance=ExtResource("35_uypp3")]
+position = Vector2(-301, 319)
+
+[node name="Pedestrian8" parent="CivilNavigation" instance=ExtResource("35_uypp3")]
+position = Vector2(-673, 411)
+
+[node name="Pedestrian9" parent="CivilNavigation" instance=ExtResource("35_uypp3")]
+position = Vector2(-554, 273)
+
+[node name="Pedestrian10" parent="CivilNavigation" instance=ExtResource("35_uypp3")]
+position = Vector2(-420, 318)
 
 [node name="InterestPoints" type="Node2D" parent="CivilNavigation"]
 

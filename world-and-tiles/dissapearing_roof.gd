@@ -3,7 +3,7 @@ extends CanvasItem
 @onready var player = get_node("/root/World/Player")
 
 @export var interior_opacity=0.1
-@export var default_opacity=0.97
+@export var default_opacity=0.94
 var current_tween:Tween
 @export var change_modulate_of:CanvasItem=self
 

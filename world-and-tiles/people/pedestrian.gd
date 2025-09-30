@@ -6,10 +6,11 @@ enum State{
 	GIVING_WAY,
 	GOING
 }
-var current_state=State.GOING
+@export var debug_state_textures:Array[Texture]
 
 @onready var match_provider=get_node("/root/World")
 
+var current_state=State.GOING
 
 var speed=200
 var give_way_speed=100
@@ -20,7 +21,11 @@ var angle_give_way_offset_p_second:float=0
 
 ## Can be managed by another pedestrian if they find the intersection first.
 ## they must change it back to true after finding we are no longer in their way.
-var give_way:bool=true
+var give_way:bool=true:
+	set(value):
+		give_way=value
+		$Debug/Way.visible=value
+
 
 ## Useful for managing the other pedestrian's give way state.
 var giving_way_to:Pedestrian
@@ -48,11 +53,12 @@ func _process(delta: float) -> void:
 			if give_way:
 				for i in $WayArea.get_overlapping_bodies():
 					if i is Pedestrian:
-						i.give_way=false
-						current_state=State.GIVING_WAY
-						giving_way_to=i
-						give_way_angle=i.move_intention.angle()+PI/2
-						break
+						if i.current_state!=State.GIVING_WAY:
+							i.give_way=false
+							set_state(State.GIVING_WAY)
+							giving_way_to=i
+							give_way_angle=i.move_intention.angle()
+							break
 			if $NavigationAgent2D.avoidance_enabled:
 				$NavigationAgent2D.set_velocity(new_velocity)
 			else:
@@ -67,8 +73,12 @@ func _process(delta: float) -> void:
 			move_intention=give_way_vector
 			if not pedestrians_in_area().has(giving_way_to):
 				giving_way_to.give_way=true
-				current_state=State.GOING
-	
+				set_state(State.GOING)
+
+func set_state(new_state:int):
+	current_state=new_state
+	$Debug/State.texture=debug_state_textures[new_state]
+
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 	move_and_collide(safe_velocity)
 	rotation=rotate_toward(rotation,safe_velocity.angle()+PI/2,rotation_speed*last_delta)

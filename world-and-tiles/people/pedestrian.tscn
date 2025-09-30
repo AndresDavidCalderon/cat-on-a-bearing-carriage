@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://0v15so4ul81s"]
+[gd_scene load_steps=9 format=3 uid="uid://0v15so4ul81s"]
 
 [ext_resource type="Script" uid="uid://cdtrmooyk8pif" path="res://world-and-tiles/people/pedestrian.gd" id="1_puul5"]
-[ext_resource type="Texture2D" uid="uid://brdc56e8bvkh3" path="res://world-and-tiles/people/bald_white_dude.png" id="2_6tftc"]
+[ext_resource type="Texture2D" uid="uid://brdc56e8bvkh3" path="res://world-and-tiles/people/skins/bald_white_dude.png" id="2_6tftc"]
 [ext_resource type="Texture2D" uid="uid://d08hjcvwwwo47" path="res://UI/compass_nail.png" id="3_6tftc"]
+[ext_resource type="Texture2D" uid="uid://dnmq7e6xemwmd" path="res://world-and-tiles/people/waiting.png" id="3_o0twu"]
+[ext_resource type="Texture2D" uid="uid://b7daiikeddtch" path="res://world-and-tiles/people/moving.png" id="4_4xsyh"]
+[ext_resource type="Texture2D" uid="uid://cyxan2nsemj62" path="res://world-and-tiles/people/stop.png" id="4_8e7ce"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uypp3"]
 radius = 9.0
@@ -14,6 +17,7 @@ size = Vector2(31, 34)
 [node name="Pedestrian" type="AnimatableBody2D"]
 sync_to_physics = false
 script = ExtResource("1_puul5")
+debug_state_textures = Array[Texture]([ExtResource("3_o0twu"), ExtResource("4_8e7ce"), ExtResource("4_4xsyh")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_6tftc")
@@ -43,10 +47,24 @@ position = Vector2(0.5, -2)
 shape = SubResource("RectangleShape2D_puul5")
 
 [node name="Debug" type="Node2D" parent="."]
+position = Vector2(1, 12)
 
 [node name="MoveIntention" type="Sprite2D" parent="Debug"]
-position = Vector2(0, 9)
+position = Vector2(-1, -3)
 texture = ExtResource("3_6tftc")
+
+[node name="State" type="Sprite2D" parent="Debug"]
+position = Vector2(-0.99999905, -9.536743e-07)
+scale = Vector2(0.6640625, 0.6640625)
+texture = ExtResource("4_4xsyh")
+
+[node name="Way" type="Label" parent="Debug"]
+offset_left = -12.0
+offset_top = -3.0
+offset_right = 24.0
+offset_bottom = 20.0
+theme_override_font_sizes/font_size = 12
+text = "WAY"
 
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
