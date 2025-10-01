@@ -106,7 +106,7 @@ func generate_random_target():
 	if GlobalScore.current_day==GlobalScore.mechanic_day:
 		if mechanic_point in delivery_targets:
 			delivery_targets.erase(mechanic_point)
-		if packet_score==mechanic_delivery_turn:
+		if packet_score==mechanic_delivery_turn-2:
 			return mechanic_point
 	
 	var new_target=null

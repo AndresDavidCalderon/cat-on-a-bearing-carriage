@@ -8,12 +8,40 @@
 "sound_moods": {},
 "style": ""
 },
-&"default_portrait": "",
+&"default_portrait": "american",
 &"description": "",
 &"display_name": "mechanic",
 &"mirror": false,
 &"nicknames": [""],
 &"offset": Vector2(0, 0),
-&"portraits": {},
+&"portraits": {
+"american": {
+"export_overrides": {
+"image": "\"res://charachters/mechanic/mechanic_portrait.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"half": {
+"export_overrides": {
+"image": "\"res://charachters/mechanic/mechanic_portrait_half.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"kneeling": {
+"export_overrides": {
+"image": "\"res://charachters/mechanic/mechanic_portrait_half_look_down.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+}
+},
 &"scale": 1.0
 }

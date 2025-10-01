@@ -867,6 +867,7 @@ workshop [E]"
 [connection signal="timeout" from="InWorldRainEffects/NewDroplet" to="InWorldRainEffects" method="_on_new_droplet_timeout"]
 [connection signal="timeout" from="InWorldRainEffects/NewRay" to="InWorldRainEffects" method="_on_new_ray_timeout"]
 [connection signal="delivered" from="DeliveryPoints/Mechanic" to="Mechanic" method="_on_mechanic_delivered"]
+[connection signal="interacted" from="Mechanic/Interactable" to="Mechanic" method="_on_interactable_interacted"]
 
 [editable path="DeliveryPoints/DeliveryTarget"]
 [editable path="DeliveryPoints/DeliveryTarget2"]
