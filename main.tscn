@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=4 uid="uid://dnnka5th1gldj"]
+[gd_scene load_steps=87 format=4 uid="uid://dnnka5th1gldj"]
 
 [ext_resource type="Script" uid="uid://o74np0f72gru" path="res://world.gd" id="1_h2yge"]
 [ext_resource type="Script" uid="uid://21cvdt1d6hdp" path="res://blessings.gd" id="2_4k2k6"]
@@ -61,6 +61,9 @@
 [ext_resource type="PackedScene" uid="uid://c74pefbvka83h" path="res://world-and-tiles/industrial/chiva.tscn" id="45_0n3wm"]
 [ext_resource type="Script" uid="uid://w6uqymsarpwn" path="res://car_manager.gd" id="48_0cbny"]
 [ext_resource type="Texture2D" uid="uid://c3q1to6agc5ho" path="res://world-and-tiles/default.png" id="50_hrvbo"]
+[ext_resource type="Script" uid="uid://cvvfnmyq7u7ro" path="res://mechanic.gd" id="62_pjyto"]
+[ext_resource type="Resource" uid="uid://dutlr7geaqwac" path="res://charachters/mechanic_presentation.dtl" id="63_sm6fg"]
+[ext_resource type="PackedScene" uid="uid://d4fuo7inj5ebw" path="res://world-and-tiles/interactable.tscn" id="64_b17eg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b1qrp"]
 size = Vector2(37.99981, 44.000076)
@@ -385,15 +388,15 @@ texture = ExtResource("18_1u8w0")
 [node name="PotColission" parent="DeliveryPoints/DeliveryTarget2/Person" index="2"]
 position = Vector2(28, 9)
 
-[node name="DeliveryTarget3" parent="DeliveryPoints" instance=ExtResource("4_1bvp3")]
+[node name="Mechanic" parent="DeliveryPoints" instance=ExtResource("4_1bvp3")]
 position = Vector2(2384, 1777)
 
-[node name="Person" parent="DeliveryPoints/DeliveryTarget3/Person" index="0"]
+[node name="Person" parent="DeliveryPoints/Mechanic/Person" index="0"]
 position = Vector2(1, 13)
 rotation = 3.13961
 texture = ExtResource("19_lswn8")
 
-[node name="PotColission" parent="DeliveryPoints/DeliveryTarget3/Person" index="2"]
+[node name="PotColission" parent="DeliveryPoints/Mechanic/Person" index="2"]
 position = Vector2(31, -8)
 
 [node name="DeliveryTarget4" parent="DeliveryPoints" instance=ExtResource("4_1bvp3")]
@@ -849,14 +852,25 @@ position = Vector2(2664, 2705)
 [node name="Node2D7" type="Node2D" parent="CarManager/PathC"]
 position = Vector2(2460, 2710)
 
-[node name="Node" type="Node" parent="."]
+[node name="Mechanic" type="Node2D" parent="."]
+position = Vector2(2489, 1776)
+script = ExtResource("62_pjyto")
+presentation_timeline = ExtResource("63_sm6fg")
+
+[node name="Interactable" parent="Mechanic" instance=ExtResource("64_b17eg")]
+position = Vector2(-1, -2)
+
+[node name="Label" parent="Mechanic/Interactable" index="1"]
+text = "Enter the 
+workshop [E]"
 
 [connection signal="timeout" from="InWorldRainEffects/NewDroplet" to="InWorldRainEffects" method="_on_new_droplet_timeout"]
 [connection signal="timeout" from="InWorldRainEffects/NewRay" to="InWorldRainEffects" method="_on_new_ray_timeout"]
+[connection signal="delivered" from="DeliveryPoints/Mechanic" to="Mechanic" method="_on_mechanic_delivered"]
 
 [editable path="DeliveryPoints/DeliveryTarget"]
 [editable path="DeliveryPoints/DeliveryTarget2"]
-[editable path="DeliveryPoints/DeliveryTarget3"]
+[editable path="DeliveryPoints/Mechanic"]
 [editable path="DeliveryPoints/DeliveryTarget4"]
 [editable path="DeliveryPoints/BlackAndBlueHairDelivery"]
 [editable path="DeliveryPoints/DoubleBallGirlDelivery"]
@@ -878,3 +892,4 @@ position = Vector2(2460, 2710)
 [editable path="Tree3"]
 [editable path="Tree4"]
 [editable path="Tree5"]
+[editable path="Mechanic/Interactable"]

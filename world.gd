@@ -21,6 +21,9 @@ signal day_stats_set
 ## Emitted when winning. set_match_state doesnt emit this.
 signal win
 
+@onready var mechanic_point=$DeliveryPoints/Mechanic
+var mechanic_delivery_turn=3
+
 var current_match_state=matchState.PREVIOUS
 
 var delivery_targets=[]
@@ -100,6 +103,12 @@ func set_random_target():
 		next_target=generate_random_target()
 
 func generate_random_target():
+	if GlobalScore.current_day==GlobalScore.mechanic_day:
+		if mechanic_point in delivery_targets:
+			delivery_targets.erase(mechanic_point)
+		if packet_score==mechanic_delivery_turn:
+			return mechanic_point
+	
 	var new_target=null
 	while new_target==current_target or new_target==null:
 		new_target=delivery_targets.pick_random()
@@ -118,7 +127,11 @@ func lost(loss_reason):
 	loss.emit(loss_reason)
 
 func update_day_stats():
-	target_time = randi_range(45,120)
+	if GlobalScore.current_day!=GlobalScore.mechanic_day:
+		target_time = randi_range(45,120)
+	else:
+		target_time=120
+	
 	var minutes:float=(target_time/60.0)
 	packet_target = round(minutes*base_milk_by_minute*pow(milk_by_minute_multiplier,GlobalScore.current_day-1))
 	day_stats_set.emit()

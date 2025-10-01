@@ -218,7 +218,6 @@ stream = ExtResource("7_32hag")
 volume_db = -2.0
 
 [node name="MapIcon" type="Sprite2D" parent="."]
-visible = false
 light_mask = 0
 visibility_layer = 2
 z_index = 10

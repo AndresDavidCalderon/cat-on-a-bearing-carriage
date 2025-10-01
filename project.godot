@@ -31,10 +31,12 @@ Weather="*res://weather.gd"
 
 directories/dch_directory={
 "cat": "res://charachters/cat.dch",
+"mechanic": "res://charachters/mechanic/mechanic.dch",
 "witch": "res://charachters/witch.dch"
 }
 directories/dtl_directory={
 "blessing_recieve.timeline": "res://charachters/blessing_recieve.timeline.dtl",
+"mechanic_presentation": "res://charachters/mechanic_presentation.dtl",
 "which_intro_timeline": "res://charachters/which_intro_timeline.dtl",
 "which_session": "res://charachters/which_session.dtl"
 }

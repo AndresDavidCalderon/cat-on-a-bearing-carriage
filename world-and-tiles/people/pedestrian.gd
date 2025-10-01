@@ -47,11 +47,11 @@ func _process(delta: float) -> void:
 	else:
 		$Arms.play("stand")
 	
-	if (not $NavigationAgent2D.is_target_reachable()) and not $VisibleOnScreenNotifier2D.is_on_screen():
-		for i in get_parent().get_node("InterestPoints").get_children():
-			if not i.get_node("ScreenNotifier").is_on_screen():
-				global_position=i.global_position
-				set_new_target()
+	#if (not $NavigationAgent2D.is_target_reachable()) and not $VisibleOnScreenNotifier2D.is_on_screen():
+		#for i in get_parent().get_node("InterestPoints").get_children():
+			#if not i.get_node("ScreenNotifier").is_on_screen():
+				#global_position=i.global_position
+				#set_new_target()
 	
 	
 	
