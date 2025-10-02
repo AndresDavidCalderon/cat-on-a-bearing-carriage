@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dhjjje2b1xoa0"]
+[gd_scene load_steps=43 format=3 uid="uid://dhjjje2b1xoa0"]
 
 [ext_resource type="Script" uid="uid://dg6hodfjfupjm" path="res://player.gd" id="1_8t03j"]
 [ext_resource type="Texture2D" uid="uid://bvqxs4m7uo268" path="res://player/cat_drift.png" id="2_2ieo8"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://cdejdv1dwvjmp" path="res://player/milk_gallon.png" id="8_yllr7"]
 [ext_resource type="AudioStream" uid="uid://cur0xx2bxqi41" path="res://player/turn_b.wav" id="9_e7oew"]
 [ext_resource type="AudioStream" uid="uid://dtcide14g7v3v" path="res://player/turn_c.wav" id="10_c35mf"]
+[ext_resource type="Script" uid="uid://ca6ifowcf6wvb" path="res://player/camera_2d.gd" id="14_bjvpn"]
 [ext_resource type="Texture2D" uid="uid://r5wi4jnjbrhj" path="res://player/pushing_spirit.png" id="14_kb6p2"]
 [ext_resource type="Script" uid="uid://baaw1d56uj755" path="res://player/pushing_spirit.gd" id="14_wodsf"]
 [ext_resource type="Texture2D" uid="uid://0posygpel24g" path="res://player/car_splash.png" id="16_32hag"]
@@ -268,6 +269,7 @@ shape = SubResource("RectangleShape2D_myinc")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 ignore_rotation = false
+script = ExtResource("14_bjvpn")
 
 [node name="Left" type="Area2D" parent="."]
 position = Vector2(-16, 22)
@@ -357,6 +359,7 @@ avoidance_enabled = false
 [connection signal="drift_started" from="." to="PushingSpirit" method="_on_player_drift_started"]
 [connection signal="drift_started" from="." to="Splash" method="_on_player_drift_started"]
 [connection signal="hit" from="." to="HitSound" method="_on_player_hit"]
+[connection signal="impulsed" from="." to="Camera2D" method="_on_player_impulsed"]
 [connection signal="animation_finished" from="Splash/SplashRight" to="Splash" method="_on_splash_right_animation_finished"]
 [connection signal="animation_finished" from="Splash/SplashLeft" to="Splash" method="_on_splash_left_animation_finished"]
 [connection signal="animation_finished" from="Splash/SprinkleR" to="Splash" method="_on_splash_right_animation_finished"]

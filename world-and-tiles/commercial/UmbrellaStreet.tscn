@@ -595,3 +595,5 @@ position = Vector2(32, 224)
 
 [node name="Hanger5" parent="." instance=ExtResource("5_7in6g")]
 position = Vector2(32, 288)
+
+[connection signal="interacted" from="WhichThings/Which/Interactable" to="WhichThings/Which" method="_on_interactable_interacted"]

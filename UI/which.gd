@@ -10,6 +10,7 @@ var selected:int=-1
 var selection_pending=false
 func _ready() -> void:
 	hide()
+	$WhichIntro.hide()
 
 func start_session():
 	selected=-1
