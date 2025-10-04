@@ -1,0 +1,1 @@
+This time around, creative freedom should take priority, so cars can have different resolutions and sizes. This can be done by supplying a scene with the required data, such as the scaled sprite, the milk area, collision shape and splash positions. Defaults should be supported.

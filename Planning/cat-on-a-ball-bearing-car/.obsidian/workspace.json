@@ -20,8 +20,23 @@
               "icon": "lucide-file",
               "title": "About drift limits"
             }
+          },
+          {
+            "id": "1384a2dadbe2b294",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "About cars skin implementations..md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "About cars skin implementations."
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -94,7 +109,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "About drift limits.md",
+                "file": "About cars skin implementations..md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +119,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for About drift limits"
+              "title": "Backlinks for About cars skin implementations."
             }
           },
           {
@@ -170,8 +185,10 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "10060bb500bf7fce",
+  "active": "1384a2dadbe2b294",
   "lastOpenFiles": [
+    "About drift limits.md",
+    "About cars skin implementations..md",
     "The store.md",
     "Speed.md",
     "the cat.png",
@@ -181,7 +198,6 @@
     "The dog.md",
     "The compass.md",
     "Resolutions.md",
-    "About drift limits.md",
     "About pedestrian colissions..md",
     "About drift hits..md",
     "map setup.excalidraw.md",
