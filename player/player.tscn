@@ -23,11 +23,11 @@
 [ext_resource type="Texture2D" uid="uid://cqve0r0ji8q4n" path="res://world-and-tiles/weather/rainy_splash.png" id="18_e7oew"]
 [ext_resource type="Texture2D" uid="uid://bfobbfydsbwhk" path="res://UI/map/player.png" id="19_c35mf"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_myinc"]
-size = Vector2(26, 52)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1layv"]
+size = Vector2(26, 54)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dg77c"]
-size = Vector2(9, 51.75)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bnflr"]
+size = Vector2(6.9423084, 54)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jq2sk"]
 streams_count = 3
@@ -219,6 +219,7 @@ stream = ExtResource("7_32hag")
 volume_db = -2.0
 
 [node name="MapIcon" type="Sprite2D" parent="."]
+visible = false
 light_mask = 0
 visibility_layer = 2
 z_index = 10
@@ -227,63 +228,70 @@ scale = Vector2(4.03125, 4.03125)
 texture = ExtResource("19_c35mf")
 script = ExtResource("6_65viv")
 
-[node name="Car" type="Sprite2D" parent="."]
-position = Vector2(3.57628e-07, -2.38419e-07)
-scale = Vector2(0.8125, 0.8125)
-texture = ExtResource("5_kb6p2")
+[node name="Car" type="Node2D" parent="." node_paths=PackedStringArray("right_detection", "left_detection")]
 script = ExtResource("6_2ieo8")
+right_detection = NodePath("../Right")
+left_detection = NodePath("../Left")
 milk_textures = Array[Texture]([ExtResource("7_ebec5"), ExtResource("8_yllr7")])
 
-[node name="MilkPlace" type="Node2D" parent="Car"]
-position = Vector2(-8.61539, -27.0769)
+[node name="Skins" type="Node2D" parent="Car"]
 
-[node name="MilkPlace2" type="Node2D" parent="Car"]
-position = Vector2(7.38461, -27.0769)
+[node name="Default" type="Node2D" parent="Car/Skins"]
 
-[node name="MilkPlace3" type="Node2D" parent="Car"]
-position = Vector2(7.38461, -17.2308)
+[node name="CarSprite" type="Sprite2D" parent="Car/Skins/Default"]
+scale = Vector2(0.83, 0.83)
+texture = ExtResource("5_kb6p2")
 
-[node name="MilkPlace4" type="Node2D" parent="Car"]
-position = Vector2(-8.61539, -17.2308)
+[node name="MainColissionShape" type="CollisionShape2D" parent="Car/Skins/Default"]
+shape = SubResource("RectangleShape2D_1layv")
 
-[node name="MilkPlace5" type="Node2D" parent="Car"]
-position = Vector2(-8.61539, -4.92308)
+[node name="LeftDetectionShape" type="CollisionShape2D" parent="Car/Skins/Default"]
+position = Vector2(-19, 0)
+shape = SubResource("RectangleShape2D_bnflr")
 
-[node name="MilkPlace6" type="Node2D" parent="Car"]
-position = Vector2(7.38461, -4.92308)
+[node name="RightDetectionShape" type="CollisionShape2D" parent="Car/Skins/Default"]
+position = Vector2(19, 0)
+shape = SubResource("RectangleShape2D_bnflr")
 
-[node name="MilkPlace7" type="Node2D" parent="Car"]
-position = Vector2(7.38462, 6.15385)
+[node name="MilkPlaces" type="Node2D" parent="Car/Skins/Default"]
 
-[node name="MilkPlace8" type="Node2D" parent="Car"]
-position = Vector2(-7.38462, 6.15385)
+[node name="MilkPlace" type="Node2D" parent="Car/Skins/Default/MilkPlaces"]
+position = Vector2(-8, -23)
 
-[node name="MilkPlace9" type="Node2D" parent="Car"]
-position = Vector2(-7.38462, 17.2308)
+[node name="MilkPlace2" type="Node2D" parent="Car/Skins/Default/MilkPlaces"]
+position = Vector2(8, -23)
 
-[node name="MilkPlace10" type="Node2D" parent="Car"]
-position = Vector2(7.38462, 17.2308)
+[node name="MilkPlace3" type="Node2D" parent="Car/Skins/Default/MilkPlaces"]
+position = Vector2(8, -15)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_myinc")
+[node name="MilkPlace4" type="Node2D" parent="Car/Skins/Default/MilkPlaces"]
+position = Vector2(-8, -15)
+
+[node name="MilkPlace5" type="Node2D" parent="Car/Skins/Default/MilkPlaces"]
+position = Vector2(-8, -7)
+
+[node name="MilkPlace6" type="Node2D" parent="Car/Skins/Default/MilkPlaces"]
+position = Vector2(8, -7)
+
+[node name="MilkPlace7" type="Node2D" parent="Car/Skins/Default/MilkPlaces"]
+position = Vector2(8.00001, 1.230751)
+
+[node name="MilkPlace8" type="Node2D" parent="Car/Skins/Default/MilkPlaces"]
+position = Vector2(-6.7692304, 1.230751)
+
+[node name="MilkPlace9" type="Node2D" parent="Car/Skins/Default/MilkPlaces"]
+position = Vector2(-6.7692304, 12.307701)
+
+[node name="MilkPlace10" type="Node2D" parent="Car/Skins/Default/MilkPlaces"]
+position = Vector2(8.00001, 12.307701)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 ignore_rotation = false
 script = ExtResource("14_bjvpn")
 
 [node name="Left" type="Area2D" parent="."]
-position = Vector2(-16, 22)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
-position = Vector2(-3, -22)
-shape = SubResource("RectangleShape2D_dg77c")
 
 [node name="Right" type="Area2D" parent="."]
-position = Vector2(18, 22)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
-position = Vector2(0, -22.125)
-shape = SubResource("RectangleShape2D_dg77c")
 
 [node name="Cat" type="Sprite2D" parent="."]
 position = Vector2(0, 28)

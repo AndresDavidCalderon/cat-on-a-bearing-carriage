@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CarSkin" load_steps=2 format=3 uid="uid://bja57j8goxajk"]
+
+[ext_resource type="Script" uid="uid://cjqgaqte0qbwm" path="res://player/skins/car_skin.gd" id="1_2iihs"]
+
+[resource]
+script = ExtResource("1_2iihs")
+reference_node_name = "Default"
+display_name = "Classic car"
+descriptions = "Held toguether by hopes and prayers, the classic milk delivery vehicle for Santa Belén."
+metadata/_custom_type_script = "uid://cjqgaqte0qbwm"

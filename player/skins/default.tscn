@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://q0x7jo70cc6h"]
+
+[ext_resource type="Texture2D" uid="uid://bxwifrw0on3r8" path="res://player/car.png" id="1_1layv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1layv"]
+size = Vector2(26, 52)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bnflr"]
+size = Vector2(6.5, 52)
+
+[node name="Default" type="Node2D"]
+
+[node name="CarSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.813, 0.813)
+texture = ExtResource("1_1layv")
+
+[node name="MainColissionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1layv")
+
+[node name="LeftDetectionShape" type="CollisionShape2D" parent="."]
+position = Vector2(-18, 0)
+shape = SubResource("RectangleShape2D_bnflr")
+
+[node name="RightDetectionShape" type="CollisionShape2D" parent="."]
+position = Vector2(18, 0)
+shape = SubResource("RectangleShape2D_bnflr")
+
+[node name="MilkPlaces" type="Node2D" parent="."]
+
+[node name="MilkPlace" type="Node2D" parent="MilkPlaces"]
+position = Vector2(-8, -23)
+
+[node name="MilkPlace2" type="Node2D" parent="MilkPlaces"]
+position = Vector2(8, -23)
+
+[node name="MilkPlace3" type="Node2D" parent="MilkPlaces"]
+position = Vector2(8, -15)
+
+[node name="MilkPlace4" type="Node2D" parent="MilkPlaces"]
+position = Vector2(-8, -15)
+
+[node name="MilkPlace5" type="Node2D" parent="MilkPlaces"]
+position = Vector2(-8, -7)
+
+[node name="MilkPlace6" type="Node2D" parent="MilkPlaces"]
+position = Vector2(8, -7)
+
+[node name="MilkPlace7" type="Node2D" parent="MilkPlaces"]
+position = Vector2(8.00001, 1.230751)
+
+[node name="MilkPlace8" type="Node2D" parent="MilkPlaces"]
+position = Vector2(-6.7692304, 1.230751)
+
+[node name="MilkPlace9" type="Node2D" parent="MilkPlaces"]
+position = Vector2(-6.7692304, 12.307701)
+
+[node name="MilkPlace10" type="Node2D" parent="MilkPlaces"]
+position = Vector2(8.00001, 12.307701)

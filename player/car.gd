@@ -1,5 +1,7 @@
-extends Sprite2D
+extends Node2D
 
+@export var right_detection:Area2D
+@export var left_detection:Area2D
 @onready var match_provider=get_node("/root/World")
 @export var milk_textures:Array[Texture]
 var bottles_scale=Vector2(0.4,0.4)
@@ -9,7 +11,20 @@ var items=[]
 func _ready() -> void:
 	match_provider.match_state_changed.connect(match_change)
 	match_provider.packet_delivered.connect(on_delivery)
-	avaliable_places=get_children()
+	load_skin(load("res://player/skins/default.tres"))
+
+func load_node(node_path:String,insert_in:Node,reference:Node):
+	var node=reference.get_node(node_path)
+	reference.remove_child(node)
+	insert_in.add_child.call_deferred(node)
+
+func load_skin(skin:CarSkin):
+	var reference=get_node("Skins/"+skin.reference_node_name)
+	load_node("MilkPlaces",self,reference)
+	load_node("CarSprite",self,reference)
+	load_node("LeftDetectionShape",left_detection,reference)
+	load_node("RightDetectionShape",right_detection,reference)
+	load_node("MainColissionShape",get_parent(),reference)
 
 func match_change(state:int):
 	if state==match_provider.matchState.PLAYING:

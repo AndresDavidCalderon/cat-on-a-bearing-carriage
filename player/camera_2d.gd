@@ -1,6 +1,6 @@
 extends Camera2D
 
-var standard_zoom=Vector2(1,1)
+var standard_zoom=Vector2(1.5,1.5)
 var alteration=Vector2(-0.01,0.015)
 var position_alteration=Vector2(0,5)
 var presses=0
@@ -12,6 +12,9 @@ var back_to_normal_after=0.5
 
 var tween:Tween
 var going_back=false
+
+func _ready() -> void:
+	zoom=standard_zoom
 
 func _process(delta: float) -> void:
 	if time_without_presses>back_to_normal_after:
