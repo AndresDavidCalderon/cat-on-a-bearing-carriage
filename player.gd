@@ -21,6 +21,11 @@ var speed_multiplier=1
 var current_state:State=State.SLIDING
 @export var drift_point_offset:Vector2=Vector2(0,-12)
 @export var drift_movement:Vector2=Vector2(1,-1)
+
+## When raining, the player keeps slowly moving in the direction
+## they were going before after starting drift
+var speed_to_move_continuation_on_rain=0.3
+var direction_before_drift:Vector2
 @export var speed_to_drift:float=40 # Multiplies how much the car slides, relative to its original speed before
 # drift.
 
@@ -57,7 +62,6 @@ var drift_direction:Rotation
 var was_separated=true
 var was_straight=false
 var drift_rotation_knockback=200
-var slide_rain_multiplier=2
 
 var texture_overriden=false
 var impulse_texture_override_length=1
@@ -138,6 +142,7 @@ func _process(delta: float) -> void:
 			$Drift.play()
 			drift_started.emit()
 			pinpoint=position+drift_point_offset.rotated(rotation)
+			direction_before_drift=velocity
 			if Input.is_action_pressed("SteerLeft"):
 				drift_direction=Rotation.Negative
 			if Input.is_action_pressed("SteerRight"):
@@ -148,11 +153,10 @@ func _process(delta: float) -> void:
 			drift_ended.emit()
 		
 		if current_state==State.DRIFTING:
-			var circumstantial_drift_slide=drift_movement*speed_to_drift
+			var slide_direction=drift_movement
+			var circumstantial_drift_slide=slide_direction*speed_to_drift
 			if log(speed)>0:
 				circumstantial_drift_slide*=log(speed)
-			if Weather.get_weather_today()==Weather.Weather.RAINY:
-				circumstantial_drift_slide*=slide_rain_multiplier
 				
 			position=pinpoint-drift_point_offset.rotated(rotation)
 			var relevant_area:Area2D
@@ -162,6 +166,9 @@ func _process(delta: float) -> void:
 				relevant_area=$Left
 				circumstantial_drift_slide.x*=-1
 			circumstantial_drift_slide=circumstantial_drift_slide.rotated(rotation)
+			
+			if Weather.get_weather_today()==Weather.Weather.RAINY:
+				circumstantial_drift_slide+=direction_before_drift*speed_to_move_continuation_on_rain
 			if (not has_relevant_bodies(relevant_area)) and not blessing_provider.stop_drift:
 				pinpoint+=circumstantial_drift_slide*delta
 			
