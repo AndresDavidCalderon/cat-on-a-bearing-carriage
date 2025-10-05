@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CarSkin" load_steps=3 format=3 uid="uid://c4ny8uth7wnw8"]
+
+[ext_resource type="Texture2D" uid="uid://coaurq4dbpuqb" path="res://player/skins/Gothic.png" id="1_c3ioj"]
+[ext_resource type="Script" uid="uid://cjqgaqte0qbwm" path="res://player/skins/car_skin.gd" id="1_rbq3w"]
+
+[resource]
+script = ExtResource("1_rbq3w")
+reference_node_name = "Gothic"
+display_name = "Gothic"
+icon = ExtResource("1_c3ioj")
+descriptions = "Not a phase."
+metadata/_custom_type_script = "uid://cjqgaqte0qbwm"

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CarSkin" load_steps=3 format=3 uid="uid://ba4io2vqeotrs"]
+
+[ext_resource type="Script" uid="uid://cjqgaqte0qbwm" path="res://player/skins/car_skin.gd" id="1_it3tu"]
+[ext_resource type="Texture2D" uid="uid://dskgvhklp0m4p" path="res://player/skins/mcween.png" id="1_yluaq"]
+
+[resource]
+script = ExtResource("1_it3tu")
+reference_node_name = "McQueen"
+display_name = "Flames"
+icon = ExtResource("1_yluaq")
+descriptions = "Make the whole town think \"This is fire\" or at least it looks like it."
+metadata/_custom_type_script = "uid://cjqgaqte0qbwm"

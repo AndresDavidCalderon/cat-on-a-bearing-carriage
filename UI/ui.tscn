@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://84qmbyy12hoi"]
+[gd_scene load_steps=68 format=3 uid="uid://84qmbyy12hoi"]
 
 [ext_resource type="Script" uid="uid://cjpt6tedm8mpx" path="res://UI/ui.gd" id="1_6sqwf"]
 [ext_resource type="Theme" uid="uid://ctgv0x2t6xkc6" path="res://UI/free_ui_theme.tres" id="1_o2jkc"]
@@ -42,8 +42,25 @@
 [ext_resource type="Texture2D" uid="uid://7rvd3tk4hpsx" path="res://UI/map/border.png" id="38_ld37b"]
 [ext_resource type="Material" uid="uid://dg3ntb24o3iwd" path="res://UI/map/fading_material.tres" id="38_oaf0t"]
 [ext_resource type="Script" uid="uid://cm3and00buvjk" path="res://UI/mechanic.gd" id="42_mxr1c"]
-[ext_resource type="Texture2D" uid="uid://x4k81ax5idh3" path="res://world-and-tiles/projector.png" id="42_s1x2l"]
+[ext_resource type="PackedScene" uid="uid://col3gdykpawvb" path="res://UI/mechanic/skin_button.tscn" id="43_3qw6r"]
+[ext_resource type="Resource" uid="uid://bja57j8goxajk" path="res://player/skins/default.tres" id="44_0n11x"]
 [ext_resource type="Texture2D" uid="uid://dxitjsr6m1ivs" path="res://charachters/mechanic/mechanic_portrait.png" id="44_3qw6r"]
+[ext_resource type="Resource" uid="uid://c4ny8uth7wnw8" path="res://player/skins/gothic.tres" id="45_1f56j"]
+[ext_resource type="Resource" uid="uid://0q7bh4sm1ok0" path="res://player/skins/cloud.tres" id="45_2qwp7"]
+[ext_resource type="Texture2D" uid="uid://wbtjdd7ef15f" path="res://player/skins/shiba.png" id="45_8n73e"]
+[ext_resource type="Resource" uid="uid://obkn4iusnrud" path="res://player/skins/shiba.tres" id="45_yjfhb"]
+[ext_resource type="Resource" uid="uid://dero6g7qhh0ot" path="res://player/skins/grass.tres" id="46_1f56j"]
+[ext_resource type="Texture2D" uid="uid://coaurq4dbpuqb" path="res://player/skins/Gothic.png" id="46_rb527"]
+[ext_resource type="Resource" uid="uid://ba4io2vqeotrs" path="res://player/skins/mcween.tres" id="47_akml3"]
+[ext_resource type="Texture2D" uid="uid://dskgvhklp0m4p" path="res://player/skins/mcween.png" id="47_vefrh"]
+[ext_resource type="Texture2D" uid="uid://bl4vabjfrk1em" path="res://player/skins/grass.png" id="48_sfqi8"]
+[ext_resource type="Texture2D" uid="uid://c56vg70mmeovn" path="res://player/skins/cloud.png" id="49_qiu1k"]
+[ext_resource type="Texture2D" uid="uid://bbskrukq22dri" path="res://player/skins/flowers.png" id="50_3yec5"]
+[ext_resource type="Resource" uid="uid://b6rys2obi6dpk" path="res://player/skins/flowers.tres" id="53_3552n"]
+[ext_resource type="Texture2D" uid="uid://dqmxh8tcjw4oq" path="res://player/skins/invisible.png" id="55_5pycl"]
+[ext_resource type="Texture2D" uid="uid://clhhvrmo78mr2" path="res://player/skins/water.png" id="56_pewy6"]
+[ext_resource type="Resource" uid="uid://sbrecxob53aw" path="res://player/skins/invisible.tres" id="57_7fwyd"]
+[ext_resource type="Resource" uid="uid://bl4g46j8h1mw2" path="res://player/skins/water.tres" id="58_7fwyd"]
 
 [sub_resource type="Gradient" id="Gradient_82xsv"]
 colors = PackedColorArray(0.93, 0.1488, 0.16182, 1, 1, 1, 0.31, 1)
@@ -183,6 +200,10 @@ _data = {
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7j5ik"]
 bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pycl"]
+atlas = ExtResource("56_pewy6")
+region = Rect2(0, 0, 32, 64)
 
 [node name="UI" type="CanvasLayer"]
 layer = 0
@@ -940,7 +961,6 @@ zoom = Vector2(0.1, 0.1)
 script = ExtResource("13_duqhi")
 
 [node name="Mechanic" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -976,46 +996,71 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 30.0
 offset_top = 62.0
-offset_right = -378.0
+offset_right = -459.0
 offset_bottom = -9.888916
 grow_horizontal = 2
 grow_vertical = 2
 columns = 3
 
-[node name="Button" type="Button" parent="Mechanic/Panel/GridContainer"]
-custom_minimum_size = Vector2(140, 140)
+[node name="Classic" parent="Mechanic/Panel/GridContainer" instance=ExtResource("43_3qw6r")]
 layout_mode = 2
+skin = ExtResource("44_0n11x")
 
-[node name="TextureRect" type="TextureRect" parent="Mechanic/Panel/GridContainer/Button"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -37.0
-offset_top = -45.0
-offset_right = 37.0
-offset_bottom = 29.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("42_s1x2l")
-expand_mode = 3
-stretch_mode = 5
+[node name="Shiba" parent="Mechanic/Panel/GridContainer" instance=ExtResource("43_3qw6r")]
+layout_mode = 2
+skin = ExtResource("45_yjfhb")
 
-[node name="Label" type="Label" parent="Mechanic/Panel/GridContainer/Button"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -23.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 16
-text = "Good skin"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="TextureRect" parent="Mechanic/Panel/GridContainer/Shiba" index="0"]
+texture = ExtResource("45_8n73e")
+
+[node name="Gothic" parent="Mechanic/Panel/GridContainer" instance=ExtResource("43_3qw6r")]
+layout_mode = 2
+skin = ExtResource("45_1f56j")
+
+[node name="TextureRect" parent="Mechanic/Panel/GridContainer/Gothic" index="0"]
+texture = ExtResource("46_rb527")
+
+[node name="McQueen" parent="Mechanic/Panel/GridContainer" instance=ExtResource("43_3qw6r")]
+layout_mode = 2
+skin = ExtResource("47_akml3")
+
+[node name="TextureRect" parent="Mechanic/Panel/GridContainer/McQueen" index="0"]
+texture = ExtResource("47_vefrh")
+
+[node name="Grass" parent="Mechanic/Panel/GridContainer" instance=ExtResource("43_3qw6r")]
+layout_mode = 2
+skin = ExtResource("46_1f56j")
+
+[node name="TextureRect" parent="Mechanic/Panel/GridContainer/Grass" index="0"]
+texture = ExtResource("48_sfqi8")
+
+[node name="Cloud" parent="Mechanic/Panel/GridContainer" instance=ExtResource("43_3qw6r")]
+layout_mode = 2
+skin = ExtResource("45_2qwp7")
+
+[node name="TextureRect" parent="Mechanic/Panel/GridContainer/Cloud" index="0"]
+texture = ExtResource("49_qiu1k")
+
+[node name="Flowers" parent="Mechanic/Panel/GridContainer" instance=ExtResource("43_3qw6r")]
+layout_mode = 2
+skin = ExtResource("53_3552n")
+
+[node name="TextureRect" parent="Mechanic/Panel/GridContainer/Flowers" index="0"]
+texture = ExtResource("50_3yec5")
+
+[node name="Invisible" parent="Mechanic/Panel/GridContainer" instance=ExtResource("43_3qw6r")]
+layout_mode = 2
+skin = ExtResource("57_7fwyd")
+
+[node name="TextureRect" parent="Mechanic/Panel/GridContainer/Invisible" index="0"]
+texture = ExtResource("55_5pycl")
+
+[node name="Water" parent="Mechanic/Panel/GridContainer" instance=ExtResource("43_3qw6r")]
+layout_mode = 2
+skin = ExtResource("58_7fwyd")
+
+[node name="TextureRect" parent="Mechanic/Panel/GridContainer/Water" index="0"]
+texture = SubResource("AtlasTexture_5pycl")
 
 [node name="Close" type="Button" parent="Mechanic/Panel"]
 layout_mode = 0
@@ -1037,6 +1082,16 @@ expand_mode = 5
 stretch_mode = 5
 flip_h = true
 
+[node name="Control" type="Control" parent="Mechanic"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -434.0
+grow_horizontal = 0
+grow_vertical = 2
+
 [connection signal="pressed" from="Lost/Panel/Repeat" to="Lost" method="_on_repeat_pressed"]
 [connection signal="pressed" from="StartPanel/Start" to="StartPanel" method="_on_start_pressed"]
 [connection signal="timeout" from="Speed/CoinCheck" to="Speed" method="_on_coin_check_timeout"]
@@ -1044,3 +1099,12 @@ flip_h = true
 [connection signal="pressed" from="Which/WhichIntro/Next" to="Which/WhichIntro" method="_on_next_pressed"]
 [connection signal="pressed" from="Which/WhichIntro/Full" to="Which/WhichIntro" method="_on_full_pressed"]
 [connection signal="pressed" from="Mechanic/Panel/Close" to="Mechanic" method="_on_close_pressed"]
+
+[editable path="Mechanic/Panel/GridContainer/Shiba"]
+[editable path="Mechanic/Panel/GridContainer/Gothic"]
+[editable path="Mechanic/Panel/GridContainer/McQueen"]
+[editable path="Mechanic/Panel/GridContainer/Grass"]
+[editable path="Mechanic/Panel/GridContainer/Cloud"]
+[editable path="Mechanic/Panel/GridContainer/Flowers"]
+[editable path="Mechanic/Panel/GridContainer/Invisible"]
+[editable path="Mechanic/Panel/GridContainer/Water"]

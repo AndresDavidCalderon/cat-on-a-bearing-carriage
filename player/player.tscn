@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dhjjje2b1xoa0"]
+[gd_scene load_steps=67 format=3 uid="uid://dhjjje2b1xoa0"]
 
 [ext_resource type="Script" uid="uid://dg6hodfjfupjm" path="res://player.gd" id="1_8t03j"]
 [ext_resource type="Texture2D" uid="uid://bvqxs4m7uo268" path="res://player/cat_drift.png" id="2_2ieo8"]
@@ -17,17 +17,144 @@
 [ext_resource type="AudioStream" uid="uid://dtcide14g7v3v" path="res://player/turn_c.wav" id="10_c35mf"]
 [ext_resource type="Script" uid="uid://ca6ifowcf6wvb" path="res://player/camera_2d.gd" id="14_bjvpn"]
 [ext_resource type="Texture2D" uid="uid://r5wi4jnjbrhj" path="res://player/pushing_spirit.png" id="14_kb6p2"]
+[ext_resource type="Texture2D" uid="uid://coaurq4dbpuqb" path="res://player/skins/Gothic.png" id="14_s7qer"]
 [ext_resource type="Script" uid="uid://baaw1d56uj755" path="res://player/pushing_spirit.gd" id="14_wodsf"]
+[ext_resource type="Texture2D" uid="uid://dskgvhklp0m4p" path="res://player/skins/mcween.png" id="15_g4c7l"]
 [ext_resource type="Texture2D" uid="uid://0posygpel24g" path="res://player/car_splash.png" id="16_32hag"]
+[ext_resource type="Texture2D" uid="uid://bl4vabjfrk1em" path="res://player/skins/grass.png" id="16_knn7v"]
 [ext_resource type="Script" uid="uid://bhu11i76vhsjc" path="res://player/splash.gd" id="16_tqiix"]
+[ext_resource type="Texture2D" uid="uid://dqmxh8tcjw4oq" path="res://player/skins/invisible.png" id="17_7pqkx"]
 [ext_resource type="Texture2D" uid="uid://cqve0r0ji8q4n" path="res://world-and-tiles/weather/rainy_splash.png" id="18_e7oew"]
+[ext_resource type="Texture2D" uid="uid://bbskrukq22dri" path="res://player/skins/flowers.png" id="18_uw77l"]
 [ext_resource type="Texture2D" uid="uid://bfobbfydsbwhk" path="res://UI/map/player.png" id="19_c35mf"]
+[ext_resource type="Texture2D" uid="uid://clhhvrmo78mr2" path="res://player/skins/water.png" id="19_rptt4"]
+[ext_resource type="Texture2D" uid="uid://c56vg70mmeovn" path="res://player/skins/cloud.png" id="20_r7pn3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1layv"]
 size = Vector2(26, 54)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bnflr"]
 size = Vector2(6.9423084, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7pn3"]
+atlas = ExtResource("19_rptt4")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8hi5"]
+atlas = ExtResource("19_rptt4")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2uvqg"]
+atlas = ExtResource("19_rptt4")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1s1yo"]
+atlas = ExtResource("19_rptt4")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ejfk"]
+atlas = ExtResource("19_rptt4")
+region = Rect2(0, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jd2rm"]
+atlas = ExtResource("19_rptt4")
+region = Rect2(32, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q28gw"]
+atlas = ExtResource("19_rptt4")
+region = Rect2(64, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ge24q"]
+atlas = ExtResource("19_rptt4")
+region = Rect2(96, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnw6m"]
+atlas = ExtResource("19_rptt4")
+region = Rect2(0, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1so5t"]
+atlas = ExtResource("19_rptt4")
+region = Rect2(32, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55jnj"]
+atlas = ExtResource("19_rptt4")
+region = Rect2(64, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dx5ib"]
+atlas = ExtResource("19_rptt4")
+region = Rect2(96, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2xo5"]
+atlas = ExtResource("19_rptt4")
+region = Rect2(0, 192, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_art4l"]
+atlas = ExtResource("19_rptt4")
+region = Rect2(32, 192, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjxoa"]
+atlas = ExtResource("19_rptt4")
+region = Rect2(64, 192, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gswnw"]
+atlas = ExtResource("19_rptt4")
+region = Rect2(96, 192, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xcnuv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7pn3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b8hi5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2uvqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1s1yo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ejfk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jd2rm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q28gw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ge24q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pnw6m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1so5t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55jnj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dx5ib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2xo5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_art4l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjxoa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gswnw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 22.0
+}]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jq2sk"]
 streams_count = 3
@@ -283,6 +410,357 @@ position = Vector2(-6.7692304, 1.230751)
 position = Vector2(-6.7692304, 12.307701)
 
 [node name="MilkPlace10" type="Node2D" parent="Car/Skins/Default/MilkPlaces"]
+position = Vector2(8.00001, 12.307701)
+
+[node name="Gothic" type="Node2D" parent="Car/Skins"]
+visible = false
+
+[node name="CarSprite" type="Sprite2D" parent="Car/Skins/Gothic"]
+scale = Vector2(0.83, 0.83)
+texture = ExtResource("14_s7qer")
+
+[node name="MainColissionShape" type="CollisionShape2D" parent="Car/Skins/Gothic"]
+shape = SubResource("RectangleShape2D_1layv")
+
+[node name="LeftDetectionShape" type="CollisionShape2D" parent="Car/Skins/Gothic"]
+position = Vector2(-19, 0)
+shape = SubResource("RectangleShape2D_bnflr")
+
+[node name="RightDetectionShape" type="CollisionShape2D" parent="Car/Skins/Gothic"]
+position = Vector2(19, 0)
+shape = SubResource("RectangleShape2D_bnflr")
+
+[node name="MilkPlaces" type="Node2D" parent="Car/Skins/Gothic"]
+
+[node name="MilkPlace" type="Node2D" parent="Car/Skins/Gothic/MilkPlaces"]
+position = Vector2(-8, -23)
+
+[node name="MilkPlace2" type="Node2D" parent="Car/Skins/Gothic/MilkPlaces"]
+position = Vector2(8, -23)
+
+[node name="MilkPlace3" type="Node2D" parent="Car/Skins/Gothic/MilkPlaces"]
+position = Vector2(8, -15)
+
+[node name="MilkPlace4" type="Node2D" parent="Car/Skins/Gothic/MilkPlaces"]
+position = Vector2(-8, -15)
+
+[node name="MilkPlace5" type="Node2D" parent="Car/Skins/Gothic/MilkPlaces"]
+position = Vector2(-8, -7)
+
+[node name="MilkPlace6" type="Node2D" parent="Car/Skins/Gothic/MilkPlaces"]
+position = Vector2(8, -7)
+
+[node name="MilkPlace7" type="Node2D" parent="Car/Skins/Gothic/MilkPlaces"]
+position = Vector2(8.00001, 1.230751)
+
+[node name="MilkPlace8" type="Node2D" parent="Car/Skins/Gothic/MilkPlaces"]
+position = Vector2(-6.7692304, 1.230751)
+
+[node name="MilkPlace9" type="Node2D" parent="Car/Skins/Gothic/MilkPlaces"]
+position = Vector2(-6.7692304, 12.307701)
+
+[node name="MilkPlace10" type="Node2D" parent="Car/Skins/Gothic/MilkPlaces"]
+position = Vector2(8.00001, 12.307701)
+
+[node name="Mcween" type="Node2D" parent="Car/Skins"]
+visible = false
+
+[node name="CarSprite" type="Sprite2D" parent="Car/Skins/Mcween"]
+scale = Vector2(0.83, 0.83)
+texture = ExtResource("15_g4c7l")
+
+[node name="MainColissionShape" type="CollisionShape2D" parent="Car/Skins/Mcween"]
+shape = SubResource("RectangleShape2D_1layv")
+
+[node name="LeftDetectionShape" type="CollisionShape2D" parent="Car/Skins/Mcween"]
+position = Vector2(-19, 0)
+shape = SubResource("RectangleShape2D_bnflr")
+
+[node name="RightDetectionShape" type="CollisionShape2D" parent="Car/Skins/Mcween"]
+position = Vector2(19, 0)
+shape = SubResource("RectangleShape2D_bnflr")
+
+[node name="MilkPlaces" type="Node2D" parent="Car/Skins/Mcween"]
+
+[node name="MilkPlace" type="Node2D" parent="Car/Skins/Mcween/MilkPlaces"]
+position = Vector2(-8, -23)
+
+[node name="MilkPlace2" type="Node2D" parent="Car/Skins/Mcween/MilkPlaces"]
+position = Vector2(8, -23)
+
+[node name="MilkPlace3" type="Node2D" parent="Car/Skins/Mcween/MilkPlaces"]
+position = Vector2(8, -15)
+
+[node name="MilkPlace4" type="Node2D" parent="Car/Skins/Mcween/MilkPlaces"]
+position = Vector2(-8, -15)
+
+[node name="MilkPlace5" type="Node2D" parent="Car/Skins/Mcween/MilkPlaces"]
+position = Vector2(-8, -7)
+
+[node name="MilkPlace6" type="Node2D" parent="Car/Skins/Mcween/MilkPlaces"]
+position = Vector2(8, -7)
+
+[node name="MilkPlace7" type="Node2D" parent="Car/Skins/Mcween/MilkPlaces"]
+position = Vector2(8.00001, 1.230751)
+
+[node name="MilkPlace8" type="Node2D" parent="Car/Skins/Mcween/MilkPlaces"]
+position = Vector2(-6.7692304, 1.230751)
+
+[node name="MilkPlace9" type="Node2D" parent="Car/Skins/Mcween/MilkPlaces"]
+position = Vector2(-6.7692304, 12.307701)
+
+[node name="MilkPlace10" type="Node2D" parent="Car/Skins/Mcween/MilkPlaces"]
+position = Vector2(8.00001, 12.307701)
+
+[node name="Grass" type="Node2D" parent="Car/Skins"]
+visible = false
+
+[node name="CarSprite" type="Sprite2D" parent="Car/Skins/Grass"]
+scale = Vector2(0.83, 0.83)
+texture = ExtResource("16_knn7v")
+
+[node name="MainColissionShape" type="CollisionShape2D" parent="Car/Skins/Grass"]
+shape = SubResource("RectangleShape2D_1layv")
+
+[node name="LeftDetectionShape" type="CollisionShape2D" parent="Car/Skins/Grass"]
+position = Vector2(-19, 0)
+shape = SubResource("RectangleShape2D_bnflr")
+
+[node name="RightDetectionShape" type="CollisionShape2D" parent="Car/Skins/Grass"]
+position = Vector2(19, 0)
+shape = SubResource("RectangleShape2D_bnflr")
+
+[node name="MilkPlaces" type="Node2D" parent="Car/Skins/Grass"]
+
+[node name="MilkPlace" type="Node2D" parent="Car/Skins/Grass/MilkPlaces"]
+position = Vector2(-8, -23)
+
+[node name="MilkPlace2" type="Node2D" parent="Car/Skins/Grass/MilkPlaces"]
+position = Vector2(8, -23)
+
+[node name="MilkPlace3" type="Node2D" parent="Car/Skins/Grass/MilkPlaces"]
+position = Vector2(8, -15)
+
+[node name="MilkPlace4" type="Node2D" parent="Car/Skins/Grass/MilkPlaces"]
+position = Vector2(-8, -15)
+
+[node name="MilkPlace5" type="Node2D" parent="Car/Skins/Grass/MilkPlaces"]
+position = Vector2(-8, -7)
+
+[node name="MilkPlace6" type="Node2D" parent="Car/Skins/Grass/MilkPlaces"]
+position = Vector2(8, -7)
+
+[node name="MilkPlace7" type="Node2D" parent="Car/Skins/Grass/MilkPlaces"]
+position = Vector2(8.00001, 1.230751)
+
+[node name="MilkPlace8" type="Node2D" parent="Car/Skins/Grass/MilkPlaces"]
+position = Vector2(-6.7692304, 1.230751)
+
+[node name="MilkPlace9" type="Node2D" parent="Car/Skins/Grass/MilkPlaces"]
+position = Vector2(-6.7692304, 12.307701)
+
+[node name="MilkPlace10" type="Node2D" parent="Car/Skins/Grass/MilkPlaces"]
+position = Vector2(8.00001, 12.307701)
+
+[node name="Invisible" type="Node2D" parent="Car/Skins"]
+visible = false
+
+[node name="CarSprite" type="Sprite2D" parent="Car/Skins/Invisible"]
+scale = Vector2(0.83, 0.83)
+texture = ExtResource("17_7pqkx")
+
+[node name="MainColissionShape" type="CollisionShape2D" parent="Car/Skins/Invisible"]
+shape = SubResource("RectangleShape2D_1layv")
+
+[node name="LeftDetectionShape" type="CollisionShape2D" parent="Car/Skins/Invisible"]
+position = Vector2(-19, 0)
+shape = SubResource("RectangleShape2D_bnflr")
+
+[node name="RightDetectionShape" type="CollisionShape2D" parent="Car/Skins/Invisible"]
+position = Vector2(19, 0)
+shape = SubResource("RectangleShape2D_bnflr")
+
+[node name="MilkPlaces" type="Node2D" parent="Car/Skins/Invisible"]
+
+[node name="MilkPlace" type="Node2D" parent="Car/Skins/Invisible/MilkPlaces"]
+position = Vector2(-8, -23)
+
+[node name="MilkPlace2" type="Node2D" parent="Car/Skins/Invisible/MilkPlaces"]
+position = Vector2(8, -23)
+
+[node name="MilkPlace3" type="Node2D" parent="Car/Skins/Invisible/MilkPlaces"]
+position = Vector2(8, -15)
+
+[node name="MilkPlace4" type="Node2D" parent="Car/Skins/Invisible/MilkPlaces"]
+position = Vector2(-8, -15)
+
+[node name="MilkPlace5" type="Node2D" parent="Car/Skins/Invisible/MilkPlaces"]
+position = Vector2(-8, -7)
+
+[node name="MilkPlace6" type="Node2D" parent="Car/Skins/Invisible/MilkPlaces"]
+position = Vector2(8, -7)
+
+[node name="MilkPlace7" type="Node2D" parent="Car/Skins/Invisible/MilkPlaces"]
+position = Vector2(8.00001, 1.230751)
+
+[node name="MilkPlace8" type="Node2D" parent="Car/Skins/Invisible/MilkPlaces"]
+position = Vector2(-6.7692304, 1.230751)
+
+[node name="MilkPlace9" type="Node2D" parent="Car/Skins/Invisible/MilkPlaces"]
+position = Vector2(-6.7692304, 12.307701)
+
+[node name="MilkPlace10" type="Node2D" parent="Car/Skins/Invisible/MilkPlaces"]
+position = Vector2(8.00001, 12.307701)
+
+[node name="Flowers" type="Node2D" parent="Car/Skins"]
+visible = false
+
+[node name="CarSprite" type="Sprite2D" parent="Car/Skins/Flowers"]
+scale = Vector2(0.83, 0.83)
+texture = ExtResource("18_uw77l")
+
+[node name="MainColissionShape" type="CollisionShape2D" parent="Car/Skins/Flowers"]
+shape = SubResource("RectangleShape2D_1layv")
+
+[node name="LeftDetectionShape" type="CollisionShape2D" parent="Car/Skins/Flowers"]
+position = Vector2(-19, 0)
+shape = SubResource("RectangleShape2D_bnflr")
+
+[node name="RightDetectionShape" type="CollisionShape2D" parent="Car/Skins/Flowers"]
+position = Vector2(19, 0)
+shape = SubResource("RectangleShape2D_bnflr")
+
+[node name="MilkPlaces" type="Node2D" parent="Car/Skins/Flowers"]
+
+[node name="MilkPlace" type="Node2D" parent="Car/Skins/Flowers/MilkPlaces"]
+position = Vector2(-8, -23)
+
+[node name="MilkPlace2" type="Node2D" parent="Car/Skins/Flowers/MilkPlaces"]
+position = Vector2(8, -23)
+
+[node name="MilkPlace3" type="Node2D" parent="Car/Skins/Flowers/MilkPlaces"]
+position = Vector2(8, -15)
+
+[node name="MilkPlace4" type="Node2D" parent="Car/Skins/Flowers/MilkPlaces"]
+position = Vector2(-8, -15)
+
+[node name="MilkPlace5" type="Node2D" parent="Car/Skins/Flowers/MilkPlaces"]
+position = Vector2(-8, -7)
+
+[node name="MilkPlace6" type="Node2D" parent="Car/Skins/Flowers/MilkPlaces"]
+position = Vector2(8, -7)
+
+[node name="MilkPlace7" type="Node2D" parent="Car/Skins/Flowers/MilkPlaces"]
+position = Vector2(8.00001, 1.230751)
+
+[node name="MilkPlace8" type="Node2D" parent="Car/Skins/Flowers/MilkPlaces"]
+position = Vector2(-6.7692304, 1.230751)
+
+[node name="MilkPlace9" type="Node2D" parent="Car/Skins/Flowers/MilkPlaces"]
+position = Vector2(-6.7692304, 12.307701)
+
+[node name="MilkPlace10" type="Node2D" parent="Car/Skins/Flowers/MilkPlaces"]
+position = Vector2(8.00001, 12.307701)
+
+[node name="Water" type="Node2D" parent="Car/Skins"]
+visible = false
+
+[node name="CarSprite" type="AnimatedSprite2D" parent="Car/Skins/Water"]
+scale = Vector2(0.83, 0.83)
+sprite_frames = SubResource("SpriteFrames_xcnuv")
+frame_progress = 0.72664547
+
+[node name="MainColissionShape" type="CollisionShape2D" parent="Car/Skins/Water"]
+shape = SubResource("RectangleShape2D_1layv")
+
+[node name="LeftDetectionShape" type="CollisionShape2D" parent="Car/Skins/Water"]
+position = Vector2(-19, 0)
+shape = SubResource("RectangleShape2D_bnflr")
+
+[node name="RightDetectionShape" type="CollisionShape2D" parent="Car/Skins/Water"]
+position = Vector2(19, 0)
+shape = SubResource("RectangleShape2D_bnflr")
+
+[node name="MilkPlaces" type="Node2D" parent="Car/Skins/Water"]
+
+[node name="MilkPlace" type="Node2D" parent="Car/Skins/Water/MilkPlaces"]
+position = Vector2(-8, -23)
+
+[node name="MilkPlace2" type="Node2D" parent="Car/Skins/Water/MilkPlaces"]
+position = Vector2(8, -23)
+
+[node name="MilkPlace3" type="Node2D" parent="Car/Skins/Water/MilkPlaces"]
+position = Vector2(8, -15)
+
+[node name="MilkPlace4" type="Node2D" parent="Car/Skins/Water/MilkPlaces"]
+position = Vector2(-8, -15)
+
+[node name="MilkPlace5" type="Node2D" parent="Car/Skins/Water/MilkPlaces"]
+position = Vector2(-8, -7)
+
+[node name="MilkPlace6" type="Node2D" parent="Car/Skins/Water/MilkPlaces"]
+position = Vector2(8, -7)
+
+[node name="MilkPlace7" type="Node2D" parent="Car/Skins/Water/MilkPlaces"]
+position = Vector2(8.00001, 1.230751)
+
+[node name="MilkPlace8" type="Node2D" parent="Car/Skins/Water/MilkPlaces"]
+position = Vector2(-6.7692304, 1.230751)
+
+[node name="MilkPlace9" type="Node2D" parent="Car/Skins/Water/MilkPlaces"]
+position = Vector2(-6.7692304, 12.307701)
+
+[node name="MilkPlace10" type="Node2D" parent="Car/Skins/Water/MilkPlaces"]
+position = Vector2(8.00001, 12.307701)
+
+[node name="Cloud" type="Node2D" parent="Car/Skins"]
+visible = false
+
+[node name="CarSprite" type="Sprite2D" parent="Car/Skins/Cloud"]
+scale = Vector2(0.83, 0.83)
+texture = ExtResource("20_r7pn3")
+
+[node name="MainColissionShape" type="CollisionShape2D" parent="Car/Skins/Cloud"]
+shape = SubResource("RectangleShape2D_1layv")
+
+[node name="LeftDetectionShape" type="CollisionShape2D" parent="Car/Skins/Cloud"]
+position = Vector2(-19, 0)
+shape = SubResource("RectangleShape2D_bnflr")
+
+[node name="RightDetectionShape" type="CollisionShape2D" parent="Car/Skins/Cloud"]
+position = Vector2(19, 0)
+shape = SubResource("RectangleShape2D_bnflr")
+
+[node name="MilkPlaces" type="Node2D" parent="Car/Skins/Cloud"]
+
+[node name="MilkPlace" type="Node2D" parent="Car/Skins/Cloud/MilkPlaces"]
+position = Vector2(-8, -23)
+
+[node name="MilkPlace2" type="Node2D" parent="Car/Skins/Cloud/MilkPlaces"]
+position = Vector2(8, -23)
+
+[node name="MilkPlace3" type="Node2D" parent="Car/Skins/Cloud/MilkPlaces"]
+position = Vector2(8, -15)
+
+[node name="MilkPlace4" type="Node2D" parent="Car/Skins/Cloud/MilkPlaces"]
+position = Vector2(-8, -15)
+
+[node name="MilkPlace5" type="Node2D" parent="Car/Skins/Cloud/MilkPlaces"]
+position = Vector2(-8, -7)
+
+[node name="MilkPlace6" type="Node2D" parent="Car/Skins/Cloud/MilkPlaces"]
+position = Vector2(8, -7)
+
+[node name="MilkPlace7" type="Node2D" parent="Car/Skins/Cloud/MilkPlaces"]
+position = Vector2(8.00001, 1.230751)
+
+[node name="MilkPlace8" type="Node2D" parent="Car/Skins/Cloud/MilkPlaces"]
+position = Vector2(-6.7692304, 1.230751)
+
+[node name="MilkPlace9" type="Node2D" parent="Car/Skins/Cloud/MilkPlaces"]
+position = Vector2(-6.7692304, 12.307701)
+
+[node name="MilkPlace10" type="Node2D" parent="Car/Skins/Cloud/MilkPlaces"]
 position = Vector2(8.00001, 12.307701)
 
 [node name="Camera2D" type="Camera2D" parent="."]

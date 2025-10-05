@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CarSkin" load_steps=3 format=3 uid="uid://dero6g7qhh0ot"]
+
+[ext_resource type="Script" uid="uid://cjqgaqte0qbwm" path="res://player/skins/car_skin.gd" id="1_lv7cx"]
+[ext_resource type="Texture2D" uid="uid://bl4vabjfrk1em" path="res://player/skins/grass.png" id="1_thgyd"]
+
+[resource]
+script = ExtResource("1_lv7cx")
+reference_node_name = "Grass"
+display_name = "Grass"
+icon = ExtResource("1_thgyd")
+descriptions = "The which (not witch) helped with this one, otherwise it wouldn't hold up."
+metadata/_custom_type_script = "uid://cjqgaqte0qbwm"
