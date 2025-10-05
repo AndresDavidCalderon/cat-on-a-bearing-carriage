@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://84qmbyy12hoi"]
+[gd_scene load_steps=70 format=3 uid="uid://84qmbyy12hoi"]
 
 [ext_resource type="Script" uid="uid://cjpt6tedm8mpx" path="res://UI/ui.gd" id="1_6sqwf"]
 [ext_resource type="Theme" uid="uid://ctgv0x2t6xkc6" path="res://UI/free_ui_theme.tres" id="1_o2jkc"]
@@ -61,6 +61,8 @@
 [ext_resource type="Texture2D" uid="uid://clhhvrmo78mr2" path="res://player/skins/water.png" id="56_pewy6"]
 [ext_resource type="Resource" uid="uid://sbrecxob53aw" path="res://player/skins/invisible.tres" id="57_7fwyd"]
 [ext_resource type="Resource" uid="uid://bl4g46j8h1mw2" path="res://player/skins/water.tres" id="58_7fwyd"]
+[ext_resource type="Texture2D" uid="uid://trqimipobeav" path="res://UI/calendar/today_check.png" id="61_1e72e"]
+[ext_resource type="Script" uid="uid://bmtlws8rlseww" path="res://UI/preview.gd" id="61_6j81t"]
 
 [sub_resource type="Gradient" id="Gradient_82xsv"]
 colors = PackedColorArray(0.93, 0.1488, 0.16182, 1, 1, 1, 0.31, 1)
@@ -836,6 +838,7 @@ libraries = {
 }
 
 [node name="Which" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1070,6 +1073,124 @@ offset_right = 55.0
 offset_bottom = 51.0
 text = "x"
 
+[node name="Preview" type="Control" parent="Mechanic/Panel"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -433.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("61_6j81t")
+
+[node name="Title" type="Label" parent="Mechanic/Panel/Preview"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 20.0
+offset_right = 55.0
+offset_bottom = 58.0
+text = "Car title"
+
+[node name="Icon" type="TextureRect" parent="Mechanic/Panel/Preview"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 23.0
+offset_top = -243.5
+offset_right = 219.0
+offset_bottom = -5.5
+grow_vertical = 2
+texture = ExtResource("46_rb527")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Mechanic/Panel/Preview"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -195.0
+offset_top = -252.5
+offset_right = -31.0
+offset_bottom = -6.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 18
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis tincidunt accumsan. 
+
+"
+autowrap_mode = 3
+
+[node name="Cost" type="HBoxContainer" parent="Mechanic/Panel/Preview"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.0
+offset_top = 80.5
+offset_right = 133.0
+offset_bottom = 144.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Mechanic/Panel/Preview/Cost"]
+layout_mode = 2
+texture = ExtResource("17_tjmo3")
+
+[node name="Label" type="Label" parent="Mechanic/Panel/Preview/Cost"]
+layout_mode = 2
+text = "###"
+
+[node name="Buy" type="Button" parent="Mechanic/Panel/Preview"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = 172.5
+offset_right = 68.0
+offset_bottom = 218.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Buy"
+
+[node name="Owned" type="HBoxContainer" parent="Mechanic/Panel/Preview"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = 81.5
+offset_right = 103.0
+offset_bottom = 145.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Mechanic/Panel/Preview/Owned"]
+layout_mode = 2
+texture = ExtResource("61_1e72e")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Mechanic/Panel/Preview/Owned"]
+layout_mode = 2
+text = "Owned"
+
 [node name="Mechanic" type="TextureRect" parent="Mechanic"]
 layout_mode = 1
 anchors_preset = 9
@@ -1082,16 +1203,6 @@ expand_mode = 5
 stretch_mode = 5
 flip_h = true
 
-[node name="Control" type="Control" parent="Mechanic"]
-layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -434.0
-grow_horizontal = 0
-grow_vertical = 2
-
 [connection signal="pressed" from="Lost/Panel/Repeat" to="Lost" method="_on_repeat_pressed"]
 [connection signal="pressed" from="StartPanel/Start" to="StartPanel" method="_on_start_pressed"]
 [connection signal="timeout" from="Speed/CoinCheck" to="Speed" method="_on_coin_check_timeout"]
@@ -1099,6 +1210,7 @@ grow_vertical = 2
 [connection signal="pressed" from="Which/WhichIntro/Next" to="Which/WhichIntro" method="_on_next_pressed"]
 [connection signal="pressed" from="Which/WhichIntro/Full" to="Which/WhichIntro" method="_on_full_pressed"]
 [connection signal="pressed" from="Mechanic/Panel/Close" to="Mechanic" method="_on_close_pressed"]
+[connection signal="pressed" from="Mechanic/Panel/Preview/Buy" to="Mechanic/Panel/Preview" method="_on_buy_pressed"]
 
 [editable path="Mechanic/Panel/GridContainer/Shiba"]
 [editable path="Mechanic/Panel/GridContainer/Gothic"]
