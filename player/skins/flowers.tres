@@ -8,5 +8,6 @@ script = ExtResource("1_laua3")
 reference_node_name = "Flowers"
 display_name = "Flowers"
 icon = ExtResource("1_rmje2")
+cost = 100
 descriptions = "First ever silleta vehicle. q"
 metadata/_custom_type_script = "uid://cjqgaqte0qbwm"

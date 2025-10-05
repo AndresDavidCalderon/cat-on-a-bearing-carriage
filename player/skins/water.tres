@@ -1,12 +1,17 @@
-[gd_resource type="Resource" script_class="CarSkin" load_steps=3 format=3 uid="uid://bl4g46j8h1mw2"]
+[gd_resource type="Resource" script_class="CarSkin" load_steps=4 format=3 uid="uid://bl4g46j8h1mw2"]
 
 [ext_resource type="Texture2D" uid="uid://clhhvrmo78mr2" path="res://player/skins/water.png" id="1_nivga"]
 [ext_resource type="Script" uid="uid://cjqgaqte0qbwm" path="res://player/skins/car_skin.gd" id="1_ri6s5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nivga"]
+atlas = ExtResource("1_nivga")
+region = Rect2(0, 0, 32, 64)
 
 [resource]
 script = ExtResource("1_ri6s5")
 reference_node_name = "Water"
 display_name = "Water"
-icon = ExtResource("1_nivga")
+icon = SubResource("AtlasTexture_nivga")
+cost = 100
 descriptions = "In the workshop we think it has a nice flow to it."
 metadata/_custom_type_script = "uid://cjqgaqte0qbwm"

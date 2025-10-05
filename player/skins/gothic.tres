@@ -8,5 +8,6 @@ script = ExtResource("1_rbq3w")
 reference_node_name = "Gothic"
 display_name = "Gothic"
 icon = ExtResource("1_c3ioj")
+cost = 50
 descriptions = "Not a phase."
 metadata/_custom_type_script = "uid://cjqgaqte0qbwm"

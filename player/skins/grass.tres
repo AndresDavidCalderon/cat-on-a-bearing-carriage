@@ -8,5 +8,6 @@ script = ExtResource("1_lv7cx")
 reference_node_name = "Grass"
 display_name = "Grass"
 icon = ExtResource("1_thgyd")
+cost = 80
 descriptions = "The which (not witch) helped with this one, otherwise it wouldn't hold up."
 metadata/_custom_type_script = "uid://cjqgaqte0qbwm"

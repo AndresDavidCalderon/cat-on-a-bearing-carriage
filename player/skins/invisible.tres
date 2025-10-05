@@ -8,5 +8,6 @@ script = ExtResource("1_t6vyn")
 reference_node_name = "Invisible"
 display_name = "Invisible"
 icon = ExtResource("1_ed04d")
+cost = 100
 descriptions = "The latest in accident-causing technology."
 metadata/_custom_type_script = "uid://cjqgaqte0qbwm"

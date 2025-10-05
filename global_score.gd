@@ -9,9 +9,9 @@ var coins:int=0
 var mechanic_intro_shown=false
 var mechanic_day=3
 var owned_skins=[
-	"Classic"
+	"Default"
 ]
-var current_skin:CarSkin
+var current_skin:CarSkin=preload("res://player/skins/default.tres")
 
 func set_coins(amount:int):
 	coins=amount

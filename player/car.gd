@@ -12,7 +12,7 @@ func _ready() -> void:
 	match_provider.match_state_changed.connect(match_change)
 	match_provider.packet_delivered.connect(on_delivery)
 	$Skins.hide()
-	load_skin(load("res://player/skins/default.tres"))
+	load_skin(GlobalScore.current_skin)
 
 func load_node(node_path:String,insert_in:Node,reference:Node):
 	var node=reference.get_node(node_path)

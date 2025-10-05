@@ -8,5 +8,6 @@ script = ExtResource("1_it3tu")
 reference_node_name = "McQueen"
 display_name = "Flames"
 icon = ExtResource("1_yluaq")
+cost = 70
 descriptions = "Make the whole town think \"This is fire\" or at least it looks like it."
 metadata/_custom_type_script = "uid://cjqgaqte0qbwm"

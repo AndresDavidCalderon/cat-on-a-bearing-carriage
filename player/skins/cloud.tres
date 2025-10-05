@@ -8,5 +8,6 @@ script = ExtResource("1_vxhms")
 reference_node_name = "Cloud"
 display_name = "Cloud"
 icon = ExtResource("1_eqyhg")
+cost = 90
 descriptions = "Delivered directly from Cali. We have heard it's useful for storage, but are not sure how."
 metadata/_custom_type_script = "uid://cjqgaqte0qbwm"

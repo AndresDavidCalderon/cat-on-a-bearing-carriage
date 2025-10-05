@@ -8,6 +8,7 @@ script = ExtResource("1_2w6jr")
 reference_node_name = "Shiba"
 display_name = "Shiba"
 icon = ExtResource("1_o2ie4")
+cost = 60
 descriptions = "Thank you for making this community possible. Game development was something I loved but stopped doing because I thought I was too busy. It was a mere lie, this event made me remember why I chose the career I chose.
 
 Featuring:

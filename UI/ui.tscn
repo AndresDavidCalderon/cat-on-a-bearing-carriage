@@ -1109,7 +1109,7 @@ texture = ExtResource("46_rb527")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="Mechanic/Panel/Preview"]
+[node name="Description" type="Label" parent="Mechanic/Panel/Preview"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
