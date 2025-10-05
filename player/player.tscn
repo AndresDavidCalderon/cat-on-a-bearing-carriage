@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://dhjjje2b1xoa0"]
+[gd_scene load_steps=72 format=3 uid="uid://dhjjje2b1xoa0"]
 
 [ext_resource type="Script" uid="uid://dg6hodfjfupjm" path="res://player.gd" id="1_8t03j"]
 [ext_resource type="Texture2D" uid="uid://bvqxs4m7uo268" path="res://player/cat_drift.png" id="2_2ieo8"]
@@ -28,7 +28,9 @@
 [ext_resource type="Texture2D" uid="uid://bbskrukq22dri" path="res://player/skins/flowers.png" id="18_uw77l"]
 [ext_resource type="Texture2D" uid="uid://bfobbfydsbwhk" path="res://UI/map/player.png" id="19_c35mf"]
 [ext_resource type="Texture2D" uid="uid://clhhvrmo78mr2" path="res://player/skins/water.png" id="19_rptt4"]
+[ext_resource type="Script" uid="uid://bijj2n8svns3r" path="res://player/skins/water_car_sprite.gd" id="20_2uvqg"]
 [ext_resource type="Texture2D" uid="uid://c56vg70mmeovn" path="res://player/skins/cloud.png" id="20_r7pn3"]
+[ext_resource type="Texture2D" uid="uid://wbtjdd7ef15f" path="res://player/skins/shiba.png" id="21_b8hi5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1layv"]
 size = Vector2(26, 54)
@@ -155,6 +157,15 @@ animations = [{
 "name": &"default",
 "speed": 22.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b8hi5"]
+size = Vector2(30, 62)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2uvqg"]
+size = Vector2(6.0000005, 62)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1s1yo"]
+size = Vector2(8.471154, 62)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jq2sk"]
 streams_count = 3
@@ -383,34 +394,51 @@ shape = SubResource("RectangleShape2D_bnflr")
 [node name="MilkPlaces" type="Node2D" parent="Car/Skins/Default"]
 
 [node name="MilkPlace" type="Node2D" parent="Car/Skins/Default/MilkPlaces"]
-position = Vector2(-8, -23)
+position = Vector2(-10, -23)
 
 [node name="MilkPlace2" type="Node2D" parent="Car/Skins/Default/MilkPlaces"]
-position = Vector2(8, -23)
+position = Vector2(11, -23)
 
 [node name="MilkPlace3" type="Node2D" parent="Car/Skins/Default/MilkPlaces"]
-position = Vector2(8, -15)
+position = Vector2(11, -15)
 
 [node name="MilkPlace4" type="Node2D" parent="Car/Skins/Default/MilkPlaces"]
-position = Vector2(-8, -15)
+position = Vector2(-10, -15)
 
 [node name="MilkPlace5" type="Node2D" parent="Car/Skins/Default/MilkPlaces"]
-position = Vector2(-8, -7)
+position = Vector2(-10, -7)
 
 [node name="MilkPlace6" type="Node2D" parent="Car/Skins/Default/MilkPlaces"]
-position = Vector2(8, -7)
+position = Vector2(11, -7)
 
 [node name="MilkPlace7" type="Node2D" parent="Car/Skins/Default/MilkPlaces"]
-position = Vector2(8.00001, 1.230751)
+position = Vector2(11.00001, 1.230751)
 
 [node name="MilkPlace8" type="Node2D" parent="Car/Skins/Default/MilkPlaces"]
-position = Vector2(-6.7692304, 1.230751)
+position = Vector2(-8.76923, 1.230751)
 
 [node name="MilkPlace9" type="Node2D" parent="Car/Skins/Default/MilkPlaces"]
-position = Vector2(-6.7692304, 12.307701)
+position = Vector2(-8.76923, 12.307701)
 
 [node name="MilkPlace10" type="Node2D" parent="Car/Skins/Default/MilkPlaces"]
-position = Vector2(8.00001, 12.307701)
+position = Vector2(11.00001, 12.307701)
+
+[node name="MilkPlace11" type="Node2D" parent="Car/Skins/Default/MilkPlaces"]
+position = Vector2(0, 12)
+
+[node name="MilkPlace12" type="Node2D" parent="Car/Skins/Default/MilkPlaces"]
+
+[node name="MilkPlace13" type="Node2D" parent="Car/Skins/Default/MilkPlaces"]
+position = Vector2(0, -8)
+
+[node name="MilkPlace14" type="Node2D" parent="Car/Skins/Default/MilkPlaces"]
+position = Vector2(0, -16)
+
+[node name="MilkPlace15" type="Node2D" parent="Car/Skins/Default/MilkPlaces"]
+position = Vector2(0, -23)
+
+[node name="MilkPlace16" type="Node2D" parent="Car/Skins/Default/MilkPlaces"]
+position = Vector2(0, -30)
 
 [node name="Gothic" type="Node2D" parent="Car/Skins"]
 visible = false
@@ -669,6 +697,7 @@ visible = false
 scale = Vector2(0.83, 0.83)
 sprite_frames = SubResource("SpriteFrames_xcnuv")
 frame_progress = 0.72664547
+script = ExtResource("20_2uvqg")
 
 [node name="MainColissionShape" type="CollisionShape2D" parent="Car/Skins/Water"]
 shape = SubResource("RectangleShape2D_1layv")
@@ -762,6 +791,66 @@ position = Vector2(-6.7692304, 12.307701)
 
 [node name="MilkPlace10" type="Node2D" parent="Car/Skins/Cloud/MilkPlaces"]
 position = Vector2(8.00001, 12.307701)
+
+[node name="Shiba" type="Node2D" parent="Car/Skins"]
+
+[node name="CarSprite" type="Sprite2D" parent="Car/Skins/Shiba"]
+position = Vector2(0, -4)
+scale = Vector2(0.32125002, 0.32125002)
+texture = ExtResource("21_b8hi5")
+
+[node name="MainColissionShape" type="CollisionShape2D" parent="Car/Skins/Shiba"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_b8hi5")
+
+[node name="LeftDetectionShape" type="CollisionShape2D" parent="Car/Skins/Shiba"]
+position = Vector2(-20, -4)
+shape = SubResource("RectangleShape2D_2uvqg")
+
+[node name="RightDetectionShape" type="CollisionShape2D" parent="Car/Skins/Shiba"]
+position = Vector2(21, -4)
+shape = SubResource("RectangleShape2D_1s1yo")
+
+[node name="MilkPlaces" type="Node2D" parent="Car/Skins/Shiba"]
+
+[node name="MilkPlace" type="Node2D" parent="Car/Skins/Shiba/MilkPlaces"]
+position = Vector2(-10, -23)
+
+[node name="MilkPlace2" type="Node2D" parent="Car/Skins/Shiba/MilkPlaces"]
+position = Vector2(11, -23)
+
+[node name="MilkPlace3" type="Node2D" parent="Car/Skins/Shiba/MilkPlaces"]
+position = Vector2(11, -15)
+
+[node name="MilkPlace4" type="Node2D" parent="Car/Skins/Shiba/MilkPlaces"]
+position = Vector2(-10, -15)
+
+[node name="MilkPlace5" type="Node2D" parent="Car/Skins/Shiba/MilkPlaces"]
+position = Vector2(-10, -7)
+
+[node name="MilkPlace6" type="Node2D" parent="Car/Skins/Shiba/MilkPlaces"]
+position = Vector2(11, -7)
+
+[node name="MilkPlace7" type="Node2D" parent="Car/Skins/Shiba/MilkPlaces"]
+position = Vector2(11.00001, 1.230751)
+
+[node name="MilkPlace8" type="Node2D" parent="Car/Skins/Shiba/MilkPlaces"]
+position = Vector2(-8.76923, 1.230751)
+
+[node name="MilkPlace9" type="Node2D" parent="Car/Skins/Shiba/MilkPlaces"]
+position = Vector2(-8.76923, 12.307701)
+
+[node name="MilkPlace10" type="Node2D" parent="Car/Skins/Shiba/MilkPlaces"]
+position = Vector2(11.00001, 12.307701)
+
+[node name="MilkPlace11" type="Node2D" parent="Car/Skins/Shiba/MilkPlaces"]
+position = Vector2(9, -30)
+
+[node name="MilkPlace12" type="Node2D" parent="Car/Skins/Shiba/MilkPlaces"]
+position = Vector2(-10, -30)
+
+[node name="MilkPlace13" type="Node2D" parent="Car/Skins/Shiba/MilkPlaces"]
+position = Vector2(0, 6)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 ignore_rotation = false

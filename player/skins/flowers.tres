@@ -9,5 +9,5 @@ reference_node_name = "Flowers"
 display_name = "Flowers"
 icon = ExtResource("1_rmje2")
 cost = 100
-descriptions = "First ever silleta vehicle. q"
+descriptions = "First ever silleta vehicle. "
 metadata/_custom_type_script = "uid://cjqgaqte0qbwm"

@@ -7,20 +7,29 @@ extends Node2D
 var bottles_scale=Vector2(0.4,0.4)
 var avaliable_places=[]
 var items=[]
+var loaded_nodes=[]
 
 func _ready() -> void:
 	match_provider.match_state_changed.connect(match_change)
 	match_provider.packet_delivered.connect(on_delivery)
 	$Skins.hide()
 	load_skin(GlobalScore.current_skin)
+	GlobalScore.equiped_cosmetic_changed.connect(on_equiped_cosmetic_changed)
+
+func on_equiped_cosmetic_changed():
+	load_skin(GlobalScore.current_skin)
 
 func load_node(node_path:String,insert_in:Node,reference:Node):
 	var node=reference.get_node(node_path)
-	reference.remove_child(node)
-	insert_in.add_child.call_deferred(node)
+	var imported=node.duplicate()
+	insert_in.add_child.call_deferred(imported)
+	loaded_nodes.append(imported)
 
 func load_skin(skin:CarSkin):
 	var reference=get_node("Skins/"+skin.reference_node_name)
+	for i in loaded_nodes:
+		i.queue_free()
+	loaded_nodes=[]
 	load_node("MilkPlaces",self,reference)
 	load_node("CarSprite",self,reference)
 	load_node("LeftDetectionShape",left_detection,reference)
