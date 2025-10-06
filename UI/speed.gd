@@ -5,15 +5,14 @@ extends Control
 @export var normal_color:Color
 
 ## Applied over the player's impulse. A logarithm base 10 is applied after
-var offset=-600 
+var offset=-500 
 
 ## Exchange rate from player speed to value.
 ## This, in sqrt(speed) represents a value of 100
 var value_100=85
 var time_after_100=0
-var duplicate_after=2
-var triplicate_afer=8
 var coins_after=90
+var double_coins_after=110
 var was_under=true
 var value:float
 var max_value=125
@@ -25,7 +24,7 @@ var total_rotation=PI
 
 func _process(delta: float) -> void:
 	last_delta=delta
-	var curved_speed=float(max(player.impulse+offset,0))**0.8
+	var curved_speed=float(max(player.impulse+offset,0))**0.85
 	set_value((curved_speed/value_100)*100)
 	$Label.text=str(int(value))
 	if value>coins_after:
@@ -44,10 +43,8 @@ func _process(delta: float) -> void:
 func _on_coin_check_timeout() -> void:
 	if value>coins_after and player.get_parent().current_match_state==player.get_parent().matchState.PLAYING:
 		var circumstancial_price=1
-		if time_after_100>duplicate_after:
-			circumstancial_price*=2
-		if time_after_100>triplicate_afer:
-			circumstancial_price*=3
+		if value>double_coins_after:
+			circumstancial_price=2
 		GlobalScore.set_coins(GlobalScore.coins+circumstancial_price)
 
 func set_value(new_value):

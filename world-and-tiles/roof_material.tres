@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ctukf772ew5pr"]
+
+[ext_resource type="Shader" uid="uid://c5faukljb00tg" path="res://world-and-tiles/roof.gdshader" id="1_rg4cn"]
+
+[resource]
+shader = ExtResource("1_rg4cn")
+shader_parameter/difference = 0.1

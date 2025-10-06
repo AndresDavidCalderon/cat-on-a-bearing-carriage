@@ -356,7 +356,7 @@ volume_db = -2.0
 stream = ExtResource("7_32hag")
 volume_db = -2.0
 
-[node name="MapIcon" type="Sprite2D" parent="."]
+[node name="Car2" type="Sprite2D" parent="."]
 visible = false
 light_mask = 0
 visibility_layer = 2
@@ -490,54 +490,54 @@ position = Vector2(-6.7692304, 12.307701)
 [node name="MilkPlace10" type="Node2D" parent="Car/Skins/Gothic/MilkPlaces"]
 position = Vector2(8.00001, 12.307701)
 
-[node name="Mcween" type="Node2D" parent="Car/Skins"]
+[node name="McQueen" type="Node2D" parent="Car/Skins"]
 visible = false
 
-[node name="CarSprite" type="Sprite2D" parent="Car/Skins/Mcween"]
+[node name="CarSprite" type="Sprite2D" parent="Car/Skins/McQueen"]
 scale = Vector2(0.83, 0.83)
 texture = ExtResource("15_g4c7l")
 
-[node name="MainColissionShape" type="CollisionShape2D" parent="Car/Skins/Mcween"]
+[node name="MainColissionShape" type="CollisionShape2D" parent="Car/Skins/McQueen"]
 shape = SubResource("RectangleShape2D_1layv")
 
-[node name="LeftDetectionShape" type="CollisionShape2D" parent="Car/Skins/Mcween"]
+[node name="LeftDetectionShape" type="CollisionShape2D" parent="Car/Skins/McQueen"]
 position = Vector2(-19, 0)
 shape = SubResource("RectangleShape2D_bnflr")
 
-[node name="RightDetectionShape" type="CollisionShape2D" parent="Car/Skins/Mcween"]
+[node name="RightDetectionShape" type="CollisionShape2D" parent="Car/Skins/McQueen"]
 position = Vector2(19, 0)
 shape = SubResource("RectangleShape2D_bnflr")
 
-[node name="MilkPlaces" type="Node2D" parent="Car/Skins/Mcween"]
+[node name="MilkPlaces" type="Node2D" parent="Car/Skins/McQueen"]
 
-[node name="MilkPlace" type="Node2D" parent="Car/Skins/Mcween/MilkPlaces"]
+[node name="MilkPlace" type="Node2D" parent="Car/Skins/McQueen/MilkPlaces"]
 position = Vector2(-8, -23)
 
-[node name="MilkPlace2" type="Node2D" parent="Car/Skins/Mcween/MilkPlaces"]
+[node name="MilkPlace2" type="Node2D" parent="Car/Skins/McQueen/MilkPlaces"]
 position = Vector2(8, -23)
 
-[node name="MilkPlace3" type="Node2D" parent="Car/Skins/Mcween/MilkPlaces"]
+[node name="MilkPlace3" type="Node2D" parent="Car/Skins/McQueen/MilkPlaces"]
 position = Vector2(8, -15)
 
-[node name="MilkPlace4" type="Node2D" parent="Car/Skins/Mcween/MilkPlaces"]
+[node name="MilkPlace4" type="Node2D" parent="Car/Skins/McQueen/MilkPlaces"]
 position = Vector2(-8, -15)
 
-[node name="MilkPlace5" type="Node2D" parent="Car/Skins/Mcween/MilkPlaces"]
+[node name="MilkPlace5" type="Node2D" parent="Car/Skins/McQueen/MilkPlaces"]
 position = Vector2(-8, -7)
 
-[node name="MilkPlace6" type="Node2D" parent="Car/Skins/Mcween/MilkPlaces"]
+[node name="MilkPlace6" type="Node2D" parent="Car/Skins/McQueen/MilkPlaces"]
 position = Vector2(8, -7)
 
-[node name="MilkPlace7" type="Node2D" parent="Car/Skins/Mcween/MilkPlaces"]
+[node name="MilkPlace7" type="Node2D" parent="Car/Skins/McQueen/MilkPlaces"]
 position = Vector2(8.00001, 1.230751)
 
-[node name="MilkPlace8" type="Node2D" parent="Car/Skins/Mcween/MilkPlaces"]
+[node name="MilkPlace8" type="Node2D" parent="Car/Skins/McQueen/MilkPlaces"]
 position = Vector2(-6.7692304, 1.230751)
 
-[node name="MilkPlace9" type="Node2D" parent="Car/Skins/Mcween/MilkPlaces"]
+[node name="MilkPlace9" type="Node2D" parent="Car/Skins/McQueen/MilkPlaces"]
 position = Vector2(-6.7692304, 12.307701)
 
-[node name="MilkPlace10" type="Node2D" parent="Car/Skins/Mcween/MilkPlaces"]
+[node name="MilkPlace10" type="Node2D" parent="Car/Skins/McQueen/MilkPlaces"]
 position = Vector2(8.00001, 12.307701)
 
 [node name="Grass" type="Node2D" parent="Car/Skins"]
