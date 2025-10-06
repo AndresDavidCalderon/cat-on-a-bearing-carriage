@@ -13,7 +13,7 @@ func _on_player_drift_started() -> void:
 	
 	var relevant:AnimatedSprite2D
 	var offset:Vector2
-	if get_parent().drift_direction==get_parent().Rotation.Positive:
+	if get_parent().drift_direction==get_parent().Rotation.POSITIVE:
 		relevant=$SplashLeft
 		offset=offset_l
 		$SprinkleL.global_position=get_parent().global_position+offset_sprinkle_l
