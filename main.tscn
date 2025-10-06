@@ -935,6 +935,14 @@ script = ExtResource("69_wu3dr")
 position = Vector2(70, -186)
 shape = SubResource("RectangleShape2D_1vm84")
 
+[node name="Affinity" type="Label" parent="MechanicBuilding/Ramp"]
+visible = false
+offset_left = -8.0
+offset_top = -202.0
+offset_right = 32.0
+offset_bottom = -179.0
+text = "Direction Affinity"
+
 [connection signal="timeout" from="InWorldRainEffects/NewDroplet" to="InWorldRainEffects" method="_on_new_droplet_timeout"]
 [connection signal="timeout" from="InWorldRainEffects/NewRay" to="InWorldRainEffects" method="_on_new_ray_timeout"]
 [connection signal="delivered" from="DeliveryPoints/Mechanic" to="Mechanic" method="_on_mechanic_delivered"]
