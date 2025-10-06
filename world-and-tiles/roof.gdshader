@@ -7,12 +7,9 @@ void vertex() {
 }
 
 void fragment() {
-	COLOR.r+=difference;
-	COLOR.g+=difference;
-	COLOR.b+=difference;
+	if (COLOR.r+COLOR.g+COLOR.b<2.5){
+		COLOR.r+=difference;
+		COLOR.g+=difference;
+		COLOR.b+=difference;
+	}
 }
-
-//void light() {
-//	// Called for every pixel for every light affecting the CanvasItem.
-//	// Uncomment to replace the default light processing function with this one.
-//}
