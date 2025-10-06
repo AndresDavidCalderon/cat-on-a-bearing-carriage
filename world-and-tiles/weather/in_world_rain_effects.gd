@@ -2,6 +2,7 @@ extends Node
 
 @export var droplet:PackedScene
 @export var ray:PackedScene
+@export var roof_material:ShaderMaterial
 
 @onready var player:Node2D=get_node("/root/World/Player")
 
@@ -20,6 +21,7 @@ func _ready() -> void:
 		$NewRay.start()
 		for i in get_tree().get_nodes_in_group("shadows"):
 			i.modulate.a*=modulate_multiplier
+	roof_material.set_shader_parameter("raining",Weather.get_weather_today()==Weather.Weather.RAINY)
 
 func get_relevant_random_point():
 	var offset_y=randf_range(-relevant_height,relevant_height)

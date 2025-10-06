@@ -5,3 +5,6 @@
 [resource]
 shader = ExtResource("1_rg4cn")
 shader_parameter/difference = 0.1
+shader_parameter/overall_liftup = 0.05
+shader_parameter/raining = true
+shader_parameter/rain_multiplier = 3.0

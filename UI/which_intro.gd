@@ -7,7 +7,6 @@ signal ended
 var current_slide=0
 
 func start():
-	grab_focus()
 	get_parent().show()
 	show()
 
@@ -15,7 +14,6 @@ func start():
 func _on_next_pressed() -> void:
 	current_slide+=1
 	if current_slide>=slides.size():
-		grab_focus()
 		$Next.hide()
 		$Next.pressed.disconnect(_on_next_pressed)
 		$Full.pressed.disconnect(_on_full_pressed)

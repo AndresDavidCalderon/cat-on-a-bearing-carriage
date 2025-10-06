@@ -31,6 +31,11 @@ var direction_before_drift:Vector2
 
 @export var impulse_loss=30
 
+@export var steering_speed:float=1.5
+@export var drifting_steering_speed=4
+@export var cat_drift:Texture
+@export var cat_push:Texture
+@export var cat_default:Texture
 ## spered*this is deducted after passing critic_fast_treshold
 var impulse_loss_critic=0.03
 var critic_fast_treshhold=1100
@@ -38,22 +43,32 @@ var critic_fast_treshhold=1100
 ## Applies linearly, after critic_treshhold.
 var impulse_per_tap=10
 
+## This time has to pass after an impulse tap to loose impulse.
 var grace_time_after_tap=1
 
-# Critically low speed, should increase impulse per tap.
-var critic_treshhold=100
-var critic_impulse_per_tap=300
-var tap_speed_multiplier=1.1
-var critic_tap_speed_mutiplier=2
-var tap_speed_duration=1
+## Internal, to work with grace_time_after_tap.
 var time_since_tap=0
 
-# Spent when moving. Should be measured in pixels of distance.
+## Critically low speed, should increase impulse per tap.
+var critic_treshhold=100
+
+## Impulse per tap when going too slow. What slow is is defined by critic_treshold
+var critic_impulse_per_tap=300
+
+## Designed to improve responsiveness of impulse taps. Applies temporarily.
+var tap_speed_multiplier=1.1
+var critic_tap_speed_mutiplier=2
+
+## Time tap_speed_multiplier takes affect after the tap.
+var tap_speed_duration=1
+
+
+## Spent when moving. Should be measured in pixels of distance.
 var impulse:float=600
-# Spends impulse.
+
+## Spends impulse. Makes move.
 var speed:float=impulse
-@export var steering_speed:float=1.5
-@export var drifting_steering_speed=4
+
 var break_force=500
 var breaking_enabled=false
 
@@ -68,9 +83,6 @@ var impulse_texture_override_length=1
 
 var debug_last_impulse_loss_type:String="NONE"
 
-@export var cat_drift:Texture
-@export var cat_push:Texture
-@export var cat_default:Texture
 
 func _process(delta: float) -> void:
 	if get_parent().current_match_state==get_parent().matchState.PLAYING:

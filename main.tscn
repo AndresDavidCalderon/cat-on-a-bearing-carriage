@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=4 uid="uid://dnnka5th1gldj"]
+[gd_scene load_steps=97 format=4 uid="uid://dnnka5th1gldj"]
 
 [ext_resource type="Script" uid="uid://o74np0f72gru" path="res://world.gd" id="1_h2yge"]
 [ext_resource type="Script" uid="uid://21cvdt1d6hdp" path="res://blessings.gd" id="2_4k2k6"]
@@ -68,6 +68,7 @@
 [ext_resource type="Texture2D" uid="uid://dhn331hhn8t0j" path="res://world-and-tiles/mechanic/cucarron.png" id="65_ntx8l"]
 [ext_resource type="Texture2D" uid="uid://dv1un6amrttq2" path="res://world-and-tiles/mechanic/logo.png" id="66_uatky"]
 [ext_resource type="Texture2D" uid="uid://dkw3nd7354ob5" path="res://world-and-tiles/mechanic/car_lifter.png" id="67_rqtf5"]
+[ext_resource type="Script" uid="uid://bvjfbokio6qqc" path="res://world-and-tiles/ramp.gd" id="69_wu3dr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b1qrp"]
 size = Vector2(37.99981, 44.000076)
@@ -290,6 +291,7 @@ script = ExtResource("1_h2yge")
 script = ExtResource("2_qnost")
 droplet = ExtResource("3_wnkbs")
 ray = ExtResource("4_f6a44")
+roof_material = ExtResource("42_1vm84")
 
 [node name="NewDroplet" type="Timer" parent="InWorldRainEffects"]
 wait_time = 0.2
@@ -925,6 +927,7 @@ shape = SubResource("RectangleShape2D_ntx8l")
 points = PackedVector2Array(245, -194, -100, -195)
 width = 120.0
 gradient = SubResource("Gradient_rqtf5")
+script = ExtResource("69_wu3dr")
 
 [node name="Area2D" type="Area2D" parent="MechanicBuilding/Ramp"]
 
@@ -936,6 +939,8 @@ shape = SubResource("RectangleShape2D_1vm84")
 [connection signal="timeout" from="InWorldRainEffects/NewRay" to="InWorldRainEffects" method="_on_new_ray_timeout"]
 [connection signal="delivered" from="DeliveryPoints/Mechanic" to="Mechanic" method="_on_mechanic_delivered"]
 [connection signal="interacted" from="Mechanic/Interactable" to="Mechanic" method="_on_interactable_interacted"]
+[connection signal="body_entered" from="MechanicBuilding/Ramp/Area2D" to="MechanicBuilding/Ramp" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="MechanicBuilding/Ramp/Area2D" to="MechanicBuilding/Ramp" method="_on_area_2d_body_exited"]
 
 [editable path="DeliveryPoints/DeliveryTarget"]
 [editable path="DeliveryPoints/DeliveryTarget2"]
