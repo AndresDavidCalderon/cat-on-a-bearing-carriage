@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 signal drift_started
 signal drift_ended
+signal drift_direction_changed
 signal hit
 signal impulsed
 
@@ -11,8 +12,8 @@ enum State{
 }
 
 enum Rotation{
-	Negative,
-	Positive
+	NEGATIVE,
+	POSITIVE
 }
 
 @onready var blessing_provider = get_node("/root/World/Blessings")
@@ -33,9 +34,6 @@ var direction_before_drift:Vector2
 
 @export var steering_speed:float=1.5
 @export var drifting_steering_speed=4
-@export var cat_drift:Texture
-@export var cat_push:Texture
-@export var cat_default:Texture
 ## spered*this is deducted after passing critic_fast_treshold
 var impulse_loss_critic=0.03
 var critic_fast_treshhold=1100
@@ -78,16 +76,11 @@ var was_separated=true
 var was_straight=false
 var drift_rotation_knockback=200
 
-var texture_overriden=false
-var impulse_texture_override_length=1
-
 var debug_last_impulse_loss_type:String="NONE"
 
 
 func _process(delta: float) -> void:
 	if get_parent().current_match_state==get_parent().matchState.PLAYING:
-		if not texture_overriden:
-			$Cat.texture=cat_default
 		velocity=Vector2(0,-speed).rotated(rotation)
 		var collided = move_and_slide()
 		if collided:
@@ -135,10 +128,6 @@ func _process(delta: float) -> void:
 				speed_multiplier*=multiplier
 				var timer =get_tree().create_timer(tap_speed_duration)
 				timer.timeout.connect(revert_speed.bind(multiplier))
-				texture_overriden=true
-				$Cat.texture=cat_push
-				var texture_timer=get_tree().create_timer(impulse_texture_override_length)
-				texture_timer.timeout.connect(impulse_texture_end)
 				time_since_tap=0
 				$Impulse.play()
 				impulsed.emit()
@@ -152,13 +141,13 @@ func _process(delta: float) -> void:
 		if Input.is_action_just_pressed("drift"):
 			set_state(State.DRIFTING)
 			$Drift.play()
-			drift_started.emit()
 			pinpoint=position+drift_point_offset.rotated(rotation)
 			direction_before_drift=velocity
 			if Input.is_action_pressed("SteerLeft"):
-				drift_direction=Rotation.Negative
+				drift_direction=Rotation.NEGATIVE
 			if Input.is_action_pressed("SteerRight"):
-				drift_direction=Rotation.Positive
+				drift_direction=Rotation.POSITIVE
+			drift_started.emit()
 		
 		if Input.is_action_just_released("drift"):
 			set_state(State.SLIDING)
@@ -172,7 +161,7 @@ func _process(delta: float) -> void:
 				
 			position=pinpoint-drift_point_offset.rotated(rotation)
 			var relevant_area:Area2D
-			if drift_direction==Rotation.Negative:
+			if drift_direction==Rotation.NEGATIVE:
 				relevant_area=$Right
 			else:
 				relevant_area=$Left
@@ -184,35 +173,29 @@ func _process(delta: float) -> void:
 			if (not has_relevant_bodies(relevant_area)) and not blessing_provider.stop_drift:
 				pinpoint+=circumstantial_drift_slide*delta
 			
+			var old_drift_direction=drift_direction
 			if Input.is_action_pressed("SteerLeft"):
 				if has_relevant_bodies($Right):
 					pinpoint+=Vector2(-drift_rotation_knockback,0).rotated(rotation)*delta
 				rotation-=drifting_steering_speed*delta
-				drift_direction=Rotation.Negative
+				drift_direction=Rotation.NEGATIVE
 			if Input.is_action_pressed("SteerRight"):
 					if has_relevant_bodies($Left):
 						pinpoint+=Vector2(drift_rotation_knockback,0).rotated(rotation)*delta
 					rotation+=drifting_steering_speed*delta
-					drift_direction=Rotation.Positive
-
-			if not texture_overriden:
-				$Cat.texture=cat_drift
-				$Cat.flip_h=drift_direction==Rotation.Positive
-
+					drift_direction=Rotation.POSITIVE
+			if old_drift_direction!=drift_direction:
+				drift_direction_changed.emit()
 	if Input.is_action_pressed("break") and breaking_enabled:
 		impulse-=break_force*delta
 
 func revert_speed(mult):
 	speed_multiplier/=mult
 
-func impulse_texture_end():
-	texture_overriden=false
-
 func set_state(new_state:State):
 	current_state=new_state
 
 func has_relevant_bodies(area:Area2D):
-	
 	for i in area.get_overlapping_bodies():
 		if i!=self:
 			return true

@@ -1,6 +1,11 @@
 extends Sprite2D
 
+@export var show_on_ready:bool
 @onready var ui:CanvasLayer=get_node("/root/World/UI")
+
+func _ready() -> void:
+	if show_on_ready:
+		show()
 
 func _process(_delta: float) -> void:
 	var camera:Camera2D=ui.map_camera
