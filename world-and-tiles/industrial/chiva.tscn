@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c74pefbvka83h"]
+[gd_scene load_steps=8 format=3 uid="uid://c74pefbvka83h"]
 
 [ext_resource type="Texture2D" uid="uid://1lhmr1dac5qw" path="res://world-and-tiles/industrial/chiva.png" id="1_s57gf"]
 [ext_resource type="Script" uid="uid://c6kaydaownb67" path="res://world-and-tiles/industrial/chiva.gd" id="1_yt84i"]
@@ -12,6 +12,9 @@ size = Vector2(51, 28)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yt84i"]
 size = Vector2(68, 35)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rt3p3"]
+size = Vector2(88, 32)
 
 [node name="Chiva" type="AnimatableBody2D"]
 collision_layer = 3
@@ -47,3 +50,10 @@ radius = 71.2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleCheck"]
 position = Vector2(0, -44.5)
 shape = SubResource("RectangleShape2D_yt84i")
+
+[node name="PedestrianDetector" type="Area2D" parent="."]
+position = Vector2(0, -96)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PedestrianDetector"]
+position = Vector2(4, 16)
+shape = SubResource("RectangleShape2D_rt3p3")

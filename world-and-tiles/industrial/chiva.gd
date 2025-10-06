@@ -2,6 +2,12 @@ extends AnimatableBody2D
 
 signal path_ended
 
+@export var path:Node
+
+## If not empty, replaces path with a random one of here.
+@export var possible_paths:Array[Node]
+
+@onready var match_provider=get_node("/root/World")
 var speed=400
 var target_idx=0
 var margin=0
@@ -9,16 +15,16 @@ var rotation_speed=4
 var acceptable_distance=10
 var pathing=true
 
-@export var path:Node
-
-## If not empty, replaces path with a random one of here.
-@export var possible_paths:Array[Node]
 
 func _ready() -> void:
 	if possible_paths.size()>0:
 		path=possible_paths.pick_random()
 
 func _process(delta: float) -> void:
+	if match_provider.current_match_state!=match_provider.matchState.PLAYING:
+		return
+	if $PedestrianDetector.get_overlapping_bodies().filter(func (z): return z is Pedestrian):
+		return
 	if path.get_child_count()<=target_idx or not pathing:
 		return
 	var target_position=path.get_child(target_idx).global_position
