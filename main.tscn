@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=4 uid="uid://dnnka5th1gldj"]
+[gd_scene load_steps=99 format=4 uid="uid://dnnka5th1gldj"]
 
 [ext_resource type="Script" uid="uid://o74np0f72gru" path="res://world.gd" id="1_h2yge"]
 [ext_resource type="Script" uid="uid://21cvdt1d6hdp" path="res://blessings.gd" id="2_4k2k6"]
