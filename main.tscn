@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=4 uid="uid://dnnka5th1gldj"]
+[gd_scene load_steps=98 format=4 uid="uid://dnnka5th1gldj"]
 
 [ext_resource type="Script" uid="uid://o74np0f72gru" path="res://world.gd" id="1_h2yge"]
 [ext_resource type="Script" uid="uid://21cvdt1d6hdp" path="res://blessings.gd" id="2_4k2k6"]
@@ -66,6 +66,7 @@
 [ext_resource type="Resource" uid="uid://dutlr7geaqwac" path="res://charachters/mechanic_presentation.dtl" id="63_sm6fg"]
 [ext_resource type="PackedScene" uid="uid://d4fuo7inj5ebw" path="res://world-and-tiles/interactable.tscn" id="64_b17eg"]
 [ext_resource type="Texture2D" uid="uid://dhn331hhn8t0j" path="res://world-and-tiles/mechanic/cucarron.png" id="65_ntx8l"]
+[ext_resource type="Texture2D" uid="uid://f7s358akd7gk" path="res://UI/map/tool.png" id="66_cyx1q"]
 [ext_resource type="Texture2D" uid="uid://dv1un6amrttq2" path="res://world-and-tiles/mechanic/logo.png" id="66_uatky"]
 [ext_resource type="Texture2D" uid="uid://dkw3nd7354ob5" path="res://world-and-tiles/mechanic/car_lifter.png" id="67_rqtf5"]
 [ext_resource type="Script" uid="uid://bvjfbokio6qqc" path="res://world-and-tiles/ramp.gd" id="69_wu3dr"]
@@ -892,6 +893,13 @@ workshop [E]"
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Mechanic/Interactable"]
 position = Vector2(40, -418)
 shape = SubResource("RectangleShape2D_kjtkv")
+
+[node name="MapIcon" type="Sprite2D" parent="Mechanic"]
+visibility_layer = 2
+z_index = 10
+position = Vector2(-120.999954, -271.99997)
+scale = Vector2(2, 2)
+texture = ExtResource("66_cyx1q")
 
 [node name="MechanicBuilding" type="Node2D" parent="."]
 position = Vector2(2378, 1530)

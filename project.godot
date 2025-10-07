@@ -129,6 +129,7 @@ toggleMap={
 
 [layer_names]
 
+2d_render/layer_2="Minimap player 1"
 2d_physics/layer_2="dynamic_obstacless"
 
 [rendering]
