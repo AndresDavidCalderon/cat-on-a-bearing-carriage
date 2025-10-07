@@ -70,6 +70,7 @@
 [ext_resource type="Texture2D" uid="uid://dv1un6amrttq2" path="res://world-and-tiles/mechanic/logo.png" id="66_uatky"]
 [ext_resource type="Texture2D" uid="uid://dkw3nd7354ob5" path="res://world-and-tiles/mechanic/car_lifter.png" id="67_rqtf5"]
 [ext_resource type="Script" uid="uid://bvjfbokio6qqc" path="res://world-and-tiles/ramp.gd" id="69_wu3dr"]
+[ext_resource type="Script" uid="uid://3taiinouejwf" path="res://world-and-tiles/habitable_ceiling.gd" id="70_cyx1q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b1qrp"]
 size = Vector2(37.99981, 44.000076)
@@ -943,12 +944,30 @@ script = ExtResource("69_wu3dr")
 position = Vector2(70, -186)
 shape = SubResource("RectangleShape2D_1vm84")
 
+[node name="Affinity" type="Label" parent="MechanicBuilding/Ramp"]
+visible = false
+offset_left = -8.0
+offset_top = -202.0
+offset_right = 32.0
+offset_bottom = -179.0
+text = "Direction Affinity"
+
+[node name="HabitableCeiling" type="Area2D" parent="."]
+script = ExtResource("70_cyx1q")
+ceiling_material = ExtResource("42_1vm84")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="HabitableCeiling"]
+position = Vector2(2344, 1514)
+polygon = PackedVector2Array(-232, 214, 280, 214, 280, -106, -72, -106, -72, -234, -232, -234)
+
 [connection signal="timeout" from="InWorldRainEffects/NewDroplet" to="InWorldRainEffects" method="_on_new_droplet_timeout"]
 [connection signal="timeout" from="InWorldRainEffects/NewRay" to="InWorldRainEffects" method="_on_new_ray_timeout"]
 [connection signal="delivered" from="DeliveryPoints/Mechanic" to="Mechanic" method="_on_mechanic_delivered"]
 [connection signal="interacted" from="Mechanic/Interactable" to="Mechanic" method="_on_interactable_interacted"]
 [connection signal="body_entered" from="MechanicBuilding/Ramp/Area2D" to="MechanicBuilding/Ramp" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="MechanicBuilding/Ramp/Area2D" to="MechanicBuilding/Ramp" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="HabitableCeiling" to="HabitableCeiling" method="_on_body_entered"]
+[connection signal="body_exited" from="HabitableCeiling" to="HabitableCeiling" method="_on_body_exited"]
 
 [editable path="DeliveryPoints/DeliveryTarget"]
 [editable path="DeliveryPoints/DeliveryTarget2"]

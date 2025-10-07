@@ -78,10 +78,15 @@ var drift_rotation_knockback=200
 
 var debug_last_impulse_loss_type:String="NONE"
 
+## This script only cares about values, but other scripts may want to use the key to differentiate
+## what the force they added was.
+var external_forces={}
 
 func _process(delta: float) -> void:
 	if get_parent().current_match_state==get_parent().matchState.PLAYING:
 		velocity=Vector2(0,-speed).rotated(rotation)
+		for i in external_forces.values():
+			velocity+=i
 		var collided = move_and_slide()
 		if collided:
 			if was_separated:
