@@ -3,7 +3,7 @@ extends CharacterBody2D
 signal drift_started
 signal drift_ended
 signal drift_direction_changed
-signal hit
+signal hit(colission:KinematicCollision2D)
 signal impulsed
 
 enum State{
@@ -90,7 +90,7 @@ func _process(delta: float) -> void:
 		var collided = move_and_slide()
 		if collided:
 			if was_separated:
-				hit.emit()
+				hit.emit(get_last_slide_collision())
 			was_separated=false
 		else:
 			was_separated=true

@@ -1,7 +1,8 @@
-[gd_scene load_steps=73 format=3 uid="uid://dhjjje2b1xoa0"]
+[gd_scene load_steps=74 format=3 uid="uid://dhjjje2b1xoa0"]
 
 [ext_resource type="Script" uid="uid://dg6hodfjfupjm" path="res://player/player.gd" id="1_8t03j"]
 [ext_resource type="Texture2D" uid="uid://4d1qt7imo57v" path="res://player/cat.png" id="4_yllr7"]
+[ext_resource type="AudioStream" uid="uid://dqxxmsncjyocs" path="res://player/loud_meow.wav" id="5_5ejfk"]
 [ext_resource type="Texture2D" uid="uid://bxwifrw0on3r8" path="res://player/car.png" id="5_kb6p2"]
 [ext_resource type="Script" uid="uid://ctea6d6h84fjd" path="res://player/hit_sound.gd" id="5_x7c3f"]
 [ext_resource type="Script" uid="uid://gsd8sxolqch3" path="res://player/car.gd" id="6_2ieo8"]
@@ -353,6 +354,10 @@ volume_db = -2.0
 [node name="HitSoft" type="AudioStreamPlayer" parent="HitSound"]
 stream = ExtResource("7_32hag")
 volume_db = -2.0
+
+[node name="PersonHit" type="AudioStreamPlayer" parent="HitSound"]
+stream = ExtResource("5_5ejfk")
+volume_db = -20.0
 
 [node name="MapIcon" type="Sprite2D" parent="."]
 visible = false
