@@ -350,14 +350,17 @@ script = ExtResource("5_x7c3f")
 [node name="HitHard" type="AudioStreamPlayer" parent="HitSound"]
 stream = ExtResource("6_wodsf")
 volume_db = -2.0
+bus = &"Effects"
 
 [node name="HitSoft" type="AudioStreamPlayer" parent="HitSound"]
 stream = ExtResource("7_32hag")
 volume_db = -2.0
+bus = &"Effects"
 
 [node name="PersonHit" type="AudioStreamPlayer" parent="HitSound"]
 stream = ExtResource("5_5ejfk")
 volume_db = -20.0
+bus = &"Effects"
 
 [node name="MapIcon" type="Sprite2D" parent="."]
 visible = false

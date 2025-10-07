@@ -79,6 +79,7 @@ enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/godo
 [global_group]
 
 shadows="Objects whose alpha should change depending on weather"
+Vehicle=""
 
 [input]
 

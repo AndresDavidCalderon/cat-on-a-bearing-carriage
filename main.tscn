@@ -703,6 +703,7 @@ tile_set = ExtResource("13_074og")
 [node name="Riff" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_w48qg")
 volume_db = -18.0
+bus = &"Music"
 
 [node name="Couple" type="StaticBody2D" parent="."]
 position = Vector2(-1106, 310)
@@ -720,13 +721,16 @@ shape = SubResource("RectangleShape2D_2cqfq")
 [node name="Delivery" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_0cp0l")
 volume_db = -10.0
+bus = &"Effects"
 
 [node name="Win" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("39_h8e4i")
 volume_db = -9.0
+bus = &"Music"
 
 [node name="Loss" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("39_come4")
+bus = &"Music"
 
 [node name="UmbrellaStreet" parent="." instance=ExtResource("34_4k2k6")]
 position = Vector2(-224, -2240)
@@ -810,7 +814,7 @@ default_color = Color(0.83, 0.78849995, 0, 1)
 [node name="CarManager" type="Node" parent="."]
 script = ExtResource("48_0cbny")
 
-[node name="Chiva" parent="CarManager" node_paths=PackedStringArray("path", "possible_paths") instance=ExtResource("45_0n3wm")]
+[node name="Chiva" parent="CarManager" node_paths=PackedStringArray("path", "possible_paths") groups=["Vehicle"] instance=ExtResource("45_0n3wm")]
 position = Vector2(-1824, -432)
 rotation = 3.1415882
 path = NodePath("../PathA")

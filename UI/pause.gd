@@ -33,6 +33,7 @@ func pause():
 		controls_time_pause=true
 	show()
 	get_tree().paused=true
+	
 
 
 func _on_restart_day_pressed() -> void:
