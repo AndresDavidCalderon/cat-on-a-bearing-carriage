@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://84qmbyy12hoi"]
+[gd_scene load_steps=71 format=3 uid="uid://84qmbyy12hoi"]
 
 [ext_resource type="Script" uid="uid://cjpt6tedm8mpx" path="res://UI/ui.gd" id="1_6sqwf"]
 [ext_resource type="Theme" uid="uid://ctgv0x2t6xkc6" path="res://UI/free_ui_theme.tres" id="1_o2jkc"]
@@ -63,6 +63,7 @@
 [ext_resource type="Resource" uid="uid://bl4g46j8h1mw2" path="res://player/skins/water.tres" id="58_7fwyd"]
 [ext_resource type="Texture2D" uid="uid://trqimipobeav" path="res://UI/calendar/today_check.png" id="61_1e72e"]
 [ext_resource type="Script" uid="uid://bmtlws8rlseww" path="res://UI/preview.gd" id="61_6j81t"]
+[ext_resource type="Script" uid="uid://dhnx7dcwchgk" path="res://UI/pause.gd" id="64_1spl3"]
 
 [sub_resource type="Gradient" id="Gradient_82xsv"]
 colors = PackedColorArray(0.93, 0.1488, 0.16182, 1, 1, 1, 0.31, 1)
@@ -624,6 +625,81 @@ pivot_offset = Vector2(85, 8)
 texture = ExtResource("17_k01bw")
 stretch_mode = 5
 
+[node name="Coins" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -179.0
+offset_top = -255.0
+offset_right = -64.0
+offset_bottom = -191.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("1_o2jkc")
+script = ExtResource("16_o2t6a")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Coins"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Coins/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("17_tjmo3")
+
+[node name="Label" type="Label" parent="Coins/HBoxContainer"]
+layout_mode = 2
+text = "#"
+
+[node name="WinEffect" type="Control" parent="Coins"]
+clip_contents = true
+anchors_preset = 0
+offset_left = 71.0
+offset_top = -43.0
+offset_right = 155.0
+offset_bottom = 26.0
+
+[node name="Label" type="Label" parent="Coins/WinEffect"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 70.0
+offset_right = 64.0
+offset_bottom = 108.00008
+theme_override_colors/font_color = Color(1, 0.9529412, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "+1"
+
+[node name="Stars" type="TextureRect" parent="Coins/WinEffect"]
+layout_mode = 1
+offset_left = 1.0
+offset_top = 70.0
+offset_right = 41.0
+offset_bottom = 110.000114
+texture = ExtResource("30_apk2w")
+
+[node name="Stars2" type="TextureRect" parent="Coins/WinEffect"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -38.0
+offset_top = 1.0
+offset_right = 1.9999924
+offset_bottom = 41.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("30_apk2w")
+
+[node name="FadeIn" type="AnimationPlayer" parent="Coins/WinEffect"]
+libraries = {
+&"": SubResource("AnimationLibrary_ypubg")
+}
+
 [node name="WinPanel" type="Panel" parent="."]
 visible = false
 anchors_preset = 8
@@ -762,81 +838,6 @@ offset_bottom = -145.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Coins" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -179.0
-offset_top = -255.0
-offset_right = -64.0
-offset_bottom = -191.0
-grow_horizontal = 0
-grow_vertical = 0
-theme = ExtResource("1_o2jkc")
-script = ExtResource("16_o2t6a")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Coins"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="TextureRect" type="TextureRect" parent="Coins/HBoxContainer"]
-layout_mode = 2
-texture = ExtResource("17_tjmo3")
-
-[node name="Label" type="Label" parent="Coins/HBoxContainer"]
-layout_mode = 2
-text = "#"
-
-[node name="WinEffect" type="Control" parent="Coins"]
-clip_contents = true
-anchors_preset = 0
-offset_left = 71.0
-offset_top = -43.0
-offset_right = 155.0
-offset_bottom = 26.0
-
-[node name="Label" type="Label" parent="Coins/WinEffect"]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 70.0
-offset_right = 64.0
-offset_bottom = 108.00008
-theme_override_colors/font_color = Color(1, 0.9529412, 0, 1)
-theme_override_font_sizes/font_size = 25
-text = "+1"
-
-[node name="Stars" type="TextureRect" parent="Coins/WinEffect"]
-layout_mode = 1
-offset_left = 1.0
-offset_top = 70.0
-offset_right = 41.0
-offset_bottom = 110.000114
-texture = ExtResource("30_apk2w")
-
-[node name="Stars2" type="TextureRect" parent="Coins/WinEffect"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -38.0
-offset_top = 1.0
-offset_right = 1.9999924
-offset_bottom = 41.0
-grow_horizontal = 0
-grow_vertical = 0
-texture = ExtResource("30_apk2w")
-
-[node name="FadeIn" type="AnimationPlayer" parent="Coins/WinEffect"]
-libraries = {
-&"": SubResource("AnimationLibrary_ypubg")
-}
-
 [node name="Which" type="Control" parent="."]
 visible = false
 layout_mode = 3
@@ -964,6 +965,7 @@ zoom = Vector2(0.1, 0.1)
 script = ExtResource("13_duqhi")
 
 [node name="Mechanic" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1203,6 +1205,65 @@ expand_mode = 5
 stretch_mode = 5
 flip_h = true
 
+[node name="Pause" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_o2jkc")
+script = ExtResource("64_1spl3")
+
+[node name="Panel" type="Panel" parent="Pause"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -297.0
+offset_top = -244.0
+offset_right = 299.0
+offset_bottom = 241.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Pause/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -63.0
+offset_top = 14.0
+offset_right = 64.0
+offset_bottom = 52.0
+grow_horizontal = 2
+text = "Paused"
+
+[node name="ButtonOptions" type="VBoxContainer" parent="Pause/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -215.0
+offset_top = -48.5
+offset_right = 215.0
+offset_bottom = 47.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Resume" type="Button" parent="Pause/Panel/ButtonOptions"]
+layout_mode = 2
+text = "Resume"
+
+[node name="RestartDay" type="Button" parent="Pause/Panel/ButtonOptions"]
+layout_mode = 2
+text = "Restart day"
+
 [connection signal="pressed" from="Lost/Panel/Repeat" to="Lost" method="_on_repeat_pressed"]
 [connection signal="pressed" from="StartPanel/Start" to="StartPanel" method="_on_start_pressed"]
 [connection signal="timeout" from="Speed/CoinCheck" to="Speed" method="_on_coin_check_timeout"]
@@ -1211,6 +1272,8 @@ flip_h = true
 [connection signal="pressed" from="Which/WhichIntro/Full" to="Which/WhichIntro" method="_on_full_pressed"]
 [connection signal="pressed" from="Mechanic/Panel/Close" to="Mechanic" method="_on_close_pressed"]
 [connection signal="pressed" from="Mechanic/Panel/Preview/Buy" to="Mechanic/Panel/Preview" method="_on_buy_pressed"]
+[connection signal="pressed" from="Pause/Panel/ButtonOptions/Resume" to="Pause" method="_on_resume_pressed"]
+[connection signal="pressed" from="Pause/Panel/ButtonOptions/RestartDay" to="Pause" method="_on_restart_day_pressed"]
 
 [editable path="Mechanic/Panel/GridContainer/Shiba"]
 [editable path="Mechanic/Panel/GridContainer/Gothic"]

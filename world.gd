@@ -3,6 +3,7 @@ enum lossReason{
 	TIME_OUT
 }
 
+
 enum matchState{
 	PLAYING,
 	WON,
