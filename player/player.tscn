@@ -881,6 +881,7 @@ volume_db = -5.0
 [node name="Drift" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_jq2sk")
 volume_db = -10.0
+bus = &"Effects"
 
 [node name="Impulse" type="AudioStreamPlayer" parent="."]
 volume_db = -5.0

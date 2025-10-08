@@ -34,8 +34,35 @@ func pause():
 	show()
 	get_tree().paused=true
 	
+	set_value_to_volume_slider("Master",$Panel/SoundOptions/Master/MasterSlider)
+	set_value_to_volume_slider("Music",$Panel/SoundOptions/Music/MusicSlider)
+	set_value_to_volume_slider("Effects",$Panel/SoundOptions/Effects/EffectSlider)
 
+func set_value_to_volume_slider(bus_name:String,slider:HSlider):
+	var idx=AudioServer.get_bus_index(bus_name)
+	slider.value=db_to_slider_value(AudioServer.get_bus_volume_db(idx))
+
+func db_to_slider_value(db:float):
+	return ((db+30)/30)*100
+
+func value_to_db(val:float):
+	return (val/100)*30-30
 
 func _on_restart_day_pressed() -> void:
 	unpause()
 	get_tree().reload_current_scene()
+
+
+func set_volume_to_value(bus_name:String,volume:float):
+	var idx=AudioServer.get_bus_index(bus_name)
+	AudioServer.set_bus_volume_db(idx,value_to_db(volume))
+
+func _on_master_slider_value_changed(value: float) -> void:
+	set_volume_to_value("Master",value)
+
+func _on_effect_slider_value_changed(value: float) -> void:
+	set_volume_to_value("Effects",value)
+
+
+func _on_music_slider_value_changed(value: float) -> void:
+	set_volume_to_value("Music",value)
