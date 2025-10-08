@@ -7,7 +7,7 @@ var hit_sound_offset=-15
 var min_speed_for_effect=400
 
 func _on_player_hit(colission:KinematicCollision2D) -> void:
-	if colission.get_collider() is Pedestrian:
+	if colission.get_collider().is_in_group("Vehicle"):
 		if not $PersonHit.playing:
 			$PersonHit.play()
 	else:
