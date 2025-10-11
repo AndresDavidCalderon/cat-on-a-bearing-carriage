@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://84qmbyy12hoi"]
+[gd_scene load_steps=76 format=3 uid="uid://84qmbyy12hoi"]
 
 [ext_resource type="Script" uid="uid://cjpt6tedm8mpx" path="res://UI/ui.gd" id="1_6sqwf"]
 [ext_resource type="Theme" uid="uid://ctgv0x2t6xkc6" path="res://UI/free_ui_theme.tres" id="1_o2jkc"]
@@ -37,6 +37,10 @@
 [ext_resource type="Texture2D" uid="uid://5i87cwsfxk4x" path="res://intro/which_1.png" id="22_awqy2"]
 [ext_resource type="Texture2D" uid="uid://dl6cf25a3j10w" path="res://intro/glow_out.png" id="23_8wcgx"]
 [ext_resource type="Resource" uid="uid://dmjojbcjc6iqb" path="res://charachters/which_intro_timeline.dtl" id="24_8wcgx"]
+[ext_resource type="AudioStream" uid="uid://bobx6ugnn1oox" path="res://sound/coin_a.wav" id="24_e5yp3"]
+[ext_resource type="AudioStream" uid="uid://dqundwj8o22j" path="res://sound/coin_b.wav" id="25_4p5ox"]
+[ext_resource type="AudioStream" uid="uid://bus8vdysryexs" path="res://sound/coin_c.wav" id="26_bypj1"]
+[ext_resource type="AudioStream" uid="uid://d1c0h1k803cbc" path="res://sound/coin_long.wav" id="27_4p5ox"]
 [ext_resource type="Texture2D" uid="uid://bfl4s7x8i3k4s" path="res://UI/star_effect.png" id="30_apk2w"]
 [ext_resource type="Script" uid="uid://wuri1yic2vv7" path="res://UI/full_map.gd" id="37_2hqip"]
 [ext_resource type="Texture2D" uid="uid://7rvd3tk4hpsx" path="res://UI/map/border.png" id="38_ld37b"]
@@ -200,6 +204,12 @@ _data = {
 &"RESET": SubResource("Animation_ypubg"),
 &"fadeIN": SubResource("Animation_apk2w")
 }
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1spl3"]
+streams_count = 3
+stream_0/stream = ExtResource("24_e5yp3")
+stream_1/stream = ExtResource("25_4p5ox")
+stream_2/stream = ExtResource("26_bypj1")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7j5ik"]
 bg_color = Color(0, 0, 0, 1)
@@ -699,6 +709,12 @@ texture = ExtResource("30_apk2w")
 libraries = {
 &"": SubResource("AnimationLibrary_ypubg")
 }
+
+[node name="CoinGain" type="AudioStreamPlayer" parent="Coins"]
+stream = SubResource("AudioStreamRandomizer_1spl3")
+
+[node name="CoinSpend" type="AudioStreamPlayer" parent="Coins"]
+stream = ExtResource("27_4p5ox")
 
 [node name="WinPanel" type="Panel" parent="."]
 visible = false
