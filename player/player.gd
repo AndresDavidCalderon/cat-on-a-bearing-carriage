@@ -44,8 +44,8 @@ var impulse_per_tap=10
 ## This time has to pass after an impulse tap to loose impulse.
 var grace_time_after_tap=1
 
-## Internal, to work with grace_time_after_tap.
-var time_since_tap=0
+## Internal, to work with grace_time_after_tap and play_impulse_only_after
+var time_since_tap=1
 
 ## Critically low speed, should increase impulse per tap.
 var critic_treshhold=100
@@ -59,6 +59,7 @@ var critic_tap_speed_mutiplier=2
 
 ## Time tap_speed_multiplier takes affect after the tap.
 var tap_speed_duration=1
+var play_impulse_only_after=1
 
 
 ## Spent when moving. Should be measured in pixels of distance.
@@ -133,8 +134,9 @@ func _process(delta: float) -> void:
 				speed_multiplier*=multiplier
 				var timer =get_tree().create_timer(tap_speed_duration)
 				timer.timeout.connect(revert_speed.bind(multiplier))
+				if not $Impulse.playing and time_since_tap>play_impulse_only_after:
+					$Impulse.play()
 				time_since_tap=0
-				$Impulse.play()
 				impulsed.emit()
 			if turning:
 				if was_straight:

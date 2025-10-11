@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://jgau7aix4dm8"
-path="res://.godot/imported/wheels_a.wav-6a7f224b4c42232311a42a069f8f98de.sample"
+uid="uid://dy4tkj0msifmh"
+path="res://.godot/imported/wheels_d.wav-7d94cf58e6e56beba4f9a4f202731144.sample"
 
 [deps]
 
-source_file="res://sound/impulse/wheels_a.wav"
-dest_files=["res://.godot/imported/wheels_a.wav-6a7f224b4c42232311a42a069f8f98de.sample"]
+source_file="res://sound/impulse/wheels_d.wav"
+dest_files=["res://.godot/imported/wheels_d.wav-7d94cf58e6e56beba4f9a4f202731144.sample"]
 
 [params]
 
