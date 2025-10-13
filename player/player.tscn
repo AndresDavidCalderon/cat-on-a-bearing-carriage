@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bxwifrw0on3r8" path="res://player/car.png" id="5_kb6p2"]
 [ext_resource type="Script" uid="uid://ctea6d6h84fjd" path="res://player/hit_sound.gd" id="5_x7c3f"]
 [ext_resource type="Script" uid="uid://gsd8sxolqch3" path="res://player/car.gd" id="6_2ieo8"]
-[ext_resource type="Script" uid="uid://bfkxeq0ctt6tc" path="res://map_legend.gd" id="6_65viv"]
+[ext_resource type="Script" uid="uid://bfkxeq0ctt6tc" path="res://UI/map/map_legend.gd" id="6_65viv"]
 [ext_resource type="AudioStream" uid="uid://djgf0v36ttelk" path="res://player/hit_hard.wav" id="6_wodsf"]
 [ext_resource type="AudioStream" uid="uid://3sosnfojmpg0" path="res://player/hit_soft.wav" id="7_32hag"]
 [ext_resource type="Texture2D" uid="uid://dftsoys0fe47b" path="res://player/milk_bottle.png" id="7_ebec5"]

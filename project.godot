@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="cat-on-a-ball-bearing-carriage"
-run/main_scene="uid://cb3e5ub814mvb"
+run/main_scene="uid://bnebbkrxf0euh"
 config/features=PackedStringArray("4.5", "Forward Plus")
 boot_splash/use_filter=false
 boot_splash/image="uid://myyh3hle68q2"
@@ -26,6 +26,7 @@ driver/output_latency=5
 GlobalScore="*res://global_score.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 Weather="*res://weather.gd"
+Settings="*res://settings.gd"
 
 [dialogic]
 
@@ -144,3 +145,4 @@ pause={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
