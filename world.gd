@@ -20,7 +20,7 @@ enum matchState{
 ## the details of the current round's challenges. Could be optional
 ## but both delivery and defend call this.
 signal round_stats_set
-
+signal match_started
 signal loss(reason:lossReason)
 
 ## Sent by set_match_state

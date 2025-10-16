@@ -1,5 +1,6 @@
 extends Node
 
+
 @onready var player=get_node("/root/World/Player")
 
 ## Aside of not including assigned cows, does not include
@@ -26,3 +27,7 @@ func get_cow_assigned(to):
 		return cow
 	else:
 		return null
+
+
+func _on_spawn_timeout() -> void:
+	$DeliveryTrucks.get_children().pick_random().spawn()

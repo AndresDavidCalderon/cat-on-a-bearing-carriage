@@ -1,4 +1,4 @@
-[gd_scene load_steps=108 format=4 uid="uid://dnnka5th1gldj"]
+[gd_scene load_steps=110 format=4 uid="uid://dnnka5th1gldj"]
 
 [ext_resource type="Script" uid="uid://o74np0f72gru" path="res://world.gd" id="1_h2yge"]
 [ext_resource type="Script" uid="uid://21cvdt1d6hdp" path="res://blessings.gd" id="2_4k2k6"]
@@ -77,6 +77,7 @@
 [ext_resource type="PackedScene" uid="uid://drnodm8ibwu0u" path="res://world-and-tiles/night/cow.tscn" id="74_c2n8d"]
 [ext_resource type="Script" uid="uid://dbppcyeuv25f6" path="res://defend_the_milk/burglar.gd" id="76_gx4rg"]
 [ext_resource type="Texture2D" uid="uid://dl6f057tkjd1a" path="res://icon.svg" id="76_wy5fy"]
+[ext_resource type="Script" uid="uid://bol75v51xlvtc" path="res://defend_the_milk/delivery_truck.gd" id="78_5dllo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b1qrp"]
 size = Vector2(37.99981, 44.000076)
@@ -340,6 +341,9 @@ stream_3/stream = ExtResource("38_4lmeg")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wy5fy"]
 size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gx4rg"]
+size = Vector2(223, 320)
 
 [node name="World" type="Node"]
 script = ExtResource("1_h2yge")
@@ -1027,63 +1031,92 @@ stream = SubResource("AudioStreamRandomizer_0cp0l")
 volume_db = -10.0
 bus = &"Effects"
 
-[node name="DefendTheMlik" type="Node" parent="."]
+[node name="DefendTheMilk" type="Node" parent="."]
 script = ExtResource("74_34ol3")
 
-[node name="NightSpawnLocation" type="Node2D" parent="DefendTheMlik"]
+[node name="Spawn" type="Timer" parent="DefendTheMilk"]
+
+[node name="NightSpawnLocation" type="Node2D" parent="DefendTheMilk"]
 position = Vector2(-2464, 3488)
 
-[node name="Burglars" type="Node" parent="DefendTheMlik"]
+[node name="Burglars" type="Node" parent="DefendTheMilk"]
 
-[node name="Burglar" type="AnimatableBody2D" parent="DefendTheMlik/Burglars"]
+[node name="Burglar" type="AnimatableBody2D" parent="DefendTheMilk/Burglars"]
 position = Vector2(-4768, 3200)
+sync_to_physics = false
 script = ExtResource("76_gx4rg")
 
-[node name="Sprite2D" type="Sprite2D" parent="DefendTheMlik/Burglars/Burglar"]
+[node name="Sprite2D" type="Sprite2D" parent="DefendTheMilk/Burglars/Burglar"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("76_wy5fy")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DefendTheMlik/Burglars/Burglar"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DefendTheMilk/Burglars/Burglar"]
 shape = SubResource("RectangleShape2D_wy5fy")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="DefendTheMlik/Burglars/Burglar"]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="DefendTheMilk/Burglars/Burglar"]
 avoidance_enabled = true
 
-[node name="Cows" type="Node2D" parent="DefendTheMlik"]
+[node name="Progress" type="ProgressBar" parent="DefendTheMilk/Burglars/Burglar"]
+visible = false
+offset_left = -32.0
+offset_top = -64.0
+offset_right = 32.0
+offset_bottom = -37.0
+
+[node name="Cows" type="Node2D" parent="DefendTheMilk"]
 position = Vector2(-2464, 3488)
 
-[node name="Cow" parent="DefendTheMlik/Cows" instance=ExtResource("74_c2n8d")]
+[node name="Cow" parent="DefendTheMilk/Cows" instance=ExtResource("74_c2n8d")]
 position = Vector2(-160, -192)
 
-[node name="Cow2" parent="DefendTheMlik/Cows" instance=ExtResource("74_c2n8d")]
+[node name="Cow2" parent="DefendTheMilk/Cows" instance=ExtResource("74_c2n8d")]
 position = Vector2(608, 224)
 
-[node name="Cow3" parent="DefendTheMlik/Cows" instance=ExtResource("74_c2n8d")]
+[node name="Cow3" parent="DefendTheMilk/Cows" instance=ExtResource("74_c2n8d")]
 position = Vector2(0, -352)
 
-[node name="Cow4" parent="DefendTheMlik/Cows" instance=ExtResource("74_c2n8d")]
+[node name="Cow4" parent="DefendTheMilk/Cows" instance=ExtResource("74_c2n8d")]
 position = Vector2(32, 672)
 
-[node name="Cow5" parent="DefendTheMlik/Cows" instance=ExtResource("74_c2n8d")]
+[node name="Cow5" parent="DefendTheMilk/Cows" instance=ExtResource("74_c2n8d")]
 position = Vector2(-736, 416)
 
-[node name="Cow6" parent="DefendTheMlik/Cows" instance=ExtResource("74_c2n8d")]
+[node name="Cow6" parent="DefendTheMilk/Cows" instance=ExtResource("74_c2n8d")]
 position = Vector2(-768, -224)
 
-[node name="Cow7" parent="DefendTheMlik/Cows" instance=ExtResource("74_c2n8d")]
+[node name="Cow7" parent="DefendTheMilk/Cows" instance=ExtResource("74_c2n8d")]
 position = Vector2(-64, 320)
 
-[node name="Cow8" parent="DefendTheMlik/Cows" instance=ExtResource("74_c2n8d")]
+[node name="Cow8" parent="DefendTheMilk/Cows" instance=ExtResource("74_c2n8d")]
 position = Vector2(-160, 96)
 
-[node name="Cow9" parent="DefendTheMlik/Cows" instance=ExtResource("74_c2n8d")]
+[node name="Cow9" parent="DefendTheMilk/Cows" instance=ExtResource("74_c2n8d")]
 position = Vector2(352, -320)
 
-[node name="Cow10" parent="DefendTheMlik/Cows" instance=ExtResource("74_c2n8d")]
+[node name="Cow10" parent="DefendTheMilk/Cows" instance=ExtResource("74_c2n8d")]
 position = Vector2(352, -96)
 
-[node name="Cow11" parent="DefendTheMlik/Cows" instance=ExtResource("74_c2n8d")]
+[node name="Cow11" parent="DefendTheMilk/Cows" instance=ExtResource("74_c2n8d")]
 position = Vector2(256, 352)
+
+[node name="DeliveryTrucks" type="Node" parent="DefendTheMilk"]
+
+[node name="DeliveryTruck" type="StaticBody2D" parent="DefendTheMilk/DeliveryTrucks"]
+position = Vector2(-4768, 3040)
+script = ExtResource("78_5dllo")
+
+[node name="Sprite2D" type="Sprite2D" parent="DefendTheMilk/DeliveryTrucks/DeliveryTruck"]
+modulate = Color(1, 0.38, 0.38, 1)
+position = Vector2(6.1035156e-05, -32)
+scale = Vector2(1.749999, 2.5)
+texture = ExtResource("76_wy5fy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DefendTheMilk/DeliveryTrucks/DeliveryTruck"]
+position = Vector2(0.5, -32)
+shape = SubResource("RectangleShape2D_gx4rg")
+
+[node name="SpawnPoint" type="Node2D" parent="DefendTheMilk/DeliveryTrucks/DeliveryTruck"]
+position = Vector2(-2, 186)
 
 [connection signal="timeout" from="InWorldRainEffects/NewDroplet" to="InWorldRainEffects" method="_on_new_droplet_timeout"]
 [connection signal="timeout" from="InWorldRainEffects/NewRay" to="InWorldRainEffects" method="_on_new_ray_timeout"]
@@ -1093,6 +1126,9 @@ position = Vector2(256, 352)
 [connection signal="body_exited" from="MechanicBuilding/Ramp/Area2D" to="MechanicBuilding/Ramp" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="HabitableCeiling" to="HabitableCeiling" method="_on_body_entered"]
 [connection signal="body_exited" from="HabitableCeiling" to="HabitableCeiling" method="_on_body_exited"]
+[connection signal="timeout" from="DefendTheMilk/Spawn" to="DefendTheMilk" method="_on_spawn_timeout"]
+[connection signal="navigation_finished" from="DefendTheMilk/Burglars/Burglar/NavigationAgent2D" to="DefendTheMilk/Burglars/Burglar" method="_on_navigation_agent_2d_navigation_finished"]
+[connection signal="velocity_computed" from="DefendTheMilk/Burglars/Burglar/NavigationAgent2D" to="DefendTheMilk/Burglars/Burglar" method="_on_navigation_agent_2d_velocity_computed"]
 
 [editable path="DeliveryPoints/DeliveryTarget"]
 [editable path="DeliveryPoints/DeliveryTarget2"]
