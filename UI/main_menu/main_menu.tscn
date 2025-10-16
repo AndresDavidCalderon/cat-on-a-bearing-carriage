@@ -602,7 +602,7 @@ anchor_bottom = 0.5
 offset_left = 62.0
 offset_top = -48.0
 offset_right = 444.0
-offset_bottom = 117.0
+offset_bottom = 74.0
 grow_vertical = 2
 script = ExtResource("8_1dcnu")
 
@@ -620,11 +620,7 @@ grow_vertical = 2
 
 [node name="Play" type="Button" parent="Options/OptionsAligner"]
 layout_mode = 2
-text = "Play delivery"
-
-[node name="DefendTheMilk" type="Button" parent="Options/OptionsAligner"]
-layout_mode = 2
-text = "Play defend the milk"
+text = "Play"
 
 [node name="Options" type="Button" parent="Options/OptionsAligner"]
 layout_mode = 2
@@ -637,6 +633,4 @@ text = "Settings"
 [connection signal="animation_finished" from="Scenes/Play/AnimatedSprite2D" to="Scenes/Play" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="mouse_entered" from="Options/OptionsAligner/Play" to="Options" method="_on_play_mouse_entered"]
 [connection signal="pressed" from="Options/OptionsAligner/Play" to="Scenes" method="_on_play_pressed"]
-[connection signal="mouse_entered" from="Options/OptionsAligner/DefendTheMilk" to="Scenes" method="_on_defend_the_milk_mouse_entered"]
-[connection signal="pressed" from="Options/OptionsAligner/DefendTheMilk" to="Scenes" method="_on_defend_the_milk_pressed"]
 [connection signal="mouse_entered" from="Options/OptionsAligner/Options" to="Options" method="_on_options_mouse_entered"]

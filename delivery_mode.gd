@@ -17,7 +17,8 @@ var packet_target:int=10
 var target_time=0
 
 func _ready() -> void:
-	update_day_stats()
+	if GlobalScore.current_mode==GlobalScore.gameModes.DELIVERY:
+		update_day_stats()
 
 func register_target(target:Node):
 	delivery_targets.append(target)
