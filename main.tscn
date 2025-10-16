@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=4 uid="uid://dnnka5th1gldj"]
+[gd_scene load_steps=103 format=4 uid="uid://dnnka5th1gldj"]
 
 [ext_resource type="Script" uid="uid://o74np0f72gru" path="res://world.gd" id="1_h2yge"]
 [ext_resource type="Script" uid="uid://21cvdt1d6hdp" path="res://blessings.gd" id="2_4k2k6"]
@@ -72,6 +72,7 @@
 [ext_resource type="Script" uid="uid://bvjfbokio6qqc" path="res://world-and-tiles/ramp.gd" id="69_wu3dr"]
 [ext_resource type="Script" uid="uid://3taiinouejwf" path="res://world-and-tiles/habitable_ceiling.gd" id="70_cyx1q"]
 [ext_resource type="Texture2D" uid="uid://bo0mkjyyp2ayu" path="res://world-and-tiles/weather/fog.png" id="72_jx0wj"]
+[ext_resource type="Script" uid="uid://bfw4ivec0wnlp" path="res://delivery_mode.gd" id="73_kkkcx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b1qrp"]
 size = Vector2(37.99981, 44.000076)
@@ -259,13 +260,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2cqfq"]
 size = Vector2(37, 29)
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0cp0l"]
-streams_count = 4
-stream_0/stream = ExtResource("35_b1qrp")
-stream_1/stream = ExtResource("36_come4")
-stream_2/stream = ExtResource("37_h8e4i")
-stream_3/stream = ExtResource("38_4lmeg")
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_0n3wm"]
 radius = 29.068884
 
@@ -332,6 +326,13 @@ terrain_set_0/mode = 1
 terrain_set_0/terrain_0/name = "Fog"
 terrain_set_0/terrain_0/color = Color(0.175, 0.26833332, 0.35, 1)
 sources/0 = SubResource("TileSetAtlasSource_kkkcx")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0cp0l"]
+streams_count = 4
+stream_0/stream = ExtResource("35_b1qrp")
+stream_1/stream = ExtResource("36_come4")
+stream_2/stream = ExtResource("37_h8e4i")
+stream_3/stream = ExtResource("38_4lmeg")
 
 [node name="World" type="Node"]
 script = ExtResource("1_h2yge")
@@ -765,11 +766,6 @@ animation = &"Kiss"
 position = Vector2(-1.5, -0.5)
 shape = SubResource("RectangleShape2D_2cqfq")
 
-[node name="Delivery" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamRandomizer_0cp0l")
-volume_db = -10.0
-bus = &"Effects"
-
 [node name="Win" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("39_h8e4i")
 volume_db = -9.0
@@ -1017,6 +1013,17 @@ tile_set = SubResource("TileSet_34ol3")
 
 [node name="NightSpawnLocation" type="Node2D" parent="."]
 position = Vector2(-2464, 3488)
+
+[node name="DeliveryMode" type="Node" parent="." node_paths=PackedStringArray("mechanic_point")]
+script = ExtResource("73_kkkcx")
+mechanic_point = NodePath("../DeliveryPoints/Mechanic")
+
+[node name="Delivery" type="AudioStreamPlayer" parent="DeliveryMode"]
+stream = SubResource("AudioStreamRandomizer_0cp0l")
+volume_db = -10.0
+bus = &"Effects"
+
+[node name="DefendTheMlik" type="Node" parent="."]
 
 [connection signal="timeout" from="InWorldRainEffects/NewDroplet" to="InWorldRainEffects" method="_on_new_droplet_timeout"]
 [connection signal="timeout" from="InWorldRainEffects/NewRay" to="InWorldRainEffects" method="_on_new_ray_timeout"]

@@ -1,9 +1,13 @@
 extends Node
+## Stores the match state, generic in the sense in that it
+## shoudln't matter the game mode.
+## at the moment it manages time remaining too.
+
 enum lossReason{
 	TIME_OUT
 }
 
-
+## Should contain all states, used in all game modes.
 enum matchState{
 	PLAYING,
 	WON,
@@ -12,39 +16,27 @@ enum matchState{
 	PAUSED
 }
 
-## Only applies to delivery mode
-signal packet_delivered
+## Called by the game mode manager for the UI to display
+## the details of the current round's challenges. Could be optional
+## but both delivery and defend call this.
+signal round_stats_set
 
 signal loss(reason:lossReason)
 
 ## Sent by set_match_state
 signal match_state_changed(new_state:matchState)
-signal day_stats_set
 
 ## Emitted when winning. set_match_state doesnt emit this.
 signal win
 
-@onready var mechanic_point=$DeliveryPoints/Mechanic
-var mechanic_delivery_turn=3
 
 var current_match_state=matchState.PREVIOUS
 
-var delivery_targets=[]
-
-var current_target:Node=null
-var next_target:Node=null
-var packet_score:int=0
-var base_milk_by_minute=3
-var milk_by_minute_multiplier:float=1.3
-var packet_target:int=10
-var target_time=0
+## Should be set by the manager of the game mode.
 var remaining_time:float
 
 func _ready() -> void:
 	randomize()
-	
-	if GlobalScore.current_mode==GlobalScore.gameModes.DELIVERY:
-		update_day_stats()
 
 func _process(delta: float) -> void:
 	if current_match_state==matchState.PLAYING:
@@ -58,12 +50,8 @@ func _process(delta: float) -> void:
 			set_match_state(matchState.LOST)
 			loss.emit(lossReason.TIME_OUT)
 
-func register_target(target:Node):
-	delivery_targets.append(target)
-
 
 func _on_start_pressed() -> void:
-	set_random_target()
 	set_match_state(matchState.PLAYING)
 
 func set_match_state(new_state:matchState):
@@ -86,61 +74,9 @@ func finish_song_fade():
 		matchState.LOST:
 			$Loss.play()
 
-func target_reached():
-	packet_score+=1
-	$Delivery.play()
-	if packet_score<packet_target:
-		set_random_target()
-		packet_delivered.emit()
-	else:
-		set_match_state(matchState.WON)
-		win.emit()
-
-func set_random_target():
-	if next_target!=null:
-		set_current_target(next_target)
-		if packet_score<=packet_target-2:
-			next_target=generate_random_target()
-		else:
-			next_target=null
-	else:
-		set_current_target(generate_random_target())
-		next_target=generate_random_target()
-
-func generate_random_target():
-	if GlobalScore.current_day==GlobalScore.mechanic_day:
-		if mechanic_point in delivery_targets:
-			delivery_targets.erase(mechanic_point)
-		if packet_score==mechanic_delivery_turn-2:
-			return mechanic_point
-	
-	var new_target=null
-	while new_target==current_target or new_target==null:
-		new_target=delivery_targets.pick_random()
-	return new_target
-
-func set_current_target(target:Node2D):
-	if current_target!=null:
-		current_target.hide()
-	if target!=null:
-		target.show()
-		target.enable()
-	current_target=target
-
 func lost(loss_reason):
-	set_current_target(null)
 	loss.emit(loss_reason)
 
-func update_day_stats():
-	if GlobalScore.current_day!=GlobalScore.mechanic_day:
-		target_time = randi_range(45,120)
-	else:
-		target_time=120
-	
-	var minutes:float=(target_time/60.0)
-	packet_target = round(minutes*base_milk_by_minute*pow(milk_by_minute_multiplier,GlobalScore.current_day-1))
-	day_stats_set.emit()
-	remaining_time=target_time
 
 
 func _on_next_day_pressed() -> void:

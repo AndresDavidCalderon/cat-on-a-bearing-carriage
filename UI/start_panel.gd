@@ -1,9 +1,10 @@
 extends Panel
 
-@onready var score_provider=get_node("/root/World")
+@onready var round_manger=get_node("/root/World")
+@onready var score_provider=get_node("/root/World/DeliveryMode")
 
 func _ready() -> void:
-	score_provider.day_stats_set.connect(_on_world_day_stats_set)
+	round_manger.round_stats_set.connect(_on_world_day_stats_set)
 	show()
 
 func _on_start_pressed() -> void:

@@ -5,7 +5,6 @@ extends Node2D
 func _on_player_drift_started() -> void:
 	if blessing_provider.stop_drift:
 		$StartPush.play("grab")
-		print("Playin")
 
 
 func _on_player_drift_ended() -> void:

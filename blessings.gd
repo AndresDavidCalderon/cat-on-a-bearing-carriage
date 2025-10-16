@@ -11,7 +11,10 @@ enum BlessType{
 }
 
 @export var delivery_target_shape:Shape2D
+@onready var delivery_manager=get_node("/root/World/DeliveryMode")
+
 static var cost=50
+
 var prediction=false
 var stop_drift=false
 
@@ -43,8 +46,8 @@ func start_blessing(what:BlessType):
 	avaliable_blessings.erase(what)
 
 func update_prediction():
-	if get_parent().next_target==null:
+	if delivery_manager.next_target==null:
 		$NextTarget.hide()
 	else:
-		$NextTarget.position=get_parent().next_target.position
+		$NextTarget.position=delivery_manager.next_target.position
 		$NextTarget.show()

@@ -3,6 +3,7 @@ extends Node2D
 @export var right_detection:Area2D
 @export var left_detection:Area2D
 @onready var match_provider=get_node("/root/World")
+@onready var delivery_manager=match_provider.get_node("DeliveryMode")
 @export var milk_textures:Array[Texture]
 var bottles_scale=Vector2(0.4,0.4)
 var avaliable_places=[]
@@ -11,7 +12,8 @@ var loaded_nodes=[]
 
 func _ready() -> void:
 	match_provider.match_state_changed.connect(match_change)
-	match_provider.packet_delivered.connect(on_delivery)
+	if GlobalScore.current_mode==GlobalScore.gameModes.DELIVERY:
+		delivery_manager.packet_delivered.connect(on_delivery)
 	$Skins.hide()
 	load_skin(GlobalScore.current_skin)
 	GlobalScore.equiped_cosmetic_changed.connect(on_equiped_cosmetic_changed)
@@ -38,10 +40,10 @@ func load_skin(skin:CarSkin):
 
 func match_change(state:int):
 	if state==match_provider.matchState.PLAYING:
-		setup_bottles(match_provider.packet_target)
+		setup_bottles(delivery_manager.packet_target)
 
 func on_delivery():
-	if items.is_empty() or match_provider.packet_target-match_provider.packet_score>=10:
+	if items.is_empty() or delivery_manager.packet_target-delivery_manager.packet_score>=10:
 		return
 	var item=items.pick_random()
 	avaliable_places.append(item.get_parent())

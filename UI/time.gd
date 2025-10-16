@@ -2,6 +2,8 @@ extends Control
 
 @onready var match_provider=get_node("/root/World")
 
+## May change depending on game mode.
+
 func _ready() -> void:
 	match_provider.match_state_changed.connect(_on_world_match_state_changed)
 	hide()
