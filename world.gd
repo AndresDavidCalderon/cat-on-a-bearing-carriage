@@ -80,5 +80,11 @@ func lost(loss_reason):
 
 
 func _on_next_day_pressed() -> void:
-	GlobalScore.current_day+=1
-	get_tree().reload_current_scene()
+	if GlobalScore.current_mode==GlobalScore.gameModes.DEFEND:
+		GlobalScore.current_day+=1
+		GlobalScore.current_mode=GlobalScore.gameModes.DELIVERY
+		get_tree().reload_current_scene()
+	else:
+		GlobalScore.current_mode=GlobalScore.gameModes.DEFEND
+		
+		get_tree().reload_current_scene()

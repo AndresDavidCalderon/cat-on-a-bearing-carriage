@@ -4,7 +4,7 @@ extends Panel
 func _ready() -> void:
 	hide()
 	get_node("/root/World").win.connect(_on_world_win)
-	if GlobalScore.current_day!=1:
+	if GlobalScore.current_day!=1 or GlobalScore.current_mode==GlobalScore.gameModes.DELIVERY:
 		$NextDay.pressed.connect(get_node("/root/World")._on_next_day_pressed)
 	else:
 		$NextDay.pressed.connect(on_day_1_next)
