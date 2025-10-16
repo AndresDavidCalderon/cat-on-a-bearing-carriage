@@ -12,7 +12,9 @@ enum matchState{
 	PAUSED
 }
 
+## Only applies to delivery mode
 signal packet_delivered
+
 signal loss(reason:lossReason)
 
 ## Sent by set_match_state
@@ -40,7 +42,9 @@ var remaining_time:float
 
 func _ready() -> void:
 	randomize()
-	update_day_stats()
+	
+	if GlobalScore.current_mode==GlobalScore.gameModes.DELIVERY:
+		update_day_stats()
 
 func _process(delta: float) -> void:
 	if current_match_state==matchState.PLAYING:

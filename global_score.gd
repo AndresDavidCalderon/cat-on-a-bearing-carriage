@@ -4,7 +4,16 @@ signal coins_changed
 signal owned_cosmetics_updated
 signal equiped_cosmetic_changed
 
+enum gameModes{
+	DELIVERY,
+	DEFEND
+}
+
 var current_day=1
+
+## For defend the milk mode
+var current_night=1
+var current_mode=gameModes.DELIVERY
 var coins:int=0
 var mechanic_intro_shown=false
 var mechanic_day=3
