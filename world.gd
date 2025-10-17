@@ -12,7 +12,7 @@ enum lossReason{
 enum matchState{
 	PLAYING,
 	WON,
-	LOST,
+	LOST, 
 	PREVIOUS,
 	PAUSED
 }

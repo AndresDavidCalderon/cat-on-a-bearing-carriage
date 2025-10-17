@@ -55,3 +55,8 @@ func get_remaining_bottles():
 func _on_world_time_ran_out() -> void:
 	get_parent().set_match_state(get_parent().matchState.WON)
 	get_parent().win.emit()
+
+
+func _on_world_match_state_changed(new_state: int) -> void:
+	if new_state!=get_parent().matchState.PLAYING:
+		process_mode=Node.PROCESS_MODE_DISABLED
