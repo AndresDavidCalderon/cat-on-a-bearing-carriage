@@ -6,3 +6,4 @@ extends StaticBody2D
 func spawn():
 	var new_burglar=burglar_template.instantiate()
 	burglar_path.add_child(new_burglar)
+	new_burglar.global_position=$SpawnPoint.global_position

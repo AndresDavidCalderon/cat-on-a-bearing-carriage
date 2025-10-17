@@ -11,8 +11,8 @@ enum gameModes{
 
 var current_day=1
 
-## Temporal thingy for shipping a demo
-var defend_enabled:bool=false
+## Temporally false for shipping a demo
+var defend_enabled:bool=true
 var current_mode=gameModes.DELIVERY
 var coins:int=0
 var mechanic_intro_shown=false

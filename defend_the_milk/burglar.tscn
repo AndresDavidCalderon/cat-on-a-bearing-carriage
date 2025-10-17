@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cecnq58qimvq3"]
 
 [ext_resource type="Script" uid="uid://dbppcyeuv25f6" path="res://defend_the_milk/burglar.gd" id="1_vwqdq"]
-[ext_resource type="Texture2D" uid="uid://dl6f057tkjd1a" path="res://icon.svg" id="2_8kxv6"]
+[ext_resource type="Texture2D" uid="uid://bdekfksbvok81" path="res://world-and-tiles/2d_lights_and_shadows_neutral_point_light.webp" id="2_vwqdq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wy5fy"]
 size = Vector2(64, 64)
@@ -11,14 +11,26 @@ sync_to_physics = false
 script = ExtResource("1_vwqdq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_8kxv6")
+position = Vector2(0.4999981, 0.49999893)
+scale = Vector2(0.24609375, 0.23828125)
+texture = ExtResource("2_vwqdq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_wy5fy")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-avoidance_enabled = true
+path_desired_distance = 70.0
+target_desired_distance = 120.0
+radius = 70.0
+max_speed = 5.0
+debug_enabled = true
+
+[node name="CurrentState" type="Label" parent="."]
+offset_left = -32.0
+offset_top = 23.0
+offset_right = 8.0
+offset_bottom = 46.0
+text = "STATE"
 
 [node name="Progress" type="ProgressBar" parent="."]
 visible = false

@@ -1,6 +1,7 @@
 extends Camera2D
 
 var standard_zoom=Vector2(1,1)
+var defend_zoom=Vector2(0.7,0.7)
 var alteration=Vector2(-0.01,0.015)
 var position_alteration=Vector2(0,5)
 var presses=0
@@ -14,6 +15,8 @@ var tween:Tween
 var going_back=false
 
 func _ready() -> void:
+	if GlobalScore.current_mode==GlobalScore.gameModes.DEFEND:
+		standard_zoom=defend_zoom
 	zoom=standard_zoom
 
 func _process(delta: float) -> void:

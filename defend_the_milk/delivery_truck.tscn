@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhm6dcc2sq76f"]
+
+[ext_resource type="Script" uid="uid://bol75v51xlvtc" path="res://defend_the_milk/delivery_truck.gd" id="1_d38gv"]
+[ext_resource type="PackedScene" uid="uid://cecnq58qimvq3" path="res://defend_the_milk/burglar.tscn" id="2_hip7x"]
+[ext_resource type="Texture2D" uid="uid://dl6f057tkjd1a" path="res://icon.svg" id="3_rq14m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gx4rg"]
+size = Vector2(223, 320)
+
+[node name="DeliveryTruck" type="StaticBody2D"]
+script = ExtResource("1_d38gv")
+burglar_template = ExtResource("2_hip7x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.38, 0.38, 1)
+position = Vector2(6.1035156e-05, -32)
+scale = Vector2(1.749999, 2.5)
+texture = ExtResource("3_rq14m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -32)
+shape = SubResource("RectangleShape2D_gx4rg")
+
+[node name="SpawnPoint" type="Node2D" parent="."]
+position = Vector2(-2, 186)
