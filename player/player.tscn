@@ -355,6 +355,8 @@ collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_8t03j")
 
+[node name="HitNotifier" type="Node" parent="."]
+
 [node name="HitSound" type="Node" parent="."]
 script = ExtResource("5_x7c3f")
 
@@ -961,6 +963,7 @@ avoidance_enabled = false
 [connection signal="drift_started" from="." to="PushingSpirit" method="_on_player_drift_started"]
 [connection signal="drift_started" from="." to="Splash" method="_on_player_drift_started"]
 [connection signal="hit" from="." to="HitSound" method="_on_player_hit"]
+[connection signal="hit" from="." to="HitNotifier" method="_on_player_hit"]
 [connection signal="impulsed" from="." to="Camera2D" method="_on_player_impulsed"]
 [connection signal="impulsed" from="." to="Cat" method="_on_player_impulsed"]
 [connection signal="animation_finished" from="Splash/SplashRight" to="Splash" method="_on_splash_right_animation_finished"]

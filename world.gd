@@ -4,7 +4,8 @@ extends Node
 ## at the moment it manages time remaining too.
 
 enum lossReason{
-	TIME_OUT
+	TIME_OUT,
+	COWS_MILKED
 }
 
 ## Should contain all states, used in all game modes.
@@ -22,6 +23,7 @@ enum matchState{
 signal round_stats_set
 signal match_started
 signal loss(reason:lossReason)
+signal time_ran_out
 
 ## Sent by set_match_state
 signal match_state_changed(new_state:matchState)
@@ -46,9 +48,7 @@ func _process(delta: float) -> void:
 		if remaining_time<0:
 			$Riff.pitch_scale=1.0
 			remaining_time=0
-			current_match_state=matchState.LOST
-			set_match_state(matchState.LOST)
-			loss.emit(lossReason.TIME_OUT)
+			time_ran_out.emit()
 
 
 func _on_start_pressed() -> void:

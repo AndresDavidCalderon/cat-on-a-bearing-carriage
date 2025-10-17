@@ -7,11 +7,13 @@ func _ready() -> void:
 
 func _on_world_loss(reason) -> void:
 	show()
-	if reason==try_provider.lossReason.TIME_OUT:
-		$Panel/Description.text="""You ran out of time!"""
-		if randf()>0.5:
-			$Panel/Description.text+="\n Now you'll have to drink it all yourself"
-
+	match reason:
+		try_provider.lossReason.TIME_OUT:
+			$Panel/Description.text="""You ran out of time!"""
+			if randf()>0.5:
+				$Panel/Description.text+="\n Now you'll have to drink it all yourself"
+		try_provider.lossReason.COWS_MILKED:
+			$Panel/Description.text="You lost the milk of all cows!"
 
 func _on_repeat_pressed() -> void:
 	get_tree().reload_current_scene()

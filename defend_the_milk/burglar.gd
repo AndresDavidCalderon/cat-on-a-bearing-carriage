@@ -3,18 +3,24 @@ extends AnimatableBody2D
 enum State{
 	APPROACHING_COW,
 	MILKING,
-	STORING_BOTTLE
+	STORING_BOTTLE,
+	KO ## KO means defeated.
 }
 @onready var defense_manager=get_node("/root/World/DefendTheMilk")
+@onready var player=get_node("/root/World/Player")
 
 var current_state=State.APPROACHING_COW
 var target_cow=null
 var target_truck=null
 var speed=5
 var milking_time:float=10.0
+var min_ko_speed=700
 
 ## Goes from 0 to 1.
 var milking_progress=0
+
+func _ready() -> void:
+	player.hit.connect(on_player_hit)
 
 func _physics_process(delta: float) -> void:
 	match current_state:
@@ -49,6 +55,17 @@ func simple_set_velocity():
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 	position+=safe_velocity
 
+func on_player_hit(colission):
+	if colission.get_collider()==self:
+		if player.speed>min_ko_speed:
+			match current_state:
+				State.MILKING:
+					defense_manager.assigned_cows.erase(self)
+					defense_manager.avaliable_cows.append(target_cow)
+			$CollisionShape2D.set_deferred("disabled",true)
+			$NavigationAgent2D.avoidance_enabled=false
+			set_state(State.KO)
+			
 
 func _on_navigation_agent_2d_navigation_finished() -> void:
 	match current_state:
@@ -56,6 +73,7 @@ func _on_navigation_agent_2d_navigation_finished() -> void:
 			set_state(State.MILKING)
 			$Progress.show()
 		State.STORING_BOTTLE:
+			defense_manager.bottle_lost()
 			queue_free()
 
 func set_state(new_state:State):

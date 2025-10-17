@@ -1028,6 +1028,7 @@ bus = &"Effects"
 script = ExtResource("74_34ol3")
 
 [node name="Spawn" type="Timer" parent="DefendTheMilk"]
+wait_time = 3.0
 
 [node name="NightSpawnLocation" type="Node2D" parent="DefendTheMilk"]
 position = Vector2(-2464, 3488)
@@ -1082,6 +1083,8 @@ position = Vector2(-2493, 5346)
 position = Vector2(-842, 2722)
 
 [connection signal="match_started" from="." to="DefendTheMilk" method="_on_world_match_started"]
+[connection signal="time_ran_out" from="." to="DeliveryMode" method="_on_world_time_ran_out"]
+[connection signal="time_ran_out" from="." to="DefendTheMilk" method="_on_world_time_ran_out"]
 [connection signal="timeout" from="InWorldRainEffects/NewDroplet" to="InWorldRainEffects" method="_on_new_droplet_timeout"]
 [connection signal="timeout" from="InWorldRainEffects/NewRay" to="InWorldRainEffects" method="_on_new_ray_timeout"]
 [connection signal="delivered" from="DeliveryPoints/Mechanic" to="Mechanic" method="_on_mechanic_delivered"]

@@ -76,3 +76,8 @@ func set_current_target(target:Node2D):
 		target.show()
 		target.enable()
 	current_target=target
+
+
+func _on_world_time_ran_out() -> void:
+	get_parent().loss.emit(get_parent().lossReason.TIME_OUT)
+	get_parent().set_match_state(get_parent().matchState.LOST)

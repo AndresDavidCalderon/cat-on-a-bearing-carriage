@@ -2,10 +2,12 @@ extends Node
 
 
 @onready var player=get_node("/root/World/Player")
-
 ## Aside of not including assigned cows, does not include
-## cows that were succesfully milk
+## cows that were succesfully milked. Which might not be the same
+## If you don't stop someone milking your cow midway.
 @onready var avaliable_cows=$Cows.get_children()
+
+var lost_bottles=0
 
 var max_time=90
 var assigned_cows={}
@@ -28,6 +30,12 @@ func get_cow_assigned(to):
 	else:
 		return null
 
+func bottle_lost():
+	lost_bottles+=1
+	if lost_bottles>=$Cows.get_child_count():
+		get_parent().loss.emit(get_parent().lossReason.COWS_MILKED)
+		get_parent().set_match_state(get_parent().matchState.LOST)
+
 
 func _on_spawn_timeout() -> void:
 	if avaliable_cows.size()>0:
@@ -37,3 +45,13 @@ func _on_spawn_timeout() -> void:
 func _on_world_match_started() -> void:
 	if is_mode():
 		$Spawn.start()
+
+func get_total_bottles():
+	return $Cows.get_child_count()
+
+func get_remaining_bottles():
+	return get_total_bottles()-lost_bottles
+
+func _on_world_time_ran_out() -> void:
+	get_parent().set_match_state(get_parent().matchState.WON)
+	get_parent().win.emit()
