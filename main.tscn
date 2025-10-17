@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=4 uid="uid://dnnka5th1gldj"]
+[gd_scene load_steps=109 format=4 uid="uid://dnnka5th1gldj"]
 
 [ext_resource type="Script" uid="uid://o74np0f72gru" path="res://world.gd" id="1_h2yge"]
 [ext_resource type="Script" uid="uid://21cvdt1d6hdp" path="res://blessings.gd" id="2_4k2k6"]
@@ -75,7 +75,7 @@
 [ext_resource type="Script" uid="uid://bfw4ivec0wnlp" path="res://delivery_mode.gd" id="73_kkkcx"]
 [ext_resource type="Script" uid="uid://iytetouqjuk" path="res://defend_the_milk/defend_the_mlik.gd" id="74_34ol3"]
 [ext_resource type="PackedScene" uid="uid://drnodm8ibwu0u" path="res://world-and-tiles/night/cow.tscn" id="74_c2n8d"]
-[ext_resource type="Script" uid="uid://dbppcyeuv25f6" path="res://defend_the_milk/burglar.gd" id="76_gx4rg"]
+[ext_resource type="PackedScene" uid="uid://cecnq58qimvq3" path="res://defend_the_milk/burglar.tscn" id="75_5dllo"]
 [ext_resource type="Texture2D" uid="uid://dl6f057tkjd1a" path="res://icon.svg" id="76_wy5fy"]
 [ext_resource type="Script" uid="uid://bol75v51xlvtc" path="res://defend_the_milk/delivery_truck.gd" id="78_5dllo"]
 
@@ -338,9 +338,6 @@ stream_0/stream = ExtResource("35_b1qrp")
 stream_1/stream = ExtResource("36_come4")
 stream_2/stream = ExtResource("37_h8e4i")
 stream_3/stream = ExtResource("38_4lmeg")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wy5fy"]
-size = Vector2(64, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gx4rg"]
 size = Vector2(223, 320)
@@ -1039,30 +1036,6 @@ script = ExtResource("74_34ol3")
 [node name="NightSpawnLocation" type="Node2D" parent="DefendTheMilk"]
 position = Vector2(-2464, 3488)
 
-[node name="Burglars" type="Node" parent="DefendTheMilk"]
-
-[node name="Burglar" type="AnimatableBody2D" parent="DefendTheMilk/Burglars"]
-position = Vector2(-4768, 3200)
-sync_to_physics = false
-script = ExtResource("76_gx4rg")
-
-[node name="Sprite2D" type="Sprite2D" parent="DefendTheMilk/Burglars/Burglar"]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("76_wy5fy")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DefendTheMilk/Burglars/Burglar"]
-shape = SubResource("RectangleShape2D_wy5fy")
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="DefendTheMilk/Burglars/Burglar"]
-avoidance_enabled = true
-
-[node name="Progress" type="ProgressBar" parent="DefendTheMilk/Burglars/Burglar"]
-visible = false
-offset_left = -32.0
-offset_top = -64.0
-offset_right = 32.0
-offset_bottom = -37.0
-
 [node name="Cows" type="Node2D" parent="DefendTheMilk"]
 position = Vector2(-2464, 3488)
 
@@ -1099,11 +1072,14 @@ position = Vector2(352, -96)
 [node name="Cow11" parent="DefendTheMilk/Cows" instance=ExtResource("74_c2n8d")]
 position = Vector2(256, 352)
 
+[node name="Burglars" type="Node2D" parent="DefendTheMilk"]
+
 [node name="DeliveryTrucks" type="Node" parent="DefendTheMilk"]
 
 [node name="DeliveryTruck" type="StaticBody2D" parent="DefendTheMilk/DeliveryTrucks"]
 position = Vector2(-4768, 3040)
 script = ExtResource("78_5dllo")
+burglar_template = ExtResource("75_5dllo")
 
 [node name="Sprite2D" type="Sprite2D" parent="DefendTheMilk/DeliveryTrucks/DeliveryTruck"]
 modulate = Color(1, 0.38, 0.38, 1)
@@ -1118,6 +1094,7 @@ shape = SubResource("RectangleShape2D_gx4rg")
 [node name="SpawnPoint" type="Node2D" parent="DefendTheMilk/DeliveryTrucks/DeliveryTruck"]
 position = Vector2(-2, 186)
 
+[connection signal="match_started" from="." to="DefendTheMilk" method="_on_world_match_started"]
 [connection signal="timeout" from="InWorldRainEffects/NewDroplet" to="InWorldRainEffects" method="_on_new_droplet_timeout"]
 [connection signal="timeout" from="InWorldRainEffects/NewRay" to="InWorldRainEffects" method="_on_new_ray_timeout"]
 [connection signal="delivered" from="DeliveryPoints/Mechanic" to="Mechanic" method="_on_mechanic_delivered"]
@@ -1127,8 +1104,6 @@ position = Vector2(-2, 186)
 [connection signal="body_entered" from="HabitableCeiling" to="HabitableCeiling" method="_on_body_entered"]
 [connection signal="body_exited" from="HabitableCeiling" to="HabitableCeiling" method="_on_body_exited"]
 [connection signal="timeout" from="DefendTheMilk/Spawn" to="DefendTheMilk" method="_on_spawn_timeout"]
-[connection signal="navigation_finished" from="DefendTheMilk/Burglars/Burglar/NavigationAgent2D" to="DefendTheMilk/Burglars/Burglar" method="_on_navigation_agent_2d_navigation_finished"]
-[connection signal="velocity_computed" from="DefendTheMilk/Burglars/Burglar/NavigationAgent2D" to="DefendTheMilk/Burglars/Burglar" method="_on_navigation_agent_2d_velocity_computed"]
 
 [editable path="DeliveryPoints/DeliveryTarget"]
 [editable path="DeliveryPoints/DeliveryTarget2"]

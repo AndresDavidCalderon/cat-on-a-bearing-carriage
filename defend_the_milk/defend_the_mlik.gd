@@ -31,3 +31,8 @@ func get_cow_assigned(to):
 
 func _on_spawn_timeout() -> void:
 	$DeliveryTrucks.get_children().pick_random().spawn()
+
+
+func _on_world_match_started() -> void:
+	if is_mode():
+		$Spawn.start()

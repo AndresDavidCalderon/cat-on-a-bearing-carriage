@@ -53,6 +53,7 @@ func _process(delta: float) -> void:
 
 func _on_start_pressed() -> void:
 	set_match_state(matchState.PLAYING)
+	match_started.emit()
 
 func set_match_state(new_state:matchState):
 	current_match_state=new_state
@@ -80,7 +81,7 @@ func lost(loss_reason):
 
 
 func _on_next_day_pressed() -> void:
-	if GlobalScore.current_mode==GlobalScore.gameModes.DEFEND:
+	if GlobalScore.current_mode==GlobalScore.gameModes.DEFEND or not GlobalScore.defend_enabled:
 		GlobalScore.current_day+=1
 		GlobalScore.current_mode=GlobalScore.gameModes.DELIVERY
 		get_tree().reload_current_scene()
