@@ -12,3 +12,5 @@ The game mode is presented through the first night, with no burglars to guide yo
 
 
 Normally you win when surviving 90 seconds and loose or all 10 milk bottles are done.
+
+The cat that manages the warehouse and leads you is called Miguel, has a ray scar and is black. He makes everything dramatic and more of a deal than it really is. He treats the milk thing like a world-saving operation. He is your friend and helps with operations on the farm because he is a bit awkward with humans.

@@ -33,10 +33,12 @@ Settings="*res://settings.gd"
 directories/dch_directory={
 "cat": "res://charachters/cat.dch",
 "mechanic": "res://charachters/mechanic/mechanic.dch",
+"miguel": "res://charachters/dialogic_miguel/miguel.dch",
 "witch": "res://charachters/witch.dch"
 }
 directories/dtl_directory={
 "blessing_recieve.timeline": "res://charachters/blessing_recieve.timeline.dtl",
+"defend_the_milk_presentation": "res://charachters/defend_the_milk_presentation.dtl",
 "mechanic_presentation": "res://charachters/mechanic_presentation.dtl",
 "which_intro_timeline": "res://charachters/which_intro_timeline.dtl",
 "which_session": "res://charachters/which_session.dtl"

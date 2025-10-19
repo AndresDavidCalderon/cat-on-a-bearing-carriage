@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://drnodm8ibwu0u"]
 
-[ext_resource type="Texture2D" uid="uid://csiag425yootq" path="res://world-and-tiles/color_floor_base.png" id="1_yul0r"]
+[ext_resource type="Texture2D" uid="uid://cdy64hxtiuq5s" path="res://defend_the_milk/cow.png" id="1_yul0r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c2n8d"]
-size = Vector2(44, 42)
+size = Vector2(45, 21)
 
 [node name="Cow" type="StaticBody2D"]
 
@@ -13,9 +13,5 @@ scale = Vector2(0.6914062, 0.65820307)
 texture = ExtResource("1_yul0r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
+position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_c2n8d")
-
-[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
-radius = 27.09
-vertices = PackedVector2Array(-22, -22, 22, -21, 22, 20, -22, 20)
