@@ -14,3 +14,14 @@ The game mode is presented through the first night, with no burglars to guide yo
 Normally you win when surviving 90 seconds and loose or all 10 milk bottles are done.
 
 The cat that manages the warehouse and leads you is called Miguel, has a ray scar and is black. He makes everything dramatic and more of a deal than it really is. He treats the milk thing like a world-saving operation. He is your friend and helps with operations on the farm because he is a bit awkward with humans.
+
+
+## After first implementation
+
+I see the potential in the game mode. But with the car being both your means of movement and of attack, combined with the not so great logic for impulse, makes it frustrating. The cat must be given a gun. Also zooming out the camera felt quite bad too. We need the baddies to appear on the map and other helpers, but not zooming out the camera
+
+The thing with hitting them with the car itself is that if you have any speed requirement at all, it's going to be frustrating. So the solution is a Taser, the cat can Tase enemies if they are on a visible marked area (Which is small so that you still have to drift and stuff)
+
+I've also gotta fix the remaining bottles indicator before evaluating the fun more.
+
+The camera rotation makes this mode hard, along with there not being any map. There should be some details that help the player guide themselves. Maybe there should be only 1 pickup that moves.

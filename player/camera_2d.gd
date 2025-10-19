@@ -1,7 +1,7 @@
 extends Camera2D
 
 var standard_zoom=Vector2(1,1)
-var defend_zoom=Vector2(0.7,0.7)
+var defend_zoom=Vector2(1,1)
 var alteration=Vector2(-0.01,0.015)
 var position_alteration=Vector2(0,5)
 var presses=0

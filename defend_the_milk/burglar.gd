@@ -9,18 +9,20 @@ enum State{
 @onready var defense_manager=get_node("/root/World/DefendTheMilk")
 @onready var player=get_node("/root/World/Player")
 
+var debug_modulate_cow=false
 var current_state=State.APPROACHING_COW
 var target_cow=null
 var target_truck=null
 var speed=5
 var milking_time:float=10.0
-var min_ko_speed=700
+var min_ko_speed=600
 
 ## Goes from 0 to 1.
 var milking_progress=0
 
 func _ready() -> void:
 	player.hit.connect(on_player_hit)
+	set_state(State.APPROACHING_COW)
 
 func _physics_process(delta: float) -> void:
 	match current_state:
@@ -29,9 +31,10 @@ func _physics_process(delta: float) -> void:
 				target_cow=defense_manager.get_cow_assigned(self)
 				if target_cow!=null:
 					$NavigationAgent2D.target_position=target_cow.global_position
-					var color=Color(randf(),randf(),randf())
-					$Sprite2D.self_modulate=color
-					target_cow.modulate=color
+					if debug_modulate_cow:
+						var color=Color(randf(),randf(),randf())
+						$Sprite2D.self_modulate=color
+						target_cow.modulate=color
 			if target_cow!=null:
 				simple_set_velocity()
 		State.MILKING:
@@ -54,6 +57,7 @@ func simple_set_velocity():
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 	position+=safe_velocity
+	rotation=safe_velocity.angle()-PI/2
 
 func on_player_hit(colission):
 	if colission.get_collider()==self:
@@ -75,7 +79,22 @@ func _on_navigation_agent_2d_navigation_finished() -> void:
 		State.STORING_BOTTLE:
 			defense_manager.bottle_lost()
 			queue_free()
-
 func set_state(new_state:State):
 	current_state=new_state
 	$CurrentState.text=State.find_key(new_state)
+	match new_state:
+		State.APPROACHING_COW:
+			$Sprite2D.play("Walking")
+		State.MILKING:
+			$Sprite2D.play("Milking")
+		State.STORING_BOTTLE:
+			$Sprite2D.play("Walking")
+			$Milk.play("Walking")
+			$Milk.show()
+		State.KO:
+			queue_free()
+
+
+func _on_re_check_cow_position_timeout() -> void:
+	if current_state==State.APPROACHING_COW:
+		$NavigationAgent2D.target_position=target_cow.global_position

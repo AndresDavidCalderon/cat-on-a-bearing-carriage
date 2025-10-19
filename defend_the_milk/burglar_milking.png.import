@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rt247so2mlk6"
-path="res://.godot/imported/target_map_leyend.png-9413645bdd4d0582200587fde9510d2a.ctex"
+uid="uid://kqsuxw3v14jk"
+path="res://.godot/imported/burglar_milking.png-aaba40f707c7b20919c2629bbd3ef90e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/target_map_leyend.png"
-dest_files=["res://.godot/imported/target_map_leyend.png-9413645bdd4d0582200587fde9510d2a.ctex"]
+source_file="res://defend_the_milk/burglar_milking.png"
+dest_files=["res://.godot/imported/burglar_milking.png-aaba40f707c7b20919c2629bbd3ef90e.ctex"]
 
 [params]
 

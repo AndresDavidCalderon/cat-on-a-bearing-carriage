@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://drnodm8ibwu0u"]
+[gd_scene load_steps=4 format=3 uid="uid://drnodm8ibwu0u"]
 
+[ext_resource type="Script" uid="uid://cg8guuod04hnt" path="res://defend_the_milk/cow.gd" id="1_etjxm"]
 [ext_resource type="Texture2D" uid="uid://cdy64hxtiuq5s" path="res://defend_the_milk/cow.png" id="1_yul0r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c2n8d"]
 size = Vector2(45, 21)
 
-[node name="Cow" type="StaticBody2D"]
+[node name="Cow" type="AnimatableBody2D"]
+sync_to_physics = false
+script = ExtResource("1_etjxm")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(-0.12499809, -1.0624986)
@@ -15,3 +18,12 @@ texture = ExtResource("1_yul0r")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_c2n8d")
+
+[node name="MilkingPosition" type="Node2D" parent="."]
+position = Vector2(0, 16)
+
+[node name="MoveAgain" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="MoveAgain" to="." method="_on_move_again_timeout"]
