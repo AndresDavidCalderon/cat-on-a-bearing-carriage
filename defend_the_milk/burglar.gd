@@ -15,7 +15,8 @@ var target_cow=null
 var target_truck=null
 var speed=5
 var milking_time:float=10.0
-var min_ko_speed=600
+var min_ko_speed=550
+var milk_stolen_success=false
 
 ## Goes from 0 to 1.
 var milking_progress=0
@@ -42,6 +43,7 @@ func _physics_process(delta: float) -> void:
 			$Progress.value=milking_progress*100
 			if milking_progress>1:
 				set_state(State.STORING_BOTTLE)
+				target_cow.end_milking()
 		State.STORING_BOTTLE:
 			if $NavigationAgent2D.is_navigation_finished():
 				target_truck=defense_manager.get_node("DeliveryTrucks").get_children().pick_random()
@@ -57,9 +59,9 @@ func simple_set_velocity():
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 	position+=safe_velocity
-	rotation=safe_velocity.angle()-PI/2
+	rotation=safe_velocity.angle()+PI/2
 
-func on_player_hit(colission):
+func on_player_hit(colission,_is_first):
 	if colission.get_collider()==self:
 		if player.speed>min_ko_speed:
 			match current_state:
@@ -76,9 +78,15 @@ func _on_navigation_agent_2d_navigation_finished() -> void:
 		State.APPROACHING_COW:
 			set_state(State.MILKING)
 			$Progress.show()
+			global_position=target_cow.get_node("MilkingPosition").global_position
+			rotation=global_position.angle_to_point(target_cow.global_position)
+			target_cow.start_milking()
 		State.STORING_BOTTLE:
-			defense_manager.bottle_lost()
+			if not milk_stolen_success:
+				defense_manager.lose_bottle()
+				milk_stolen_success=true
 			queue_free()
+
 func set_state(new_state:State):
 	current_state=new_state
 	$CurrentState.text=State.find_key(new_state)

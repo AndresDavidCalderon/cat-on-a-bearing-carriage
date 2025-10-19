@@ -79,5 +79,9 @@ func set_current_target(target:Node2D):
 
 
 func _on_world_time_ran_out() -> void:
-	get_parent().loss.emit(get_parent().lossReason.TIME_OUT)
-	get_parent().set_match_state(get_parent().matchState.LOST)
+	if is_mode():
+		get_parent().loss.emit(get_parent().lossReason.TIME_OUT)
+		get_parent().set_match_state(get_parent().matchState.LOST)
+
+func is_mode():
+	return GlobalScore.current_mode==GlobalScore.gameModes.DELIVERY

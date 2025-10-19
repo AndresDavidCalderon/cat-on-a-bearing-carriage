@@ -11,7 +11,8 @@ func _ready() -> void:
 		match_provider.match_state_changed.connect(_on_world_match_state_changed)
 	else:
 		$HBoxContainer/Items.text="Milk bottles remaining"
-		
+		match_provider.round_stats_set.connect(update_bottles)
+		defense_manager.bottle_lost.connect(update_bottles)
 
 func _on_world_packet_delivered() -> void:
 	$HBoxContainer/Num.text=str(delivery_manager.packet_score)+"/"+str(delivery_manager.packet_target)
@@ -19,3 +20,6 @@ func _on_world_packet_delivered() -> void:
 
 func _on_world_match_state_changed(new_state: bool) -> void:
 	_on_world_packet_delivered()
+
+func update_bottles():
+	$HBoxContainer/Num.text=str(defense_manager.get_remaining_bottles())

@@ -6,7 +6,9 @@ var hard_to_soft=700
 var hit_sound_offset=-15
 var min_speed_for_effect=400
 
-func _on_player_hit(colission:KinematicCollision2D) -> void:
+func _on_player_hit(colission:KinematicCollision2D,is_first:bool) -> void:
+	if not is_first:
+		return
 	if colission.get_collider().is_in_group("Vehicle"):
 		if not $PersonHit.playing:
 			$PersonHit.play()

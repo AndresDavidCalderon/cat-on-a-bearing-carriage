@@ -12,7 +12,6 @@ script = ExtResource("1_d38gv")
 burglar_template = ExtResource("2_hip7x")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0.38, 0.38, 1)
 position = Vector2(6.1035156e-05, -32)
 texture = ExtResource("3_d38gv")
 

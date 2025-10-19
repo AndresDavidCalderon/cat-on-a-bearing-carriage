@@ -1,5 +1,6 @@
 extends Node
 
+signal bottle_lost
 
 @onready var player=get_node("/root/World/Player")
 ## Aside of not including assigned cows, does not include
@@ -30,8 +31,9 @@ func get_cow_assigned(to):
 	else:
 		return null
 
-func bottle_lost():
+func lose_bottle():
 	lost_bottles+=1
+	bottle_lost.emit()
 	if lost_bottles>=$Cows.get_child_count():
 		get_parent().loss.emit(get_parent().lossReason.COWS_MILKED)
 		get_parent().set_match_state(get_parent().matchState.LOST)
