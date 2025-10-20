@@ -7,7 +7,7 @@ signal bottle_lost
 ## cows that were succesfully milked. Which might not be the same
 ## If you don't stop someone milking your cow midway.
 @onready var avaliable_cows=$Cows.get_children()
-@export var intro:DialogicTimeline
+@export var intros:Array[DialogicTimeline]
 
 var lost_bottles=0
 
@@ -19,11 +19,21 @@ func _ready() -> void:
 	if is_mode():
 		player.global_position=$NightSpawnLocation.global_position
 		get_parent().remaining_time=max_time
-		if GlobalScore.defense_intro_shown:
-			on_timeline_ended()
-		else:
-			Dialogic.start(intro)
-			Dialogic.timeline_ended.connect(on_timeline_ended)
+		maybe_play_intro()
+	get_parent().change_pitch_on_low_time=false
+
+func maybe_play_intro():
+	if GlobalScore.current_day>=intros.size():
+		on_timeline_ended()
+		return 
+	if GlobalScore.last_defense_intro_shown>=GlobalScore.current_day or intros[GlobalScore.current_day]==null:
+		on_timeline_ended()
+		return
+	
+	Dialogic.start(intros[GlobalScore.current_day])
+	Dialogic.timeline_ended.connect(on_timeline_ended)
+	GlobalScore.last_defense_intro_shown=GlobalScore.current_day
+
 
 func on_timeline_ended():
 	get_parent().round_stats_set.emit()

@@ -37,13 +37,15 @@ var current_match_state=matchState.PREVIOUS
 ## Should be set by the manager of the game mode.
 var remaining_time:float
 
+var change_pitch_on_low_time=true
+
 func _ready() -> void:
 	randomize()
 
 func _process(delta: float) -> void:
 	if current_match_state==matchState.PLAYING:
 		remaining_time-=delta
-		if remaining_time<15:
+		if remaining_time<15 and change_pitch_on_low_time:
 			$Riff.pitch_scale=1.3
 		if remaining_time<0:
 			$Riff.pitch_scale=1.0
