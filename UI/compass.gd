@@ -5,6 +5,7 @@ extends Control
 @export var color_transition:Gradient
 var reference_distance=1500
 
+
 func _process(_delta: float) -> void:
 	if target_provider.current_target!=null:
 		var target=target_provider.current_target.position as Vector2
@@ -12,3 +13,5 @@ func _process(_delta: float) -> void:
 		var distance_fraction=target.distance_to(player.position)/reference_distance
 		distance_fraction=clamp(distance_fraction,0,1)
 		modulate=color_transition.sample(1-distance_fraction)
+	else:
+		hide()

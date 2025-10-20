@@ -1,5 +1,6 @@
 extends Panel
 
+@export var texture_on_defend:Texture
 
 func _ready() -> void:
 	hide()
@@ -16,6 +17,11 @@ func on_day_1_next():
 func _on_world_win() -> void:
 	show()
 	$DayBeaten/num.text=str(GlobalScore.current_day)
+	if GlobalScore.current_mode==GlobalScore.gameModes.DEFEND:
+		$Report.text="The milk has been protected, thank you for your service"
+		$TextureRect.texture=texture_on_defend
+		$TextureRect.flip_h=true
+		$DayBeaten/Label.text="nights beaten"
 
 
 func _on_intro_ended() -> void:

@@ -14,7 +14,7 @@ var current_state=State.APPROACHING_COW
 var target_cow=null
 var target_truck=null
 var speed=5
-var milking_time:float=10.0
+var milking_time:float=5.0
 var min_ko_speed=500
 var milk_stolen_success=false
 var snap_to_cow=false
@@ -25,6 +25,7 @@ var milking_progress=0
 func _ready() -> void:
 	player.hit.connect(on_player_hit)
 	set_state(State.APPROACHING_COW)
+	player.get_node("Shoker").shocked.connect(on_player_shock)
 
 func _physics_process(delta: float) -> void:
 	match current_state:
@@ -65,14 +66,21 @@ func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 func on_player_hit(colission,_is_first):
 	if colission.get_collider()==self:
 		if player.speed>min_ko_speed:
-			match current_state:
-				State.MILKING:
-					defense_manager.assigned_cows.erase(self)
-					defense_manager.avaliable_cows.append(target_cow)
-			$CollisionShape2D.set_deferred("disabled",true)
-			$NavigationAgent2D.avoidance_enabled=false
-			set_state(State.KO)
-			
+			defeat()
+
+func defeat():
+	match current_state:
+		State.MILKING:
+			defense_manager.assigned_cows.erase(self)
+			defense_manager.avaliable_cows.append(target_cow)
+	$CollisionShape2D.set_deferred("disabled",true)
+	$NavigationAgent2D.avoidance_enabled=false
+	set_state(State.KO)
+	defense_manager.assigned_cows.erase(self)
+
+func on_player_shock(bodies:Array):
+	if self in bodies:
+		defeat()
 
 func _on_navigation_agent_2d_navigation_finished() -> void:
 	match current_state:

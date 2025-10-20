@@ -1,9 +1,11 @@
 extends Control
 
+@export var texture_on_defend:Texture
 @onready var try_provider=get_node("/root/World")
 
 func _ready() -> void:
 	try_provider.loss.connect(_on_world_loss)
+	hide()
 
 func _on_world_loss(reason) -> void:
 	show()
@@ -13,7 +15,8 @@ func _on_world_loss(reason) -> void:
 			if randf()>0.5:
 				$Panel/Description.text+="\n Now you'll have to drink it all yourself"
 		try_provider.lossReason.COWS_MILKED:
-			$Panel/Description.text="You lost the milk of all cows!"
+			$Panel/Description.text="You lost the milk of all the cows!"
+			$Panel/TextureRect.texture=texture_on_defend
 
 func _on_repeat_pressed() -> void:
 	get_tree().reload_current_scene()

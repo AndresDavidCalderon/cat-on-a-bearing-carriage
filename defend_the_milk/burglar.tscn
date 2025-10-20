@@ -1,10 +1,11 @@
-[gd_scene load_steps=41 format=3 uid="uid://cecnq58qimvq3"]
+[gd_scene load_steps=42 format=3 uid="uid://cecnq58qimvq3"]
 
 [ext_resource type="Script" uid="uid://dbppcyeuv25f6" path="res://defend_the_milk/burglar.gd" id="1_vwqdq"]
 [ext_resource type="Texture2D" uid="uid://kqsuxw3v14jk" path="res://defend_the_milk/burglar_milking.png" id="2_8kxv6"]
 [ext_resource type="Texture2D" uid="uid://bjyyd8m78w8g0" path="res://defend_the_milk/burglar_walk.png" id="2_vwqdq"]
 [ext_resource type="Texture2D" uid="uid://cl28rxhqxv4u4" path="res://defend_the_milk/burglar_milk.png" id="4_sfk8h"]
 [ext_resource type="Texture2D" uid="uid://rt247so2mlk6" path="res://UI/target_map_legend.png" id="5_epbgp"]
+[ext_resource type="Theme" uid="uid://ctgv0x2t6xkc6" path="res://UI/free_ui_theme.tres" id="5_sg3rh"]
 [ext_resource type="Script" uid="uid://bfkxeq0ctt6tc" path="res://UI/map/map_legend.gd" id="6_y7u1s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fnmg6"]
@@ -266,6 +267,7 @@ sprite_frames = SubResource("SpriteFrames_1dwb2")
 animation = &"Walking"
 
 [node name="Milk" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(0.4999981, 0.49999893)
 sprite_frames = SubResource("SpriteFrames_8kxv6")
 animation = &"Walking"
@@ -281,6 +283,7 @@ radius = 70.0
 max_speed = 5.0
 
 [node name="CurrentState" type="Label" parent="."]
+visible = false
 offset_left = -32.0
 offset_top = 23.0
 offset_right = 8.0
@@ -288,13 +291,16 @@ offset_bottom = 46.0
 text = "STATE"
 
 [node name="Progress" type="ProgressBar" parent="."]
-visible = false
-offset_left = -32.0
-offset_top = -64.0
-offset_right = 32.0
-offset_bottom = -37.0
+offset_left = -38.0
+offset_top = -56.0
+offset_right = 40.0
+offset_bottom = -29.0
+theme = ExtResource("5_sg3rh")
+theme_override_font_sizes/font_size = 12
 
 [node name="MapLegend" type="Sprite2D" parent="."]
+light_mask = 0
+visibility_layer = 2
 texture = ExtResource("5_epbgp")
 script = ExtResource("6_y7u1s")
 

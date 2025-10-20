@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://84qmbyy12hoi"]
+[gd_scene load_steps=78 format=3 uid="uid://84qmbyy12hoi"]
 
 [ext_resource type="Script" uid="uid://cjpt6tedm8mpx" path="res://UI/ui.gd" id="1_6sqwf"]
 [ext_resource type="Theme" uid="uid://ctgv0x2t6xkc6" path="res://UI/free_ui_theme.tres" id="1_o2jkc"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://dba4y85gilasm" path="res://UI/win_panel.gd" id="10_j5i65"]
 [ext_resource type="Texture2D" uid="uid://b7btsnvvggr5n" path="res://UI/win.png" id="11_awqy2"]
 [ext_resource type="Script" uid="uid://vcy7cw0cm6a1" path="res://UI/map/minimap.gd" id="12_8wcgx"]
+[ext_resource type="Texture2D" uid="uid://4miyrs84j06x" path="res://charachters/dialogic_miguel/miguel_yell.png" id="13_bypj1"]
 [ext_resource type="Script" uid="uid://chi3x5cviupvi" path="res://UI/map/map_camera.gd" id="13_duqhi"]
 [ext_resource type="Script" uid="uid://c2csrsbfkpmws" path="res://UI/calendar/calendar.gd" id="15_ebcl4"]
 [ext_resource type="Script" uid="uid://bq4hf7obe3cs4" path="res://UI/speed.gd" id="15_ow1yt"]
@@ -41,6 +42,7 @@
 [ext_resource type="AudioStream" uid="uid://dqundwj8o22j" path="res://sound/coin_b.wav" id="25_4p5ox"]
 [ext_resource type="AudioStream" uid="uid://bus8vdysryexs" path="res://sound/coin_c.wav" id="26_bypj1"]
 [ext_resource type="AudioStream" uid="uid://d1c0h1k803cbc" path="res://sound/coin_long.wav" id="27_4p5ox"]
+[ext_resource type="Texture2D" uid="uid://82y8ygvk6qak" path="res://charachters/dialogic_miguel/miguel.png" id="29_4p5ox"]
 [ext_resource type="Texture2D" uid="uid://bfl4s7x8i3k4s" path="res://UI/star_effect.png" id="30_apk2w"]
 [ext_resource type="Script" uid="uid://wuri1yic2vv7" path="res://UI/map/full_map.gd" id="37_2hqip"]
 [ext_resource type="Texture2D" uid="uid://7rvd3tk4hpsx" path="res://UI/map/border.png" id="38_ld37b"]
@@ -363,6 +365,7 @@ grow_vertical = 2
 size_flags_vertical = 8
 theme = ExtResource("1_o2jkc")
 script = ExtResource("5_8gukh")
+texture_on_defend = ExtResource("13_bypj1")
 
 [node name="Panel" type="Panel" parent="Lost"]
 layout_mode = 1
@@ -731,6 +734,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_o2jkc")
 script = ExtResource("10_j5i65")
+texture_on_defend = ExtResource("29_4p5ox")
 
 [node name="Title" type="Label" parent="WinPanel"]
 layout_mode = 1
@@ -753,7 +757,7 @@ anchor_top = 0.5
 anchor_bottom = 0.5
 offset_top = -127.5
 offset_right = 410.0
-offset_bottom = -37.5
+offset_bottom = 0.5
 grow_vertical = 2
 text = "Now everyone has their milk."
 horizontal_alignment = 1
@@ -823,6 +827,8 @@ offset_bottom = 56.5
 grow_horizontal = 0
 grow_vertical = 2
 texture = ExtResource("11_awqy2")
+expand_mode = 3
+stretch_mode = 5
 
 [node name="Calendar" type="HBoxContainer" parent="WinPanel"]
 layout_mode = 1
@@ -1223,6 +1229,7 @@ flip_h = true
 
 [node name="Pause" type="Control" parent="."]
 process_mode = 3
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1278,7 +1285,7 @@ text = "Resume"
 
 [node name="RestartDay" type="Button" parent="Pause/Panel/ButtonOptions"]
 layout_mode = 2
-text = "Restart day"
+text = "Restart round"
 
 [node name="SoundOptions" type="VBoxContainer" parent="Pause/Panel"]
 layout_mode = 1
