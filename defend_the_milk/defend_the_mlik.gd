@@ -20,7 +20,9 @@ func _ready() -> void:
 		player.global_position=$NightSpawnLocation.global_position
 		get_parent().remaining_time=max_time
 		maybe_play_intro()
-	get_parent().change_pitch_on_low_time=false
+		get_parent().change_pitch_on_low_time=false
+	else:
+		process_mode=Node.PROCESS_MODE_DISABLED
 
 func maybe_play_intro():
 	if GlobalScore.current_day>=intros.size():
@@ -74,6 +76,8 @@ func get_remaining_bottles():
 	return get_total_bottles()-lost_bottles
 
 func _on_world_time_ran_out() -> void:
+	if not is_mode():
+		return
 	get_parent().set_match_state(get_parent().matchState.WON)
 	get_parent().win.emit()
 
