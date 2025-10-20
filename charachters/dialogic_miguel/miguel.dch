@@ -8,12 +8,31 @@
 "sound_moods": {},
 "style": ""
 },
-&"default_portrait": "",
+&"default_portrait": "profile",
 &"description": "The cat that deals with the security of SB.",
 &"display_name": "Miguel",
 &"mirror": false,
 &"nicknames": ["protector"],
 &"offset": Vector2(0, 0),
-&"portraits": {},
+&"portraits": {
+"profile": {
+"export_overrides": {
+"image": "\"res://charachters/dialogic_miguel/miguel.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"yell": {
+"export_overrides": {
+"image": "\"res://charachters/dialogic_miguel/miguel_yell.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+}
+},
 &"scale": 1.0
 }

@@ -15,8 +15,9 @@ var target_cow=null
 var target_truck=null
 var speed=5
 var milking_time:float=10.0
-var min_ko_speed=550
+var min_ko_speed=500
 var milk_stolen_success=false
+var snap_to_cow=false
 
 ## Goes from 0 to 1.
 var milking_progress=0
@@ -78,8 +79,9 @@ func _on_navigation_agent_2d_navigation_finished() -> void:
 		State.APPROACHING_COW:
 			set_state(State.MILKING)
 			$Progress.show()
-			global_position=target_cow.get_node("MilkingPosition").global_position
-			rotation=global_position.angle_to_point(target_cow.global_position)
+			if snap_to_cow:
+				global_position=target_cow.get_node("MilkingPosition").global_position
+				rotation=global_position.angle_to_point(target_cow.global_position)
 			target_cow.start_milking()
 		State.STORING_BOTTLE:
 			if not milk_stolen_success:

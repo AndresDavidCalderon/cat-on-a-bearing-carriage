@@ -25,3 +25,9 @@ The thing with hitting them with the car itself is that if you have any speed re
 I've also gotta fix the remaining bottles indicator before evaluating the fun more.
 
 The camera rotation makes this mode hard, along with there not being any map. There should be some details that help the player guide themselves. Maybe there should be only 1 pickup that moves.
+
+1 pickup helped. It would be nice to be informed of the milk being successfully stolen, and the camera not rotating.
+
+Update: The camera not rotating feels a little weird. Its better to add the borders, mud and anything that can help orientation.
+
+Night ambience can start being worked on.
