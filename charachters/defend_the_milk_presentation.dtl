@@ -1,5 +1,5 @@
-join miguel center
 join cat left
+join miguel (profile) right [mirrored="true"]
 miguel: Good evening. I've got to tell you the situation over here, burglars from the town of Dimas, nearby, have been coming in trucks and miliking our cows. They come dressed in dark red.
 update cat (shocked_profile)
-miguel (yell): You need to help protect the farm. Hit them hard with the car before they successfully approach the cows, milk them, and bring the bottle to the pickup. They usually only stay for 90 seconds, so if we have milk left after that, the operation is a success!
+miguel (yell): You need to help protect the farm. Hit them hard with the car or shock them using the E key when near them , they usually only stay for 40 seconds, so if we have milk left after that, the operation is a success!

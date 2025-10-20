@@ -22,7 +22,8 @@ func _on_world_win() -> void:
 		$TextureRect.texture=texture_on_defend
 		$TextureRect.flip_h=true
 		$DayBeaten/Label.text="nights beaten"
-
+	else:
+		$NextDay.text="Continue to night"
 
 func _on_intro_ended() -> void:
 	get_node("/root/World")._on_next_day_pressed()

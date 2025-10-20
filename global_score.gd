@@ -16,6 +16,7 @@ var defend_enabled:bool=true
 var current_mode=gameModes.DELIVERY
 var coins:int=0
 var mechanic_intro_shown=false
+var defense_intro_shown=false
 var mechanic_day=3
 var owned_skins=[
 	"Default"
