@@ -3,7 +3,7 @@ shader_type canvas_item;
 uniform float difference;
 uniform float overall_liftup;
 uniform bool raining;
-uniform float rain_multiplier;
+uniform float rain_difference;
 
 void vertex() {
 	// Called for every vertex the material is visible on.
@@ -33,7 +33,7 @@ void fragment() {
 	if (COLOR.r+COLOR.g+COLOR.b<2.5){
 		float circumstancial_difference=difference;
 		if (raining){
-			circumstancial_difference*=rain_multiplier;
+			circumstancial_difference=rain_difference;
 		}
 		float median=(COLOR.r+COLOR.g+COLOR.b)/3.0;
 		COLOR.r=slerp_to(COLOR.r,median,circumstancial_difference);

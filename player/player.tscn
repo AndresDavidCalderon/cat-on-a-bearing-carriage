@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://dhjjje2b1xoa0"]
+[gd_scene load_steps=90 format=3 uid="uid://dhjjje2b1xoa0"]
 
 [ext_resource type="Script" uid="uid://dg6hodfjfupjm" path="res://player/player.gd" id="1_8t03j"]
 [ext_resource type="Texture2D" uid="uid://4d1qt7imo57v" path="res://player/cat.png" id="4_yllr7"]
@@ -39,6 +39,7 @@
 [ext_resource type="AudioStream" uid="uid://dy4tkj0msifmh" path="res://sound/impulse/wheels_d.wav" id="32_pnw6m"]
 [ext_resource type="Script" uid="uid://dhmhkbobqhg6q" path="res://player/shoker.gd" id="38_1so5t"]
 [ext_resource type="Texture2D" uid="uid://bdekfksbvok81" path="res://world-and-tiles/2d_lights_and_shadows_neutral_point_light.webp" id="39_55jnj"]
+[ext_resource type="Texture2D" uid="uid://bo4siwhbfsswm" path="res://player/shock_rays.png" id="40_dx5ib"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1layv"]
 size = Vector2(26, 54)
@@ -352,6 +353,61 @@ animations = [{
 "speed": 20.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcnuv"]
+atlas = ExtResource("40_dx5ib")
+region = Rect2(0, 0, 55, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j55il"]
+atlas = ExtResource("40_dx5ib")
+region = Rect2(55, 0, 55, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjies"]
+atlas = ExtResource("40_dx5ib")
+region = Rect2(110, 0, 55, 74)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mmwog"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcnuv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j55il")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjies")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="Animation" id="Animation_dx5ib"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Light:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShockSprite")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
 [sub_resource type="Animation" id="Animation_55jnj"]
 resource_name = "shock"
 length = 0.1
@@ -367,20 +423,19 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0, 1.0, 0.0]
 }
-
-[sub_resource type="Animation" id="Animation_dx5ib"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Light:energy")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShockSprite")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
+"values": [{
+"args": [&"", 1.0, false],
+"method": &"play"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dx5ib"]
@@ -1000,6 +1055,9 @@ avoidance_enabled = false
 
 [node name="Shoker" type="Node2D" parent="."]
 script = ExtResource("38_1so5t")
+
+[node name="ShockSprite" type="AnimatedSprite2D" parent="Shoker"]
+sprite_frames = SubResource("SpriteFrames_mmwog")
 
 [node name="Light" type="PointLight2D" parent="Shoker"]
 position = Vector2(0.99999976, -4)
